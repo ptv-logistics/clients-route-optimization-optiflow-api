@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Metrics.JSON_PROPERTY_TOTAL_DISTANCE,
   Metrics.JSON_PROPERTY_TOTAL_DURATION
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-08T10:16:41.445132Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-09T13:34:30.390729Z[Etc/UTC]")
 public class Metrics {
   public static final String JSON_PROPERTY_NUMBER_OF_UNSCHEDULED_ORDERS = "numberOfUnscheduledOrders";
   private Integer numberOfUnscheduledOrders;

@@ -45,7 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Appointment.JSON_PROPERTY_TASKS,
   Appointment.JSON_PROPERTY_END
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-08T10:16:41.445132Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-09T13:34:30.390729Z[Etc/UTC]")
 public class Appointment {
   public static final String JSON_PROPERTY_TIME_SLOT_ID = "timeSlotId";
   private String timeSlotId;
