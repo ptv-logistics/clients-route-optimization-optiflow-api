@@ -1,5 +1,5 @@
 /*
- * OptiFlow
+ * Route Optimization OptiFlow
  *
  * With the Route Optimization OptiFlow service you can schedule and optimize the routes of your fleet.
  *
@@ -40,9 +40,9 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// Initializes a new instance of the <see cref="OptimizationRequest" /> class.
         /// </summary>
         /// <param name="settings">settings (required).</param>
-        /// <param name="locations">A list of locations where goods have to be picked up or delivered, or where vehicles are located. (required).</param>
+        /// <param name="locations">A list of locations where goods have to be picked up or delivered, or where vehicles are located.   Please note that the upper bound on number of locations is a technical limit. Check your individual price plan or contract to see which limits apply.  (required).</param>
         /// <param name="orders">orders (required).</param>
-        /// <param name="vehicles">A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle.  (required).</param>
+        /// <param name="vehicles">A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle.   Please note that the upper bound on number of vehicles is a technical limit. Check your individual price plan or contract to see which limits apply.  (required).</param>
         /// <param name="depots">A list of depots where pickup orders can be delivered to or delivery orders can be picked up from. When providing pickup or delivery orders, at least one depot must be specified. Depots must not be specified when all orders are pickup-delivery orders. When stopping at a depot, all pickup orders present in the vehicle are unloaded first. Afterwards, delivery orders can be loaded into the vehicle. Those must be delivered before stopping at the next depot. .</param>
         /// <param name="constraints">constraints.</param>
         public OptimizationRequest(OptimizationSettings settings = default(OptimizationSettings), List<Location> locations = default(List<Location>), Orders orders = default(Orders), List<Vehicle> vehicles = default(List<Vehicle>), List<Depot> depots = default(List<Depot>), Constraints constraints = default(Constraints))
@@ -78,9 +78,9 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         public OptimizationSettings Settings { get; set; }
 
         /// <summary>
-        /// A list of locations where goods have to be picked up or delivered, or where vehicles are located.
+        /// A list of locations where goods have to be picked up or delivered, or where vehicles are located.   Please note that the upper bound on number of locations is a technical limit. Check your individual price plan or contract to see which limits apply. 
         /// </summary>
-        /// <value>A list of locations where goods have to be picked up or delivered, or where vehicles are located.</value>
+        /// <value>A list of locations where goods have to be picked up or delivered, or where vehicles are located.   Please note that the upper bound on number of locations is a technical limit. Check your individual price plan or contract to see which limits apply. </value>
         [DataMember(Name = "locations", IsRequired = true, EmitDefaultValue = false)]
         public List<Location> Locations { get; set; }
 
@@ -91,9 +91,9 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         public Orders Orders { get; set; }
 
         /// <summary>
-        /// A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle. 
+        /// A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle.   Please note that the upper bound on number of vehicles is a technical limit. Check your individual price plan or contract to see which limits apply. 
         /// </summary>
-        /// <value>A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle. </value>
+        /// <value>A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle.   Please note that the upper bound on number of vehicles is a technical limit. Check your individual price plan or contract to see which limits apply. </value>
         [DataMember(Name = "vehicles", IsRequired = true, EmitDefaultValue = false)]
         public List<Vehicle> Vehicles { get; set; }
 

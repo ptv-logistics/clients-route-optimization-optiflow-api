@@ -1,5 +1,5 @@
 /*
- * OptiFlow
+ * Route Optimization OptiFlow
  *
  * With the Route Optimization OptiFlow service you can schedule and optimize the routes of your fleet.
  *
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.Client.Open
 namespace PTV.Developer.Clients.routeoptimization.Model
 {
     /// <summary>
-    /// A list of orders that should be scheduled by the optimization on the routes. When providing pickup-delivery orders, it is not possible to provide other order types. If pickup orders or delivery orders are provided, at least one depot must be provided where the pickup orders can be delivered to or the delivery orders can be picked up from. The unique identifiers of the orders must by unique across the three types.  Orders of the same type always satisfy the \&quot;last in, first out\&quot; (LIFO) principle, with respect to each other. When an order is picked up while another order of the same type is already loaded, the former should be delivered before the latter. Orders of different types do not have to satisfy the LIFO principle. For example, if a pickup order is picked up while a delivery order is loaded, the delivery order can be delivered before the pickup order is delivered at depot. 
+    /// A list of orders that should be scheduled by the optimization on the routes. When providing pickup-delivery orders, it is not possible to provide other order types. If pickup orders or delivery orders are provided, at least one depot must be provided where the pickup orders can be delivered to or the delivery orders can be picked up from. The unique identifiers of the orders must by unique across the three types.   Orders of the same type always satisfy the \&quot;last in, first out\&quot; (LIFO) principle, with respect to each other. When an order is picked up while another order of the same type is already loaded, the former should be delivered before the latter. Orders of different types do not have to satisfy the LIFO principle. For example, if a pickup order is picked up while a delivery order is loaded, the delivery order can be delivered before the pickup order is delivered at depot. 
     /// </summary>
     [DataContract(Name = "Orders")]
     public partial class Orders : IEquatable<Orders>, IValidatableObject
@@ -34,9 +34,9 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Orders" /> class.
         /// </summary>
-        /// <param name="pickups">A list of orders that must be picked up from a specific location and transported to a depot..</param>
-        /// <param name="deliveries">A list of orders that must be delivered to a specific location and transported from a depot..</param>
-        /// <param name="pickupDeliveries">A list of orders that must be picked up at a specific location and delivered to a specific location..</param>
+        /// <param name="pickups">A list of orders that must be picked up from a specific location and transported to a depot.   Please note that the upper bound on number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply. .</param>
+        /// <param name="deliveries">A list of orders that must be delivered to a specific location and transported from a depot.   Please note that the upper bound on number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. .</param>
+        /// <param name="pickupDeliveries">A list of orders that must be picked up at a specific location and delivered to a specific location.   Please note that the upper bound on number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. .</param>
         public Orders(List<PickupOrder> pickups = default(List<PickupOrder>), List<DeliveryOrder> deliveries = default(List<DeliveryOrder>), List<PickupDeliveryOrder> pickupDeliveries = default(List<PickupDeliveryOrder>))
         {
             this.Pickups = pickups;
@@ -45,23 +45,23 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         }
 
         /// <summary>
-        /// A list of orders that must be picked up from a specific location and transported to a depot.
+        /// A list of orders that must be picked up from a specific location and transported to a depot.   Please note that the upper bound on number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply. 
         /// </summary>
-        /// <value>A list of orders that must be picked up from a specific location and transported to a depot.</value>
+        /// <value>A list of orders that must be picked up from a specific location and transported to a depot.   Please note that the upper bound on number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply. </value>
         [DataMember(Name = "pickups", EmitDefaultValue = false)]
         public List<PickupOrder> Pickups { get; set; }
 
         /// <summary>
-        /// A list of orders that must be delivered to a specific location and transported from a depot.
+        /// A list of orders that must be delivered to a specific location and transported from a depot.   Please note that the upper bound on number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. 
         /// </summary>
-        /// <value>A list of orders that must be delivered to a specific location and transported from a depot.</value>
+        /// <value>A list of orders that must be delivered to a specific location and transported from a depot.   Please note that the upper bound on number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. </value>
         [DataMember(Name = "deliveries", EmitDefaultValue = false)]
         public List<DeliveryOrder> Deliveries { get; set; }
 
         /// <summary>
-        /// A list of orders that must be picked up at a specific location and delivered to a specific location.
+        /// A list of orders that must be picked up at a specific location and delivered to a specific location.   Please note that the upper bound on number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. 
         /// </summary>
-        /// <value>A list of orders that must be picked up at a specific location and delivered to a specific location.</value>
+        /// <value>A list of orders that must be picked up at a specific location and delivered to a specific location.   Please note that the upper bound on number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. </value>
         [DataMember(Name = "pickupDeliveries", EmitDefaultValue = false)]
         public List<PickupDeliveryOrder> PickupDeliveries { get; set; }
 
