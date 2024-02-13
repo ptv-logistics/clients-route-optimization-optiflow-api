@@ -1,5 +1,5 @@
 /*
- * OptiFlow
+ * Route Optimization OptiFlow
  * With the Route Optimization OptiFlow service you can schedule and optimize the routes of your fleet.
  *
  * The version of the OpenAPI document: 1.0
@@ -33,15 +33,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A list of orders that should be scheduled by the optimization on the routes. When providing pickup-delivery orders, it is not possible to provide other order types. If pickup orders or delivery orders are provided, at least one depot must be provided where the pickup orders can be delivered to or the delivery orders can be picked up from. The unique identifiers of the orders must by unique across the three types.  Orders of the same type always satisfy the \&quot;last in, first out\&quot; (LIFO) principle, with respect to each other. When an order is picked up while another order of the same type is already loaded, the former should be delivered before the latter. Orders of different types do not have to satisfy the LIFO principle. For example, if a pickup order is picked up while a delivery order is loaded, the delivery order can be delivered before the pickup order is delivered at depot. 
+ * A list of orders that should be scheduled by the optimization on the routes. When providing pickup-delivery orders, it is not possible to provide other order types. If pickup orders or delivery orders are provided, at least one depot must be provided where the pickup orders can be delivered to or the delivery orders can be picked up from. The unique identifiers of the orders must by unique across the three types.   Orders of the same type always satisfy the \&quot;last in, first out\&quot; (LIFO) principle, with respect to each other. When an order is picked up while another order of the same type is already loaded, the former should be delivered before the latter. Orders of different types do not have to satisfy the LIFO principle. For example, if a pickup order is picked up while a delivery order is loaded, the delivery order can be delivered before the pickup order is delivered at depot. 
  */
-@ApiModel(description = "A list of orders that should be scheduled by the optimization on the routes. When providing pickup-delivery orders, it is not possible to provide other order types. If pickup orders or delivery orders are provided, at least one depot must be provided where the pickup orders can be delivered to or the delivery orders can be picked up from. The unique identifiers of the orders must by unique across the three types.  Orders of the same type always satisfy the \"last in, first out\" (LIFO) principle, with respect to each other. When an order is picked up while another order of the same type is already loaded, the former should be delivered before the latter. Orders of different types do not have to satisfy the LIFO principle. For example, if a pickup order is picked up while a delivery order is loaded, the delivery order can be delivered before the pickup order is delivered at depot. ")
+@ApiModel(description = "A list of orders that should be scheduled by the optimization on the routes. When providing pickup-delivery orders, it is not possible to provide other order types. If pickup orders or delivery orders are provided, at least one depot must be provided where the pickup orders can be delivered to or the delivery orders can be picked up from. The unique identifiers of the orders must by unique across the three types.   Orders of the same type always satisfy the \"last in, first out\" (LIFO) principle, with respect to each other. When an order is picked up while another order of the same type is already loaded, the former should be delivered before the latter. Orders of different types do not have to satisfy the LIFO principle. For example, if a pickup order is picked up while a delivery order is loaded, the delivery order can be delivered before the pickup order is delivered at depot. ")
 @JsonPropertyOrder({
   Orders.JSON_PROPERTY_PICKUPS,
   Orders.JSON_PROPERTY_DELIVERIES,
   Orders.JSON_PROPERTY_PICKUP_DELIVERIES
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-09T13:34:30.390729Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
 public class Orders {
   public static final String JSON_PROPERTY_PICKUPS = "pickups";
   private List<PickupOrder> pickups = null;
@@ -69,11 +69,11 @@ public class Orders {
   }
 
    /**
-   * A list of orders that must be picked up from a specific location and transported to a depot.
+   * A list of orders that must be picked up from a specific location and transported to a depot.   Please note that the upper bound on number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply. 
    * @return pickups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of orders that must be picked up from a specific location and transported to a depot.")
+  @ApiModelProperty(value = "A list of orders that must be picked up from a specific location and transported to a depot.   Please note that the upper bound on number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply. ")
   @JsonProperty(JSON_PROPERTY_PICKUPS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -103,11 +103,11 @@ public class Orders {
   }
 
    /**
-   * A list of orders that must be delivered to a specific location and transported from a depot.
+   * A list of orders that must be delivered to a specific location and transported from a depot.   Please note that the upper bound on number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. 
    * @return deliveries
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of orders that must be delivered to a specific location and transported from a depot.")
+  @ApiModelProperty(value = "A list of orders that must be delivered to a specific location and transported from a depot.   Please note that the upper bound on number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. ")
   @JsonProperty(JSON_PROPERTY_DELIVERIES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -137,11 +137,11 @@ public class Orders {
   }
 
    /**
-   * A list of orders that must be picked up at a specific location and delivered to a specific location.
+   * A list of orders that must be picked up at a specific location and delivered to a specific location.   Please note that the upper bound on number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. 
    * @return pickupDeliveries
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of orders that must be picked up at a specific location and delivered to a specific location.")
+  @ApiModelProperty(value = "A list of orders that must be picked up at a specific location and delivered to a specific location.   Please note that the upper bound on number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply. ")
   @JsonProperty(JSON_PROPERTY_PICKUP_DELIVERIES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

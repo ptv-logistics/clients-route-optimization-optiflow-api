@@ -1,4 +1,4 @@
-# Clients for the Route Optimization OptiFlow API [EXPERIMENTAL]
+# Clients for the Route Optimization OptiFlow API
 
 Using client classes makes it easier and more convenient to integrate the API into an existing programming environment. We provide here clients for Java, C# and TypeScript. Alternatively you can generate the clients yourself by using this [tutorial](https://developer.myptv.com/en/resources/tutorials/general/how-generate-clients-ptv-developer-apis).
 
@@ -17,6 +17,19 @@ Language depending information:
      var configuration = new Configuration() { ApiKey = apiKey };
      PlansApi plansApi = new PlansApi(configuration);
     ```
+  If your APIKey allows for more than 3000 Orders, before you start a big Optimization in class OptimizationAPI, you may have to compress your payload. For this
+    * set ``` localVarRequestOptions.HeaderParameters.Add("Content-Encoding", "gzip"); ```
+    * use compressed data as body of your http request
+      ```
+       MemoryStream memStream1 = new MemoryStream();
+       BinaryFormatter binFormatter = new BinaryFormatter();
+       binFormatter.Serialize(memStream1, optimizationRequest);
+       byte[] data = memStream1.ToArray();
+       MemoryStream memStream2 = new MemoryStream();
+       GZipStream gzStream = new GZipStream(memStream2, CompressionMode.Compress);
+       gzStream.Write(data, 0, data.Length);
+       localVarRequestOptions.Data = memStream2.ToArray();
+      ```
 
 * **Java:** Please add the following dependencies to your project
   ```   <dependencies>
@@ -56,13 +69,24 @@ Language depending information:
             <version>2.1.1</version>
         </dependency>
   ```       
-    To initialize your client with your APIKey you can use the following snippet:
-   ```
-   ApiClient apiClient = Configuration.getDefaultApiClient()
+   To initialize your client with your APIKey you can use the following snippet:
+    ```
+     ApiClient apiClient = Configuration.getDefaultApiClient()
        .setRequestInterceptor(builder -> builder.setHeader("ApiKey", "Enter your ApiKey here"));
-   PlansApi plansApi = new PlansApi(apiClient);
-   ```
-
+     PlansApi plansApi = new PlansApi(apiClient);
+    ```
+   If your APIKey allows for more than 3000 Orders, before you start a big Optimization in class OptimizationAPI, you may have to compress your payload. For this
+    * set ``` localVarRequestBuilder.header("Content-Encoding", "gzip"); ```
+    * use compressed data as body of your http request
+      ```
+       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(optimizationRequest);
+       String requested = new String(localVarPostBody, StandardCharsets.UTF_8);
+       ByteArrayOutputStream baOutStream = new ByteArrayOutputStream();
+       GZIPOutputStream gzipOutStream = new GZIPOutputStream(baOutStream);
+       gzipOutStream.write(localVarPostBody, 0, localVarPostBody.length);
+       gzipOutStream.close();
+       byte[] localVarPostBody_1 =  baOutStream.toByteArray();
+      ```
 
 * **TypeScript:** Please add the following dependecies to your project
   * aurelia-api (3.2.1)
@@ -81,6 +105,14 @@ Language depending information:
     let configuration: Configuration = new Configuration(configurationParameters);
     let plansApi: PlansApi = new PlansApi(configuration);
     ```
+  If your APIKey allows for more than 3000 Orders, before you start a big Optimization in class OptimizationAPI, you may have to compress your payload. For this
+    * set ``` headerParameters['Content-Encoding'] = 'gzip'; ```
+    * use compressed data as body of your http request
+      ```
+       const jsonString = JSON.stringify(requestParameters.optimizationRequest);
+       const data = new TextEncoder().encode(jsonString);
+       const compressedData = await gzipModule.compress(data);
+      ```
 
  &nbsp;  
  &nbsp;  

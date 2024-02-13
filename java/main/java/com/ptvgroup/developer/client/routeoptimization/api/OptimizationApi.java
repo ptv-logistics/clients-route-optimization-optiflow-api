@@ -1,5 +1,5 @@
 /*
- * OptiFlow
+ * Route Optimization OptiFlow
  * With the Route Optimization OptiFlow service you can schedule and optimize the routes of your fleet.
  *
  * The version of the OpenAPI document: 1.0
@@ -41,7 +41,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-09T13:34:30.390729Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
 public class OptimizationApi {
   private final HttpClient memberVarHttpClient;
   private final ObjectMapper memberVarObjectMapper;

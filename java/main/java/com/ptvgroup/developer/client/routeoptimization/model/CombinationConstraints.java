@@ -1,5 +1,5 @@
 /*
- * OptiFlow
+ * Route Optimization OptiFlow
  * With the Route Optimization OptiFlow service you can schedule and optimize the routes of your fleet.
  *
  * The version of the OpenAPI document: 1.0
@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CombinationConstraints.JSON_PROPERTY_ORDER_VEHICLE,
   CombinationConstraints.JSON_PROPERTY_DEPOT_VEHICLE
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-09T13:34:30.390729Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
 public class CombinationConstraints {
   public static final String JSON_PROPERTY_ORDER_VEHICLE = "orderVehicle";
   private List<OrderVehicleCombinationConstraint> orderVehicle = null;

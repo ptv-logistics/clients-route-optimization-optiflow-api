@@ -1,5 +1,5 @@
 /*
- * OptiFlow
+ * Route Optimization OptiFlow
  * With the Route Optimization OptiFlow service you can schedule and optimize the routes of your fleet.
  *
  * The version of the OpenAPI document: 1.0
@@ -47,7 +47,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   OptimizationRequest.JSON_PROPERTY_DEPOTS,
   OptimizationRequest.JSON_PROPERTY_CONSTRAINTS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-01-09T13:34:30.390729Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
 public class OptimizationRequest {
   public static final String JSON_PROPERTY_SETTINGS = "settings";
   private OptimizationSettings settings;
@@ -107,11 +107,11 @@ public class OptimizationRequest {
   }
 
    /**
-   * A list of locations where goods have to be picked up or delivered, or where vehicles are located.
+   * A list of locations where goods have to be picked up or delivered, or where vehicles are located.   Please note that the upper bound on number of locations is a technical limit. Check your individual price plan or contract to see which limits apply. 
    * @return locations
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "A list of locations where goods have to be picked up or delivered, or where vehicles are located.")
+  @ApiModelProperty(required = true, value = "A list of locations where goods have to be picked up or delivered, or where vehicles are located.   Please note that the upper bound on number of locations is a technical limit. Check your individual price plan or contract to see which limits apply. ")
   @JsonProperty(JSON_PROPERTY_LOCATIONS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -164,11 +164,11 @@ public class OptimizationRequest {
   }
 
    /**
-   * A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle. 
+   * A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle.   Please note that the upper bound on number of vehicles is a technical limit. Check your individual price plan or contract to see which limits apply. 
    * @return vehicles
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle. ")
+  @ApiModelProperty(required = true, value = "A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle.   Please note that the upper bound on number of vehicles is a technical limit. Check your individual price plan or contract to see which limits apply. ")
   @JsonProperty(JSON_PROPERTY_VEHICLES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
