@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * OptiFlow
+ * Route Optimization OptiFlow
  * With the Route Optimization OptiFlow service you can schedule and optimize the routes of your fleet.
  *
  * The version of the OpenAPI document: 1.0

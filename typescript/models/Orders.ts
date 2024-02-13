@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * OptiFlow
+ * Route Optimization OptiFlow
  * With the Route Optimization OptiFlow service you can schedule and optimize the routes of your fleet.
  *
  * The version of the OpenAPI document: 1.0
@@ -38,7 +38,7 @@ import {
  * If pickup orders or delivery orders are provided, at least one depot must be provided where the pickup orders can be delivered to or the delivery orders can be picked up from.
  * The unique identifiers of the orders must by unique across the three types.
  * 
- * Orders of the same type always satisfy the "last in, first out" (LIFO) principle, with respect to each other.
+ *  Orders of the same type always satisfy the "last in, first out" (LIFO) principle, with respect to each other.
  * When an order is picked up while another order of the same type is already loaded, the former should be delivered before the latter.
  * Orders of different types do not have to satisfy the LIFO principle.
  * For example, if a pickup order is picked up while a delivery order is loaded, the delivery order can be delivered before the pickup order is delivered at depot.
@@ -48,18 +48,24 @@ import {
 export interface Orders {
     /**
      * A list of orders that must be picked up from a specific location and transported to a depot.
+     * 
+     *  Please note that the upper bound on number of pickups is a technical limit. Check your individual price plan or contract to see which limits apply.
      * @type {Array<PickupOrder>}
      * @memberof Orders
      */
     pickups?: Array<PickupOrder>;
     /**
      * A list of orders that must be delivered to a specific location and transported from a depot.
+     * 
+     *  Please note that the upper bound on number of deliveries is a technical limit. Check your individual price plan or contract to see which limits apply.
      * @type {Array<DeliveryOrder>}
      * @memberof Orders
      */
     deliveries?: Array<DeliveryOrder>;
     /**
      * A list of orders that must be picked up at a specific location and delivered to a specific location.
+     * 
+     *  Please note that the upper bound on number of pickup-deliveries is a technical limit. Check your individual price plan or contract to see which limits apply.
      * @type {Array<PickupDeliveryOrder>}
      * @memberof Orders
      */

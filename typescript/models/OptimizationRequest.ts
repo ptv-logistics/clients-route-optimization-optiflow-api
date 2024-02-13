@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * OptiFlow
+ * Route Optimization OptiFlow
  * With the Route Optimization OptiFlow service you can schedule and optimize the routes of your fleet.
  *
  * The version of the OpenAPI document: 1.0
@@ -64,6 +64,8 @@ export interface OptimizationRequest {
     settings: OptimizationSettings;
     /**
      * A list of locations where goods have to be picked up or delivered, or where vehicles are located.
+     * 
+     *  Please note that the upper bound on number of locations is a technical limit. Check your individual price plan or contract to see which limits apply.
      * @type {Array<Location>}
      * @memberof OptimizationRequest
      */
@@ -76,6 +78,8 @@ export interface OptimizationRequest {
     orders: Orders;
     /**
      * A list of vehicles that can be used by optimization to schedule routes. Optimization can only assign a single route to a vehicle and must respect the properties and constraints of the vehicle.
+     * 
+     *  Please note that the upper bound on number of vehicles is a technical limit. Check your individual price plan or contract to see which limits apply.
      * @type {Array<Vehicle>}
      * @memberof OptimizationRequest
      */
