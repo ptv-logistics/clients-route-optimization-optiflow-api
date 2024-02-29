@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Orders.JSON_PROPERTY_DELIVERIES,
   Orders.JSON_PROPERTY_PICKUP_DELIVERIES
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-29T10:06:04.425630Z[Etc/UTC]")
 public class Orders {
   public static final String JSON_PROPERTY_PICKUPS = "pickups";
   private List<PickupOrder> pickups = null;

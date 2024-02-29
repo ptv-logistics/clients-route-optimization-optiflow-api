@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Depot.JSON_PROPERTY_TIME_SLOT_IDS,
   Depot.JSON_PROPERTY_CATEGORIES
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-29T10:06:04.425630Z[Etc/UTC]")
 public class Depot {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

@@ -17,7 +17,7 @@ Language depending information:
      var configuration = new Configuration() { ApiKey = apiKey };
      PlansApi plansApi = new PlansApi(configuration);
     ```
-  If your APIKey allows for more than 3000 Orders, before you start a big Optimization in class OptimizationAPI, you may have to compress your payload. For this
+  If your APIKey allows for at least 5000 Orders, before you start a big Optimization in class OptimizationAPI, you may have to compress your payload. For this
     * set ``` localVarRequestOptions.HeaderParameters.Add("Content-Encoding", "gzip"); ```
     * use compressed data as body of your http request
       ```
@@ -75,7 +75,7 @@ Language depending information:
        .setRequestInterceptor(builder -> builder.setHeader("ApiKey", "Enter your ApiKey here"));
      PlansApi plansApi = new PlansApi(apiClient);
     ```
-   If your APIKey allows for more than 3000 Orders, before you start a big Optimization in class OptimizationAPI, you may have to compress your payload. For this
+   If your APIKey allows for at least 5000 Orders, before you start a big Optimization in class OptimizationAPI, you may have to compress your payload. For this
     * set ``` localVarRequestBuilder.header("Content-Encoding", "gzip"); ```
     * use compressed data as body of your http request
       ```
@@ -105,7 +105,7 @@ Language depending information:
     let configuration: Configuration = new Configuration(configurationParameters);
     let plansApi: PlansApi = new PlansApi(configuration);
     ```
-  If your APIKey allows for more than 3000 Orders, before you start a big Optimization in class OptimizationAPI, you may have to compress your payload. For this
+  If your APIKey allows for at least 5000 Orders, before you start a big Optimization in class OptimizationAPI, you may have to compress your payload. For this
     * set ``` headerParameters['Content-Encoding'] = 'gzip'; ```
     * use compressed data as body of your http request
       ```

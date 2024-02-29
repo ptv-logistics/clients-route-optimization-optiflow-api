@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WorkingBreakSettings.JSON_PROPERTY_MAXIMUM_WORKING_DURATION,
   WorkingBreakSettings.JSON_PROPERTY_MINIMUM_BREAK_DURATION
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-29T10:06:04.425630Z[Etc/UTC]")
 public class WorkingBreakSettings {
   public static final String JSON_PROPERTY_MAXIMUM_WORKING_DURATION = "maximumWorkingDuration";
   private Integer maximumWorkingDuration;

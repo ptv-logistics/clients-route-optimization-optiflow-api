@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   OrderConstraints.JSON_PROPERTY_RESPECTED_SEQUENCES,
   OrderConstraints.JSON_PROPERTY_LOADING_INCOMPATIBILITIES
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-29T10:06:04.425630Z[Etc/UTC]")
 public class OrderConstraints {
   public static final String JSON_PROPERTY_RESPECTED_SEQUENCES = "respectedSequences";
   private List<RespectedOrderSequence> respectedSequences = null;

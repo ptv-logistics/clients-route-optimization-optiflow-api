@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Stop.JSON_PROPERTY_APPOINTMENTS,
   Stop.JSON_PROPERTY_DEPARTURE
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-29T10:06:04.425630Z[Etc/UTC]")
 public class Stop {
   public static final String JSON_PROPERTY_LOCATION_ID = "locationId";
   private String locationId;

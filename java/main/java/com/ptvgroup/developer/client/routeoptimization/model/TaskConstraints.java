@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TaskConstraints.JSON_PROPERTY_RESPECTED_SEQUENCES,
   TaskConstraints.JSON_PROPERTY_FORBIDDEN_SEQUENCES
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-29T10:06:04.425630Z[Etc/UTC]")
 public class TaskConstraints {
   public static final String JSON_PROPERTY_RESPECTED_SEQUENCES = "respectedSequences";
   private List<RespectedTaskSequence> respectedSequences = null;

@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RespectedTaskSequence.JSON_PROPERTY_TASK_CATEGORIES,
   RespectedTaskSequence.JSON_PROPERTY_VEHICLE_CATEGORY
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-13T09:16:08.739853Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-02-29T10:06:04.425630Z[Etc/UTC]")
 public class RespectedTaskSequence {
   public static final String JSON_PROPERTY_TASK_CATEGORIES = "taskCategories";
   private Set<String> taskCategories = new LinkedHashSet<>();
