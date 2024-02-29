@@ -35,6 +35,12 @@ export interface Warning {
      *   * `value` - The value of the ignored parameter.  
      *   * `relatedParameter` - The parameter which caused the parameter in question to be ignored.  
      *   * `relatedValue` - The value which caused the parameter in question to be ignored. Not present if the conflict is independent of the value.
+     * * `ROUTEOPTIMIZATION_NO_VEHICLE_FOR_ORDER` - An order can not be scheduled on any route of the provided vehicles.  
+     *   * `orderId` - The ID of the order.
+     * * `ROUTEOPTIMIZATION_NO_ORDER_FOR_VEHICLE` - No order can be scheduled on the route of a vehicle.  
+     *   * `vehicleId` - The ID of the vehicle.
+     * * `ROUTEOPTIMIZATION_LOCATION_UNREACHABLE` - Time-distance can not be calculated to or from a location.  
+     *   * `locationId` - The ID of the location.
      * @type {string}
      * @memberof Warning
      */

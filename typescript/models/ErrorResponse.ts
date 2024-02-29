@@ -50,7 +50,8 @@ export interface ErrorResponse {
      * 
      * **HTTP status code: 400**  
      * * `GENERAL_VALIDATION_ERROR` - The validation of the request failed. Details can be found in **causes**.  
-     * * `GENERAL_PARSING_ERROR` - The JSON syntax is invalid.  
+     * * `GENERAL_PARSING_ERROR` - The JSON syntax is invalid. 
+     * * `ROUTEOPTIMIZATION_DECOMPRESSION_ERROR` - The body cannot be decompressed. 
      * 
      * **HTTP status code: 401**  
      * * `GENERAL_UNAUTHENTICATED` - Invalid or missing authentication credentials.  
@@ -65,6 +66,9 @@ export interface ErrorResponse {
      * **HTTP status code: 404**  
      * * `GENERAL_RESOURCE_NOT_FOUND` - A requested resource does not exist.  
      *   * `message` - An additional error message.  
+     * 
+     * **HTTP status code: 413**  
+     * * `ROUTEOPTIMIZATION_CONTENT_TOO_LARGE` - The body of the request is larger than allowed. Details can be found in **causes** 
      * 
      * **HTTP status code: 429**  
      * * `GENERAL_RATE_LIMIT_EXCEEDED` - The rate limit is exceeded.  

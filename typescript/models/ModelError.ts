@@ -29,6 +29,18 @@ export interface ModelError {
      * A constant string that can be used to identify this error class programmatically. An errorCode can have **details** to provide information in additional properties which are described with the code they apply to. They are of type string unless otherwise specified.  
      * 
      * Note that additional errorCodes as well as the **details** of existing errorCodes may be added at any time. Furthermore, the **description** may change at any time.
+     * 
+     * * `ROUTEOPTIMIZATION_EMPTY_ROUTE_NOT_VALID_FOR_BREAKS` - A vehicle can not be assigned any route that is valid for the provided break settings
+     *   * `vehicleId` - The ID of the vehicle.
+     * * `ROUTEOPTIMIZATION_NOTHING_TO_OPTIMIZE` - No order can be scheduled on any route of the provided vehicles. The optimization stopped because there is nothing to optimize.
+     * * `ROUTEOPTIMIZATION_STOPPED_UNEXPECTEDLY` - The optimization stopped unexpectedly. The provided routes are from the last known optimization result.
+     * * `ROUTEOPTIMIZATION_STOPPED_WHILE_PREPARING` - The optimization has been stopped while it was preparing. No routes will be provided.
+     * * `ROUTEOPTIMIZATION_START_LOCATION_UNREACHABLE` - Time-distance can not be calculated to or from the start location of a vehicle.
+     *   * `vehicleId` - The ID of the vehicle.
+     *   * `locationId` - The ID of the location.
+     * * `ROUTEOPTIMIZATION_END_LOCATION_UNREACHABLE` - Time-distance can not be calculated to or from the end location of a vehicle.
+     *   * `vehicleId` - The ID of the vehicle.
+     *   * `locationId` - The ID of the location.
      * @type {string}
      * @memberof ModelError
      */

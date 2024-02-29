@@ -47,93 +47,54 @@ export interface CausingError {
      * * `GENERAL_MAXIMUM_VALUE_VIOLATED` - The maximum value restriction is violated.
      *   * `maximumValue` - The maximum value (integer or double).
      * * `GENERAL_DUPLICATE_PARAMETER` - A parameter is duplicated.
-     * * `ROUTEOPTIMIZATION_EMPTY_ID` - The ID is empty or contains only whitespace.
      * * `ROUTEOPTIMIZATION_LOCATION_CANNOT_BE_MATCHED` - The location cannot be matched to a street and no airline distance fallback is possible.
-     * * `ROUTEOPTIMIZATION_DUPLICATE_TRIP_ID` - Two or more trips have the same trip ID.
-     *   * `duplicatedTripId` - The duplicated trip ID.
-     *   * `routeIndexes` - The list indexes of the routes with the same trip ID.
-     * * `ROUTEOPTIMIZATION_DUPLICATE_TRANSPORT` - The transport with ID '' is picked up and/or delivered multiple times.
-     *   * `transportId` - The duplicated transport ID.
-     * * `ROUTEOPTIMIZATION_SINGLE_TRIP_PER_ROUTE_VIOLATED` - There is more than one trip in the given route although the restriction 'singleTripPerRoute' is activated.
-     * * `ROUTEOPTIMIZATION_SINGLE_DEPOT_PER_ROUTE_VIOLATED` - There is more than one depot in the given route although the restriction 'singleDepotPerRoute' is activated.
-     * * `ROUTEOPTIMIZATION_ILLEGAL_EMPTY_STOP` - Empty stops without any pickup or delivery are only allowed for the vehicle start/end location or for trip starts/ends at depots.
-     * * `ROUTEOPTIMIZATION_DELIVERY_EXECUTED_BEFORE_PICKUP` - Delivery of transport with ID '' is executed before the corresponding pickup.
-     *   * `transportId` - The transport ID.
-     * * `ROUTEOPTIMIZATION_NO_TRANSPORT_IN_ROUTE` - There is no transport in this route. Please add a transport or remove the whole route.
-     * * `ROUTEOPTIMIZATION_DELIVERY_MISSING_IN_ROUTE` - Delivery of transport with ID '' is missing in one of the trips in the given route. Pickup and delivery of a transport need to be in the same trip.
-     *   * `transportId` - The transport ID.
-     * * `ROUTEOPTIMIZATION_PICKUP_MISSING_IN_ROUTE` - Pickup of transport with ID '' is missing in one of the trips in the given route. Pickup and delivery of a transport need to be in the same trip.
-     *   * `transportId` - The transport ID.
-     * * `ROUTEOPTIMIZATION_PICKUP_EQUAL_TO_DELIVERY_LOCATION` - Pickup and delivery of transport with ID '' are at the same location. Pickup and delivery of a transport need to be at different locations.
-     *   * `transportId` - The transport ID.
-     *   * `locationId` - The location ID of the transport pickup and delivery.
-     * * `ROUTEOPTIMIZATION_TRIP_STRUCTURE_VIOLATED` - Trip structure violated.
-     * * `ROUTEOPTIMIZATION_INVALID_OR_INCONSISTENT_TRIP_ID` - Trip ID is invalid or not all stops of a trip have the same ID.
-     * * `ROUTEOPTIMIZATION_NO_TIME_INTERVAL` - The planning horizon is required if there is no other time interval given in the plan.
-     * * `ROUTEOPTIMIZATION_CONTIGUOUS_DRIVER_AVAILABILITIES` - The driver availability given in the parameter field must end at least two seconds before the driver availabilty with list index  starts or the contiguous intervals have to be merged.
-     *   * `contiguousAvailabilityIndex` - The list index of the driver availability where the start must have a gap of more than one second to the end of the availability given in the parameter field.
-     * * `ROUTEOPTIMIZATION_PICKUP_MISSING_IN_LOCATIONS` - The locations list does not contain the pickup location with ID ''.
-     *   * `locationId` - The location ID.
-     * * `ROUTEOPTIMIZATION_DELIVERY_MISSING_IN_LOCATIONS` - The locations list does not contain the delivery location with ID ''.
-     *   * `locationId` - The location ID.
-     * * `ROUTEOPTIMIZATION_UNKNOWN_VEHICLE_ID` - A vehicle with ID '' does not exist in the vehicles list.
-     *   * `vehicleId` - The vehicle ID.
-     * * `ROUTEOPTIMIZATION_VEHICLE_REFERENCED_BY_MULTIPLE_DRIVERS` - A vehicle can only be referenced by one driver. Vehicle with ID '' is referenced by multiple drivers.
-     *   * `vehicleId` - The vehicle ID.
-     *   * `driverIndexes` - The indexes of the drivers with the same vehicle ID.
-     * * `ROUTEOPTIMIZATION_VEHICLE_REFERENCED_BY_MULTIPLE_ROUTES` - A vehicle can only be referenced by one route. Vehicle with ID '' is referenced by multiple routes.
-     *   * `vehicleId` - The vehicle ID.
-     *   * `routeIndexes` - The indexes of the routes with the same vehicle ID.
-     * * `ROUTEOPTIMIZATION_VEHICLE_START_LOCATION_MISSING_IN_ROUTE` - Vehicle start location must be the first stop of the vehicle route.
-     *   * `routeIndex` - The list index of the route with missing start location.
-     *   * `expectedLocationIdOfFirstStop` - The expected location ID of the first stop of the route which is the given vehicle start location.
-     *   * `actualLocationIdOfFirstStop` - The actual location ID of the first stop of the route.
-     * * `ROUTEOPTIMIZATION_VEHICLE_END_LOCATION_MISSING_IN_ROUTE` - Vehicle end location must be the last stop of the vehicle route.
-     *   * `routeIndex` - The list index of the route with missing end location.
-     *   * `expectedLocationIdOfLastStop` - The expected location ID of the last stop of the route which is the given vehicle end location.
-     *   * `actualLocationIdOfLastStop` - The actual location ID of the last stop of the route.
-     * * `ROUTEOPTIMIZATION_INCONSISTENT_NUMBER_OF_QUANTITIES_AND_CAPACITIES` - The list of the capacities of all vehicles and the list of the quantities of all transports must have the same length. The reference list is given in the parameter field.
-     *   * `expectedLength` - The expected length of the list.
-     *   * `vehicleIndexes` - The list indexes of the vehicles with the wrong number of capacities.
-     *   * `transportIndexes` - The list indexes of the transports with the wrong number of quantities.
-     * * `ROUTEOPTIMIZATION_UNREFERENCED_LOCATIONS` - Locations with IDs '' are not referenced or used anywhere. These and all other unreferenced locations must be left out.
-     *   * `locationIds` - The IDs of some unreferenced locations.
-     * * `ROUTEOPTIMIZATION_UNKNOWN_LOCATION_ID` - A location with ID '' does not exist in the locations list.
-     *   * `locationId` - The location ID.
-     * * `ROUTEOPTIMIZATION_UNKNOWN_TRANSPORT_ID` - A transport with ID '' does not exist in the transports list.
-     *   * `transportId` - The transport ID.
-     * * `ROUTEOPTIMIZATION_LOCATIONS_TOO_FAR_AWAY` - Locations or their road access coordinates are too far away from each other when using vehicle profile ''. All locations and road access coordinates have to be inside a rectangle with edges of at most '' km length.
-     *   * `profile` - The profile for which the locations are too far away from each other.
-     *  * `distance` - The maximum allowed distance in km.
-     * * `ROUTEOPTIMIZATION_PICKUP_AT_UNEXPECTED_LOCATION` - Transport with ID '' should not be picked up at this location.
-     *   * `transportId` - The ID of the transport which is picked up at an unexpected location.
-     *   * `expectedPickupLocationId` - The location ID where transport should be picked up.
-     *   * `actualPickupLocationId` - The location ID of the stop where transport is actually picked up.
-     * * `ROUTEOPTIMIZATION_DELIVERY_AT_UNEXPECTED_LOCATION` - Transport with ID '' should not be delivered at this location.
-     *   * `transportId` - The ID of the transport which is delivered at an unexpected location.
-     *   * `expectedDeliveryLocationId` - The location ID where transport should be delivered.
-     *   * `actualDeliveryLocationId` - The location ID of the stop where transport is actually delivered.
-     * * `ROUTEOPTIMIZATION_ILLEGAL_SPLITTED_STOP` - Subsequent stops at the same location are only allowed if they are in different trips. The given stops must be merged to one stop.
-     *   * `stopIndexes` - The list indexes of the stops which should be merged.
-     * * `ROUTEOPTIMIZATION_INVALID_LOADING_SEQUENCE` - A location in a route is left with unfinished tasks: Either a location is left although there is still load FOR it on the vehicle or a location is visited again although there are still pickups FROM it on the vehicle.
-     *   * `locationId` - The location ID with unfinished tasks.
-     * * `ROUTEOPTIMIZATION_STOP_SERVICE_TIME_TOO_LONG` - The service time of the stop exceeds the travel time between daily rests defined by the driving time regulation.
-     * * `ROUTEOPTIMIZATION_PLANNING_HORIZON_TOO_LONG` - Planning horizon must not be longer than 14 days.
-     * * `ROUTEOPTIMIZATION_PLAN_IN_OPTIMIZATION` - Plan with ID '' is already in optimization. Please wait or terminate current optimization process.
-     *   * `planId` - The plan ID.
-     * * `ROUTEOPTIMIZATION_EMPTY_VALUE` - A parameter is empty or contains only whitespace. 
+     * * `ROUTEOPTIMIZATION_TOO_MANY_PROFILES` - Only one vehicle profile is allowed in a single request.
+     * * `ROUTEOPTIMIZATION_DEPOTS_INVALID` - If PickupDeliveryOrders are specified, no Depots are allowed.
+     * * `ROUTEOPTIMIZATION_ID_MISSING_IN_LOCATIONS` - The list of locations does not contain the location with ID ''.
+     *   * `locationId` - the missing location id.
+     * * `ROUTEOPTIMIZATION_ID_MISSING_IN_VEHICLES` - The list of vehicles does not contain the vehicle with ID ''.
+     *   * `vehicleId` - The missing vehicle id.
+     * * `ROUTEOPTIMIZATION_ID_MISSING_IN_ORDERS` - The list of orders does not contain the order with ID ''.
+     *   * `orderId` - The missing order id.
+     * * `ROUTEOPTIMIZATION_ID_MISSING_IN_TIMESLOTS` - The list of time slots of the corresponding location does not contain the time slot with ID ''.
+     *   * `timeSlotId` - The missing time slot id.
+     * * `ROUTEOPTIMIZATION_DEPOTS_INVALID` - If PickupDeliveryOrders are specified, no Depots are allowed.
+     * *`ROUTEOPTIMIZATION_DEPOT_MISSING_FOR_PICKUPS_OR_DELIVERIES` - At least one depot has to be specified for pickup or delivery orders.
+     * *`ROUTEOPTIMIZATION_EMPTY_ORDERS` - Empty orders without any pickups, deliveries and pickup-deliveries are not allowed.
+     * *`ROUTEOPTIMIZATION_INVALID_ORDERS_COMPOSITION` - When pickup-deliveries are given, pickups and/or deliveries are not allowed, and vice-versa.
+     * *`ROUTEOPTIMIZATION_VEHICLE_NOT_VALID_FOR_BREAKS` - The start or end duration of the vehicle exceeds the maximum work time between breaks.
+     * *`ROUTEOPTIMIZATION_DEPOT_NOT_VALID_FOR_BREAKS` - The total preparation duration of the depot exceeds the maximum work time between breaks for a vehicle.
+     * *`ROUTEOPTIMIZATION_NO_DEPOT_FOR_VEHICLE` - Due to the provided constraints, the vehicle is not allowed to visit any depot.
+     * *`ROUTEOPTIMIZATION_PARAMETER_CONFLICT` - Two parameters are in conflict with each other.
+     *   * `conflictingParameter` - A path to the affected property of the request.
+     *   * `message` - A human readable message that describes the error.
      * 
      * **Error codes for** `ROUTEOPTIMIZATION_RESTRICTION_EXCEEDED`
-     * * `ROUTEOPTIMIZATION_NUMBER_OF_TRANSPORTS_EXCEEDED` - The request contains too many transports.
-     *   * `transports` - The number of transports.
-     *   * `limit` - The maximum number of transports.
-     * * `ROUTEOPTIMIZATION_NUMBER_OF_LOAD_CATEGORIES_EXCEEDED` - The request contains too many load categories.
-     *   * `load categories` - The number of load categories
-     *   * `limit` - The maximum number of load categories.
+     * * `ROUTEOPTIMIZATION_NUMBER_OF_OPTIMIZATIONS_EXCEEDED` - The maximum number of concurrent optimizations is exceeded.
+     *   * `limit` - The limit (integer).
+     * * `ROUTEOPTIMIZATION_NUMBER_OF_LOCATIONS_EXCEEDED` - The request contains too many locations.
+     *   * `locations` - The number of locations (integer).
+     *   * `limit` - The limit (integer).
+     * * `ROUTEOPTIMIZATION_NUMBER_OF_ORDERS_EXCEEDED` - The request contains too many orders.
+     *   * `orders` - The number of orders (integer).
+     *   * `limit` - The limit (integer).
+     * * `ROUTEOPTIMIZATION_NUMBER_OF_VEHICLES_EXCEEDED` - The request contains too many vehicles.
+     *   * `vehicles` - The number of vehicles (integer).
+     *   * `limit` - The limit (integer).
+     * * `ROUTEOPTIMIZATION_DURATION_EXCEEDS_LIMIT` - The duration of the request is too long.
+     *   * `duration` - The duration of the request [s] (integer).
+     *   * `limit` - The limit (integer).
+     * 
+     * **Error codes for** `ROUTEOPTIMIZATION_RESTRICTION_EXCEEDED`
+     * * `ROUTEOPTIMIZATION_NUMBER_OF_OPTIMIZATIONS_EXCEEDED` - The maximum number of concurrent optimizations is exceeded.
      * 
      * **Error codes for** `GENERAL_RESOURCE_NOT_FOUND`
      * * `GENERAL_INVALID_ID` - The ID does not exist.
      *   * `value` - The invalid ID.
+     * 
+     * **Error codes for** `ROUTEOPTIMIZATION_CONTENT_TOO_LARGE`
+     * * `ROUTEOPTIMIZATION_DECOMPRESSED_SIZE_EXCEEDED` - The decompressed size of the body exceeds the limit.
+     *   * `limit` - The decompressed body size limit [bytes].
      * @type {string}
      * @memberof CausingError
      */
