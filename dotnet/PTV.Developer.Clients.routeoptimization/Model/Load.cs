@@ -41,7 +41,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// </summary>
         /// <param name="dimension">Indicates the specific dimension of the load, such as its volume, weight, or size. (required).</param>
         /// <param name="value">Represents the numeric value associated with the load&#39;s dimension. This value could be the actual measurement or quantity of the load.  (required).</param>
-        public Load(string dimension = default(string), int value = default(int))
+        public Load(string dimension = default(string), double value = default(double))
         {
             // to ensure "dimension" is required (not null)
             if (dimension == null) {
@@ -63,7 +63,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// </summary>
         /// <value>Represents the numeric value associated with the load&#39;s dimension. This value could be the actual measurement or quantity of the load. </value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = false)]
-        public int Value { get; set; }
+        public double Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -165,8 +165,14 @@ namespace PTV.Developer.Clients.routeoptimization.Model
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Dimension, must match a pattern of " + regexDimension, new [] { "Dimension" });
             }
 
-            // Value (int) minimum
-            if (this.Value < (int)0)
+            // Value (double) maximum
+            if (this.Value > (double)1000000)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Value, must be a value less than or equal to 1000000.", new [] { "Value" });
+            }
+
+            // Value (double) minimum
+            if (this.Value < (double)0)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Value, must be a value greater than or equal to 0.", new [] { "Value" });
             }
