@@ -35,13 +35,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Load.JSON_PROPERTY_DIMENSION,
   Load.JSON_PROPERTY_VALUE
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-10T11:34:31.010084Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-23T11:00:47.938367Z[Etc/UTC]")
 public class Load {
   public static final String JSON_PROPERTY_DIMENSION = "dimension";
   private String dimension;
 
   public static final String JSON_PROPERTY_VALUE = "value";
-  private Integer value;
+  private Double value;
 
   public Load() { 
   }
@@ -72,7 +72,7 @@ public class Load {
   }
 
 
-  public Load value(Integer value) {
+  public Load value(Double value) {
     this.value = value;
     return this;
   }
@@ -80,21 +80,22 @@ public class Load {
    /**
    * Represents the numeric value associated with the load&#39;s dimension. This value could be the actual measurement or quantity of the load. 
    * minimum: 0
+   * maximum: 1000000
    * @return value
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "3", required = true, value = "Represents the numeric value associated with the load's dimension. This value could be the actual measurement or quantity of the load. ")
+  @ApiModelProperty(example = "3.5", required = true, value = "Represents the numeric value associated with the load's dimension. This value could be the actual measurement or quantity of the load. ")
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Integer getValue() {
+  public Double getValue() {
     return value;
   }
 
 
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setValue(Integer value) {
+  public void setValue(Double value) {
     this.value = value;
   }
 

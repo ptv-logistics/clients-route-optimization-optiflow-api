@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ErrorResponse.JSON_PROPERTY_CAUSES,
   ErrorResponse.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-10T11:34:31.010084Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-23T11:00:47.938367Z[Etc/UTC]")
 public class ErrorResponse {
   public static final String JSON_PROPERTY_TRACE_ID = "traceId";
   private String traceId;

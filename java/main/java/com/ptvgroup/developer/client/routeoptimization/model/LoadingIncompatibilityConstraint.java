@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LoadingIncompatibilityConstraint.JSON_PROPERTY_FORBIDDEN_ORDER_CATEGORY,
   LoadingIncompatibilityConstraint.JSON_PROPERTY_VEHICLE_CATEGORY
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-10T11:34:31.010084Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-23T11:00:47.938367Z[Etc/UTC]")
 public class LoadingIncompatibilityConstraint {
   public static final String JSON_PROPERTY_LOADED_ORDER_CATEGORY = "loadedOrderCategory";
   private String loadedOrderCategory;

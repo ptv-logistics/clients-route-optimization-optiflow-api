@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   StopProperties.JSON_PROPERTY_PREPARATION_DURATION,
   StopProperties.JSON_PROPERTY_TIME_SLOTS
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-10T11:34:31.010084Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-23T11:00:47.938367Z[Etc/UTC]")
 public class StopProperties {
   public static final String JSON_PROPERTY_PREPARATION_DURATION = "preparationDuration";
   private Integer preparationDuration = 0;

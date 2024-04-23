@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RespectedOrderSequence.JSON_PROPERTY_ORDER_CATEGORIES,
   RespectedOrderSequence.JSON_PROPERTY_VEHICLE_CATEGORY
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-10T11:34:31.010084Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-23T11:00:47.938367Z[Etc/UTC]")
 public class RespectedOrderSequence {
   public static final String JSON_PROPERTY_ORDER_CATEGORIES = "orderCategories";
   private Set<String> orderCategories = new LinkedHashSet<>();

@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   VehicleCosts.JSON_PROPERTY_PER_KILOMETER,
   VehicleCosts.JSON_PROPERTY_FIXED
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-10T11:34:31.010084Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-23T11:00:47.938367Z[Etc/UTC]")
 public class VehicleCosts {
   public static final String JSON_PROPERTY_PER_HOUR = "perHour";
   private Double perHour;

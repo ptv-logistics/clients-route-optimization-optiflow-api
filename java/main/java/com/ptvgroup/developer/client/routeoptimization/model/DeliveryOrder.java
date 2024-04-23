@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DeliveryOrder.JSON_PROPERTY_DELIVERY,
   DeliveryOrder.JSON_PROPERTY_PROPERTIES
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-10T11:34:31.010084Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-23T11:00:47.938367Z[Etc/UTC]")
 public class DeliveryOrder {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

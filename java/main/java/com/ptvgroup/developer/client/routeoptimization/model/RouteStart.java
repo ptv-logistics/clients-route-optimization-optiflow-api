@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteStart.JSON_PROPERTY_DURATION,
   RouteStart.JSON_PROPERTY_DEPARTURE
 })
-@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-10T11:34:31.010084Z[Etc/UTC]")
+@javax.annotation.processing.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-04-23T11:00:47.938367Z[Etc/UTC]")
 public class RouteStart {
   public static final String JSON_PROPERTY_LOCATION_ID = "locationId";
   private String locationId;
