@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationDepot.JSON_PROPERTY_TIME_SLOT_IDS,
   RouteOptimizationDepot.JSON_PROPERTY_CATEGORIES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-17T12:11:10.322024603Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T13:10:30.792689579Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationDepot {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

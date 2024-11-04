@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationStopConcurrency.JSON_PROPERTY_VIOLATION_COST_PER_EXTRA_SLOT,
   RouteOptimizationStopConcurrency.JSON_PROPERTY_MINIMUM_BUFFER_DURATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-17T12:11:10.322024603Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T13:10:30.792689579Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationStopConcurrency {
   public static final String JSON_PROPERTY_VEHICLE_SLOTS = "vehicleSlots";
   private List<RouteOptimizationVehicleSlot> vehicleSlots = new ArrayList<>();

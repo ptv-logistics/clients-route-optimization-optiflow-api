@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationVehicleConstraints.JSON_PROPERTY_MAXIMUM_LOADS,
   RouteOptimizationVehicleConstraints.JSON_PROPERTY_ROUTE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-17T12:11:10.322024603Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T13:10:30.792689579Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationVehicleConstraints {
   public static final String JSON_PROPERTY_MAXIMUM_LOADS = "maximumLoads";
   private List<RouteOptimizationLoad> maximumLoads = new ArrayList<>();

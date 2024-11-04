@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationForbiddenTaskSequence.JSON_PROPERTY_SECOND_TASK_CATEGORY,
   RouteOptimizationForbiddenTaskSequence.JSON_PROPERTY_VEHICLE_CATEGORY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-17T12:11:10.322024603Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T13:10:30.792689579Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationForbiddenTaskSequence {
   public static final String JSON_PROPERTY_FIRST_TASK_CATEGORY = "firstTaskCategory";
   private String firstTaskCategory;

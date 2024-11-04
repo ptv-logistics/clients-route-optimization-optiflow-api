@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationRoutingViolationStrategy;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -34,9 +35,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   RouteOptimizationVehicleRouting.JSON_PROPERTY_PROFILE,
   RouteOptimizationVehicleRouting.JSON_PROPERTY_SPEED_FACTOR,
-  RouteOptimizationVehicleRouting.JSON_PROPERTY_ALLOW_VIOLATIONS
+  RouteOptimizationVehicleRouting.JSON_PROPERTY_VIOLATIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-17T12:11:10.322024603Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T13:10:30.792689579Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationVehicleRouting {
   public static final String JSON_PROPERTY_PROFILE = "profile";
   private String profile;
@@ -44,8 +45,8 @@ public class RouteOptimizationVehicleRouting {
   public static final String JSON_PROPERTY_SPEED_FACTOR = "speedFactor";
   private Double speedFactor = 1d;
 
-  public static final String JSON_PROPERTY_ALLOW_VIOLATIONS = "allowViolations";
-  private Boolean allowViolations = true;
+  public static final String JSON_PROPERTY_VIOLATIONS = "violations";
+  private RouteOptimizationRoutingViolationStrategy violations = RouteOptimizationRoutingViolationStrategy.ALLOW;
 
   public RouteOptimizationVehicleRouting() { 
   }
@@ -101,28 +102,28 @@ public class RouteOptimizationVehicleRouting {
   }
 
 
-  public RouteOptimizationVehicleRouting allowViolations(Boolean allowViolations) {
-    this.allowViolations = allowViolations;
+  public RouteOptimizationVehicleRouting violations(RouteOptimizationRoutingViolationStrategy violations) {
+    this.violations = violations;
     return this;
   }
 
    /**
-   * When enabled, a vehicle is permitted to travel on segments prohibited by its profile.  These prohibited segments will only be used when no valid alternatives are available. 
-   * @return allowViolations
+   * Get violations
+   * @return violations
   **/
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALLOW_VIOLATIONS)
+  @JsonProperty(JSON_PROPERTY_VIOLATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Boolean getAllowViolations() {
-    return allowViolations;
+  public RouteOptimizationRoutingViolationStrategy getViolations() {
+    return violations;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALLOW_VIOLATIONS)
+  @JsonProperty(JSON_PROPERTY_VIOLATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllowViolations(Boolean allowViolations) {
-    this.allowViolations = allowViolations;
+  public void setViolations(RouteOptimizationRoutingViolationStrategy violations) {
+    this.violations = violations;
   }
 
 
@@ -140,12 +141,12 @@ public class RouteOptimizationVehicleRouting {
     RouteOptimizationVehicleRouting vehicleRouting = (RouteOptimizationVehicleRouting) o;
     return Objects.equals(this.profile, vehicleRouting.profile) &&
         Objects.equals(this.speedFactor, vehicleRouting.speedFactor) &&
-        Objects.equals(this.allowViolations, vehicleRouting.allowViolations);
+        Objects.equals(this.violations, vehicleRouting.violations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profile, speedFactor, allowViolations);
+    return Objects.hash(profile, speedFactor, violations);
   }
 
   @Override
@@ -154,7 +155,7 @@ public class RouteOptimizationVehicleRouting {
     sb.append("class RouteOptimizationVehicleRouting {\n");
     sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
     sb.append("    speedFactor: ").append(toIndentedString(speedFactor)).append("\n");
-    sb.append("    allowViolations: ").append(toIndentedString(allowViolations)).append("\n");
+    sb.append("    violations: ").append(toIndentedString(violations)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -212,9 +213,9 @@ public class RouteOptimizationVehicleRouting {
       joiner.add(String.format("%sspeedFactor%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSpeedFactor()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `allowViolations` to the URL query string
-    if (getAllowViolations() != null) {
-      joiner.add(String.format("%sallowViolations%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAllowViolations()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `violations` to the URL query string
+    if (getViolations() != null) {
+      joiner.add(String.format("%sviolations%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getViolations()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

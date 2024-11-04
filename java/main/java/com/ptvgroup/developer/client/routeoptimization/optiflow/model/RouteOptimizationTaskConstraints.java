@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationTaskConstraints.JSON_PROPERTY_RESPECTED_SEQUENCES,
   RouteOptimizationTaskConstraints.JSON_PROPERTY_FORBIDDEN_SEQUENCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-17T12:11:10.322024603Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T13:10:30.792689579Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationTaskConstraints {
   public static final String JSON_PROPERTY_GROUPS = "groups";
   private List<RouteOptimizationTaskGroup> groups = new ArrayList<>();

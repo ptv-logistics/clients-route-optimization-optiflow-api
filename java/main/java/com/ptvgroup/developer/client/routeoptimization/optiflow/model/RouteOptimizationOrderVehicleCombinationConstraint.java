@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationOrderVehicleCombinationConstraint.JSON_PROPERTY_VEHICLE_CATEGORY,
   RouteOptimizationOrderVehicleCombinationConstraint.JSON_PROPERTY_VIOLATION_COST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-17T12:11:10.322024603Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T13:10:30.792689579Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationOrderVehicleCombinationConstraint {
   public static final String JSON_PROPERTY_TYPE = "type";
   private RouteOptimizationOrderVehicleCombinationConstraintType type;

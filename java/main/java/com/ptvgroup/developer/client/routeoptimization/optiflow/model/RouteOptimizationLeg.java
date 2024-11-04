@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationLeg.JSON_PROPERTY_DISTANCE,
   RouteOptimizationLeg.JSON_PROPERTY_DRIVING_DURATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-17T12:11:10.322024603Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T13:10:30.792689579Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationLeg {
   public static final String JSON_PROPERTY_START_LOCATION_ID = "startLocationId";
   private String startLocationId;

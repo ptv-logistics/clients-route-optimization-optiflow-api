@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationDrivingBreakSettings.JSON_PROPERTY_MAXIMUM_DRIVING_DURATION,
   RouteOptimizationDrivingBreakSettings.JSON_PROPERTY_MINIMUM_BREAK_DURATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-17T12:11:10.322024603Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-11-04T13:10:30.792689579Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationDrivingBreakSettings {
   public static final String JSON_PROPERTY_MAXIMUM_DRIVING_DURATION = "maximumDrivingDuration";
   private Integer maximumDrivingDuration;
