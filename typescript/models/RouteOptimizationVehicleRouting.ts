@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { RouteOptimizationRoutingViolationStrategy } from './RouteOptimizationRoutingViolationStrategy';
+import {
+    RouteOptimizationRoutingViolationStrategyFromJSON,
+    RouteOptimizationRoutingViolationStrategyFromJSONTyped,
+    RouteOptimizationRoutingViolationStrategyToJSON,
+} from './RouteOptimizationRoutingViolationStrategy';
+
 /**
  * Specifies how time-distance data must be calculated for routes driven by the vehicle.
  * @export
@@ -36,12 +43,11 @@ export interface RouteOptimizationVehicleRouting {
      */
     speedFactor?: number;
     /**
-     * When enabled, a vehicle is permitted to travel on segments prohibited by its profile.  These prohibited segments will only be used when no valid alternatives are available.
      * 
-     * @type {boolean}
+     * @type {RouteOptimizationRoutingViolationStrategy}
      * @memberof RouteOptimizationVehicleRouting
      */
-    allowViolations?: boolean;
+    violations?: RouteOptimizationRoutingViolationStrategy;
 }
 
 /**
@@ -64,7 +70,7 @@ export function RouteOptimizationVehicleRoutingFromJSONTyped(json: any, ignoreDi
         
         'profile': json['profile'],
         'speedFactor': json['speedFactor'] == null ? undefined : json['speedFactor'],
-        'allowViolations': json['allowViolations'] == null ? undefined : json['allowViolations'],
+        'violations': json['violations'] == null ? undefined : RouteOptimizationRoutingViolationStrategyFromJSON(json['violations']),
     };
 }
 
@@ -76,7 +82,7 @@ export function RouteOptimizationVehicleRoutingToJSON(value?: RouteOptimizationV
         
         'profile': value['profile'],
         'speedFactor': value['speedFactor'],
-        'allowViolations': value['allowViolations'],
+        'violations': RouteOptimizationRoutingViolationStrategyToJSON(value['violations']),
     };
 }
 

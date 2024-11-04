@@ -43,6 +43,7 @@ export * from './RouteOptimizationRouteConstraints';
 export * from './RouteOptimizationRouteEnd';
 export * from './RouteOptimizationRouteMetrics';
 export * from './RouteOptimizationRouteStart';
+export * from './RouteOptimizationRoutingViolationStrategy';
 export * from './RouteOptimizationStop';
 export * from './RouteOptimizationStopConcurrency';
 export * from './RouteOptimizationStopProperties';
