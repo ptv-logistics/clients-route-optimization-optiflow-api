@@ -54,6 +54,7 @@ export * from './RouteOptimizationTaskGroupConstraint';
 export * from './RouteOptimizationTaskProperties';
 export * from './RouteOptimizationTaskType';
 export * from './RouteOptimizationTimeSlot';
+export * from './RouteOptimizationTrafficMode';
 export * from './RouteOptimizationVehicle';
 export * from './RouteOptimizationVehicleConstraints';
 export * from './RouteOptimizationVehicleCosts';
