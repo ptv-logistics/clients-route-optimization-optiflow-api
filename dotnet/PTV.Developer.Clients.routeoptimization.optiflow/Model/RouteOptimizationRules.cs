@@ -26,28 +26,26 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Describes a vehicle slot that can be assigned stops.
+    /// Rules that conditionally modify properties.
     /// </summary>
-    [DataContract(Name = "VehicleSlot")]
-    public partial class RouteOptimizationVehicleSlot : IValidatableObject
+    [DataContract(Name = "Rules")]
+    public partial class RouteOptimizationRules : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationVehicleSlot" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationRules" /> class.
         /// </summary>
-        /// <param name="cost">The cost incurred when assigning at least one stop to this vehicle slot. (default to 0D).</param>
-        public RouteOptimizationVehicleSlot(double? cost = 0D)
+        /// <param name="locations">A list of rules that conditionally modify location properties..</param>
+        public RouteOptimizationRules(List<RouteOptimizationLocationRule> locations = default(List<RouteOptimizationLocationRule>))
         {
-            // use default value if no "cost" provided
-            this.Cost = cost ?? 0D;
+            this.Locations = locations;
         }
 
         /// <summary>
-        /// The cost incurred when assigning at least one stop to this vehicle slot.
+        /// A list of rules that conditionally modify location properties.
         /// </summary>
-        /// <value>The cost incurred when assigning at least one stop to this vehicle slot.</value>
-        /// <example>20</example>
-        [DataMember(Name = "cost", EmitDefaultValue = true)]
-        public double? Cost { get; set; }
+        /// <value>A list of rules that conditionally modify location properties.</value>
+        [DataMember(Name = "locations", EmitDefaultValue = false)]
+        public List<RouteOptimizationLocationRule> Locations { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -56,8 +54,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationVehicleSlot {\n");
-            sb.Append("  Cost: ").Append(Cost).Append("\n");
+            sb.Append("class RouteOptimizationRules {\n");
+            sb.Append("  Locations: ").Append(Locations).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -78,12 +76,6 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Cost (double?) minimum
-            if (this.Cost < (double?)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Cost, must be a value greater than or equal to 0.", new [] { "Cost" });
-            }
-
             yield break;
         }
     }

@@ -26,35 +26,50 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// General settings of the optimization.
+    /// A break scheduled on a route.
     /// </summary>
-    [DataContract(Name = "OptimizationSettings")]
-    public partial class RouteOptimizationOptimizationSettings : IValidatableObject
+    [DataContract(Name = "BreakStructure")]
+    public partial class RouteOptimizationBreakStructure : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOptimizationSettings" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationBreakStructure" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RouteOptimizationOptimizationSettings() { }
+        protected RouteOptimizationBreakStructure() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOptimizationSettings" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationBreakStructure" /> class.
         /// </summary>
-        /// <param name="duration">Defines the maximum duration [s] the optimization can use to reduce the cost of the scheduled routes. Please note that the upper bound on optimization duration is a technical limit. Check your individual price plan or contract to see which limits apply. The optimization will automatically stop when this duration is spent in the &#x60;RUNNING&#x60; status but can also be stopped manually using the *stopOptimization* endpoint. (required).</param>
-        public RouteOptimizationOptimizationSettings(int? duration = default(int?))
+        /// <param name="start">The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before &#x60;1970-01-01T00:00:00+00:00&#x60; nor after &#x60;2037-12-31T23:59:59+00:00&#x60;. The date must provide an offset to UTC. (required).</param>
+        /// <param name="duration">The duration [s] of the break. (required).</param>
+        public RouteOptimizationBreakStructure(DateTimeOffset? start = default(DateTimeOffset?), int? duration = default(int?))
         {
+            // to ensure "start" is required (not null)
+            if (start == null)
+            {
+                throw new ArgumentNullException("start is a required property for RouteOptimizationBreakStructure and cannot be null");
+            }
+            this.Start = start;
             // to ensure "duration" is required (not null)
             if (duration == null)
             {
-                throw new ArgumentNullException("duration is a required property for RouteOptimizationOptimizationSettings and cannot be null");
+                throw new ArgumentNullException("duration is a required property for RouteOptimizationBreakStructure and cannot be null");
             }
             this.Duration = duration;
         }
 
         /// <summary>
-        /// Defines the maximum duration [s] the optimization can use to reduce the cost of the scheduled routes. Please note that the upper bound on optimization duration is a technical limit. Check your individual price plan or contract to see which limits apply. The optimization will automatically stop when this duration is spent in the &#x60;RUNNING&#x60; status but can also be stopped manually using the *stopOptimization* endpoint.
+        /// The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before &#x60;1970-01-01T00:00:00+00:00&#x60; nor after &#x60;2037-12-31T23:59:59+00:00&#x60;. The date must provide an offset to UTC.
         /// </summary>
-        /// <value>Defines the maximum duration [s] the optimization can use to reduce the cost of the scheduled routes. Please note that the upper bound on optimization duration is a technical limit. Check your individual price plan or contract to see which limits apply. The optimization will automatically stop when this duration is spent in the &#x60;RUNNING&#x60; status but can also be stopped manually using the *stopOptimization* endpoint.</value>
-        /// <example>7200</example>
+        /// <value>The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before &#x60;1970-01-01T00:00:00+00:00&#x60; nor after &#x60;2037-12-31T23:59:59+00:00&#x60;. The date must provide an offset to UTC.</value>
+        /// <example>2023-10-03T11:00Z</example>
+        [DataMember(Name = "start", IsRequired = true, EmitDefaultValue = true)]
+        public DateTimeOffset? Start { get; set; }
+
+        /// <summary>
+        /// The duration [s] of the break.
+        /// </summary>
+        /// <value>The duration [s] of the break.</value>
+        /// <example>1800</example>
         [DataMember(Name = "duration", IsRequired = true, EmitDefaultValue = true)]
         public int? Duration { get; set; }
 
@@ -65,7 +80,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationOptimizationSettings {\n");
+            sb.Append("class RouteOptimizationBreakStructure {\n");
+            sb.Append("  Start: ").Append(Start).Append("\n");
             sb.Append("  Duration: ").Append(Duration).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -87,12 +103,6 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Duration (int?) maximum
-            if (this.Duration > (int?)86400)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Duration, must be a value less than or equal to 86400.", new [] { "Duration" });
-            }
-
             // Duration (int?) minimum
             if (this.Duration < (int?)0)
             {
