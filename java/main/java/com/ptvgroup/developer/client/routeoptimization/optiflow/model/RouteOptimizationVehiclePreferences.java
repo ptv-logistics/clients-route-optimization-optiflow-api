@@ -29,47 +29,48 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Describes a vehicle slot that can be assigned stops.
+ * Defines preferences for routes assigned to this vehicle that are not reflected in the cost. These preferences guide the optimization process, which **may result in increased costs** as a tradeoff for meeting them.
  */
 @JsonPropertyOrder({
-  RouteOptimizationVehicleSlot.JSON_PROPERTY_COST
+  RouteOptimizationVehiclePreferences.JSON_PROPERTY_COMPACTNESS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-22T09:26:27.555614916Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationVehicleSlot {
-  public static final String JSON_PROPERTY_COST = "cost";
-  private Double cost = 0d;
+public class RouteOptimizationVehiclePreferences {
+  public static final String JSON_PROPERTY_COMPACTNESS = "compactness";
+  private Double compactness = 0d;
 
-  public RouteOptimizationVehicleSlot() { 
+  public RouteOptimizationVehiclePreferences() { 
   }
 
-  public RouteOptimizationVehicleSlot cost(Double cost) {
-    this.cost = cost;
+  public RouteOptimizationVehiclePreferences compactness(Double compactness) {
+    this.compactness = compactness;
     return this;
   }
 
    /**
-   * The cost incurred when assigning at least one stop to this vehicle slot.
+   * A scale between 0 and 1 resembling a tradeoff between minimizing distance cost and maximizing compactness, where higher values indicate a stronger preference for compact routes. As the cost per kilometer increases, the influence of this tradeoff becomes more significant. A route is considered compact if all stops for executing non-depot tasks are close to each other.
    * minimum: 0
-   * @return cost
+   * maximum: 1
+   * @return compactness
   **/
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_COST)
+  @JsonProperty(JSON_PROPERTY_COMPACTNESS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getCost() {
-    return cost;
+  public Double getCompactness() {
+    return compactness;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_COST)
+  @JsonProperty(JSON_PROPERTY_COMPACTNESS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCost(Double cost) {
-    this.cost = cost;
+  public void setCompactness(Double compactness) {
+    this.compactness = compactness;
   }
 
 
   /**
-   * Return true if this VehicleSlot object is equal to o.
+   * Return true if this VehiclePreferences object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +80,20 @@ public class RouteOptimizationVehicleSlot {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationVehicleSlot vehicleSlot = (RouteOptimizationVehicleSlot) o;
-    return Objects.equals(this.cost, vehicleSlot.cost);
+    RouteOptimizationVehiclePreferences vehiclePreferences = (RouteOptimizationVehiclePreferences) o;
+    return Objects.equals(this.compactness, vehiclePreferences.compactness);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cost);
+    return Objects.hash(compactness);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationVehicleSlot {\n");
-    sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
+    sb.append("class RouteOptimizationVehiclePreferences {\n");
+    sb.append("    compactness: ").append(toIndentedString(compactness)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -140,9 +141,9 @@ public class RouteOptimizationVehicleSlot {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `cost` to the URL query string
-    if (getCost() != null) {
-      joiner.add(String.format("%scost%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCost()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `compactness` to the URL query string
+    if (getCompactness() != null) {
+      joiner.add(String.format("%scompactness%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCompactness()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

@@ -29,47 +29,77 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Describes a vehicle slot that can be assigned stops.
+ * The modifications that should be made to the duration. At least one property should be provided.
  */
 @JsonPropertyOrder({
-  RouteOptimizationVehicleSlot.JSON_PROPERTY_COST
+  RouteOptimizationDurationModifier.JSON_PROPERTY_FACTOR,
+  RouteOptimizationDurationModifier.JSON_PROPERTY_EXTRA
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-22T09:26:27.555614916Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationVehicleSlot {
-  public static final String JSON_PROPERTY_COST = "cost";
-  private Double cost = 0d;
+public class RouteOptimizationDurationModifier {
+  public static final String JSON_PROPERTY_FACTOR = "factor";
+  private Double factor = 1d;
 
-  public RouteOptimizationVehicleSlot() { 
+  public static final String JSON_PROPERTY_EXTRA = "extra";
+  private Integer extra = 0;
+
+  public RouteOptimizationDurationModifier() { 
   }
 
-  public RouteOptimizationVehicleSlot cost(Double cost) {
-    this.cost = cost;
+  public RouteOptimizationDurationModifier factor(Double factor) {
+    this.factor = factor;
     return this;
   }
 
    /**
-   * The cost incurred when assigning at least one stop to this vehicle slot.
+   * The factor that should be applied to the original duration before any extra durations are added. If multiple rules apply, their factors are multiplied.
    * minimum: 0
-   * @return cost
+   * @return factor
   **/
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_COST)
+  @JsonProperty(JSON_PROPERTY_FACTOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getCost() {
-    return cost;
+  public Double getFactor() {
+    return factor;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_COST)
+  @JsonProperty(JSON_PROPERTY_FACTOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCost(Double cost) {
-    this.cost = cost;
+  public void setFactor(Double factor) {
+    this.factor = factor;
+  }
+
+
+  public RouteOptimizationDurationModifier extra(Integer extra) {
+    this.extra = extra;
+    return this;
+  }
+
+   /**
+   * The extra duration [s] that should be added. If multiple rules apply, their extra durations are added.
+   * minimum: 0
+   * @return extra
+  **/
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXTRA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getExtra() {
+    return extra;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTRA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExtra(Integer extra) {
+    this.extra = extra;
   }
 
 
   /**
-   * Return true if this VehicleSlot object is equal to o.
+   * Return true if this DurationModifier object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +109,22 @@ public class RouteOptimizationVehicleSlot {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationVehicleSlot vehicleSlot = (RouteOptimizationVehicleSlot) o;
-    return Objects.equals(this.cost, vehicleSlot.cost);
+    RouteOptimizationDurationModifier durationModifier = (RouteOptimizationDurationModifier) o;
+    return Objects.equals(this.factor, durationModifier.factor) &&
+        Objects.equals(this.extra, durationModifier.extra);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cost);
+    return Objects.hash(factor, extra);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationVehicleSlot {\n");
-    sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
+    sb.append("class RouteOptimizationDurationModifier {\n");
+    sb.append("    factor: ").append(toIndentedString(factor)).append("\n");
+    sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -140,9 +172,14 @@ public class RouteOptimizationVehicleSlot {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `cost` to the URL query string
-    if (getCost() != null) {
-      joiner.add(String.format("%scost%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCost()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `factor` to the URL query string
+    if (getFactor() != null) {
+      joiner.add(String.format("%sfactor%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFactor()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `extra` to the URL query string
+    if (getExtra() != null) {
+      joiner.add(String.format("%sextra%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExtra()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

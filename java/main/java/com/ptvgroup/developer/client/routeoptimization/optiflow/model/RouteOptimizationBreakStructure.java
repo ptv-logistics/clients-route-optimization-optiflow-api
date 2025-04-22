@@ -24,33 +24,62 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * General settings of the optimization.
+ * A break scheduled on a route.
  */
 @JsonPropertyOrder({
-  RouteOptimizationOptimizationSettings.JSON_PROPERTY_DURATION
+  RouteOptimizationBreakStructure.JSON_PROPERTY_START,
+  RouteOptimizationBreakStructure.JSON_PROPERTY_DURATION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-22T09:26:27.555614916Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationOptimizationSettings {
+public class RouteOptimizationBreakStructure {
+  public static final String JSON_PROPERTY_START = "start";
+  private OffsetDateTime start;
+
   public static final String JSON_PROPERTY_DURATION = "duration";
   private Integer duration;
 
-  public RouteOptimizationOptimizationSettings() { 
+  public RouteOptimizationBreakStructure() { 
   }
 
-  public RouteOptimizationOptimizationSettings duration(Integer duration) {
+  public RouteOptimizationBreakStructure start(OffsetDateTime start) {
+    this.start = start;
+    return this;
+  }
+
+   /**
+   * The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before &#x60;1970-01-01T00:00:00+00:00&#x60; nor after &#x60;2037-12-31T23:59:59+00:00&#x60;. The date must provide an offset to UTC.
+   * @return start
+  **/
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_START)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public OffsetDateTime getStart() {
+    return start;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_START)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setStart(OffsetDateTime start) {
+    this.start = start;
+  }
+
+
+  public RouteOptimizationBreakStructure duration(Integer duration) {
     this.duration = duration;
     return this;
   }
 
    /**
-   * Defines the maximum duration [s] the optimization can use to reduce the cost of the scheduled routes. Please note that the upper bound on optimization duration is a technical limit. Check your individual price plan or contract to see which limits apply. The optimization will automatically stop when this duration is spent in the &#x60;RUNNING&#x60; status but can also be stopped manually using the *stopOptimization* endpoint.
+   * The duration [s] of the break.
    * minimum: 0
-   * maximum: 86400
    * @return duration
   **/
   @javax.annotation.Nonnull
@@ -70,7 +99,7 @@ public class RouteOptimizationOptimizationSettings {
 
 
   /**
-   * Return true if this OptimizationSettings object is equal to o.
+   * Return true if this BreakStructure object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,19 +109,21 @@ public class RouteOptimizationOptimizationSettings {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationOptimizationSettings optimizationSettings = (RouteOptimizationOptimizationSettings) o;
-    return Objects.equals(this.duration, optimizationSettings.duration);
+    RouteOptimizationBreakStructure breakStructure = (RouteOptimizationBreakStructure) o;
+    return Objects.equals(this.start, breakStructure.start) &&
+        Objects.equals(this.duration, breakStructure.duration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration);
+    return Objects.hash(start, duration);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationOptimizationSettings {\n");
+    sb.append("class RouteOptimizationBreakStructure {\n");
+    sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -140,6 +171,11 @@ public class RouteOptimizationOptimizationSettings {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `start` to the URL query string
+    if (getStart() != null) {
+      joiner.add(String.format("%sstart%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStart()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
 
     // add `duration` to the URL query string
     if (getDuration() != null) {

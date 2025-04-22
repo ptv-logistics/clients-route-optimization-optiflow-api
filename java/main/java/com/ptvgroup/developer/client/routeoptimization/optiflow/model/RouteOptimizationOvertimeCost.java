@@ -29,48 +29,77 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * General settings of the optimization.
+ * Specifies an increased cost per hour if the route duration goes above a threshold.
  */
 @JsonPropertyOrder({
-  RouteOptimizationOptimizationSettings.JSON_PROPERTY_DURATION
+  RouteOptimizationOvertimeCost.JSON_PROPERTY_THRESHOLD,
+  RouteOptimizationOvertimeCost.JSON_PROPERTY_EXTRA_PER_HOUR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-04-22T09:26:27.555614916Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationOptimizationSettings {
-  public static final String JSON_PROPERTY_DURATION = "duration";
-  private Integer duration;
+public class RouteOptimizationOvertimeCost {
+  public static final String JSON_PROPERTY_THRESHOLD = "threshold";
+  private Integer threshold;
 
-  public RouteOptimizationOptimizationSettings() { 
+  public static final String JSON_PROPERTY_EXTRA_PER_HOUR = "extraPerHour";
+  private Double extraPerHour;
+
+  public RouteOptimizationOvertimeCost() { 
   }
 
-  public RouteOptimizationOptimizationSettings duration(Integer duration) {
-    this.duration = duration;
+  public RouteOptimizationOvertimeCost threshold(Integer threshold) {
+    this.threshold = threshold;
     return this;
   }
 
    /**
-   * Defines the maximum duration [s] the optimization can use to reduce the cost of the scheduled routes. Please note that the upper bound on optimization duration is a technical limit. Check your individual price plan or contract to see which limits apply. The optimization will automatically stop when this duration is spent in the &#x60;RUNNING&#x60; status but can also be stopped manually using the *stopOptimization* endpoint.
+   * The threshold on the route duration [s] that defines when this overtime starts.
    * minimum: 0
-   * maximum: 86400
-   * @return duration
+   * @return threshold
   **/
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(JSON_PROPERTY_THRESHOLD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Integer getDuration() {
-    return duration;
+  public Integer getThreshold() {
+    return threshold;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(JSON_PROPERTY_THRESHOLD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDuration(Integer duration) {
-    this.duration = duration;
+  public void setThreshold(Integer threshold) {
+    this.threshold = threshold;
+  }
+
+
+  public RouteOptimizationOvertimeCost extraPerHour(Double extraPerHour) {
+    this.extraPerHour = extraPerHour;
+    return this;
+  }
+
+   /**
+   * Specifies the extra cost for every hour above the threshold. If the threshold of multiple overtimes is exceeded, the extra costs per hour are added.
+   * minimum: 0
+   * @return extraPerHour
+  **/
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_EXTRA_PER_HOUR)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Double getExtraPerHour() {
+    return extraPerHour;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTRA_PER_HOUR)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setExtraPerHour(Double extraPerHour) {
+    this.extraPerHour = extraPerHour;
   }
 
 
   /**
-   * Return true if this OptimizationSettings object is equal to o.
+   * Return true if this OvertimeCost object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,20 +109,22 @@ public class RouteOptimizationOptimizationSettings {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationOptimizationSettings optimizationSettings = (RouteOptimizationOptimizationSettings) o;
-    return Objects.equals(this.duration, optimizationSettings.duration);
+    RouteOptimizationOvertimeCost overtimeCost = (RouteOptimizationOvertimeCost) o;
+    return Objects.equals(this.threshold, overtimeCost.threshold) &&
+        Objects.equals(this.extraPerHour, overtimeCost.extraPerHour);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration);
+    return Objects.hash(threshold, extraPerHour);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationOptimizationSettings {\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("class RouteOptimizationOvertimeCost {\n");
+    sb.append("    threshold: ").append(toIndentedString(threshold)).append("\n");
+    sb.append("    extraPerHour: ").append(toIndentedString(extraPerHour)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -141,9 +172,14 @@ public class RouteOptimizationOptimizationSettings {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `duration` to the URL query string
-    if (getDuration() != null) {
-      joiner.add(String.format("%sduration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDuration()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `threshold` to the URL query string
+    if (getThreshold() != null) {
+      joiner.add(String.format("%sthreshold%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getThreshold()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `extraPerHour` to the URL query string
+    if (getExtraPerHour() != null) {
+      joiner.add(String.format("%sextraPerHour%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExtraPerHour()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
