@@ -5,7 +5,7 @@ Using client classes makes it easier and more convenient to integrate the API in
 
 Language depending information:
 * **DotNet:** Please add the following nuget packages to your client project
-  * Please use .NET 6.0
+  * Please use .NET 8.0
   * JsonSubTypes (1.8.0)
   * Polly (7.2.3)
   * RestSharp (106.13.0)
@@ -36,37 +36,37 @@ Language depending information:
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.10.4</version>
+            <version>2.18.3</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.10.4</version>
+            <version>2.18.3</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.10.4</version>
+            <version>2.18.3</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.10.4</version>
+            <version>2.18.3</version>
         </dependency>
         <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
-            <version>0.2.1</version>
+            <version>0.2.6</version>
         </dependency>
         <dependency>
             <groupId>com.github.ptv-logistics</groupId>
             <artifactId>openapi-generator-cli</artifactId>
-            <version>6.2.1</version>
+            <version>7.5.0</version>
         </dependency>
         <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.1.1</version>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>4.0.0</version>
         </dependency>
   ```       
    To initialize your client with your APIKey you can use the following snippet:

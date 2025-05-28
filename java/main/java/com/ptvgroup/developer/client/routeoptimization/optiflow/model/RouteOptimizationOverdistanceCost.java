@@ -29,77 +29,77 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * For an order this describes how much capacity for a certain dimension is needed in the vehicle. For a vehicle, this describes its capacity for a certain dimension. For each dimension, the sum of the values of orders loaded into the vehicle must be lower than or equal to the value of the vehicle.
+ * Specifies an increased cost per kilometer if the total distance of a route exceeds a threshold.
  */
 @JsonPropertyOrder({
-  RouteOptimizationLoad.JSON_PROPERTY_DIMENSION,
-  RouteOptimizationLoad.JSON_PROPERTY_VALUE
+  RouteOptimizationOverdistanceCost.JSON_PROPERTY_THRESHOLD,
+  RouteOptimizationOverdistanceCost.JSON_PROPERTY_EXTRA_PER_KILOMETER
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-28T13:36:04.652949222Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationLoad {
-  public static final String JSON_PROPERTY_DIMENSION = "dimension";
-  private String dimension;
+public class RouteOptimizationOverdistanceCost {
+  public static final String JSON_PROPERTY_THRESHOLD = "threshold";
+  private Integer threshold;
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private Double value;
+  public static final String JSON_PROPERTY_EXTRA_PER_KILOMETER = "extraPerKilometer";
+  private Double extraPerKilometer;
 
-  public RouteOptimizationLoad() { 
+  public RouteOptimizationOverdistanceCost() { 
   }
 
-  public RouteOptimizationLoad dimension(String dimension) {
-    this.dimension = dimension;
+  public RouteOptimizationOverdistanceCost threshold(Integer threshold) {
+    this.threshold = threshold;
     return this;
   }
 
    /**
-   * Indicates the specific dimension of the load, such as its volume, weight, or size.
-   * @return dimension
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DIMENSION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getDimension() {
-    return dimension;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DIMENSION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDimension(String dimension) {
-    this.dimension = dimension;
-  }
-
-
-  public RouteOptimizationLoad value(Double value) {
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * Represents the numeric value associated with the load&#39;s dimension. This value could be the actual measurement or quantity of the load.
+   * The threshold for the route&#39;s total distance [m] above which the extra cost per kilometer applies.
    * minimum: 0
-   * maximum: 1000000
-   * @return value
+   * @return threshold
   **/
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonProperty(JSON_PROPERTY_THRESHOLD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Double getValue() {
-    return value;
+  public Integer getThreshold() {
+    return threshold;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonProperty(JSON_PROPERTY_THRESHOLD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setValue(Double value) {
-    this.value = value;
+  public void setThreshold(Integer threshold) {
+    this.threshold = threshold;
+  }
+
+
+  public RouteOptimizationOverdistanceCost extraPerKilometer(Double extraPerKilometer) {
+    this.extraPerKilometer = extraPerKilometer;
+    return this;
+  }
+
+   /**
+   * Specifies the extra cost for every kilometer above the threshold.
+   * minimum: 0
+   * @return extraPerKilometer
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_EXTRA_PER_KILOMETER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Double getExtraPerKilometer() {
+    return extraPerKilometer;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTRA_PER_KILOMETER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setExtraPerKilometer(Double extraPerKilometer) {
+    this.extraPerKilometer = extraPerKilometer;
   }
 
 
   /**
-   * Return true if this Load object is equal to o.
+   * Return true if this OverdistanceCost object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -109,22 +109,22 @@ public class RouteOptimizationLoad {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationLoad load = (RouteOptimizationLoad) o;
-    return Objects.equals(this.dimension, load.dimension) &&
-        Objects.equals(this.value, load.value);
+    RouteOptimizationOverdistanceCost overdistanceCost = (RouteOptimizationOverdistanceCost) o;
+    return Objects.equals(this.threshold, overdistanceCost.threshold) &&
+        Objects.equals(this.extraPerKilometer, overdistanceCost.extraPerKilometer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dimension, value);
+    return Objects.hash(threshold, extraPerKilometer);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationLoad {\n");
-    sb.append("    dimension: ").append(toIndentedString(dimension)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("class RouteOptimizationOverdistanceCost {\n");
+    sb.append("    threshold: ").append(toIndentedString(threshold)).append("\n");
+    sb.append("    extraPerKilometer: ").append(toIndentedString(extraPerKilometer)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -172,14 +172,14 @@ public class RouteOptimizationLoad {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `dimension` to the URL query string
-    if (getDimension() != null) {
-      joiner.add(String.format("%sdimension%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDimension()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `threshold` to the URL query string
+    if (getThreshold() != null) {
+      joiner.add(String.format("%sthreshold%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getThreshold()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `value` to the URL query string
-    if (getValue() != null) {
-      joiner.add(String.format("%svalue%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getValue()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `extraPerKilometer` to the URL query string
+    if (getExtraPerKilometer() != null) {
+      joiner.add(String.format("%sextraPerKilometer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExtraPerKilometer()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

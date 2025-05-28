@@ -29,30 +29,30 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Specifies an increased cost per hour if the route duration exceeds a threshold.
+ * Specifies an increased cost per effort if the route&#39;s repositioning effort goes above a threshold. When two orders are loaded into the same compartment and delivered in the reverse order, we refer to them as a non-last-in-first-out (non-LIFO) pair. Any non-LIFO pair of orders requires repositioning in the vehicle, as the last picked-up order obstructs the first order that needs to be delivered. The effort involved in this repositioning is the minimum effort required for the two orders. The total repositioning effort for the route is the sum of the repositioning efforts for all non-LIFO pairs of orders.
  */
 @JsonPropertyOrder({
-  RouteOptimizationOvertimeCost.JSON_PROPERTY_THRESHOLD,
-  RouteOptimizationOvertimeCost.JSON_PROPERTY_EXTRA_PER_HOUR
+  RouteOptimizationRepositioningEffortCost.JSON_PROPERTY_THRESHOLD,
+  RouteOptimizationRepositioningEffortCost.JSON_PROPERTY_EXTRA_PER_EFFORT
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-28T13:36:04.652949222Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationOvertimeCost {
+public class RouteOptimizationRepositioningEffortCost {
   public static final String JSON_PROPERTY_THRESHOLD = "threshold";
   private Integer threshold;
 
-  public static final String JSON_PROPERTY_EXTRA_PER_HOUR = "extraPerHour";
-  private Double extraPerHour;
+  public static final String JSON_PROPERTY_EXTRA_PER_EFFORT = "extraPerEffort";
+  private Double extraPerEffort;
 
-  public RouteOptimizationOvertimeCost() { 
+  public RouteOptimizationRepositioningEffortCost() { 
   }
 
-  public RouteOptimizationOvertimeCost threshold(Integer threshold) {
+  public RouteOptimizationRepositioningEffortCost threshold(Integer threshold) {
     this.threshold = threshold;
     return this;
   }
 
    /**
-   * The threshold for the route duration [s] above which the extra cost per hour applies.
+   * The threshold for the repositioning effort from which the cost per effort applies.
    * minimum: 0
    * @return threshold
   **/
@@ -72,34 +72,34 @@ public class RouteOptimizationOvertimeCost {
   }
 
 
-  public RouteOptimizationOvertimeCost extraPerHour(Double extraPerHour) {
-    this.extraPerHour = extraPerHour;
+  public RouteOptimizationRepositioningEffortCost extraPerEffort(Double extraPerEffort) {
+    this.extraPerEffort = extraPerEffort;
     return this;
   }
 
    /**
-   * Specifies the extra cost for every hour above the threshold.
+   * Specifies the extra cost for every unit of effort above the threshold. If the threshold of multiple repositioning effort costs is exceeded, the extra costs per effort are added.
    * minimum: 0
-   * @return extraPerHour
+   * @return extraPerEffort
   **/
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXTRA_PER_HOUR)
+  @JsonProperty(JSON_PROPERTY_EXTRA_PER_EFFORT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Double getExtraPerHour() {
-    return extraPerHour;
+  public Double getExtraPerEffort() {
+    return extraPerEffort;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXTRA_PER_HOUR)
+  @JsonProperty(JSON_PROPERTY_EXTRA_PER_EFFORT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExtraPerHour(Double extraPerHour) {
-    this.extraPerHour = extraPerHour;
+  public void setExtraPerEffort(Double extraPerEffort) {
+    this.extraPerEffort = extraPerEffort;
   }
 
 
   /**
-   * Return true if this OvertimeCost object is equal to o.
+   * Return true if this RepositioningEffortCost object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -109,22 +109,22 @@ public class RouteOptimizationOvertimeCost {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationOvertimeCost overtimeCost = (RouteOptimizationOvertimeCost) o;
-    return Objects.equals(this.threshold, overtimeCost.threshold) &&
-        Objects.equals(this.extraPerHour, overtimeCost.extraPerHour);
+    RouteOptimizationRepositioningEffortCost repositioningEffortCost = (RouteOptimizationRepositioningEffortCost) o;
+    return Objects.equals(this.threshold, repositioningEffortCost.threshold) &&
+        Objects.equals(this.extraPerEffort, repositioningEffortCost.extraPerEffort);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(threshold, extraPerHour);
+    return Objects.hash(threshold, extraPerEffort);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationOvertimeCost {\n");
+    sb.append("class RouteOptimizationRepositioningEffortCost {\n");
     sb.append("    threshold: ").append(toIndentedString(threshold)).append("\n");
-    sb.append("    extraPerHour: ").append(toIndentedString(extraPerHour)).append("\n");
+    sb.append("    extraPerEffort: ").append(toIndentedString(extraPerEffort)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -177,9 +177,9 @@ public class RouteOptimizationOvertimeCost {
       joiner.add(String.format("%sthreshold%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getThreshold()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `extraPerHour` to the URL query string
-    if (getExtraPerHour() != null) {
-      joiner.add(String.format("%sextraPerHour%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExtraPerHour()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `extraPerEffort` to the URL query string
+    if (getExtraPerEffort() != null) {
+      joiner.add(String.format("%sextraPerEffort%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExtraPerEffort()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
