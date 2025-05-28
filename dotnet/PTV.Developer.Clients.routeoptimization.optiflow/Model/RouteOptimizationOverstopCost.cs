@@ -26,50 +26,50 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Specifies an increased cost per hour if the route duration exceeds a threshold.
+    /// Specifies an increased cost per stop if the number of stops of a route exceeds a threshold.
     /// </summary>
-    [DataContract(Name = "OvertimeCost")]
-    public partial class RouteOptimizationOvertimeCost : IValidatableObject
+    [DataContract(Name = "OverstopCost")]
+    public partial class RouteOptimizationOverstopCost : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOvertimeCost" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationOverstopCost" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RouteOptimizationOvertimeCost() { }
+        protected RouteOptimizationOverstopCost() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOvertimeCost" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationOverstopCost" /> class.
         /// </summary>
-        /// <param name="threshold">The threshold for the route duration [s] above which the extra cost per hour applies. (required).</param>
-        /// <param name="extraPerHour">Specifies the extra cost for every hour above the threshold. (required).</param>
-        public RouteOptimizationOvertimeCost(int? threshold = default(int?), double? extraPerHour = default(double?))
+        /// <param name="threshold">The threshold for the route&#39;s number of stops above which the extra cost per stop applies. (required).</param>
+        /// <param name="extraPerStop">Specifies the extra cost for every stop above the threshold. (required).</param>
+        public RouteOptimizationOverstopCost(int? threshold = default(int?), double? extraPerStop = default(double?))
         {
             // to ensure "threshold" is required (not null)
             if (threshold == null)
             {
-                throw new ArgumentNullException("threshold is a required property for RouteOptimizationOvertimeCost and cannot be null");
+                throw new ArgumentNullException("threshold is a required property for RouteOptimizationOverstopCost and cannot be null");
             }
             this.Threshold = threshold;
-            // to ensure "extraPerHour" is required (not null)
-            if (extraPerHour == null)
+            // to ensure "extraPerStop" is required (not null)
+            if (extraPerStop == null)
             {
-                throw new ArgumentNullException("extraPerHour is a required property for RouteOptimizationOvertimeCost and cannot be null");
+                throw new ArgumentNullException("extraPerStop is a required property for RouteOptimizationOverstopCost and cannot be null");
             }
-            this.ExtraPerHour = extraPerHour;
+            this.ExtraPerStop = extraPerStop;
         }
 
         /// <summary>
-        /// The threshold for the route duration [s] above which the extra cost per hour applies.
+        /// The threshold for the route&#39;s number of stops above which the extra cost per stop applies.
         /// </summary>
-        /// <value>The threshold for the route duration [s] above which the extra cost per hour applies.</value>
+        /// <value>The threshold for the route&#39;s number of stops above which the extra cost per stop applies.</value>
         [DataMember(Name = "threshold", IsRequired = true, EmitDefaultValue = true)]
         public int? Threshold { get; set; }
 
         /// <summary>
-        /// Specifies the extra cost for every hour above the threshold.
+        /// Specifies the extra cost for every stop above the threshold.
         /// </summary>
-        /// <value>Specifies the extra cost for every hour above the threshold.</value>
-        [DataMember(Name = "extraPerHour", IsRequired = true, EmitDefaultValue = true)]
-        public double? ExtraPerHour { get; set; }
+        /// <value>Specifies the extra cost for every stop above the threshold.</value>
+        [DataMember(Name = "extraPerStop", IsRequired = true, EmitDefaultValue = true)]
+        public double? ExtraPerStop { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,9 +78,9 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationOvertimeCost {\n");
+            sb.Append("class RouteOptimizationOverstopCost {\n");
             sb.Append("  Threshold: ").Append(Threshold).Append("\n");
-            sb.Append("  ExtraPerHour: ").Append(ExtraPerHour).Append("\n");
+            sb.Append("  ExtraPerStop: ").Append(ExtraPerStop).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -107,10 +107,10 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Threshold, must be a value greater than or equal to 0.", new [] { "Threshold" });
             }
 
-            // ExtraPerHour (double?) minimum
-            if (this.ExtraPerHour < (double?)0)
+            // ExtraPerStop (double?) minimum
+            if (this.ExtraPerStop < (double?)0)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExtraPerHour, must be a value greater than or equal to 0.", new [] { "ExtraPerHour" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExtraPerStop, must be a value greater than or equal to 0.", new [] { "ExtraPerStop" });
             }
 
             yield break;

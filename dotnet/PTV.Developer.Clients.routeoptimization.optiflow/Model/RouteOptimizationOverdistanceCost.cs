@@ -26,50 +26,50 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Specifies an increased cost per hour if the route duration exceeds a threshold.
+    /// Specifies an increased cost per kilometer if the total distance of a route exceeds a threshold.
     /// </summary>
-    [DataContract(Name = "OvertimeCost")]
-    public partial class RouteOptimizationOvertimeCost : IValidatableObject
+    [DataContract(Name = "OverdistanceCost")]
+    public partial class RouteOptimizationOverdistanceCost : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOvertimeCost" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationOverdistanceCost" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RouteOptimizationOvertimeCost() { }
+        protected RouteOptimizationOverdistanceCost() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOvertimeCost" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationOverdistanceCost" /> class.
         /// </summary>
-        /// <param name="threshold">The threshold for the route duration [s] above which the extra cost per hour applies. (required).</param>
-        /// <param name="extraPerHour">Specifies the extra cost for every hour above the threshold. (required).</param>
-        public RouteOptimizationOvertimeCost(int? threshold = default(int?), double? extraPerHour = default(double?))
+        /// <param name="threshold">The threshold for the route&#39;s total distance [m] above which the extra cost per kilometer applies. (required).</param>
+        /// <param name="extraPerKilometer">Specifies the extra cost for every kilometer above the threshold. (required).</param>
+        public RouteOptimizationOverdistanceCost(int? threshold = default(int?), double? extraPerKilometer = default(double?))
         {
             // to ensure "threshold" is required (not null)
             if (threshold == null)
             {
-                throw new ArgumentNullException("threshold is a required property for RouteOptimizationOvertimeCost and cannot be null");
+                throw new ArgumentNullException("threshold is a required property for RouteOptimizationOverdistanceCost and cannot be null");
             }
             this.Threshold = threshold;
-            // to ensure "extraPerHour" is required (not null)
-            if (extraPerHour == null)
+            // to ensure "extraPerKilometer" is required (not null)
+            if (extraPerKilometer == null)
             {
-                throw new ArgumentNullException("extraPerHour is a required property for RouteOptimizationOvertimeCost and cannot be null");
+                throw new ArgumentNullException("extraPerKilometer is a required property for RouteOptimizationOverdistanceCost and cannot be null");
             }
-            this.ExtraPerHour = extraPerHour;
+            this.ExtraPerKilometer = extraPerKilometer;
         }
 
         /// <summary>
-        /// The threshold for the route duration [s] above which the extra cost per hour applies.
+        /// The threshold for the route&#39;s total distance [m] above which the extra cost per kilometer applies.
         /// </summary>
-        /// <value>The threshold for the route duration [s] above which the extra cost per hour applies.</value>
+        /// <value>The threshold for the route&#39;s total distance [m] above which the extra cost per kilometer applies.</value>
         [DataMember(Name = "threshold", IsRequired = true, EmitDefaultValue = true)]
         public int? Threshold { get; set; }
 
         /// <summary>
-        /// Specifies the extra cost for every hour above the threshold.
+        /// Specifies the extra cost for every kilometer above the threshold.
         /// </summary>
-        /// <value>Specifies the extra cost for every hour above the threshold.</value>
-        [DataMember(Name = "extraPerHour", IsRequired = true, EmitDefaultValue = true)]
-        public double? ExtraPerHour { get; set; }
+        /// <value>Specifies the extra cost for every kilometer above the threshold.</value>
+        [DataMember(Name = "extraPerKilometer", IsRequired = true, EmitDefaultValue = true)]
+        public double? ExtraPerKilometer { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,9 +78,9 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationOvertimeCost {\n");
+            sb.Append("class RouteOptimizationOverdistanceCost {\n");
             sb.Append("  Threshold: ").Append(Threshold).Append("\n");
-            sb.Append("  ExtraPerHour: ").Append(ExtraPerHour).Append("\n");
+            sb.Append("  ExtraPerKilometer: ").Append(ExtraPerKilometer).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -107,10 +107,10 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Threshold, must be a value greater than or equal to 0.", new [] { "Threshold" });
             }
 
-            // ExtraPerHour (double?) minimum
-            if (this.ExtraPerHour < (double?)0)
+            // ExtraPerKilometer (double?) minimum
+            if (this.ExtraPerKilometer < (double?)0)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExtraPerHour, must be a value greater than or equal to 0.", new [] { "ExtraPerHour" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExtraPerKilometer, must be a value greater than or equal to 0.", new [] { "ExtraPerKilometer" });
             }
 
             yield break;
