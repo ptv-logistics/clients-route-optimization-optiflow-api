@@ -24,7 +24,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationLocationRule;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,54 +31,83 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Rules that conditionally modify properties.
+ * User-defined request metadata that does not influence the optimization but is returned in the result.
  */
 @JsonPropertyOrder({
-  RouteOptimizationRules.JSON_PROPERTY_LOCATIONS
+  RouteOptimizationOptimizationRequestMetadata.JSON_PROPERTY_NAME,
+  RouteOptimizationOptimizationRequestMetadata.JSON_PROPERTY_TAGS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-06-03T08:03:45.906081716Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationRules {
-  public static final String JSON_PROPERTY_LOCATIONS = "locations";
-  private List<RouteOptimizationLocationRule> locations = new ArrayList<>();
+public class RouteOptimizationOptimizationRequestMetadata {
+  public static final String JSON_PROPERTY_NAME = "name";
+  private String name;
 
-  public RouteOptimizationRules() { 
+  public static final String JSON_PROPERTY_TAGS = "tags";
+  private List<String> tags = new ArrayList<>();
+
+  public RouteOptimizationOptimizationRequestMetadata() { 
   }
 
-  public RouteOptimizationRules locations(List<RouteOptimizationLocationRule> locations) {
-    this.locations = locations;
-    return this;
-  }
-
-  public RouteOptimizationRules addLocationsItem(RouteOptimizationLocationRule locationsItem) {
-    if (this.locations == null) {
-      this.locations = new ArrayList<>();
-    }
-    this.locations.add(locationsItem);
+  public RouteOptimizationOptimizationRequestMetadata name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * A list of rules that conditionally modify location properties.
-   * @return locations
+   * The name of the optimization.
+   * @return name
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOCATIONS)
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<RouteOptimizationLocationRule> getLocations() {
-    return locations;
+  public String getName() {
+    return name;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOCATIONS)
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocations(List<RouteOptimizationLocationRule> locations) {
-    this.locations = locations;
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public RouteOptimizationOptimizationRequestMetadata tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public RouteOptimizationOptimizationRequestMetadata addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * A list of tags of the optimization.
+   * @return tags
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTags(List<String> tags) {
+    this.tags = tags;
   }
 
 
   /**
-   * Return true if this Rules object is equal to o.
+   * Return true if this OptimizationRequestMetadata object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -89,20 +117,22 @@ public class RouteOptimizationRules {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationRules rules = (RouteOptimizationRules) o;
-    return Objects.equals(this.locations, rules.locations);
+    RouteOptimizationOptimizationRequestMetadata optimizationRequestMetadata = (RouteOptimizationOptimizationRequestMetadata) o;
+    return Objects.equals(this.name, optimizationRequestMetadata.name) &&
+        Objects.equals(this.tags, optimizationRequestMetadata.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(locations);
+    return Objects.hash(name, tags);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationRules {\n");
-    sb.append("    locations: ").append(toIndentedString(locations)).append("\n");
+    sb.append("class RouteOptimizationOptimizationRequestMetadata {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,13 +180,17 @@ public class RouteOptimizationRules {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `locations` to the URL query string
-    if (getLocations() != null) {
-      for (int i = 0; i < getLocations().size(); i++) {
-        if (getLocations().get(i) != null) {
-          joiner.add(getLocations().get(i).toUrlQueryString(String.format("%slocations%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
-        }
+    // add `name` to the URL query string
+    if (getName() != null) {
+      joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `tags` to the URL query string
+    if (getTags() != null) {
+      for (int i = 0; i < getTags().size(); i++) {
+        joiner.add(String.format("%stags%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+            URLEncoder.encode(String.valueOf(getTags().get(i)), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
       }
     }
 
