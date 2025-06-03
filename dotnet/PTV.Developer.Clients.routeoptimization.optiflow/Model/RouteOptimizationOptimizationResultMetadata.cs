@@ -26,41 +26,45 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Constraints that should be taken into account by optimization.
+    /// The result metadata which contains the user-defined request metadata.
     /// </summary>
-    [DataContract(Name = "Constraints")]
-    public partial class RouteOptimizationConstraints : IValidatableObject
+    [DataContract(Name = "OptimizationResultMetadata")]
+    public partial class RouteOptimizationOptimizationResultMetadata : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationConstraints" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationOptimizationResultMetadata" /> class.
         /// </summary>
-        /// <param name="combinations">combinations.</param>
-        /// <param name="orders">orders.</param>
-        /// <param name="tasks">tasks.</param>
-        public RouteOptimizationConstraints(RouteOptimizationCombinationConstraints combinations = default(RouteOptimizationCombinationConstraints), RouteOptimizationOrderConstraints orders = default(RouteOptimizationOrderConstraints), RouteOptimizationTaskConstraints tasks = default(RouteOptimizationTaskConstraints))
+        /// <param name="name">The name of the optimization..</param>
+        /// <param name="tags">A list of tags of the optimization..</param>
+        /// <param name="created">The creation time of the optimization. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)..</param>
+        public RouteOptimizationOptimizationResultMetadata(string name = default(string), List<string> tags = default(List<string>), DateTimeOffset? created = default(DateTimeOffset?))
         {
-            this.Combinations = combinations;
-            this.Orders = orders;
-            this.Tasks = tasks;
+            this.Name = name;
+            this.Tags = tags;
+            this.Created = created;
         }
 
         /// <summary>
-        /// Gets or Sets Combinations
+        /// The name of the optimization.
         /// </summary>
-        [DataMember(Name = "combinations", EmitDefaultValue = false)]
-        public RouteOptimizationCombinationConstraints Combinations { get; set; }
+        /// <value>The name of the optimization.</value>
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Orders
+        /// A list of tags of the optimization.
         /// </summary>
-        [DataMember(Name = "orders", EmitDefaultValue = false)]
-        public RouteOptimizationOrderConstraints Orders { get; set; }
+        /// <value>A list of tags of the optimization.</value>
+        [DataMember(Name = "tags", EmitDefaultValue = false)]
+        public List<string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or Sets Tasks
+        /// The creation time of the optimization. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
         /// </summary>
-        [DataMember(Name = "tasks", EmitDefaultValue = false)]
-        public RouteOptimizationTaskConstraints Tasks { get; set; }
+        /// <value>The creation time of the optimization. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).</value>
+        /// <example>2023-10-03T12:30Z</example>
+        [DataMember(Name = "created", EmitDefaultValue = true)]
+        public DateTimeOffset? Created { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,10 +73,10 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationConstraints {\n");
-            sb.Append("  Combinations: ").Append(Combinations).Append("\n");
-            sb.Append("  Orders: ").Append(Orders).Append("\n");
-            sb.Append("  Tasks: ").Append(Tasks).Append("\n");
+            sb.Append("class RouteOptimizationOptimizationResultMetadata {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
