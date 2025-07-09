@@ -24,66 +24,83 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A sequence that must be respected when scheduling routes. Tasks with a category that occurs earlier in the sequence must be scheduled in the route before a task with a category later in the sequence.
+ * Describes a constraint where orders are forbidden to be loaded or unloaded while other orders are loaded in the vehicle.
  */
 @JsonPropertyOrder({
-  RouteOptimizationRespectedTaskSequence.JSON_PROPERTY_TASK_CATEGORIES,
-  RouteOptimizationRespectedTaskSequence.JSON_PROPERTY_VEHICLE_CATEGORY
+  RouteOptimizationOrderLoadingIncompatibilityConstraint.JSON_PROPERTY_LOADED_ORDER_CATEGORY,
+  RouteOptimizationOrderLoadingIncompatibilityConstraint.JSON_PROPERTY_FORBIDDEN_ORDER_CATEGORY,
+  RouteOptimizationOrderLoadingIncompatibilityConstraint.JSON_PROPERTY_VEHICLE_CATEGORY
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-07-09T08:40:59.150506716Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationRespectedTaskSequence {
-  public static final String JSON_PROPERTY_TASK_CATEGORIES = "taskCategories";
-  private Set<String> taskCategories = new LinkedHashSet<>();
+public class RouteOptimizationOrderLoadingIncompatibilityConstraint {
+  public static final String JSON_PROPERTY_LOADED_ORDER_CATEGORY = "loadedOrderCategory";
+  private String loadedOrderCategory;
+
+  public static final String JSON_PROPERTY_FORBIDDEN_ORDER_CATEGORY = "forbiddenOrderCategory";
+  private String forbiddenOrderCategory;
 
   public static final String JSON_PROPERTY_VEHICLE_CATEGORY = "vehicleCategory";
   private String vehicleCategory;
 
-  public RouteOptimizationRespectedTaskSequence() { 
+  public RouteOptimizationOrderLoadingIncompatibilityConstraint() { 
   }
 
-  public RouteOptimizationRespectedTaskSequence taskCategories(Set<String> taskCategories) {
-    this.taskCategories = taskCategories;
-    return this;
-  }
-
-  public RouteOptimizationRespectedTaskSequence addTaskCategoriesItem(String taskCategoriesItem) {
-    if (this.taskCategories == null) {
-      this.taskCategories = new LinkedHashSet<>();
-    }
-    this.taskCategories.add(taskCategoriesItem);
+  public RouteOptimizationOrderLoadingIncompatibilityConstraint loadedOrderCategory(String loadedOrderCategory) {
+    this.loadedOrderCategory = loadedOrderCategory;
     return this;
   }
 
    /**
-   * The sequence of task categories that needs to be respected within a route. The index of the category in the list determines the sequence. Categories that do not correspond to any task are ignored.
-   * @return taskCategories
+   * Orders belonging to this category must be loaded in the vehicle for this constraint to apply. The constraint will be ignored when no order belongs to this category.
+   * @return loadedOrderCategory
   **/
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TASK_CATEGORIES)
+  @JsonProperty(JSON_PROPERTY_LOADED_ORDER_CATEGORY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Set<String> getTaskCategories() {
-    return taskCategories;
+  public String getLoadedOrderCategory() {
+    return loadedOrderCategory;
   }
 
 
-  @JsonDeserialize(as = LinkedHashSet.class)
-  @JsonProperty(JSON_PROPERTY_TASK_CATEGORIES)
+  @JsonProperty(JSON_PROPERTY_LOADED_ORDER_CATEGORY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTaskCategories(Set<String> taskCategories) {
-    this.taskCategories = taskCategories;
+  public void setLoadedOrderCategory(String loadedOrderCategory) {
+    this.loadedOrderCategory = loadedOrderCategory;
   }
 
 
-  public RouteOptimizationRespectedTaskSequence vehicleCategory(String vehicleCategory) {
+  public RouteOptimizationOrderLoadingIncompatibilityConstraint forbiddenOrderCategory(String forbiddenOrderCategory) {
+    this.forbiddenOrderCategory = forbiddenOrderCategory;
+    return this;
+  }
+
+   /**
+   * Orders belonging to this category cannot be loaded or unloaded while the constraint applies. The constraint will be ignored when no order belongs to this category.
+   * @return forbiddenOrderCategory
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_FORBIDDEN_ORDER_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getForbiddenOrderCategory() {
+    return forbiddenOrderCategory;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FORBIDDEN_ORDER_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setForbiddenOrderCategory(String forbiddenOrderCategory) {
+    this.forbiddenOrderCategory = forbiddenOrderCategory;
+  }
+
+
+  public RouteOptimizationOrderLoadingIncompatibilityConstraint vehicleCategory(String vehicleCategory) {
     this.vehicleCategory = vehicleCategory;
     return this;
   }
@@ -109,7 +126,7 @@ public class RouteOptimizationRespectedTaskSequence {
 
 
   /**
-   * Return true if this RespectedTaskSequence object is equal to o.
+   * Return true if this OrderLoadingIncompatibilityConstraint object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -119,21 +136,23 @@ public class RouteOptimizationRespectedTaskSequence {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationRespectedTaskSequence respectedTaskSequence = (RouteOptimizationRespectedTaskSequence) o;
-    return Objects.equals(this.taskCategories, respectedTaskSequence.taskCategories) &&
-        Objects.equals(this.vehicleCategory, respectedTaskSequence.vehicleCategory);
+    RouteOptimizationOrderLoadingIncompatibilityConstraint orderLoadingIncompatibilityConstraint = (RouteOptimizationOrderLoadingIncompatibilityConstraint) o;
+    return Objects.equals(this.loadedOrderCategory, orderLoadingIncompatibilityConstraint.loadedOrderCategory) &&
+        Objects.equals(this.forbiddenOrderCategory, orderLoadingIncompatibilityConstraint.forbiddenOrderCategory) &&
+        Objects.equals(this.vehicleCategory, orderLoadingIncompatibilityConstraint.vehicleCategory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(taskCategories, vehicleCategory);
+    return Objects.hash(loadedOrderCategory, forbiddenOrderCategory, vehicleCategory);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationRespectedTaskSequence {\n");
-    sb.append("    taskCategories: ").append(toIndentedString(taskCategories)).append("\n");
+    sb.append("class RouteOptimizationOrderLoadingIncompatibilityConstraint {\n");
+    sb.append("    loadedOrderCategory: ").append(toIndentedString(loadedOrderCategory)).append("\n");
+    sb.append("    forbiddenOrderCategory: ").append(toIndentedString(forbiddenOrderCategory)).append("\n");
     sb.append("    vehicleCategory: ").append(toIndentedString(vehicleCategory)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -182,15 +201,14 @@ public class RouteOptimizationRespectedTaskSequence {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `taskCategories` to the URL query string
-    if (getTaskCategories() != null) {
-      int i = 0;
-      for (String _item : getTaskCategories()) {
-        joiner.add(String.format("%staskCategories%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-            URLEncoder.encode(String.valueOf(_item), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
-      }
-      i++;
+    // add `loadedOrderCategory` to the URL query string
+    if (getLoadedOrderCategory() != null) {
+      joiner.add(String.format("%sloadedOrderCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLoadedOrderCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `forbiddenOrderCategory` to the URL query string
+    if (getForbiddenOrderCategory() != null) {
+      joiner.add(String.format("%sforbiddenOrderCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getForbiddenOrderCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     // add `vehicleCategory` to the URL query string
