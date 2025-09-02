@@ -24,62 +24,52 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationLocationRule;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Rules that conditionally modify properties.
+ * Describes the pickup (resp. delivery) task of a delivery (resp. pickup) order that is executed at a depot.
  */
 @JsonPropertyOrder({
-  RouteOptimizationRules.JSON_PROPERTY_LOCATIONS
+  RouteOptimizationDepotTaskProperties.JSON_PROPERTY_DURATION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-02T08:00:16.777658760Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationRules {
-  public static final String JSON_PROPERTY_LOCATIONS = "locations";
-  private List<RouteOptimizationLocationRule> locations = new ArrayList<>();
+public class RouteOptimizationDepotTaskProperties {
+  public static final String JSON_PROPERTY_DURATION = "duration";
+  private Integer duration = 0;
 
-  public RouteOptimizationRules() { 
+  public RouteOptimizationDepotTaskProperties() { 
   }
 
-  public RouteOptimizationRules locations(List<RouteOptimizationLocationRule> locations) {
-    this.locations = locations;
-    return this;
-  }
-
-  public RouteOptimizationRules addLocationsItem(RouteOptimizationLocationRule locationsItem) {
-    if (this.locations == null) {
-      this.locations = new ArrayList<>();
-    }
-    this.locations.add(locationsItem);
+  public RouteOptimizationDepotTaskProperties duration(Integer duration) {
+    this.duration = duration;
     return this;
   }
 
    /**
-   * A list of rules that conditionally modify location properties.
-   * @return locations
+   * The duration [s] it takes to execute this task.
+   * minimum: 0
+   * @return duration
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOCATIONS)
+  @JsonProperty(JSON_PROPERTY_DURATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<RouteOptimizationLocationRule> getLocations() {
-    return locations;
+  public Integer getDuration() {
+    return duration;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOCATIONS)
+  @JsonProperty(JSON_PROPERTY_DURATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocations(List<RouteOptimizationLocationRule> locations) {
-    this.locations = locations;
+  public void setDuration(Integer duration) {
+    this.duration = duration;
   }
 
 
   /**
-   * Return true if this Rules object is equal to o.
+   * Return true if this DepotTaskProperties object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -89,20 +79,20 @@ public class RouteOptimizationRules {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationRules rules = (RouteOptimizationRules) o;
-    return Objects.equals(this.locations, rules.locations);
+    RouteOptimizationDepotTaskProperties depotTaskProperties = (RouteOptimizationDepotTaskProperties) o;
+    return Objects.equals(this.duration, depotTaskProperties.duration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(locations);
+    return Objects.hash(duration);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationRules {\n");
-    sb.append("    locations: ").append(toIndentedString(locations)).append("\n");
+    sb.append("class RouteOptimizationDepotTaskProperties {\n");
+    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,14 +140,9 @@ public class RouteOptimizationRules {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `locations` to the URL query string
-    if (getLocations() != null) {
-      for (int i = 0; i < getLocations().size(); i++) {
-        if (getLocations().get(i) != null) {
-          joiner.add(getLocations().get(i).toUrlQueryString(String.format("%slocations%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
-        }
-      }
+    // add `duration` to the URL query string
+    if (getDuration() != null) {
+      joiner.add(String.format("%sduration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDuration()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
