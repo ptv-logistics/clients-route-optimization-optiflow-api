@@ -26,47 +26,28 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A break scheduled in a route according the vehicle break parameters.
+    /// Describes the pickup (resp. delivery) task of a delivery (resp. pickup) order that is executed at a depot.
     /// </summary>
-    [DataContract(Name = "Break")]
-    public partial class RouteOptimizationBreak : IValidatableObject
+    [DataContract(Name = "DepotTaskProperties")]
+    public partial class RouteOptimizationDepotTaskProperties : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationBreak" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationDepotTaskProperties" /> class.
         /// </summary>
-        /// <param name="start">The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)..</param>
-        /// <param name="duration">The duration [s] of the break..</param>
-        /// <param name="end">The point in time when the break ends. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)..</param>
-        public RouteOptimizationBreak(DateTimeOffset? start = default(DateTimeOffset?), int? duration = default(int?), DateTimeOffset? end = default(DateTimeOffset?))
+        /// <param name="duration">The duration [s] it takes to execute this task. (default to 0).</param>
+        public RouteOptimizationDepotTaskProperties(int? duration = 0)
         {
-            this.Start = start;
-            this.Duration = duration;
-            this.End = end;
+            // use default value if no "duration" provided
+            this.Duration = duration ?? 0;
         }
 
         /// <summary>
-        /// The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
+        /// The duration [s] it takes to execute this task.
         /// </summary>
-        /// <value>The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).</value>
-        /// <example>2023-10-03T11:00Z</example>
-        [DataMember(Name = "start", EmitDefaultValue = true)]
-        public DateTimeOffset? Start { get; set; }
-
-        /// <summary>
-        /// The duration [s] of the break.
-        /// </summary>
-        /// <value>The duration [s] of the break.</value>
-        /// <example>1800</example>
+        /// <value>The duration [s] it takes to execute this task.</value>
+        /// <example>16200</example>
         [DataMember(Name = "duration", EmitDefaultValue = true)]
         public int? Duration { get; set; }
-
-        /// <summary>
-        /// The point in time when the break ends. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
-        /// </summary>
-        /// <value>The point in time when the break ends. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).</value>
-        /// <example>2023-10-03T11:30Z</example>
-        [DataMember(Name = "end", EmitDefaultValue = true)]
-        public DateTimeOffset? End { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,10 +56,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationBreak {\n");
-            sb.Append("  Start: ").Append(Start).Append("\n");
+            sb.Append("class RouteOptimizationDepotTaskProperties {\n");
             sb.Append("  Duration: ").Append(Duration).Append("\n");
-            sb.Append("  End: ").Append(End).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
