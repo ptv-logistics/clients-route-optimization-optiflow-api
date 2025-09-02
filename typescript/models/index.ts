@@ -11,6 +11,7 @@ export * from './RouteOptimizationCompartmentLoadingStrategy';
 export * from './RouteOptimizationConstraints';
 export * from './RouteOptimizationDeliveryOrder';
 export * from './RouteOptimizationDepot';
+export * from './RouteOptimizationDepotTaskProperties';
 export * from './RouteOptimizationDepotVehicleCombinationConstraint';
 export * from './RouteOptimizationDepotVehicleCombinationConstraintType';
 export * from './RouteOptimizationDrivingBreakSettings';
