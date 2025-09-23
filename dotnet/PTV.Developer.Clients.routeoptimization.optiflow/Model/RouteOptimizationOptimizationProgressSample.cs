@@ -26,38 +26,35 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Describes the pickup (resp. delivery) task of a delivery (resp. pickup) order that is executed at a depot.
+    /// A snapshot of optimization metrics at a specific point in time.
     /// </summary>
-    [DataContract(Name = "DepotTaskProperties")]
-    public partial class RouteOptimizationDepotTaskProperties : IValidatableObject
+    [DataContract(Name = "OptimizationProgressSample")]
+    public partial class RouteOptimizationOptimizationProgressSample : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationDepotTaskProperties" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationOptimizationProgressSample" /> class.
         /// </summary>
-        /// <param name="duration">The duration [s] it takes to execute this task. (default to 0).</param>
-        /// <param name="categories">A list of categories the task belongs to that can be used to describe constraints or rules..</param>
-        public RouteOptimizationDepotTaskProperties(int? duration = 0, List<string> categories = default(List<string>))
+        /// <param name="time">The time at which the metrics were captured. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6)..</param>
+        /// <param name="metrics">metrics.</param>
+        public RouteOptimizationOptimizationProgressSample(DateTimeOffset? time = default(DateTimeOffset?), RouteOptimizationMetrics metrics = default(RouteOptimizationMetrics))
         {
-            // use default value if no "duration" provided
-            this.Duration = duration ?? 0;
-            this.Categories = categories;
+            this.Time = time;
+            this.Metrics = metrics;
         }
 
         /// <summary>
-        /// The duration [s] it takes to execute this task.
+        /// The time at which the metrics were captured. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
         /// </summary>
-        /// <value>The duration [s] it takes to execute this task.</value>
-        /// <example>16200</example>
-        [DataMember(Name = "duration", EmitDefaultValue = true)]
-        public int? Duration { get; set; }
+        /// <value>The time at which the metrics were captured. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).</value>
+        /// <example>2023-10-03T12:30Z</example>
+        [DataMember(Name = "time", EmitDefaultValue = true)]
+        public DateTimeOffset? Time { get; set; }
 
         /// <summary>
-        /// A list of categories the task belongs to that can be used to describe constraints or rules.
+        /// Gets or Sets Metrics
         /// </summary>
-        /// <value>A list of categories the task belongs to that can be used to describe constraints or rules.</value>
-        /// <example>[&quot;GHENT&quot;,&quot;FORK_LIFT_NEEDED&quot;]</example>
-        [DataMember(Name = "categories", EmitDefaultValue = false)]
-        public List<string> Categories { get; set; }
+        [DataMember(Name = "metrics", EmitDefaultValue = false)]
+        public RouteOptimizationMetrics Metrics { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,9 +63,9 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationDepotTaskProperties {\n");
-            sb.Append("  Duration: ").Append(Duration).Append("\n");
-            sb.Append("  Categories: ").Append(Categories).Append("\n");
+            sb.Append("class RouteOptimizationOptimizationProgressSample {\n");
+            sb.Append("  Time: ").Append(Time).Append("\n");
+            sb.Append("  Metrics: ").Append(Metrics).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -89,12 +86,6 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Duration (int?) minimum
-            if (this.Duration < (int?)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Duration, must be a value greater than or equal to 0.", new [] { "Duration" });
-            }
-
             yield break;
         }
     }

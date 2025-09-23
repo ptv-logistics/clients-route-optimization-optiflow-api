@@ -26,60 +26,60 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A constraint on the combination of orders and compartments belonging to a certain category.
+    /// A constraint on the combination of orders and depots belonging to a certain category.
     /// </summary>
-    [DataContract(Name = "OrderCompartmentCombinationConstraint")]
-    public partial class RouteOptimizationOrderCompartmentCombinationConstraint : IValidatableObject
+    [DataContract(Name = "OrderDepotCombinationConstraint")]
+    public partial class RouteOptimizationOrderDepotCombinationConstraint : IValidatableObject
     {
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
-        public RouteOptimizationOrderCompartmentCombinationConstraintType Type { get; set; }
+        public RouteOptimizationOrderDepotCombinationConstraintType Type { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOrderCompartmentCombinationConstraint" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationOrderDepotCombinationConstraint" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RouteOptimizationOrderCompartmentCombinationConstraint() { }
+        protected RouteOptimizationOrderDepotCombinationConstraint() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOrderCompartmentCombinationConstraint" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationOrderDepotCombinationConstraint" /> class.
         /// </summary>
         /// <param name="type">type (required).</param>
-        /// <param name="orderCategory">The category of orders to which the constraint applies. The constraint will be ignored when no order belongs to this category. (required).</param>
-        /// <param name="compartmentCategory">The category of compartments to which the constraint applies. The constraint will be ignored when no compartment belongs to this category. (required).</param>
-        public RouteOptimizationOrderCompartmentCombinationConstraint(RouteOptimizationOrderCompartmentCombinationConstraintType type = default(RouteOptimizationOrderCompartmentCombinationConstraintType), string orderCategory = default(string), string compartmentCategory = default(string))
+        /// <param name="orderCategory">The category of orders to which the constraint applies. The constraint will be ignored if no order belongs to this category. (required).</param>
+        /// <param name="depotCategory">The category of depots to which the constraint applies. The constraint will be ignored if no depot belongs to this category. (required).</param>
+        public RouteOptimizationOrderDepotCombinationConstraint(RouteOptimizationOrderDepotCombinationConstraintType type = default(RouteOptimizationOrderDepotCombinationConstraintType), string orderCategory = default(string), string depotCategory = default(string))
         {
             this.Type = type;
             // to ensure "orderCategory" is required (not null)
             if (orderCategory == null)
             {
-                throw new ArgumentNullException("orderCategory is a required property for RouteOptimizationOrderCompartmentCombinationConstraint and cannot be null");
+                throw new ArgumentNullException("orderCategory is a required property for RouteOptimizationOrderDepotCombinationConstraint and cannot be null");
             }
             this.OrderCategory = orderCategory;
-            // to ensure "compartmentCategory" is required (not null)
-            if (compartmentCategory == null)
+            // to ensure "depotCategory" is required (not null)
+            if (depotCategory == null)
             {
-                throw new ArgumentNullException("compartmentCategory is a required property for RouteOptimizationOrderCompartmentCombinationConstraint and cannot be null");
+                throw new ArgumentNullException("depotCategory is a required property for RouteOptimizationOrderDepotCombinationConstraint and cannot be null");
             }
-            this.CompartmentCategory = compartmentCategory;
+            this.DepotCategory = depotCategory;
         }
 
         /// <summary>
-        /// The category of orders to which the constraint applies. The constraint will be ignored when no order belongs to this category.
+        /// The category of orders to which the constraint applies. The constraint will be ignored if no order belongs to this category.
         /// </summary>
-        /// <value>The category of orders to which the constraint applies. The constraint will be ignored when no order belongs to this category.</value>
-        /// <example>FROZEN</example>
+        /// <value>The category of orders to which the constraint applies. The constraint will be ignored if no order belongs to this category.</value>
+        /// <example>CHEESE</example>
         [DataMember(Name = "orderCategory", IsRequired = true, EmitDefaultValue = true)]
         public string OrderCategory { get; set; }
 
         /// <summary>
-        /// The category of compartments to which the constraint applies. The constraint will be ignored when no compartment belongs to this category.
+        /// The category of depots to which the constraint applies. The constraint will be ignored if no depot belongs to this category.
         /// </summary>
-        /// <value>The category of compartments to which the constraint applies. The constraint will be ignored when no compartment belongs to this category.</value>
-        /// <example>COOLING_COMPARTMENT</example>
-        [DataMember(Name = "compartmentCategory", IsRequired = true, EmitDefaultValue = true)]
-        public string CompartmentCategory { get; set; }
+        /// <value>The category of depots to which the constraint applies. The constraint will be ignored if no depot belongs to this category.</value>
+        /// <example>CHEESE_FACTORY</example>
+        [DataMember(Name = "depotCategory", IsRequired = true, EmitDefaultValue = true)]
+        public string DepotCategory { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,10 +88,10 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationOrderCompartmentCombinationConstraint {\n");
+            sb.Append("class RouteOptimizationOrderDepotCombinationConstraint {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  OrderCategory: ").Append(OrderCategory).Append("\n");
-            sb.Append("  CompartmentCategory: ").Append(CompartmentCategory).Append("\n");
+            sb.Append("  DepotCategory: ").Append(DepotCategory).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -133,24 +133,24 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
                 }
             }
 
-            // CompartmentCategory (string) maxLength
-            if (this.CompartmentCategory != null && this.CompartmentCategory.Length > 36)
+            // DepotCategory (string) maxLength
+            if (this.DepotCategory != null && this.DepotCategory.Length > 36)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CompartmentCategory, length must be less than 36.", new [] { "CompartmentCategory" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DepotCategory, length must be less than 36.", new [] { "DepotCategory" });
             }
 
-            // CompartmentCategory (string) minLength
-            if (this.CompartmentCategory != null && this.CompartmentCategory.Length < 1)
+            // DepotCategory (string) minLength
+            if (this.DepotCategory != null && this.DepotCategory.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CompartmentCategory, length must be greater than 1.", new [] { "CompartmentCategory" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DepotCategory, length must be greater than 1.", new [] { "DepotCategory" });
             }
 
-            if (this.CompartmentCategory != null) {
-                // CompartmentCategory (string) pattern
-                Regex regexCompartmentCategory = new Regex(@"^[a-zA-Z0-9_-]{1,36}$", RegexOptions.CultureInvariant);
-                if (!regexCompartmentCategory.Match(this.CompartmentCategory).Success)
+            if (this.DepotCategory != null) {
+                // DepotCategory (string) pattern
+                Regex regexDepotCategory = new Regex(@"^[a-zA-Z0-9_-]{1,36}$", RegexOptions.CultureInvariant);
+                if (!regexDepotCategory.Match(this.DepotCategory).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CompartmentCategory, must match a pattern of " + regexCompartmentCategory, new [] { "CompartmentCategory" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DepotCategory, must match a pattern of " + regexDepotCategory, new [] { "DepotCategory" });
                 }
             }
 

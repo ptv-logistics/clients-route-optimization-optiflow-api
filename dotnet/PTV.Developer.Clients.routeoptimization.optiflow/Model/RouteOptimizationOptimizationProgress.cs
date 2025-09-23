@@ -26,26 +26,26 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Rules that conditionally modify properties.
+    /// Time-series record of optimization metrics, tracking how the optimization evolves and converges over time.
     /// </summary>
-    [DataContract(Name = "Rules")]
-    public partial class RouteOptimizationRules : IValidatableObject
+    [DataContract(Name = "OptimizationProgress")]
+    public partial class RouteOptimizationOptimizationProgress : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationRules" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationOptimizationProgress" /> class.
         /// </summary>
-        /// <param name="locations">A list of rules that conditionally modify location properties..</param>
-        public RouteOptimizationRules(List<RouteOptimizationLocationRule> locations = default(List<RouteOptimizationLocationRule>))
+        /// <param name="samples">A list of samples that describe the optimization metrics at various points in time..</param>
+        public RouteOptimizationOptimizationProgress(List<RouteOptimizationOptimizationProgressSample> samples = default(List<RouteOptimizationOptimizationProgressSample>))
         {
-            this.Locations = locations;
+            this.Samples = samples;
         }
 
         /// <summary>
-        /// A list of rules that conditionally modify location properties.
+        /// A list of samples that describe the optimization metrics at various points in time.
         /// </summary>
-        /// <value>A list of rules that conditionally modify location properties.</value>
-        [DataMember(Name = "locations", EmitDefaultValue = false)]
-        public List<RouteOptimizationLocationRule> Locations { get; set; }
+        /// <value>A list of samples that describe the optimization metrics at various points in time.</value>
+        [DataMember(Name = "samples", EmitDefaultValue = false)]
+        public List<RouteOptimizationOptimizationProgressSample> Samples { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -54,8 +54,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationRules {\n");
-            sb.Append("  Locations: ").Append(Locations).Append("\n");
+            sb.Append("class RouteOptimizationOptimizationProgress {\n");
+            sb.Append("  Samples: ").Append(Samples).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

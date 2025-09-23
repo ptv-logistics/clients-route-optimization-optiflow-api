@@ -26,38 +26,35 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Describes the pickup (resp. delivery) task of a delivery (resp. pickup) order that is executed at a depot.
+    /// A paginated list of optimization summaries returned by the *listOptimization* operation.
     /// </summary>
-    [DataContract(Name = "DepotTaskProperties")]
-    public partial class RouteOptimizationDepotTaskProperties : IValidatableObject
+    [DataContract(Name = "OptimizationSummaries")]
+    public partial class RouteOptimizationOptimizationSummaries : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationDepotTaskProperties" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationOptimizationSummaries" /> class.
         /// </summary>
-        /// <param name="duration">The duration [s] it takes to execute this task. (default to 0).</param>
-        /// <param name="categories">A list of categories the task belongs to that can be used to describe constraints or rules..</param>
-        public RouteOptimizationDepotTaskProperties(int? duration = 0, List<string> categories = default(List<string>))
+        /// <param name="optimizations">A list of optimization summaries..</param>
+        /// <param name="nextCursor">Pagination cursor for the next page of results. Present when additional results exist beyond the current page. Pass this value as the &#x60;cursor&#x60; parameter in the next request to continue pagination. Null indicates the final page..</param>
+        public RouteOptimizationOptimizationSummaries(List<RouteOptimizationOptimizationSummary> optimizations = default(List<RouteOptimizationOptimizationSummary>), string nextCursor = default(string))
         {
-            // use default value if no "duration" provided
-            this.Duration = duration ?? 0;
-            this.Categories = categories;
+            this.Optimizations = optimizations;
+            this.NextCursor = nextCursor;
         }
 
         /// <summary>
-        /// The duration [s] it takes to execute this task.
+        /// A list of optimization summaries.
         /// </summary>
-        /// <value>The duration [s] it takes to execute this task.</value>
-        /// <example>16200</example>
-        [DataMember(Name = "duration", EmitDefaultValue = true)]
-        public int? Duration { get; set; }
+        /// <value>A list of optimization summaries.</value>
+        [DataMember(Name = "optimizations", EmitDefaultValue = false)]
+        public List<RouteOptimizationOptimizationSummary> Optimizations { get; set; }
 
         /// <summary>
-        /// A list of categories the task belongs to that can be used to describe constraints or rules.
+        /// Pagination cursor for the next page of results. Present when additional results exist beyond the current page. Pass this value as the &#x60;cursor&#x60; parameter in the next request to continue pagination. Null indicates the final page.
         /// </summary>
-        /// <value>A list of categories the task belongs to that can be used to describe constraints or rules.</value>
-        /// <example>[&quot;GHENT&quot;,&quot;FORK_LIFT_NEEDED&quot;]</example>
-        [DataMember(Name = "categories", EmitDefaultValue = false)]
-        public List<string> Categories { get; set; }
+        /// <value>Pagination cursor for the next page of results. Present when additional results exist beyond the current page. Pass this value as the &#x60;cursor&#x60; parameter in the next request to continue pagination. Null indicates the final page.</value>
+        [DataMember(Name = "nextCursor", EmitDefaultValue = true)]
+        public string NextCursor { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,9 +63,9 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationDepotTaskProperties {\n");
-            sb.Append("  Duration: ").Append(Duration).Append("\n");
-            sb.Append("  Categories: ").Append(Categories).Append("\n");
+            sb.Append("class RouteOptimizationOptimizationSummaries {\n");
+            sb.Append("  Optimizations: ").Append(Optimizations).Append("\n");
+            sb.Append("  NextCursor: ").Append(NextCursor).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -89,12 +86,6 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Duration (int?) minimum
-            if (this.Duration < (int?)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Duration, must be a value greater than or equal to 0.", new [] { "Duration" });
-            }
-
             yield break;
         }
     }

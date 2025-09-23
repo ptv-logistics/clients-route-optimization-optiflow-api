@@ -26,26 +26,51 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A reference to the optimization.
+    /// A summary representation of an optimization.
     /// </summary>
-    [DataContract(Name = "OptimizationIdentifier")]
-    public partial class RouteOptimizationOptimizationIdentifier : IValidatableObject
+    [DataContract(Name = "OptimizationSummary")]
+    public partial class RouteOptimizationOptimizationSummary : IValidatableObject
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOptimizationIdentifier" /> class.
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", EmitDefaultValue = true)]
+        public RouteOptimizationOptimizationStatus? Status { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RouteOptimizationOptimizationSummary" /> class.
         /// </summary>
         /// <param name="id">The unique identifier of the optimization..</param>
-        public RouteOptimizationOptimizationIdentifier(Guid? id = default(Guid?))
+        /// <param name="status">status.</param>
+        /// <param name="metrics">metrics.</param>
+        /// <param name="metadata">metadata.</param>
+        public RouteOptimizationOptimizationSummary(Guid? id = default(Guid?), RouteOptimizationOptimizationStatus? status = default(RouteOptimizationOptimizationStatus?), RouteOptimizationMetrics metrics = default(RouteOptimizationMetrics), RouteOptimizationOptimizationResultMetadata metadata = default(RouteOptimizationOptimizationResultMetadata))
         {
             this.Id = id;
+            this.Status = status;
+            this.Metrics = metrics;
+            this.Metadata = metadata;
         }
 
         /// <summary>
         /// The unique identifier of the optimization.
         /// </summary>
         /// <value>The unique identifier of the optimization.</value>
+        /// <example>acde070d-8c4c-4f0d-9d8a-162843c10333</example>
         [DataMember(Name = "id", EmitDefaultValue = true)]
         public Guid? Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Metrics
+        /// </summary>
+        [DataMember(Name = "metrics", EmitDefaultValue = false)]
+        public RouteOptimizationMetrics Metrics { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Metadata
+        /// </summary>
+        [DataMember(Name = "metadata", EmitDefaultValue = false)]
+        public RouteOptimizationOptimizationResultMetadata Metadata { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -54,8 +79,11 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationOptimizationIdentifier {\n");
+            sb.Append("class RouteOptimizationOptimizationSummary {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Metrics: ").Append(Metrics).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
