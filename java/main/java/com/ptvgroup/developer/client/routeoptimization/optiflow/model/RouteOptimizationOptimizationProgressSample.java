@@ -24,52 +24,82 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationMetrics;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Describes a vehicle slot that can be assigned stops.
+ * A snapshot of optimization metrics at a specific point in time.
  */
 @JsonPropertyOrder({
-  RouteOptimizationVehicleSlot.JSON_PROPERTY_COST
+  RouteOptimizationOptimizationProgressSample.JSON_PROPERTY_TIME,
+  RouteOptimizationOptimizationProgressSample.JSON_PROPERTY_METRICS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-23T07:41:40.581200777Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationVehicleSlot {
-  public static final String JSON_PROPERTY_COST = "cost";
-  private Double cost = 0d;
+public class RouteOptimizationOptimizationProgressSample {
+  public static final String JSON_PROPERTY_TIME = "time";
+  private OffsetDateTime time;
 
-  public RouteOptimizationVehicleSlot() { 
+  public static final String JSON_PROPERTY_METRICS = "metrics";
+  private RouteOptimizationMetrics metrics;
+
+  public RouteOptimizationOptimizationProgressSample() { 
   }
 
-  public RouteOptimizationVehicleSlot cost(Double cost) {
-    this.cost = cost;
+  public RouteOptimizationOptimizationProgressSample time(OffsetDateTime time) {
+    this.time = time;
     return this;
   }
 
    /**
-   * The cost incurred when assigning at least one stop to this vehicle slot.
-   * minimum: 0
-   * @return cost
+   * The time at which the metrics were captured. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
+   * @return time
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_COST)
+  @JsonProperty(JSON_PROPERTY_TIME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getCost() {
-    return cost;
+  public OffsetDateTime getTime() {
+    return time;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_COST)
+  @JsonProperty(JSON_PROPERTY_TIME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCost(Double cost) {
-    this.cost = cost;
+  public void setTime(OffsetDateTime time) {
+    this.time = time;
+  }
+
+
+  public RouteOptimizationOptimizationProgressSample metrics(RouteOptimizationMetrics metrics) {
+    this.metrics = metrics;
+    return this;
+  }
+
+   /**
+   * Get metrics
+   * @return metrics
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public RouteOptimizationMetrics getMetrics() {
+    return metrics;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_METRICS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMetrics(RouteOptimizationMetrics metrics) {
+    this.metrics = metrics;
   }
 
 
   /**
-   * Return true if this VehicleSlot object is equal to o.
+   * Return true if this OptimizationProgressSample object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +109,22 @@ public class RouteOptimizationVehicleSlot {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationVehicleSlot vehicleSlot = (RouteOptimizationVehicleSlot) o;
-    return Objects.equals(this.cost, vehicleSlot.cost);
+    RouteOptimizationOptimizationProgressSample optimizationProgressSample = (RouteOptimizationOptimizationProgressSample) o;
+    return Objects.equals(this.time, optimizationProgressSample.time) &&
+        Objects.equals(this.metrics, optimizationProgressSample.metrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cost);
+    return Objects.hash(time, metrics);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationVehicleSlot {\n");
-    sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
+    sb.append("class RouteOptimizationOptimizationProgressSample {\n");
+    sb.append("    time: ").append(toIndentedString(time)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -140,9 +172,14 @@ public class RouteOptimizationVehicleSlot {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `cost` to the URL query string
-    if (getCost() != null) {
-      joiner.add(String.format("%scost%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCost()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `time` to the URL query string
+    if (getTime() != null) {
+      joiner.add(String.format("%stime%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTime()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `metrics` to the URL query string
+    if (getMetrics() != null) {
+      joiner.add(getMetrics().toUrlQueryString(prefix + "metrics" + suffix));
     }
 
     return joiner.toString();

@@ -26,19 +26,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Describes which combination of depots and vehicles have to be respected or excluded. * &#x60;DEPOT_REQUIRES_VEHICLE&#x60; - A depot from the given depot category can only be visited bya vehicle from the given vehicle category. * &#x60;VEHICLE_REQUIRES_DEPOT&#x60; - A vehicle from the given vehicle category can only visit depots from the given depot category. * &#x60;FORBIDDEN_COMBINATION&#x60; - A depot from the given depot category cannot be visited by a vehicle from the given vehicle category.
+ * Describes which combinations of orders and depots have to be respected or excluded. * &#x60;ORDER_REQUIRES_DEPOT&#x60; - An order from the given order category can only be (un)loaded at a depot from the given depot category. * &#x60;DEPOT_REQUIRES_ORDER&#x60; - At a depot from the given depot category only orders from the given order category can be (un)loaded. * &#x60;FORBIDDEN_COMBINATION&#x60; - An order from the given order category cannot be (un)loaded at a depot from the given depot category.
  */
-public enum RouteOptimizationDepotVehicleCombinationConstraintType {
+public enum RouteOptimizationOrderDepotCombinationConstraintType {
   
-  DEPOT_REQUIRES_VEHICLE("DEPOT_REQUIRES_VEHICLE"),
+  ORDER_REQUIRES_DEPOT("ORDER_REQUIRES_DEPOT"),
   
-  VEHICLE_REQUIRES_DEPOT("VEHICLE_REQUIRES_DEPOT"),
+  DEPOT_REQUIRES_ORDER("DEPOT_REQUIRES_ORDER"),
   
   FORBIDDEN_COMBINATION("FORBIDDEN_COMBINATION");
 
   private String value;
 
-  RouteOptimizationDepotVehicleCombinationConstraintType(String value) {
+  RouteOptimizationOrderDepotCombinationConstraintType(String value) {
     this.value = value;
   }
 
@@ -53,8 +53,8 @@ public enum RouteOptimizationDepotVehicleCombinationConstraintType {
   }
 
   @JsonCreator
-  public static RouteOptimizationDepotVehicleCombinationConstraintType fromValue(String value) {
-    for (RouteOptimizationDepotVehicleCombinationConstraintType b : RouteOptimizationDepotVehicleCombinationConstraintType.values()) {
+  public static RouteOptimizationOrderDepotCombinationConstraintType fromValue(String value) {
+    for (RouteOptimizationOrderDepotCombinationConstraintType b : RouteOptimizationOrderDepotCombinationConstraintType.values()) {
       if (b.value.equals(value)) {
         return b;
       }

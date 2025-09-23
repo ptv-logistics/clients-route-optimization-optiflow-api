@@ -24,52 +24,62 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationOptimizationProgressSample;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Describes a vehicle slot that can be assigned stops.
+ * Time-series record of optimization metrics, tracking how the optimization evolves and converges over time.
  */
 @JsonPropertyOrder({
-  RouteOptimizationVehicleSlot.JSON_PROPERTY_COST
+  RouteOptimizationOptimizationProgress.JSON_PROPERTY_SAMPLES
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-23T07:41:40.581200777Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationVehicleSlot {
-  public static final String JSON_PROPERTY_COST = "cost";
-  private Double cost = 0d;
+public class RouteOptimizationOptimizationProgress {
+  public static final String JSON_PROPERTY_SAMPLES = "samples";
+  private List<RouteOptimizationOptimizationProgressSample> samples;
 
-  public RouteOptimizationVehicleSlot() { 
+  public RouteOptimizationOptimizationProgress() { 
   }
 
-  public RouteOptimizationVehicleSlot cost(Double cost) {
-    this.cost = cost;
+  public RouteOptimizationOptimizationProgress samples(List<RouteOptimizationOptimizationProgressSample> samples) {
+    this.samples = samples;
+    return this;
+  }
+
+  public RouteOptimizationOptimizationProgress addSamplesItem(RouteOptimizationOptimizationProgressSample samplesItem) {
+    if (this.samples == null) {
+      this.samples = new ArrayList<>();
+    }
+    this.samples.add(samplesItem);
     return this;
   }
 
    /**
-   * The cost incurred when assigning at least one stop to this vehicle slot.
-   * minimum: 0
-   * @return cost
+   * A list of samples that describe the optimization metrics at various points in time.
+   * @return samples
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_COST)
+  @JsonProperty(JSON_PROPERTY_SAMPLES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getCost() {
-    return cost;
+  public List<RouteOptimizationOptimizationProgressSample> getSamples() {
+    return samples;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_COST)
+  @JsonProperty(JSON_PROPERTY_SAMPLES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCost(Double cost) {
-    this.cost = cost;
+  public void setSamples(List<RouteOptimizationOptimizationProgressSample> samples) {
+    this.samples = samples;
   }
 
 
   /**
-   * Return true if this VehicleSlot object is equal to o.
+   * Return true if this OptimizationProgress object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +89,20 @@ public class RouteOptimizationVehicleSlot {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationVehicleSlot vehicleSlot = (RouteOptimizationVehicleSlot) o;
-    return Objects.equals(this.cost, vehicleSlot.cost);
+    RouteOptimizationOptimizationProgress optimizationProgress = (RouteOptimizationOptimizationProgress) o;
+    return Objects.equals(this.samples, optimizationProgress.samples);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cost);
+    return Objects.hash(samples);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationVehicleSlot {\n");
-    sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
+    sb.append("class RouteOptimizationOptimizationProgress {\n");
+    sb.append("    samples: ").append(toIndentedString(samples)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -140,9 +150,14 @@ public class RouteOptimizationVehicleSlot {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `cost` to the URL query string
-    if (getCost() != null) {
-      joiner.add(String.format("%scost%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCost()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `samples` to the URL query string
+    if (getSamples() != null) {
+      for (int i = 0; i < getSamples().size(); i++) {
+        if (getSamples().get(i) != null) {
+          joiner.add(getSamples().get(i).toUrlQueryString(String.format("%ssamples%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
     return joiner.toString();

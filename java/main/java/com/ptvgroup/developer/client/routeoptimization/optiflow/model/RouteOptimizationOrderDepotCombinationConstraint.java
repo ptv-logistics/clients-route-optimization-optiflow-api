@@ -24,38 +24,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationOrderVehicleCombinationConstraintType;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationOrderDepotCombinationConstraintType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A constraint on the combination of orders and vehicles belonging to a certain category.
+ * A constraint on the combination of orders and depots belonging to a certain category.
  */
 @JsonPropertyOrder({
-  RouteOptimizationOrderVehicleCombinationConstraint.JSON_PROPERTY_TYPE,
-  RouteOptimizationOrderVehicleCombinationConstraint.JSON_PROPERTY_ORDER_CATEGORY,
-  RouteOptimizationOrderVehicleCombinationConstraint.JSON_PROPERTY_VEHICLE_CATEGORY,
-  RouteOptimizationOrderVehicleCombinationConstraint.JSON_PROPERTY_VIOLATION_COST
+  RouteOptimizationOrderDepotCombinationConstraint.JSON_PROPERTY_TYPE,
+  RouteOptimizationOrderDepotCombinationConstraint.JSON_PROPERTY_ORDER_CATEGORY,
+  RouteOptimizationOrderDepotCombinationConstraint.JSON_PROPERTY_DEPOT_CATEGORY
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-23T07:41:40.581200777Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationOrderVehicleCombinationConstraint {
+public class RouteOptimizationOrderDepotCombinationConstraint {
   public static final String JSON_PROPERTY_TYPE = "type";
-  private RouteOptimizationOrderVehicleCombinationConstraintType type;
+  private RouteOptimizationOrderDepotCombinationConstraintType type;
 
   public static final String JSON_PROPERTY_ORDER_CATEGORY = "orderCategory";
   private String orderCategory;
 
-  public static final String JSON_PROPERTY_VEHICLE_CATEGORY = "vehicleCategory";
-  private String vehicleCategory;
+  public static final String JSON_PROPERTY_DEPOT_CATEGORY = "depotCategory";
+  private String depotCategory;
 
-  public static final String JSON_PROPERTY_VIOLATION_COST = "violationCost";
-  private Double violationCost;
-
-  public RouteOptimizationOrderVehicleCombinationConstraint() { 
+  public RouteOptimizationOrderDepotCombinationConstraint() { 
   }
 
-  public RouteOptimizationOrderVehicleCombinationConstraint type(RouteOptimizationOrderVehicleCombinationConstraintType type) {
+  public RouteOptimizationOrderDepotCombinationConstraint type(RouteOptimizationOrderDepotCombinationConstraintType type) {
     this.type = type;
     return this;
   }
@@ -68,19 +64,19 @@ public class RouteOptimizationOrderVehicleCombinationConstraint {
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public RouteOptimizationOrderVehicleCombinationConstraintType getType() {
+  public RouteOptimizationOrderDepotCombinationConstraintType getType() {
     return type;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(RouteOptimizationOrderVehicleCombinationConstraintType type) {
+  public void setType(RouteOptimizationOrderDepotCombinationConstraintType type) {
     this.type = type;
   }
 
 
-  public RouteOptimizationOrderVehicleCombinationConstraint orderCategory(String orderCategory) {
+  public RouteOptimizationOrderDepotCombinationConstraint orderCategory(String orderCategory) {
     this.orderCategory = orderCategory;
     return this;
   }
@@ -105,59 +101,33 @@ public class RouteOptimizationOrderVehicleCombinationConstraint {
   }
 
 
-  public RouteOptimizationOrderVehicleCombinationConstraint vehicleCategory(String vehicleCategory) {
-    this.vehicleCategory = vehicleCategory;
+  public RouteOptimizationOrderDepotCombinationConstraint depotCategory(String depotCategory) {
+    this.depotCategory = depotCategory;
     return this;
   }
 
    /**
-   * The category of vehicles to which the constraint applies. The constraint will be ignored if no vehicle belongs to this category.
-   * @return vehicleCategory
+   * The category of depots to which the constraint applies. The constraint will be ignored if no depot belongs to this category.
+   * @return depotCategory
   **/
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VEHICLE_CATEGORY)
+  @JsonProperty(JSON_PROPERTY_DEPOT_CATEGORY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getVehicleCategory() {
-    return vehicleCategory;
+  public String getDepotCategory() {
+    return depotCategory;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VEHICLE_CATEGORY)
+  @JsonProperty(JSON_PROPERTY_DEPOT_CATEGORY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVehicleCategory(String vehicleCategory) {
-    this.vehicleCategory = vehicleCategory;
-  }
-
-
-  public RouteOptimizationOrderVehicleCombinationConstraint violationCost(Double violationCost) {
-    this.violationCost = violationCost;
-    return this;
-  }
-
-   /**
-   * The cost incurred when an order-vehicle combination does not meet this constraint. When omitted, all order-vehicle combinations must satisfy this constraint.
-   * minimum: 0
-   * @return violationCost
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VIOLATION_COST)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Double getViolationCost() {
-    return violationCost;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VIOLATION_COST)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setViolationCost(Double violationCost) {
-    this.violationCost = violationCost;
+  public void setDepotCategory(String depotCategory) {
+    this.depotCategory = depotCategory;
   }
 
 
   /**
-   * Return true if this OrderVehicleCombinationConstraint object is equal to o.
+   * Return true if this OrderDepotCombinationConstraint object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -167,26 +137,24 @@ public class RouteOptimizationOrderVehicleCombinationConstraint {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationOrderVehicleCombinationConstraint orderVehicleCombinationConstraint = (RouteOptimizationOrderVehicleCombinationConstraint) o;
-    return Objects.equals(this.type, orderVehicleCombinationConstraint.type) &&
-        Objects.equals(this.orderCategory, orderVehicleCombinationConstraint.orderCategory) &&
-        Objects.equals(this.vehicleCategory, orderVehicleCombinationConstraint.vehicleCategory) &&
-        Objects.equals(this.violationCost, orderVehicleCombinationConstraint.violationCost);
+    RouteOptimizationOrderDepotCombinationConstraint orderDepotCombinationConstraint = (RouteOptimizationOrderDepotCombinationConstraint) o;
+    return Objects.equals(this.type, orderDepotCombinationConstraint.type) &&
+        Objects.equals(this.orderCategory, orderDepotCombinationConstraint.orderCategory) &&
+        Objects.equals(this.depotCategory, orderDepotCombinationConstraint.depotCategory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, orderCategory, vehicleCategory, violationCost);
+    return Objects.hash(type, orderCategory, depotCategory);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationOrderVehicleCombinationConstraint {\n");
+    sb.append("class RouteOptimizationOrderDepotCombinationConstraint {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    orderCategory: ").append(toIndentedString(orderCategory)).append("\n");
-    sb.append("    vehicleCategory: ").append(toIndentedString(vehicleCategory)).append("\n");
-    sb.append("    violationCost: ").append(toIndentedString(violationCost)).append("\n");
+    sb.append("    depotCategory: ").append(toIndentedString(depotCategory)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -244,14 +212,9 @@ public class RouteOptimizationOrderVehicleCombinationConstraint {
       joiner.add(String.format("%sorderCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrderCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `vehicleCategory` to the URL query string
-    if (getVehicleCategory() != null) {
-      joiner.add(String.format("%svehicleCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVehicleCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
-    }
-
-    // add `violationCost` to the URL query string
-    if (getViolationCost() != null) {
-      joiner.add(String.format("%sviolationCost%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getViolationCost()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `depotCategory` to the URL query string
+    if (getDepotCategory() != null) {
+      joiner.add(String.format("%sdepotCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDepotCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
