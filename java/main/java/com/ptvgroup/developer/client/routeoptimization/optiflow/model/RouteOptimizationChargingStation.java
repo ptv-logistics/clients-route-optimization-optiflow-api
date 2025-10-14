@@ -25,51 +25,81 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
-import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A reference to the optimization.
+ * Specifies the type of charging station that can be used to charge an electric vehicle.
  */
 @JsonPropertyOrder({
-  RouteOptimizationOptimizationIdentifier.JSON_PROPERTY_ID
+  RouteOptimizationChargingStation.JSON_PROPERTY_ID,
+  RouteOptimizationChargingStation.JSON_PROPERTY_MAXIMUM_POWER
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-14T11:54:51.442098204Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationOptimizationIdentifier {
+public class RouteOptimizationChargingStation {
   public static final String JSON_PROPERTY_ID = "id";
-  private UUID id;
+  private String id;
 
-  public RouteOptimizationOptimizationIdentifier() { 
+  public static final String JSON_PROPERTY_MAXIMUM_POWER = "maximumPower";
+  private Double maximumPower;
+
+  public RouteOptimizationChargingStation() { 
   }
 
-  public RouteOptimizationOptimizationIdentifier id(UUID id) {
+  public RouteOptimizationChargingStation id(String id) {
     this.id = id;
     return this;
   }
 
    /**
-   * The unique identifier of the optimization.
+   * A unique identifier of the charging station. This must be unique across all charging stations of one location.
    * @return id
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public UUID getId() {
+  public String getId() {
     return id;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(UUID id) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setId(String id) {
     this.id = id;
   }
 
 
+  public RouteOptimizationChargingStation maximumPower(Double maximumPower) {
+    this.maximumPower = maximumPower;
+    return this;
+  }
+
+   /**
+   * The maximum power output [kW] of the charging station.
+   * minimum: 0
+   * maximum: 1000
+   * @return maximumPower
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_MAXIMUM_POWER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Double getMaximumPower() {
+    return maximumPower;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MAXIMUM_POWER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMaximumPower(Double maximumPower) {
+    this.maximumPower = maximumPower;
+  }
+
+
   /**
-   * Return true if this OptimizationIdentifier object is equal to o.
+   * Return true if this ChargingStation object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +109,22 @@ public class RouteOptimizationOptimizationIdentifier {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationOptimizationIdentifier optimizationIdentifier = (RouteOptimizationOptimizationIdentifier) o;
-    return Objects.equals(this.id, optimizationIdentifier.id);
+    RouteOptimizationChargingStation chargingStation = (RouteOptimizationChargingStation) o;
+    return Objects.equals(this.id, chargingStation.id) &&
+        Objects.equals(this.maximumPower, chargingStation.maximumPower);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(id, maximumPower);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationOptimizationIdentifier {\n");
+    sb.append("class RouteOptimizationChargingStation {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    maximumPower: ").append(toIndentedString(maximumPower)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -143,6 +175,11 @@ public class RouteOptimizationOptimizationIdentifier {
     // add `id` to the URL query string
     if (getId() != null) {
       joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `maximumPower` to the URL query string
+    if (getMaximumPower() != null) {
+      joiner.add(String.format("%smaximumPower%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMaximumPower()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

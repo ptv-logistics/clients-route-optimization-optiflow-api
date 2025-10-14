@@ -30,34 +30,38 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A break scheduled in a route according the vehicle break parameters.
+ * Charging planned in the route based on the vehicle’s requirements.
  */
 @JsonPropertyOrder({
-  RouteOptimizationBreak.JSON_PROPERTY_START,
-  RouteOptimizationBreak.JSON_PROPERTY_DURATION,
-  RouteOptimizationBreak.JSON_PROPERTY_END
+  RouteOptimizationCharging.JSON_PROPERTY_START,
+  RouteOptimizationCharging.JSON_PROPERTY_DURATION,
+  RouteOptimizationCharging.JSON_PROPERTY_CHARGING_STATION_ID,
+  RouteOptimizationCharging.JSON_PROPERTY_END
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-14T11:54:51.442098204Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationBreak {
+public class RouteOptimizationCharging {
   public static final String JSON_PROPERTY_START = "start";
   private OffsetDateTime start;
 
   public static final String JSON_PROPERTY_DURATION = "duration";
   private Integer duration;
 
+  public static final String JSON_PROPERTY_CHARGING_STATION_ID = "chargingStationId";
+  private String chargingStationId;
+
   public static final String JSON_PROPERTY_END = "end";
   private OffsetDateTime end;
 
-  public RouteOptimizationBreak() { 
+  public RouteOptimizationCharging() { 
   }
 
-  public RouteOptimizationBreak start(OffsetDateTime start) {
+  public RouteOptimizationCharging start(OffsetDateTime start) {
     this.start = start;
     return this;
   }
 
    /**
-   * The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
+   * The point in time when the charging starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
    * @return start
   **/
   @jakarta.annotation.Nullable
@@ -76,13 +80,13 @@ public class RouteOptimizationBreak {
   }
 
 
-  public RouteOptimizationBreak duration(Integer duration) {
+  public RouteOptimizationCharging duration(Integer duration) {
     this.duration = duration;
     return this;
   }
 
    /**
-   * The duration [s] of the break.
+   * The duration [s] of charging.
    * minimum: 0
    * @return duration
   **/
@@ -102,13 +106,38 @@ public class RouteOptimizationBreak {
   }
 
 
-  public RouteOptimizationBreak end(OffsetDateTime end) {
+  public RouteOptimizationCharging chargingStationId(String chargingStationId) {
+    this.chargingStationId = chargingStationId;
+    return this;
+  }
+
+   /**
+   * The unique identifier of the charging station where charging is taking place.
+   * @return chargingStationId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHARGING_STATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getChargingStationId() {
+    return chargingStationId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHARGING_STATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChargingStationId(String chargingStationId) {
+    this.chargingStationId = chargingStationId;
+  }
+
+
+  public RouteOptimizationCharging end(OffsetDateTime end) {
     this.end = end;
     return this;
   }
 
    /**
-   * The point in time when the break ends. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
+   * The point in time when charging ends. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
    * @return end
   **/
   @jakarta.annotation.Nullable
@@ -128,7 +157,7 @@ public class RouteOptimizationBreak {
 
 
   /**
-   * Return true if this Break object is equal to o.
+   * Return true if this Charging object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -138,23 +167,25 @@ public class RouteOptimizationBreak {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationBreak _break = (RouteOptimizationBreak) o;
-    return Objects.equals(this.start, _break.start) &&
-        Objects.equals(this.duration, _break.duration) &&
-        Objects.equals(this.end, _break.end);
+    RouteOptimizationCharging charging = (RouteOptimizationCharging) o;
+    return Objects.equals(this.start, charging.start) &&
+        Objects.equals(this.duration, charging.duration) &&
+        Objects.equals(this.chargingStationId, charging.chargingStationId) &&
+        Objects.equals(this.end, charging.end);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, duration, end);
+    return Objects.hash(start, duration, chargingStationId, end);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationBreak {\n");
+    sb.append("class RouteOptimizationCharging {\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    chargingStationId: ").append(toIndentedString(chargingStationId)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -211,6 +242,11 @@ public class RouteOptimizationBreak {
     // add `duration` to the URL query string
     if (getDuration() != null) {
       joiner.add(String.format("%sduration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDuration()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `chargingStationId` to the URL query string
+    if (getChargingStationId() != null) {
+      joiner.add(String.format("%schargingStationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChargingStationId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     // add `end` to the URL query string

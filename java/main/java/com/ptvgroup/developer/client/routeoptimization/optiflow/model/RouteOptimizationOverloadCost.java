@@ -29,77 +29,107 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Specifies an increased cost per effort if the route&#39;s repositioning effort goes above a threshold. When two orders are loaded into the same compartment and delivered in the reverse order, we refer to them as a non-last-in-first-out (non-LIFO) pair. Any non-LIFO pair of orders requires repositioning in the vehicle, as the last picked-up order obstructs the first order that needs to be delivered. The effort involved in this repositioning is the minimum effort required for the two orders. The total repositioning effort for the route is the sum of the repositioning efforts for all non-LIFO pairs of orders.
+ * Defines an extra cost that is applied whenever an order is loaded onto the vehicle and the vehicle&#39;s load exceeds the specified threshold.
  */
 @JsonPropertyOrder({
-  RouteOptimizationRepositioningEffortCost.JSON_PROPERTY_THRESHOLD,
-  RouteOptimizationRepositioningEffortCost.JSON_PROPERTY_EXTRA_PER_EFFORT
+  RouteOptimizationOverloadCost.JSON_PROPERTY_DIMENSION,
+  RouteOptimizationOverloadCost.JSON_PROPERTY_THRESHOLD,
+  RouteOptimizationOverloadCost.JSON_PROPERTY_EXTRA_PER_UNIT
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-14T11:54:51.442098204Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationRepositioningEffortCost {
+public class RouteOptimizationOverloadCost {
+  public static final String JSON_PROPERTY_DIMENSION = "dimension";
+  private String dimension;
+
   public static final String JSON_PROPERTY_THRESHOLD = "threshold";
-  private Integer threshold;
+  private Double threshold;
 
-  public static final String JSON_PROPERTY_EXTRA_PER_EFFORT = "extraPerEffort";
-  private Double extraPerEffort;
+  public static final String JSON_PROPERTY_EXTRA_PER_UNIT = "extraPerUnit";
+  private Double extraPerUnit;
 
-  public RouteOptimizationRepositioningEffortCost() { 
+  public RouteOptimizationOverloadCost() { 
   }
 
-  public RouteOptimizationRepositioningEffortCost threshold(Integer threshold) {
+  public RouteOptimizationOverloadCost dimension(String dimension) {
+    this.dimension = dimension;
+    return this;
+  }
+
+   /**
+   * Indicates the dimension of the load, to which the threshold applies.
+   * @return dimension
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DIMENSION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getDimension() {
+    return dimension;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DIMENSION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDimension(String dimension) {
+    this.dimension = dimension;
+  }
+
+
+  public RouteOptimizationOverloadCost threshold(Double threshold) {
     this.threshold = threshold;
     return this;
   }
 
    /**
-   * The threshold for the repositioning effort from which the cost per effort applies.
+   * The threshold for the specified load dimension.  When an order is loaded, only the part of that order which contributes to exceeding the threshold is considered for the extra cost.
    * minimum: 0
+   * maximum: 1000000
    * @return threshold
   **/
   @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_THRESHOLD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Integer getThreshold() {
+  public Double getThreshold() {
     return threshold;
   }
 
 
   @JsonProperty(JSON_PROPERTY_THRESHOLD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setThreshold(Integer threshold) {
+  public void setThreshold(Double threshold) {
     this.threshold = threshold;
   }
 
 
-  public RouteOptimizationRepositioningEffortCost extraPerEffort(Double extraPerEffort) {
-    this.extraPerEffort = extraPerEffort;
+  public RouteOptimizationOverloadCost extraPerUnit(Double extraPerUnit) {
+    this.extraPerUnit = extraPerUnit;
     return this;
   }
 
    /**
-   * Specifies the extra cost for every unit of effort above the threshold. If the threshold of multiple repositioning effort costs is exceeded, the extra costs per effort are added.
+   * Specifies the extra cost per unit when loading an order which exceeds the threshold.
    * minimum: 0
-   * @return extraPerEffort
+   * @return extraPerUnit
   **/
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXTRA_PER_EFFORT)
+  @JsonProperty(JSON_PROPERTY_EXTRA_PER_UNIT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Double getExtraPerEffort() {
-    return extraPerEffort;
+  public Double getExtraPerUnit() {
+    return extraPerUnit;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXTRA_PER_EFFORT)
+  @JsonProperty(JSON_PROPERTY_EXTRA_PER_UNIT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExtraPerEffort(Double extraPerEffort) {
-    this.extraPerEffort = extraPerEffort;
+  public void setExtraPerUnit(Double extraPerUnit) {
+    this.extraPerUnit = extraPerUnit;
   }
 
 
   /**
-   * Return true if this RepositioningEffortCost object is equal to o.
+   * Return true if this OverloadCost object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -109,22 +139,24 @@ public class RouteOptimizationRepositioningEffortCost {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationRepositioningEffortCost repositioningEffortCost = (RouteOptimizationRepositioningEffortCost) o;
-    return Objects.equals(this.threshold, repositioningEffortCost.threshold) &&
-        Objects.equals(this.extraPerEffort, repositioningEffortCost.extraPerEffort);
+    RouteOptimizationOverloadCost overloadCost = (RouteOptimizationOverloadCost) o;
+    return Objects.equals(this.dimension, overloadCost.dimension) &&
+        Objects.equals(this.threshold, overloadCost.threshold) &&
+        Objects.equals(this.extraPerUnit, overloadCost.extraPerUnit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(threshold, extraPerEffort);
+    return Objects.hash(dimension, threshold, extraPerUnit);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationRepositioningEffortCost {\n");
+    sb.append("class RouteOptimizationOverloadCost {\n");
+    sb.append("    dimension: ").append(toIndentedString(dimension)).append("\n");
     sb.append("    threshold: ").append(toIndentedString(threshold)).append("\n");
-    sb.append("    extraPerEffort: ").append(toIndentedString(extraPerEffort)).append("\n");
+    sb.append("    extraPerUnit: ").append(toIndentedString(extraPerUnit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -172,14 +204,19 @@ public class RouteOptimizationRepositioningEffortCost {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `dimension` to the URL query string
+    if (getDimension() != null) {
+      joiner.add(String.format("%sdimension%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDimension()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
     // add `threshold` to the URL query string
     if (getThreshold() != null) {
       joiner.add(String.format("%sthreshold%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getThreshold()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `extraPerEffort` to the URL query string
-    if (getExtraPerEffort() != null) {
-      joiner.add(String.format("%sextraPerEffort%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExtraPerEffort()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `extraPerUnit` to the URL query string
+    if (getExtraPerUnit() != null) {
+      joiner.add(String.format("%sextraPerUnit%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExtraPerUnit()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

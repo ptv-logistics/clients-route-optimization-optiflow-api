@@ -24,82 +24,83 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.time.OffsetDateTime;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationBatteryConsumption;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A break scheduled on a route.
+ * Physical properties of the battery of an electric vehicle.
  */
 @JsonPropertyOrder({
-  RouteOptimizationBreakStructure.JSON_PROPERTY_START,
-  RouteOptimizationBreakStructure.JSON_PROPERTY_DURATION
+  RouteOptimizationVehicleBattery.JSON_PROPERTY_CAPACITY,
+  RouteOptimizationVehicleBattery.JSON_PROPERTY_CONSUMPTION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-14T11:54:51.442098204Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationBreakStructure {
-  public static final String JSON_PROPERTY_START = "start";
-  private OffsetDateTime start;
+public class RouteOptimizationVehicleBattery {
+  public static final String JSON_PROPERTY_CAPACITY = "capacity";
+  private Double capacity;
 
-  public static final String JSON_PROPERTY_DURATION = "duration";
-  private Integer duration;
+  public static final String JSON_PROPERTY_CONSUMPTION = "consumption";
+  private RouteOptimizationBatteryConsumption consumption;
 
-  public RouteOptimizationBreakStructure() { 
+  public RouteOptimizationVehicleBattery() { 
   }
 
-  public RouteOptimizationBreakStructure start(OffsetDateTime start) {
-    this.start = start;
+  public RouteOptimizationVehicleBattery capacity(Double capacity) {
+    this.capacity = capacity;
     return this;
   }
 
    /**
-   * The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before &#x60;1970-01-01T00:00:00+00:00&#x60; nor after &#x60;2037-12-31T23:59:59+00:00&#x60;. The date must provide an offset to UTC.
-   * @return start
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_START)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public OffsetDateTime getStart() {
-    return start;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_START)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStart(OffsetDateTime start) {
-    this.start = start;
-  }
-
-
-  public RouteOptimizationBreakStructure duration(Integer duration) {
-    this.duration = duration;
-    return this;
-  }
-
-   /**
-   * The duration [s] of the break.
+   * The total battery capacity [kWh].
    * minimum: 0
-   * @return duration
+   * maximum: 10000
+   * @return capacity
   **/
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(JSON_PROPERTY_CAPACITY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Integer getDuration() {
-    return duration;
+  public Double getCapacity() {
+    return capacity;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(JSON_PROPERTY_CAPACITY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDuration(Integer duration) {
-    this.duration = duration;
+  public void setCapacity(Double capacity) {
+    this.capacity = capacity;
+  }
+
+
+  public RouteOptimizationVehicleBattery consumption(RouteOptimizationBatteryConsumption consumption) {
+    this.consumption = consumption;
+    return this;
+  }
+
+   /**
+   * Get consumption
+   * @return consumption
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CONSUMPTION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public RouteOptimizationBatteryConsumption getConsumption() {
+    return consumption;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CONSUMPTION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setConsumption(RouteOptimizationBatteryConsumption consumption) {
+    this.consumption = consumption;
   }
 
 
   /**
-   * Return true if this BreakStructure object is equal to o.
+   * Return true if this VehicleBattery object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -109,22 +110,22 @@ public class RouteOptimizationBreakStructure {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationBreakStructure breakStructure = (RouteOptimizationBreakStructure) o;
-    return Objects.equals(this.start, breakStructure.start) &&
-        Objects.equals(this.duration, breakStructure.duration);
+    RouteOptimizationVehicleBattery vehicleBattery = (RouteOptimizationVehicleBattery) o;
+    return Objects.equals(this.capacity, vehicleBattery.capacity) &&
+        Objects.equals(this.consumption, vehicleBattery.consumption);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, duration);
+    return Objects.hash(capacity, consumption);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationBreakStructure {\n");
-    sb.append("    start: ").append(toIndentedString(start)).append("\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("class RouteOptimizationVehicleBattery {\n");
+    sb.append("    capacity: ").append(toIndentedString(capacity)).append("\n");
+    sb.append("    consumption: ").append(toIndentedString(consumption)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -172,14 +173,14 @@ public class RouteOptimizationBreakStructure {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `start` to the URL query string
-    if (getStart() != null) {
-      joiner.add(String.format("%sstart%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStart()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `capacity` to the URL query string
+    if (getCapacity() != null) {
+      joiner.add(String.format("%scapacity%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCapacity()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `duration` to the URL query string
-    if (getDuration() != null) {
-      joiner.add(String.format("%sduration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDuration()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `consumption` to the URL query string
+    if (getConsumption() != null) {
+      joiner.add(getConsumption().toUrlQueryString(prefix + "consumption" + suffix));
     }
 
     return joiner.toString();

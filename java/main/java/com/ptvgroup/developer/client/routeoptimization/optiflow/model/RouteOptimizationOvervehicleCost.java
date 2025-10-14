@@ -29,30 +29,34 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Specifies an increased cost per effort if the route&#39;s repositioning effort goes above a threshold. When two orders are loaded into the same compartment and delivered in the reverse order, we refer to them as a non-last-in-first-out (non-LIFO) pair. Any non-LIFO pair of orders requires repositioning in the vehicle, as the last picked-up order obstructs the first order that needs to be delivered. The effort involved in this repositioning is the minimum effort required for the two orders. The total repositioning effort for the route is the sum of the repositioning efforts for all non-LIFO pairs of orders.
+ * Specifies an extra fixed cost and an increased cost per vehicle if the number of vehicles assigned to the resource exceeds a threshold. Either the fixed cost or the extra cost per vehicle must not be zero.
  */
 @JsonPropertyOrder({
-  RouteOptimizationRepositioningEffortCost.JSON_PROPERTY_THRESHOLD,
-  RouteOptimizationRepositioningEffortCost.JSON_PROPERTY_EXTRA_PER_EFFORT
+  RouteOptimizationOvervehicleCost.JSON_PROPERTY_THRESHOLD,
+  RouteOptimizationOvervehicleCost.JSON_PROPERTY_EXTRA_FIXED,
+  RouteOptimizationOvervehicleCost.JSON_PROPERTY_EXTRA_PER_VEHICLE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-14T11:54:51.442098204Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationRepositioningEffortCost {
+public class RouteOptimizationOvervehicleCost {
   public static final String JSON_PROPERTY_THRESHOLD = "threshold";
   private Integer threshold;
 
-  public static final String JSON_PROPERTY_EXTRA_PER_EFFORT = "extraPerEffort";
-  private Double extraPerEffort;
+  public static final String JSON_PROPERTY_EXTRA_FIXED = "extraFixed";
+  private Double extraFixed = 0d;
 
-  public RouteOptimizationRepositioningEffortCost() { 
+  public static final String JSON_PROPERTY_EXTRA_PER_VEHICLE = "extraPerVehicle";
+  private Double extraPerVehicle = 0d;
+
+  public RouteOptimizationOvervehicleCost() { 
   }
 
-  public RouteOptimizationRepositioningEffortCost threshold(Integer threshold) {
+  public RouteOptimizationOvervehicleCost threshold(Integer threshold) {
     this.threshold = threshold;
     return this;
   }
 
    /**
-   * The threshold for the repositioning effort from which the cost per effort applies.
+   * The threshold for the number of vehicles assigned to the resource above which the extra costs apply.
    * minimum: 0
    * @return threshold
   **/
@@ -72,34 +76,60 @@ public class RouteOptimizationRepositioningEffortCost {
   }
 
 
-  public RouteOptimizationRepositioningEffortCost extraPerEffort(Double extraPerEffort) {
-    this.extraPerEffort = extraPerEffort;
+  public RouteOptimizationOvervehicleCost extraFixed(Double extraFixed) {
+    this.extraFixed = extraFixed;
     return this;
   }
 
    /**
-   * Specifies the extra cost for every unit of effort above the threshold. If the threshold of multiple repositioning effort costs is exceeded, the extra costs per effort are added.
+   * Specifies the extra fixed cost when exceeding the threshold.
    * minimum: 0
-   * @return extraPerEffort
+   * @return extraFixed
   **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXTRA_PER_EFFORT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXTRA_FIXED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getExtraPerEffort() {
-    return extraPerEffort;
+  public Double getExtraFixed() {
+    return extraFixed;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXTRA_PER_EFFORT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExtraPerEffort(Double extraPerEffort) {
-    this.extraPerEffort = extraPerEffort;
+  @JsonProperty(JSON_PROPERTY_EXTRA_FIXED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExtraFixed(Double extraFixed) {
+    this.extraFixed = extraFixed;
+  }
+
+
+  public RouteOptimizationOvervehicleCost extraPerVehicle(Double extraPerVehicle) {
+    this.extraPerVehicle = extraPerVehicle;
+    return this;
+  }
+
+   /**
+   * Specifies the extra cost for every assigned vehicle above the threshold.
+   * minimum: 0
+   * @return extraPerVehicle
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXTRA_PER_VEHICLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Double getExtraPerVehicle() {
+    return extraPerVehicle;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTRA_PER_VEHICLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExtraPerVehicle(Double extraPerVehicle) {
+    this.extraPerVehicle = extraPerVehicle;
   }
 
 
   /**
-   * Return true if this RepositioningEffortCost object is equal to o.
+   * Return true if this OvervehicleCost object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -109,22 +139,24 @@ public class RouteOptimizationRepositioningEffortCost {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationRepositioningEffortCost repositioningEffortCost = (RouteOptimizationRepositioningEffortCost) o;
-    return Objects.equals(this.threshold, repositioningEffortCost.threshold) &&
-        Objects.equals(this.extraPerEffort, repositioningEffortCost.extraPerEffort);
+    RouteOptimizationOvervehicleCost overvehicleCost = (RouteOptimizationOvervehicleCost) o;
+    return Objects.equals(this.threshold, overvehicleCost.threshold) &&
+        Objects.equals(this.extraFixed, overvehicleCost.extraFixed) &&
+        Objects.equals(this.extraPerVehicle, overvehicleCost.extraPerVehicle);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(threshold, extraPerEffort);
+    return Objects.hash(threshold, extraFixed, extraPerVehicle);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationRepositioningEffortCost {\n");
+    sb.append("class RouteOptimizationOvervehicleCost {\n");
     sb.append("    threshold: ").append(toIndentedString(threshold)).append("\n");
-    sb.append("    extraPerEffort: ").append(toIndentedString(extraPerEffort)).append("\n");
+    sb.append("    extraFixed: ").append(toIndentedString(extraFixed)).append("\n");
+    sb.append("    extraPerVehicle: ").append(toIndentedString(extraPerVehicle)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -177,9 +209,14 @@ public class RouteOptimizationRepositioningEffortCost {
       joiner.add(String.format("%sthreshold%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getThreshold()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `extraPerEffort` to the URL query string
-    if (getExtraPerEffort() != null) {
-      joiner.add(String.format("%sextraPerEffort%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExtraPerEffort()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `extraFixed` to the URL query string
+    if (getExtraFixed() != null) {
+      joiner.add(String.format("%sextraFixed%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExtraFixed()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `extraPerVehicle` to the URL query string
+    if (getExtraPerVehicle() != null) {
+      joiner.add(String.format("%sextraPerVehicle%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExtraPerVehicle()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

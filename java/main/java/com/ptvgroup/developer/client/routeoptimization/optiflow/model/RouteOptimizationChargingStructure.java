@@ -30,39 +30,43 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A break scheduled in a route according the vehicle break parameters.
+ * Scheduled charging on a route.
  */
 @JsonPropertyOrder({
-  RouteOptimizationBreak.JSON_PROPERTY_START,
-  RouteOptimizationBreak.JSON_PROPERTY_DURATION,
-  RouteOptimizationBreak.JSON_PROPERTY_END
+  RouteOptimizationChargingStructure.JSON_PROPERTY_START,
+  RouteOptimizationChargingStructure.JSON_PROPERTY_DURATION,
+  RouteOptimizationChargingStructure.JSON_PROPERTY_LOCATION_ID,
+  RouteOptimizationChargingStructure.JSON_PROPERTY_CHARGING_STATION_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-14T11:54:51.442098204Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationBreak {
+public class RouteOptimizationChargingStructure {
   public static final String JSON_PROPERTY_START = "start";
   private OffsetDateTime start;
 
   public static final String JSON_PROPERTY_DURATION = "duration";
   private Integer duration;
 
-  public static final String JSON_PROPERTY_END = "end";
-  private OffsetDateTime end;
+  public static final String JSON_PROPERTY_LOCATION_ID = "locationId";
+  private String locationId;
 
-  public RouteOptimizationBreak() { 
+  public static final String JSON_PROPERTY_CHARGING_STATION_ID = "chargingStationId";
+  private String chargingStationId;
+
+  public RouteOptimizationChargingStructure() { 
   }
 
-  public RouteOptimizationBreak start(OffsetDateTime start) {
+  public RouteOptimizationChargingStructure start(OffsetDateTime start) {
     this.start = start;
     return this;
   }
 
    /**
-   * The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
+   * The point in time when charging starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before &#x60;1970-01-01T00:00:00+00:00&#x60; nor after &#x60;2037-12-31T23:59:59+00:00&#x60;. The date must provide an offset to UTC.
    * @return start
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_START)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getStart() {
     return start;
@@ -70,25 +74,25 @@ public class RouteOptimizationBreak {
 
 
   @JsonProperty(JSON_PROPERTY_START)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStart(OffsetDateTime start) {
     this.start = start;
   }
 
 
-  public RouteOptimizationBreak duration(Integer duration) {
+  public RouteOptimizationChargingStructure duration(Integer duration) {
     this.duration = duration;
     return this;
   }
 
    /**
-   * The duration [s] of the break.
+   * Charging duration [s].
    * minimum: 0
    * @return duration
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_DURATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getDuration() {
     return duration;
@@ -96,39 +100,64 @@ public class RouteOptimizationBreak {
 
 
   @JsonProperty(JSON_PROPERTY_DURATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDuration(Integer duration) {
     this.duration = duration;
   }
 
 
-  public RouteOptimizationBreak end(OffsetDateTime end) {
-    this.end = end;
+  public RouteOptimizationChargingStructure locationId(String locationId) {
+    this.locationId = locationId;
     return this;
   }
 
    /**
-   * The point in time when the break ends. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
-   * @return end
+   * The unique identifier of the location where charging is taking place.
+   * @return locationId
   **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_END)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_LOCATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public OffsetDateTime getEnd() {
-    return end;
+  public String getLocationId() {
+    return locationId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_END)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnd(OffsetDateTime end) {
-    this.end = end;
+  @JsonProperty(JSON_PROPERTY_LOCATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setLocationId(String locationId) {
+    this.locationId = locationId;
+  }
+
+
+  public RouteOptimizationChargingStructure chargingStationId(String chargingStationId) {
+    this.chargingStationId = chargingStationId;
+    return this;
+  }
+
+   /**
+   * The unique identifier of the charging station where charging is taking place.
+   * @return chargingStationId
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CHARGING_STATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getChargingStationId() {
+    return chargingStationId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHARGING_STATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setChargingStationId(String chargingStationId) {
+    this.chargingStationId = chargingStationId;
   }
 
 
   /**
-   * Return true if this Break object is equal to o.
+   * Return true if this ChargingStructure object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -138,24 +167,26 @@ public class RouteOptimizationBreak {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationBreak _break = (RouteOptimizationBreak) o;
-    return Objects.equals(this.start, _break.start) &&
-        Objects.equals(this.duration, _break.duration) &&
-        Objects.equals(this.end, _break.end);
+    RouteOptimizationChargingStructure chargingStructure = (RouteOptimizationChargingStructure) o;
+    return Objects.equals(this.start, chargingStructure.start) &&
+        Objects.equals(this.duration, chargingStructure.duration) &&
+        Objects.equals(this.locationId, chargingStructure.locationId) &&
+        Objects.equals(this.chargingStationId, chargingStructure.chargingStationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, duration, end);
+    return Objects.hash(start, duration, locationId, chargingStationId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationBreak {\n");
+    sb.append("class RouteOptimizationChargingStructure {\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
-    sb.append("    end: ").append(toIndentedString(end)).append("\n");
+    sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+    sb.append("    chargingStationId: ").append(toIndentedString(chargingStationId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -213,9 +244,14 @@ public class RouteOptimizationBreak {
       joiner.add(String.format("%sduration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDuration()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `end` to the URL query string
-    if (getEnd() != null) {
-      joiner.add(String.format("%send%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnd()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `locationId` to the URL query string
+    if (getLocationId() != null) {
+      joiner.add(String.format("%slocationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocationId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `chargingStationId` to the URL query string
+    if (getChargingStationId() != null) {
+      joiner.add(String.format("%schargingStationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChargingStationId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
