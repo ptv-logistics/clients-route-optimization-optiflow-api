@@ -26,45 +26,35 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A sequence that must be respected when scheduling routes. Tasks with a category that occurs earlier in the sequence must be scheduled in the route before a task with a category later in the sequence.
+    /// A condition used to select which tasks should be modified by a rule. A condition is met if all its properties are matched.
     /// </summary>
-    [DataContract(Name = "RespectedTaskSequence")]
-    public partial class RouteOptimizationRespectedTaskSequence : IValidatableObject
+    [DataContract(Name = "TaskRuleCondition")]
+    public partial class RouteOptimizationTaskRuleCondition : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationRespectedTaskSequence" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationTaskRuleCondition" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected RouteOptimizationRespectedTaskSequence() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationRespectedTaskSequence" /> class.
-        /// </summary>
-        /// <param name="taskCategories">The sequence of task categories that needs to be respected within a route. The index of the category in the list determines the sequence. Categories that do not correspond to any task are ignored. (required).</param>
-        /// <param name="vehicleCategory">The category of vehicles to which this constraint applies. When omitted the constraint applies to all vehicles. The constraint will be ignored when no vehicle belongs to this category..</param>
-        public RouteOptimizationRespectedTaskSequence(List<string> taskCategories = default(List<string>), string vehicleCategory = default(string))
+        /// <param name="taskCategory">The rule applies only if the task belongs to this category. When omitted, it applies to all tasks..</param>
+        /// <param name="vehicleCategory">The rule applies only if the vehicle executing the task belongs to this category. When omitted, it applies independently of the vehicle executing the task..</param>
+        public RouteOptimizationTaskRuleCondition(string taskCategory = default(string), string vehicleCategory = default(string))
         {
-            // to ensure "taskCategories" is required (not null)
-            if (taskCategories == null)
-            {
-                throw new ArgumentNullException("taskCategories is a required property for RouteOptimizationRespectedTaskSequence and cannot be null");
-            }
-            this.TaskCategories = taskCategories;
+            this.TaskCategory = taskCategory;
             this.VehicleCategory = vehicleCategory;
         }
 
         /// <summary>
-        /// The sequence of task categories that needs to be respected within a route. The index of the category in the list determines the sequence. Categories that do not correspond to any task are ignored.
+        /// The rule applies only if the task belongs to this category. When omitted, it applies to all tasks.
         /// </summary>
-        /// <value>The sequence of task categories that needs to be respected within a route. The index of the category in the list determines the sequence. Categories that do not correspond to any task are ignored.</value>
-        /// <example>[&quot;MORNING&quot;,&quot;AFTERNOON&quot;,&quot;EVENING&quot;]</example>
-        [DataMember(Name = "taskCategories", IsRequired = true, EmitDefaultValue = true)]
-        public List<string> TaskCategories { get; set; }
+        /// <value>The rule applies only if the task belongs to this category. When omitted, it applies to all tasks.</value>
+        /// <example>FORK_LIFT_NEEDED</example>
+        [DataMember(Name = "taskCategory", EmitDefaultValue = true)]
+        public string TaskCategory { get; set; }
 
         /// <summary>
-        /// The category of vehicles to which this constraint applies. When omitted the constraint applies to all vehicles. The constraint will be ignored when no vehicle belongs to this category.
+        /// The rule applies only if the vehicle executing the task belongs to this category. When omitted, it applies independently of the vehicle executing the task.
         /// </summary>
-        /// <value>The category of vehicles to which this constraint applies. When omitted the constraint applies to all vehicles. The constraint will be ignored when no vehicle belongs to this category.</value>
-        /// <example>SMALL_TRUCK</example>
+        /// <value>The rule applies only if the vehicle executing the task belongs to this category. When omitted, it applies independently of the vehicle executing the task.</value>
+        /// <example>BIG_TRUCK</example>
         [DataMember(Name = "vehicleCategory", EmitDefaultValue = true)]
         public string VehicleCategory { get; set; }
 
@@ -75,8 +65,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationRespectedTaskSequence {\n");
-            sb.Append("  TaskCategories: ").Append(TaskCategories).Append("\n");
+            sb.Append("class RouteOptimizationTaskRuleCondition {\n");
+            sb.Append("  TaskCategory: ").Append(TaskCategory).Append("\n");
             sb.Append("  VehicleCategory: ").Append(VehicleCategory).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -98,6 +88,27 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // TaskCategory (string) maxLength
+            if (this.TaskCategory != null && this.TaskCategory.Length > 36)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaskCategory, length must be less than 36.", new [] { "TaskCategory" });
+            }
+
+            // TaskCategory (string) minLength
+            if (this.TaskCategory != null && this.TaskCategory.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaskCategory, length must be greater than 1.", new [] { "TaskCategory" });
+            }
+
+            if (this.TaskCategory != null) {
+                // TaskCategory (string) pattern
+                Regex regexTaskCategory = new Regex(@"^[a-zA-Z0-9_-]{1,36}$", RegexOptions.CultureInvariant);
+                if (!regexTaskCategory.Match(this.TaskCategory).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaskCategory, must match a pattern of " + regexTaskCategory, new [] { "TaskCategory" });
+                }
+            }
+
             // VehicleCategory (string) maxLength
             if (this.VehicleCategory != null && this.VehicleCategory.Length > 36)
             {
