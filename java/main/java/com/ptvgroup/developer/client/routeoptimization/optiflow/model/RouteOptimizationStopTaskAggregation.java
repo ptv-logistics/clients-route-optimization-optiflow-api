@@ -26,17 +26,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Defines how to handle segments prohibited by the profile. * &#x60;ALLOW&#x60; - A vehicle is permitted to travel on segments prohibited by its profile. These prohibited segments will only be used when no valid alternatives are available. * &#x60;DISALLOW&#x60; - A vehicle is not permitted to travel on segments prohibited by its profile.
+ * Defines whether or not all tasks at this location should be aggregated and planned together in a single stop. Tasks that should be aggregated and cannot be outsourced will either be planned as a whole or not at all. Task aggregation does not affect tasks executed at a depot, since they are not bound to a single location. * &#x60;REQUIRED&#x60; - All tasks at this location should be aggregated and be executed within a single stop. * &#x60;OPTIONAL&#x60; - Tasks at this location may be distributed over multiple stops.
  */
-public enum RouteOptimizationRoutingViolationStrategy {
+public enum RouteOptimizationStopTaskAggregation {
   
-  ALLOW("ALLOW"),
+  REQUIRED("REQUIRED"),
   
-  DISALLOW("DISALLOW");
+  OPTIONAL("OPTIONAL");
 
   private String value;
 
-  RouteOptimizationRoutingViolationStrategy(String value) {
+  RouteOptimizationStopTaskAggregation(String value) {
     this.value = value;
   }
 
@@ -51,8 +51,8 @@ public enum RouteOptimizationRoutingViolationStrategy {
   }
 
   @JsonCreator
-  public static RouteOptimizationRoutingViolationStrategy fromValue(String value) {
-    for (RouteOptimizationRoutingViolationStrategy b : RouteOptimizationRoutingViolationStrategy.values()) {
+  public static RouteOptimizationStopTaskAggregation fromValue(String value) {
+    for (RouteOptimizationStopTaskAggregation b : RouteOptimizationStopTaskAggregation.values()) {
       if (b.value.equals(value)) {
         return b;
       }

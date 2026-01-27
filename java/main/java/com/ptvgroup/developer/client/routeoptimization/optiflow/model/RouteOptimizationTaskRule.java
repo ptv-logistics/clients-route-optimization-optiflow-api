@@ -24,82 +24,92 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.time.OffsetDateTime;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationDurationModifier;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationTaskRuleCondition;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A break scheduled on a route.
+ * A rule that conditionally modifies task properties.
  */
 @JsonPropertyOrder({
-  RouteOptimizationBreakStructure.JSON_PROPERTY_START,
-  RouteOptimizationBreakStructure.JSON_PROPERTY_DURATION
+  RouteOptimizationTaskRule.JSON_PROPERTY_CONDITIONS,
+  RouteOptimizationTaskRule.JSON_PROPERTY_DURATION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-27T09:59:07.660524004Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationBreakStructure {
-  public static final String JSON_PROPERTY_START = "start";
-  private OffsetDateTime start;
+public class RouteOptimizationTaskRule {
+  public static final String JSON_PROPERTY_CONDITIONS = "conditions";
+  private List<RouteOptimizationTaskRuleCondition> conditions;
 
   public static final String JSON_PROPERTY_DURATION = "duration";
-  private Integer duration;
+  private RouteOptimizationDurationModifier duration;
 
-  public RouteOptimizationBreakStructure() { 
+  public RouteOptimizationTaskRule() { 
   }
 
-  public RouteOptimizationBreakStructure start(OffsetDateTime start) {
-    this.start = start;
+  public RouteOptimizationTaskRule conditions(List<RouteOptimizationTaskRuleCondition> conditions) {
+    this.conditions = conditions;
+    return this;
+  }
+
+  public RouteOptimizationTaskRule addConditionsItem(RouteOptimizationTaskRuleCondition conditionsItem) {
+    if (this.conditions == null) {
+      this.conditions = new ArrayList<>();
+    }
+    this.conditions.add(conditionsItem);
     return this;
   }
 
    /**
-   * The point in time when the break starts. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). The date must not be before &#x60;1970-01-01T00:00:00+00:00&#x60; nor after &#x60;2037-12-31T23:59:59+00:00&#x60;. The date must provide an offset to UTC.
-   * @return start
+   * A list of conditions that describes when the rule applies. The rule applies if any of the conditions are met. A condition is met if all of its properties are matched.
+   * @return conditions
   **/
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_START)
+  @JsonProperty(JSON_PROPERTY_CONDITIONS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public OffsetDateTime getStart() {
-    return start;
+  public List<RouteOptimizationTaskRuleCondition> getConditions() {
+    return conditions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_START)
+  @JsonProperty(JSON_PROPERTY_CONDITIONS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStart(OffsetDateTime start) {
-    this.start = start;
+  public void setConditions(List<RouteOptimizationTaskRuleCondition> conditions) {
+    this.conditions = conditions;
   }
 
 
-  public RouteOptimizationBreakStructure duration(Integer duration) {
+  public RouteOptimizationTaskRule duration(RouteOptimizationDurationModifier duration) {
     this.duration = duration;
     return this;
   }
 
    /**
-   * The duration [s] of the break.
-   * minimum: 0
+   * Get duration
    * @return duration
   **/
   @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_DURATION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Integer getDuration() {
+  public RouteOptimizationDurationModifier getDuration() {
     return duration;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DURATION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDuration(Integer duration) {
+  public void setDuration(RouteOptimizationDurationModifier duration) {
     this.duration = duration;
   }
 
 
   /**
-   * Return true if this BreakStructure object is equal to o.
+   * Return true if this TaskRule object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -109,21 +119,21 @@ public class RouteOptimizationBreakStructure {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationBreakStructure breakStructure = (RouteOptimizationBreakStructure) o;
-    return Objects.equals(this.start, breakStructure.start) &&
-        Objects.equals(this.duration, breakStructure.duration);
+    RouteOptimizationTaskRule taskRule = (RouteOptimizationTaskRule) o;
+    return Objects.equals(this.conditions, taskRule.conditions) &&
+        Objects.equals(this.duration, taskRule.duration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, duration);
+    return Objects.hash(conditions, duration);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationBreakStructure {\n");
-    sb.append("    start: ").append(toIndentedString(start)).append("\n");
+    sb.append("class RouteOptimizationTaskRule {\n");
+    sb.append("    conditions: ").append(toIndentedString(conditions)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -172,14 +182,19 @@ public class RouteOptimizationBreakStructure {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `start` to the URL query string
-    if (getStart() != null) {
-      joiner.add(String.format("%sstart%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStart()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `conditions` to the URL query string
+    if (getConditions() != null) {
+      for (int i = 0; i < getConditions().size(); i++) {
+        if (getConditions().get(i) != null) {
+          joiner.add(getConditions().get(i).toUrlQueryString(String.format("%sconditions%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
     // add `duration` to the URL query string
     if (getDuration() != null) {
-      joiner.add(String.format("%sduration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDuration()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(getDuration().toUrlQueryString(prefix + "duration" + suffix));
     }
 
     return joiner.toString();

@@ -24,41 +24,40 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationTaskGroupConstraint;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A group of tasks identified by a category. Tasks belonging to the same task group must be planned on the same route, or consecutively if they are on the same route, depending on the constraints defined in the task group.
+ * A condition used to select which tasks should be modified by a rule. A condition is met if all its properties are matched.
  */
 @JsonPropertyOrder({
-  RouteOptimizationTaskGroup.JSON_PROPERTY_TASK_CATEGORY,
-  RouteOptimizationTaskGroup.JSON_PROPERTY_CONSTRAINT
+  RouteOptimizationTaskRuleCondition.JSON_PROPERTY_TASK_CATEGORY,
+  RouteOptimizationTaskRuleCondition.JSON_PROPERTY_VEHICLE_CATEGORY
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-27T09:59:07.660524004Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationTaskGroup {
+public class RouteOptimizationTaskRuleCondition {
   public static final String JSON_PROPERTY_TASK_CATEGORY = "taskCategory";
   private String taskCategory;
 
-  public static final String JSON_PROPERTY_CONSTRAINT = "constraint";
-  private RouteOptimizationTaskGroupConstraint constraint;
+  public static final String JSON_PROPERTY_VEHICLE_CATEGORY = "vehicleCategory";
+  private String vehicleCategory;
 
-  public RouteOptimizationTaskGroup() { 
+  public RouteOptimizationTaskRuleCondition() { 
   }
 
-  public RouteOptimizationTaskGroup taskCategory(String taskCategory) {
+  public RouteOptimizationTaskRuleCondition taskCategory(String taskCategory) {
     this.taskCategory = taskCategory;
     return this;
   }
 
    /**
-   * The category that defines which tasks belong to this task group. The constraint will be ignored when no task belongs to this category.
+   * The rule applies only if the task belongs to this category. When omitted, it applies to all tasks.
    * @return taskCategory
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TASK_CATEGORY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTaskCategory() {
     return taskCategory;
@@ -66,39 +65,39 @@ public class RouteOptimizationTaskGroup {
 
 
   @JsonProperty(JSON_PROPERTY_TASK_CATEGORY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTaskCategory(String taskCategory) {
     this.taskCategory = taskCategory;
   }
 
 
-  public RouteOptimizationTaskGroup constraint(RouteOptimizationTaskGroupConstraint constraint) {
-    this.constraint = constraint;
+  public RouteOptimizationTaskRuleCondition vehicleCategory(String vehicleCategory) {
+    this.vehicleCategory = vehicleCategory;
     return this;
   }
 
    /**
-   * Get constraint
-   * @return constraint
+   * The rule applies only if the vehicle executing the task belongs to this category. When omitted, it applies independently of the vehicle executing the task.
+   * @return vehicleCategory
   **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONSTRAINT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VEHICLE_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public RouteOptimizationTaskGroupConstraint getConstraint() {
-    return constraint;
+  public String getVehicleCategory() {
+    return vehicleCategory;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONSTRAINT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConstraint(RouteOptimizationTaskGroupConstraint constraint) {
-    this.constraint = constraint;
+  @JsonProperty(JSON_PROPERTY_VEHICLE_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVehicleCategory(String vehicleCategory) {
+    this.vehicleCategory = vehicleCategory;
   }
 
 
   /**
-   * Return true if this TaskGroup object is equal to o.
+   * Return true if this TaskRuleCondition object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -108,22 +107,22 @@ public class RouteOptimizationTaskGroup {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationTaskGroup taskGroup = (RouteOptimizationTaskGroup) o;
-    return Objects.equals(this.taskCategory, taskGroup.taskCategory) &&
-        Objects.equals(this.constraint, taskGroup.constraint);
+    RouteOptimizationTaskRuleCondition taskRuleCondition = (RouteOptimizationTaskRuleCondition) o;
+    return Objects.equals(this.taskCategory, taskRuleCondition.taskCategory) &&
+        Objects.equals(this.vehicleCategory, taskRuleCondition.vehicleCategory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(taskCategory, constraint);
+    return Objects.hash(taskCategory, vehicleCategory);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationTaskGroup {\n");
+    sb.append("class RouteOptimizationTaskRuleCondition {\n");
     sb.append("    taskCategory: ").append(toIndentedString(taskCategory)).append("\n");
-    sb.append("    constraint: ").append(toIndentedString(constraint)).append("\n");
+    sb.append("    vehicleCategory: ").append(toIndentedString(vehicleCategory)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,9 +175,9 @@ public class RouteOptimizationTaskGroup {
       joiner.add(String.format("%staskCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTaskCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `constraint` to the URL query string
-    if (getConstraint() != null) {
-      joiner.add(String.format("%sconstraint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConstraint()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `vehicleCategory` to the URL query string
+    if (getVehicleCategory() != null) {
+      joiner.add(String.format("%svehicleCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVehicleCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
