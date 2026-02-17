@@ -26,35 +26,35 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A paginated list of optimization summaries returned by the *listOptimization* operation.
+    /// Specifies the maximum loads that can be either picked up from or delivered to this depot.
     /// </summary>
-    [DataContract(Name = "OptimizationSummaries")]
-    public partial class RouteOptimizationOptimizationSummaries : IValidatableObject
+    [DataContract(Name = "DepotMaximumLoads")]
+    public partial class RouteOptimizationDepotMaximumLoads : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOptimizationSummaries" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationDepotMaximumLoads" /> class.
         /// </summary>
-        /// <param name="optimizations">A list of optimization summaries..</param>
-        /// <param name="nextCursor">Pagination cursor for the next page of results. Present when additional results exist beyond the current page. Pass this value as the &#x60;cursor&#x60; parameter in the next request to continue pagination. Null indicates the final page..</param>
-        public RouteOptimizationOptimizationSummaries(List<RouteOptimizationOptimizationSummary> optimizations = default(List<RouteOptimizationOptimizationSummary>), string nextCursor = default(string))
+        /// <param name="inbound">Defines the maximum loads that can be delivered to this depot..</param>
+        /// <param name="outbound">Defines the maximum loads that can be picked up at this depot..</param>
+        public RouteOptimizationDepotMaximumLoads(List<RouteOptimizationLoad> inbound = default(List<RouteOptimizationLoad>), List<RouteOptimizationLoad> outbound = default(List<RouteOptimizationLoad>))
         {
-            this.Optimizations = optimizations;
-            this.NextCursor = nextCursor;
+            this.Inbound = inbound;
+            this.Outbound = outbound;
         }
 
         /// <summary>
-        /// A list of optimization summaries.
+        /// Defines the maximum loads that can be delivered to this depot.
         /// </summary>
-        /// <value>A list of optimization summaries.</value>
-        [DataMember(Name = "optimizations", EmitDefaultValue = false)]
-        public List<RouteOptimizationOptimizationSummary> Optimizations { get; set; }
+        /// <value>Defines the maximum loads that can be delivered to this depot.</value>
+        [DataMember(Name = "inbound", EmitDefaultValue = false)]
+        public List<RouteOptimizationLoad> Inbound { get; set; }
 
         /// <summary>
-        /// Pagination cursor for the next page of results. Present when additional results exist beyond the current page. Pass this value as the &#x60;cursor&#x60; parameter in the next request to continue pagination. Null indicates the final page.
+        /// Defines the maximum loads that can be picked up at this depot.
         /// </summary>
-        /// <value>Pagination cursor for the next page of results. Present when additional results exist beyond the current page. Pass this value as the &#x60;cursor&#x60; parameter in the next request to continue pagination. Null indicates the final page.</value>
-        [DataMember(Name = "nextCursor", EmitDefaultValue = true)]
-        public string NextCursor { get; set; }
+        /// <value>Defines the maximum loads that can be picked up at this depot.</value>
+        [DataMember(Name = "outbound", EmitDefaultValue = false)]
+        public List<RouteOptimizationLoad> Outbound { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +63,9 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationOptimizationSummaries {\n");
-            sb.Append("  Optimizations: ").Append(Optimizations).Append("\n");
-            sb.Append("  NextCursor: ").Append(NextCursor).Append("\n");
+            sb.Append("class RouteOptimizationDepotMaximumLoads {\n");
+            sb.Append("  Inbound: ").Append(Inbound).Append("\n");
+            sb.Append("  Outbound: ").Append(Outbound).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

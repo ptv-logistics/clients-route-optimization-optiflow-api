@@ -26,35 +26,25 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Rules that conditionally modify properties.
+    /// Defines constraints on the tasks that can be executed at the depot.
     /// </summary>
-    [DataContract(Name = "Rules")]
-    public partial class RouteOptimizationRules : IValidatableObject
+    [DataContract(Name = "DepotConstraints")]
+    public partial class RouteOptimizationDepotConstraints : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationRules" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationDepotConstraints" /> class.
         /// </summary>
-        /// <param name="locations">A list of rules that conditionally modify location properties..</param>
-        /// <param name="tasks">A list of rules that conditionally modify task properties..</param>
-        public RouteOptimizationRules(List<RouteOptimizationLocationRule> locations = default(List<RouteOptimizationLocationRule>), List<RouteOptimizationTaskRule> tasks = default(List<RouteOptimizationTaskRule>))
+        /// <param name="maximumLoads">maximumLoads.</param>
+        public RouteOptimizationDepotConstraints(RouteOptimizationDepotMaximumLoads maximumLoads = default(RouteOptimizationDepotMaximumLoads))
         {
-            this.Locations = locations;
-            this.Tasks = tasks;
+            this.MaximumLoads = maximumLoads;
         }
 
         /// <summary>
-        /// A list of rules that conditionally modify location properties.
+        /// Gets or Sets MaximumLoads
         /// </summary>
-        /// <value>A list of rules that conditionally modify location properties.</value>
-        [DataMember(Name = "locations", EmitDefaultValue = false)]
-        public List<RouteOptimizationLocationRule> Locations { get; set; }
-
-        /// <summary>
-        /// A list of rules that conditionally modify task properties.
-        /// </summary>
-        /// <value>A list of rules that conditionally modify task properties.</value>
-        [DataMember(Name = "tasks", EmitDefaultValue = false)]
-        public List<RouteOptimizationTaskRule> Tasks { get; set; }
+        [DataMember(Name = "maximumLoads", EmitDefaultValue = false)]
+        public RouteOptimizationDepotMaximumLoads MaximumLoads { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +53,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationRules {\n");
-            sb.Append("  Locations: ").Append(Locations).Append("\n");
-            sb.Append("  Tasks: ").Append(Tasks).Append("\n");
+            sb.Append("class RouteOptimizationDepotConstraints {\n");
+            sb.Append("  MaximumLoads: ").Append(MaximumLoads).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

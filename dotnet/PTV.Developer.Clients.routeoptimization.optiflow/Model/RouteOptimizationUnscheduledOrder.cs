@@ -26,58 +26,43 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A request to provide a service at a specific location.
+    /// Describes an unscheduled order.
     /// </summary>
-    [DataContract(Name = "ServiceOrder")]
-    public partial class RouteOptimizationServiceOrder : IValidatableObject
+    [DataContract(Name = "UnscheduledOrder")]
+    public partial class RouteOptimizationUnscheduledOrder : IValidatableObject
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationServiceOrder" /> class.
+        /// Gets or Sets Schedulability
         /// </summary>
-        [JsonConstructorAttribute]
-        protected RouteOptimizationServiceOrder() { }
+        [DataMember(Name = "schedulability", EmitDefaultValue = true)]
+        public RouteOptimizationOrderSchedulability? Schedulability { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationServiceOrder" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationUnscheduledOrder" /> class.
         /// </summary>
-        /// <param name="id">A unique identifier of the order. This must be unique across all orders. (required).</param>
-        /// <param name="task">task (required).</param>
-        /// <param name="properties">properties.</param>
-        public RouteOptimizationServiceOrder(string id = default(string), RouteOptimizationTaskProperties task = default(RouteOptimizationTaskProperties), RouteOptimizationServiceOrderProperties properties = default(RouteOptimizationServiceOrderProperties))
+        /// <param name="id">The unique identifier of the order..</param>
+        /// <param name="schedulability">schedulability.</param>
+        /// <param name="details">Provides details describing why the optimization struggles to schedule the order..</param>
+        public RouteOptimizationUnscheduledOrder(string id = default(string), RouteOptimizationOrderSchedulability? schedulability = default(RouteOptimizationOrderSchedulability?), List<RouteOptimizationUnscheduledOrderDetail> details = default(List<RouteOptimizationUnscheduledOrderDetail>))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for RouteOptimizationServiceOrder and cannot be null");
-            }
             this.Id = id;
-            // to ensure "task" is required (not null)
-            if (task == null)
-            {
-                throw new ArgumentNullException("task is a required property for RouteOptimizationServiceOrder and cannot be null");
-            }
-            this.Task = task;
-            this.Properties = properties;
+            this.Schedulability = schedulability;
+            this.Details = details;
         }
 
         /// <summary>
-        /// A unique identifier of the order. This must be unique across all orders.
+        /// The unique identifier of the order.
         /// </summary>
-        /// <value>A unique identifier of the order. This must be unique across all orders.</value>
-        /// <example>ELEVATOR_MAINTENANCE-123</example>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The unique identifier of the order.</value>
+        [DataMember(Name = "id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Task
+        /// Provides details describing why the optimization struggles to schedule the order.
         /// </summary>
-        [DataMember(Name = "task", IsRequired = true, EmitDefaultValue = true)]
-        public RouteOptimizationTaskProperties Task { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Properties
-        /// </summary>
-        [DataMember(Name = "properties", EmitDefaultValue = false)]
-        public RouteOptimizationServiceOrderProperties Properties { get; set; }
+        /// <value>Provides details describing why the optimization struggles to schedule the order.</value>
+        [DataMember(Name = "details", EmitDefaultValue = false)]
+        public List<RouteOptimizationUnscheduledOrderDetail> Details { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -86,10 +71,10 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationServiceOrder {\n");
+            sb.Append("class RouteOptimizationUnscheduledOrder {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Task: ").Append(Task).Append("\n");
-            sb.Append("  Properties: ").Append(Properties).Append("\n");
+            sb.Append("  Schedulability: ").Append(Schedulability).Append("\n");
+            sb.Append("  Details: ").Append(Details).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
