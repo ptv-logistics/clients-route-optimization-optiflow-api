@@ -26,19 +26,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Determines whether the task describes the pickup or the delivery of an order.
+ * Defines the context in which the respected task sequence must be enforced. * &#x60;ROUTE&#x60; - The sequence is enforced across the entire route; all tasks must follow the defined sequence from start to end. * &#x60;EMPTY_TO_EMPTY&#x60; - The sequence is enforced within each segment between two points where the vehicle is empty; all tasks in such a segment must follow the defined sequence.
  */
-public enum RouteOptimizationTaskType {
+public enum RouteOptimizationRespectedTaskSequenceScope {
   
-  PICKUP("PICKUP"),
+  ROUTE("ROUTE"),
   
-  DELIVERY("DELIVERY"),
-  
-  SERVICE("SERVICE");
+  EMPTY_TO_EMPTY("EMPTY_TO_EMPTY");
 
   private String value;
 
-  RouteOptimizationTaskType(String value) {
+  RouteOptimizationRespectedTaskSequenceScope(String value) {
     this.value = value;
   }
 
@@ -53,8 +51,8 @@ public enum RouteOptimizationTaskType {
   }
 
   @JsonCreator
-  public static RouteOptimizationTaskType fromValue(String value) {
-    for (RouteOptimizationTaskType b : RouteOptimizationTaskType.values()) {
+  public static RouteOptimizationRespectedTaskSequenceScope fromValue(String value) {
+    for (RouteOptimizationRespectedTaskSequenceScope b : RouteOptimizationRespectedTaskSequenceScope.values()) {
       if (b.value.equals(value)) {
         return b;
       }

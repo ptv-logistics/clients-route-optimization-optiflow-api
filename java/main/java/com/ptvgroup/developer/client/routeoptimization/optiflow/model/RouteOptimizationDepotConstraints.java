@@ -24,52 +24,52 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationDepotMaximumLoads;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Describes a vehicle slot that can be assigned stops.
+ * Defines constraints on the tasks that can be executed at the depot.
  */
 @JsonPropertyOrder({
-  RouteOptimizationVehicleSlot.JSON_PROPERTY_COST
+  RouteOptimizationDepotConstraints.JSON_PROPERTY_MAXIMUM_LOADS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-17T16:26:41.380842659Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationVehicleSlot {
-  public static final String JSON_PROPERTY_COST = "cost";
-  private Double cost = 0d;
+public class RouteOptimizationDepotConstraints {
+  public static final String JSON_PROPERTY_MAXIMUM_LOADS = "maximumLoads";
+  private RouteOptimizationDepotMaximumLoads maximumLoads;
 
-  public RouteOptimizationVehicleSlot() { 
+  public RouteOptimizationDepotConstraints() { 
   }
 
-  public RouteOptimizationVehicleSlot cost(Double cost) {
-    this.cost = cost;
+  public RouteOptimizationDepotConstraints maximumLoads(RouteOptimizationDepotMaximumLoads maximumLoads) {
+    this.maximumLoads = maximumLoads;
     return this;
   }
 
    /**
-   * The cost incurred when assigning at least one stop to this vehicle slot.
-   * minimum: 0
-   * @return cost
+   * Get maximumLoads
+   * @return maximumLoads
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_COST)
+  @JsonProperty(JSON_PROPERTY_MAXIMUM_LOADS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getCost() {
-    return cost;
+  public RouteOptimizationDepotMaximumLoads getMaximumLoads() {
+    return maximumLoads;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_COST)
+  @JsonProperty(JSON_PROPERTY_MAXIMUM_LOADS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCost(Double cost) {
-    this.cost = cost;
+  public void setMaximumLoads(RouteOptimizationDepotMaximumLoads maximumLoads) {
+    this.maximumLoads = maximumLoads;
   }
 
 
   /**
-   * Return true if this VehicleSlot object is equal to o.
+   * Return true if this DepotConstraints object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +79,20 @@ public class RouteOptimizationVehicleSlot {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationVehicleSlot vehicleSlot = (RouteOptimizationVehicleSlot) o;
-    return Objects.equals(this.cost, vehicleSlot.cost);
+    RouteOptimizationDepotConstraints depotConstraints = (RouteOptimizationDepotConstraints) o;
+    return Objects.equals(this.maximumLoads, depotConstraints.maximumLoads);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cost);
+    return Objects.hash(maximumLoads);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationVehicleSlot {\n");
-    sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
+    sb.append("class RouteOptimizationDepotConstraints {\n");
+    sb.append("    maximumLoads: ").append(toIndentedString(maximumLoads)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -140,9 +140,9 @@ public class RouteOptimizationVehicleSlot {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `cost` to the URL query string
-    if (getCost() != null) {
-      joiner.add(String.format("%scost%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCost()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `maximumLoads` to the URL query string
+    if (getMaximumLoads() != null) {
+      joiner.add(getMaximumLoads().toUrlQueryString(prefix + "maximumLoads" + suffix));
     }
 
     return joiner.toString();

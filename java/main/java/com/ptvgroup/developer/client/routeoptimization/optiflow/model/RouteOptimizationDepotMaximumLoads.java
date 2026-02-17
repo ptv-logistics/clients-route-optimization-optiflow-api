@@ -25,7 +25,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationLoad;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationRouteConstraints;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,83 +32,91 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Defines constraints on the tasks that can be executed with the vehicle.
+ * Specifies the maximum loads that can be either picked up from or delivered to this depot.
  */
 @JsonPropertyOrder({
-  RouteOptimizationVehicleConstraints.JSON_PROPERTY_MAXIMUM_LOADS,
-  RouteOptimizationVehicleConstraints.JSON_PROPERTY_ROUTE
+  RouteOptimizationDepotMaximumLoads.JSON_PROPERTY_INBOUND,
+  RouteOptimizationDepotMaximumLoads.JSON_PROPERTY_OUTBOUND
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-17T16:26:41.380842659Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationVehicleConstraints {
-  public static final String JSON_PROPERTY_MAXIMUM_LOADS = "maximumLoads";
-  private List<RouteOptimizationLoad> maximumLoads = new ArrayList<>();
+public class RouteOptimizationDepotMaximumLoads {
+  public static final String JSON_PROPERTY_INBOUND = "inbound";
+  private List<RouteOptimizationLoad> inbound = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_ROUTE = "route";
-  private RouteOptimizationRouteConstraints route;
+  public static final String JSON_PROPERTY_OUTBOUND = "outbound";
+  private List<RouteOptimizationLoad> outbound = new ArrayList<>();
 
-  public RouteOptimizationVehicleConstraints() { 
+  public RouteOptimizationDepotMaximumLoads() { 
   }
 
-  public RouteOptimizationVehicleConstraints maximumLoads(List<RouteOptimizationLoad> maximumLoads) {
-    this.maximumLoads = maximumLoads;
+  public RouteOptimizationDepotMaximumLoads inbound(List<RouteOptimizationLoad> inbound) {
+    this.inbound = inbound;
     return this;
   }
 
-  public RouteOptimizationVehicleConstraints addMaximumLoadsItem(RouteOptimizationLoad maximumLoadsItem) {
-    if (this.maximumLoads == null) {
-      this.maximumLoads = new ArrayList<>();
+  public RouteOptimizationDepotMaximumLoads addInboundItem(RouteOptimizationLoad inboundItem) {
+    if (this.inbound == null) {
+      this.inbound = new ArrayList<>();
     }
-    this.maximumLoads.add(maximumLoadsItem);
+    this.inbound.add(inboundItem);
     return this;
   }
 
    /**
-   * A list of load dimensions that describe the capacity of the vehicle. For each dimension specified in this list, the sum of the values of the orders loaded in the vehicle must be lower than or equal to the value of the vehicle. For unspecified dimensions, the load of the vehicle is assumed to be unconstrained for this dimension.
-   * @return maximumLoads
+   * Defines the maximum loads that can be delivered to this depot.
+   * @return inbound
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_LOADS)
+  @JsonProperty(JSON_PROPERTY_INBOUND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<RouteOptimizationLoad> getMaximumLoads() {
-    return maximumLoads;
+  public List<RouteOptimizationLoad> getInbound() {
+    return inbound;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_LOADS)
+  @JsonProperty(JSON_PROPERTY_INBOUND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaximumLoads(List<RouteOptimizationLoad> maximumLoads) {
-    this.maximumLoads = maximumLoads;
+  public void setInbound(List<RouteOptimizationLoad> inbound) {
+    this.inbound = inbound;
   }
 
 
-  public RouteOptimizationVehicleConstraints route(RouteOptimizationRouteConstraints route) {
-    this.route = route;
+  public RouteOptimizationDepotMaximumLoads outbound(List<RouteOptimizationLoad> outbound) {
+    this.outbound = outbound;
+    return this;
+  }
+
+  public RouteOptimizationDepotMaximumLoads addOutboundItem(RouteOptimizationLoad outboundItem) {
+    if (this.outbound == null) {
+      this.outbound = new ArrayList<>();
+    }
+    this.outbound.add(outboundItem);
     return this;
   }
 
    /**
-   * Get route
-   * @return route
+   * Defines the maximum loads that can be picked up at this depot.
+   * @return outbound
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE)
+  @JsonProperty(JSON_PROPERTY_OUTBOUND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public RouteOptimizationRouteConstraints getRoute() {
-    return route;
+  public List<RouteOptimizationLoad> getOutbound() {
+    return outbound;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE)
+  @JsonProperty(JSON_PROPERTY_OUTBOUND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRoute(RouteOptimizationRouteConstraints route) {
-    this.route = route;
+  public void setOutbound(List<RouteOptimizationLoad> outbound) {
+    this.outbound = outbound;
   }
 
 
   /**
-   * Return true if this VehicleConstraints object is equal to o.
+   * Return true if this DepotMaximumLoads object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -119,22 +126,22 @@ public class RouteOptimizationVehicleConstraints {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationVehicleConstraints vehicleConstraints = (RouteOptimizationVehicleConstraints) o;
-    return Objects.equals(this.maximumLoads, vehicleConstraints.maximumLoads) &&
-        Objects.equals(this.route, vehicleConstraints.route);
+    RouteOptimizationDepotMaximumLoads depotMaximumLoads = (RouteOptimizationDepotMaximumLoads) o;
+    return Objects.equals(this.inbound, depotMaximumLoads.inbound) &&
+        Objects.equals(this.outbound, depotMaximumLoads.outbound);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(maximumLoads, route);
+    return Objects.hash(inbound, outbound);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationVehicleConstraints {\n");
-    sb.append("    maximumLoads: ").append(toIndentedString(maximumLoads)).append("\n");
-    sb.append("    route: ").append(toIndentedString(route)).append("\n");
+    sb.append("class RouteOptimizationDepotMaximumLoads {\n");
+    sb.append("    inbound: ").append(toIndentedString(inbound)).append("\n");
+    sb.append("    outbound: ").append(toIndentedString(outbound)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -182,19 +189,24 @@ public class RouteOptimizationVehicleConstraints {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `maximumLoads` to the URL query string
-    if (getMaximumLoads() != null) {
-      for (int i = 0; i < getMaximumLoads().size(); i++) {
-        if (getMaximumLoads().get(i) != null) {
-          joiner.add(getMaximumLoads().get(i).toUrlQueryString(String.format("%smaximumLoads%s%s", prefix, suffix,
+    // add `inbound` to the URL query string
+    if (getInbound() != null) {
+      for (int i = 0; i < getInbound().size(); i++) {
+        if (getInbound().get(i) != null) {
+          joiner.add(getInbound().get(i).toUrlQueryString(String.format("%sinbound%s%s", prefix, suffix,
           "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
 
-    // add `route` to the URL query string
-    if (getRoute() != null) {
-      joiner.add(getRoute().toUrlQueryString(prefix + "route" + suffix));
+    // add `outbound` to the URL query string
+    if (getOutbound() != null) {
+      for (int i = 0; i < getOutbound().size(); i++) {
+        if (getOutbound().get(i) != null) {
+          joiner.add(getOutbound().get(i).toUrlQueryString(String.format("%soutbound%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
     return joiner.toString();

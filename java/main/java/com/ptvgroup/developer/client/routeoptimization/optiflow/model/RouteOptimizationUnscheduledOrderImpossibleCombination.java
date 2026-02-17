@@ -29,92 +29,92 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Describes the used capacity of the vehicle for a certain dimension.
+ * Describes an intrinsic conflict between an order and another API entity such as vehicles, depots, resources, etc. When a conflict between an order and an entity is detected, the order can never be combined with this entity.
  */
 @JsonPropertyOrder({
-  RouteOptimizationLegLoad.JSON_PROPERTY_DIMENSION,
-  RouteOptimizationLegLoad.JSON_PROPERTY_ABSOLUTE,
-  RouteOptimizationLegLoad.JSON_PROPERTY_RELATIVE
+  RouteOptimizationUnscheduledOrderImpossibleCombination.JSON_PROPERTY_ENTITY,
+  RouteOptimizationUnscheduledOrderImpossibleCombination.JSON_PROPERTY_ABSOLUTE,
+  RouteOptimizationUnscheduledOrderImpossibleCombination.JSON_PROPERTY_RELATIVE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-17T16:26:41.380842659Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationLegLoad {
-  public static final String JSON_PROPERTY_DIMENSION = "dimension";
-  private String dimension;
+public class RouteOptimizationUnscheduledOrderImpossibleCombination {
+  public static final String JSON_PROPERTY_ENTITY = "entity";
+  private String entity;
 
   public static final String JSON_PROPERTY_ABSOLUTE = "absolute";
-  private Double absolute;
+  private Integer absolute;
 
   public static final String JSON_PROPERTY_RELATIVE = "relative";
   private Double relative;
 
-  public RouteOptimizationLegLoad() { 
+  public RouteOptimizationUnscheduledOrderImpossibleCombination() { 
   }
 
-  public RouteOptimizationLegLoad dimension(String dimension) {
-    this.dimension = dimension;
+  public RouteOptimizationUnscheduledOrderImpossibleCombination entity(String entity) {
+    this.entity = entity;
     return this;
   }
 
    /**
-   * Indicates the specific dimension of the load, such as its volume, weight, or size.
-   * @return dimension
+   * The conflicting entity type.
+   * @return entity
   **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DIMENSION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENTITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getDimension() {
-    return dimension;
+  public String getEntity() {
+    return entity;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DIMENSION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDimension(String dimension) {
-    this.dimension = dimension;
+  @JsonProperty(JSON_PROPERTY_ENTITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEntity(String entity) {
+    this.entity = entity;
   }
 
 
-  public RouteOptimizationLegLoad absolute(Double absolute) {
+  public RouteOptimizationUnscheduledOrderImpossibleCombination absolute(Integer absolute) {
     this.absolute = absolute;
     return this;
   }
 
    /**
-   * Describes the sum of loads for all orders in the vehicle, for a given dimension.
+   * The number of entities conflicting with the order.
    * minimum: 0
    * @return absolute
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ABSOLUTE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getAbsolute() {
+  public Integer getAbsolute() {
     return absolute;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ABSOLUTE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAbsolute(Double absolute) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAbsolute(Integer absolute) {
     this.absolute = absolute;
   }
 
 
-  public RouteOptimizationLegLoad relative(Double relative) {
+  public RouteOptimizationUnscheduledOrderImpossibleCombination relative(Double relative) {
     this.relative = relative;
     return this;
   }
 
    /**
-   * Describes the relative load of the vehicle, for a given dimension.  This is defined as the ratio of the absolute load and the maximum load of the vehicle.
+   * The relative number of detected conflicts, with respect to the total number of entities.
    * minimum: 0
    * maximum: 1
    * @return relative
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_RELATIVE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Double getRelative() {
     return relative;
@@ -122,14 +122,14 @@ public class RouteOptimizationLegLoad {
 
 
   @JsonProperty(JSON_PROPERTY_RELATIVE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRelative(Double relative) {
     this.relative = relative;
   }
 
 
   /**
-   * Return true if this LegLoad object is equal to o.
+   * Return true if this UnscheduledOrderImpossibleCombination object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -139,22 +139,22 @@ public class RouteOptimizationLegLoad {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationLegLoad legLoad = (RouteOptimizationLegLoad) o;
-    return Objects.equals(this.dimension, legLoad.dimension) &&
-        Objects.equals(this.absolute, legLoad.absolute) &&
-        Objects.equals(this.relative, legLoad.relative);
+    RouteOptimizationUnscheduledOrderImpossibleCombination unscheduledOrderImpossibleCombination = (RouteOptimizationUnscheduledOrderImpossibleCombination) o;
+    return Objects.equals(this.entity, unscheduledOrderImpossibleCombination.entity) &&
+        Objects.equals(this.absolute, unscheduledOrderImpossibleCombination.absolute) &&
+        Objects.equals(this.relative, unscheduledOrderImpossibleCombination.relative);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dimension, absolute, relative);
+    return Objects.hash(entity, absolute, relative);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationLegLoad {\n");
-    sb.append("    dimension: ").append(toIndentedString(dimension)).append("\n");
+    sb.append("class RouteOptimizationUnscheduledOrderImpossibleCombination {\n");
+    sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
     sb.append("    absolute: ").append(toIndentedString(absolute)).append("\n");
     sb.append("    relative: ").append(toIndentedString(relative)).append("\n");
     sb.append("}");
@@ -204,9 +204,9 @@ public class RouteOptimizationLegLoad {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `dimension` to the URL query string
-    if (getDimension() != null) {
-      joiner.add(String.format("%sdimension%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDimension()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `entity` to the URL query string
+    if (getEntity() != null) {
+      joiner.add(String.format("%sentity%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEntity()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     // add `absolute` to the URL query string

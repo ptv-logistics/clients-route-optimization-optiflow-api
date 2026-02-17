@@ -26,19 +26,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Determines whether the task describes the pickup or the delivery of an order.
+ * Indicates whether the order can be scheduled by the optimization. * &#x60;IMPOSSIBLE&#x60; - The order cannot be scheduled. * &#x60;UNKNOWN&#x60; - The order may or may not be schedulable. The optimization has not yet been able to schedule the order on any route. * &#x60;POSSIBLE&#x60; - The order can be scheduled. The optimization has been able to schedule the order at least once.
  */
-public enum RouteOptimizationTaskType {
+public enum RouteOptimizationOrderSchedulability {
   
-  PICKUP("PICKUP"),
+  IMPOSSIBLE("IMPOSSIBLE"),
   
-  DELIVERY("DELIVERY"),
+  UNKNOWN("UNKNOWN"),
   
-  SERVICE("SERVICE");
+  POSSIBLE("POSSIBLE");
 
   private String value;
 
-  RouteOptimizationTaskType(String value) {
+  RouteOptimizationOrderSchedulability(String value) {
     this.value = value;
   }
 
@@ -53,8 +53,8 @@ public enum RouteOptimizationTaskType {
   }
 
   @JsonCreator
-  public static RouteOptimizationTaskType fromValue(String value) {
-    for (RouteOptimizationTaskType b : RouteOptimizationTaskType.values()) {
+  public static RouteOptimizationOrderSchedulability fromValue(String value) {
+    for (RouteOptimizationOrderSchedulability b : RouteOptimizationOrderSchedulability.values()) {
       if (b.value.equals(value)) {
         return b;
       }
