@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationRouteDurationPreference.JSON_PROPERTY_IMPORTANCE,
   RouteOptimizationRouteDurationPreference.JSON_PROPERTY_PREFERRED_DURATION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-02T13:08:54.531891556Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-02T13:46:53.400272779Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationRouteDurationPreference {
   public static final String JSON_PROPERTY_IMPORTANCE = "importance";
   private Double importance = 0d;

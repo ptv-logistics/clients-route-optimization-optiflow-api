@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationTaskLoadingIncompatibilityConstraint.JSON_PROPERTY_FORBIDDEN_TASK_CATEGORY,
   RouteOptimizationTaskLoadingIncompatibilityConstraint.JSON_PROPERTY_VEHICLE_CATEGORY
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-02T13:08:54.531891556Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-02T13:46:53.400272779Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationTaskLoadingIncompatibilityConstraint {
   public static final String JSON_PROPERTY_LOADED_ORDER_CATEGORY = "loadedOrderCategory";
   private String loadedOrderCategory;

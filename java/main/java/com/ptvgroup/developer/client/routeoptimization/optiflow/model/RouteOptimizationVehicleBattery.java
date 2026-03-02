@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationVehicleBattery.JSON_PROPERTY_STATE_OF_CHARGE,
   RouteOptimizationVehicleBattery.JSON_PROPERTY_CONSUMPTION
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-02T13:08:54.531891556Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-02T13:46:53.400272779Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationVehicleBattery {
   public static final String JSON_PROPERTY_CAPACITY = "capacity";
   private Double capacity;
