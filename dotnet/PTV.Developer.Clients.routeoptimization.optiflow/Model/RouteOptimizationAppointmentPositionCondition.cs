@@ -26,23 +26,29 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Defines the constraint that applies to a task group. * &#x60;CONSECUTIVE&#x60; - Those tasks belonging to the task group that are scheduled on the same route must be scheduled consecutively. * &#x60;SAME_ROUTE&#x60; - All tasks belonging to the task group must be scheduled on the same route.
+    /// The rule applies only if the appointment to which the task belongs is at the specified position.
     /// </summary>
-    /// <value>Defines the constraint that applies to a task group. * &#x60;CONSECUTIVE&#x60; - Those tasks belonging to the task group that are scheduled on the same route must be scheduled consecutively. * &#x60;SAME_ROUTE&#x60; - All tasks belonging to the task group must be scheduled on the same route.</value>
+    /// <value>The rule applies only if the appointment to which the task belongs is at the specified position.</value>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum RouteOptimizationTaskGroupConstraint
+    public enum RouteOptimizationAppointmentPositionCondition
     {
         /// <summary>
-        /// Enum CONSECUTIVE for value: CONSECUTIVE
+        /// Enum FIRST_OF_ROUTE for value: FIRST_OF_ROUTE
         /// </summary>
-        [EnumMember(Value = "CONSECUTIVE")]
-        CONSECUTIVE = 1,
+        [EnumMember(Value = "FIRST_OF_ROUTE")]
+        FIRST_OF_ROUTE = 1,
 
         /// <summary>
-        /// Enum SAME_ROUTE for value: SAME_ROUTE
+        /// Enum LAST_OF_ROUTE for value: LAST_OF_ROUTE
         /// </summary>
-        [EnumMember(Value = "SAME_ROUTE")]
-        SAME_ROUTE = 2
+        [EnumMember(Value = "LAST_OF_ROUTE")]
+        LAST_OF_ROUTE = 2,
+
+        /// <summary>
+        /// Enum ANY for value: ANY
+        /// </summary>
+        [EnumMember(Value = "ANY")]
+        ANY = 3
     }
 
 }
