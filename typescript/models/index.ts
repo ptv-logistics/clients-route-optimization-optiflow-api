@@ -1,6 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from './RouteOptimizationAppointment';
+export * from './RouteOptimizationAppointmentPositionCondition';
 export * from './RouteOptimizationAssignedResource';
 export * from './RouteOptimizationAssignedResourceCosts';
 export * from './RouteOptimizationBatteryConsumption';
@@ -71,6 +72,7 @@ export * from './RouteOptimizationRequestSummary';
 export * from './RouteOptimizationResource';
 export * from './RouteOptimizationResourceConstraints';
 export * from './RouteOptimizationResourceCosts';
+export * from './RouteOptimizationResourceUtilization';
 export * from './RouteOptimizationRespectedOrderSequence';
 export * from './RouteOptimizationRespectedTaskSequence';
 export * from './RouteOptimizationRespectedTaskSequenceScope';
@@ -117,5 +119,6 @@ export * from './RouteOptimizationVehiclePreferences';
 export * from './RouteOptimizationVehicleRouting';
 export * from './RouteOptimizationVehicleSlot';
 export * from './RouteOptimizationVehicleStart';
+export * from './RouteOptimizationVehicleUtilization';
 export * from './RouteOptimizationWarning';
 export * from './RouteOptimizationWorkingBreakSettings';
