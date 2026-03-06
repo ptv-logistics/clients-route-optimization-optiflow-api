@@ -24,37 +24,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Describes the pickup (resp. delivery) task of a delivery (resp. pickup) order that is executed at a depot.
+ * Indicates how much the vehicle constraints affect route optimization potential.
  */
 @JsonPropertyOrder({
-  RouteOptimizationDepotTaskProperties.JSON_PROPERTY_DURATION,
-  RouteOptimizationDepotTaskProperties.JSON_PROPERTY_CATEGORIES
+  RouteOptimizationVehicleUtilization.JSON_PROPERTY_DURATION,
+  RouteOptimizationVehicleUtilization.JSON_PROPERTY_DISTANCE,
+  RouteOptimizationVehicleUtilization.JSON_PROPERTY_LOAD
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-06T12:47:02.844504062Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationDepotTaskProperties {
+public class RouteOptimizationVehicleUtilization {
   public static final String JSON_PROPERTY_DURATION = "duration";
-  private Integer duration = 0;
+  private Double duration;
 
-  public static final String JSON_PROPERTY_CATEGORIES = "categories";
-  private List<String> categories = new ArrayList<>();
+  public static final String JSON_PROPERTY_DISTANCE = "distance";
+  private Double distance;
 
-  public RouteOptimizationDepotTaskProperties() { 
+  public static final String JSON_PROPERTY_LOAD = "load";
+  private Double load;
+
+  public RouteOptimizationVehicleUtilization() { 
   }
 
-  public RouteOptimizationDepotTaskProperties duration(Integer duration) {
+  public RouteOptimizationVehicleUtilization duration(Double duration) {
     this.duration = duration;
     return this;
   }
 
    /**
-   * The duration [s] it takes to execute this task.
+   * Indicates how much the vehicle&#39;s maximum available duration affects route optimization potential. The maximum available duration is defined as the minimum of the vehicle&#39;s maximum route duration and  the duration between the earliest start and the latest end of the vehicle.
    * minimum: 0
    * @return duration
   **/
@@ -62,53 +64,72 @@ public class RouteOptimizationDepotTaskProperties {
   @JsonProperty(JSON_PROPERTY_DURATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getDuration() {
+  public Double getDuration() {
     return duration;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DURATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDuration(Integer duration) {
+  public void setDuration(Double duration) {
     this.duration = duration;
   }
 
 
-  public RouteOptimizationDepotTaskProperties categories(List<String> categories) {
-    this.categories = categories;
-    return this;
-  }
-
-  public RouteOptimizationDepotTaskProperties addCategoriesItem(String categoriesItem) {
-    if (this.categories == null) {
-      this.categories = new ArrayList<>();
-    }
-    this.categories.add(categoriesItem);
+  public RouteOptimizationVehicleUtilization distance(Double distance) {
+    this.distance = distance;
     return this;
   }
 
    /**
-   * A list of categories the task belongs to that can be used to describe constraints or rules.
-   * @return categories
+   * Indicates how much the vehicle&#39;s maximum distance constraint affects route optimization potential. This is defined as the ratio of the route&#39;s distance and the maximum distance of the vehicle. Omitted if no maximum distance constraint is defined on the vehicle.
+   * minimum: 0
+   * @return distance
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CATEGORIES)
+  @JsonProperty(JSON_PROPERTY_DISTANCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getCategories() {
-    return categories;
+  public Double getDistance() {
+    return distance;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CATEGORIES)
+  @JsonProperty(JSON_PROPERTY_DISTANCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCategories(List<String> categories) {
-    this.categories = categories;
+  public void setDistance(Double distance) {
+    this.distance = distance;
+  }
+
+
+  public RouteOptimizationVehicleUtilization load(Double load) {
+    this.load = load;
+    return this;
+  }
+
+   /**
+   * Indicates how much the vehicle&#39;s maximum load constraints affect route optimization potential. This is defined as the maximum load utilization over all dimensions with a positive maximum load. The load utilization per dimension is defined as the ratio of the peak load and the vehicle&#39;s maximum load for that dimension. Omitted if no dimension is defined with a positive maximum load.
+   * minimum: 0
+   * @return load
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LOAD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Double getLoad() {
+    return load;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LOAD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLoad(Double load) {
+    this.load = load;
   }
 
 
   /**
-   * Return true if this DepotTaskProperties object is equal to o.
+   * Return true if this VehicleUtilization object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -118,22 +139,24 @@ public class RouteOptimizationDepotTaskProperties {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationDepotTaskProperties depotTaskProperties = (RouteOptimizationDepotTaskProperties) o;
-    return Objects.equals(this.duration, depotTaskProperties.duration) &&
-        Objects.equals(this.categories, depotTaskProperties.categories);
+    RouteOptimizationVehicleUtilization vehicleUtilization = (RouteOptimizationVehicleUtilization) o;
+    return Objects.equals(this.duration, vehicleUtilization.duration) &&
+        Objects.equals(this.distance, vehicleUtilization.distance) &&
+        Objects.equals(this.load, vehicleUtilization.load);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration, categories);
+    return Objects.hash(duration, distance, load);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationDepotTaskProperties {\n");
+    sb.append("class RouteOptimizationVehicleUtilization {\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
-    sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
+    sb.append("    distance: ").append(toIndentedString(distance)).append("\n");
+    sb.append("    load: ").append(toIndentedString(load)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -186,13 +209,14 @@ public class RouteOptimizationDepotTaskProperties {
       joiner.add(String.format("%sduration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDuration()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `categories` to the URL query string
-    if (getCategories() != null) {
-      for (int i = 0; i < getCategories().size(); i++) {
-        joiner.add(String.format("%scategories%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-            URLEncoder.encode(String.valueOf(getCategories().get(i)), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
-      }
+    // add `distance` to the URL query string
+    if (getDistance() != null) {
+      joiner.add(String.format("%sdistance%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDistance()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `load` to the URL query string
+    if (getLoad() != null) {
+      joiner.add(String.format("%sload%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLoad()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

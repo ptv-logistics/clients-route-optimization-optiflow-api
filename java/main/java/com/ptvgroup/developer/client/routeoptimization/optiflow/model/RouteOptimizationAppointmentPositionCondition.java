@@ -26,17 +26,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Describes the strategy for loading and unloading orders in the compartment. * &#x60;NONE&#x60; - There is no restriction on the sequence of loading or unloading. * &#x60;LAST_IN_FIRST_OUT&#x60; - The last order loaded must be the first to be unloaded.
+ * The rule applies only if the appointment to which the task belongs is at the specified position.
  */
-public enum RouteOptimizationCompartmentLoadingStrategy {
+public enum RouteOptimizationAppointmentPositionCondition {
   
-  NONE("NONE"),
+  FIRST_OF_ROUTE("FIRST_OF_ROUTE"),
   
-  LAST_IN_FIRST_OUT("LAST_IN_FIRST_OUT");
+  LAST_OF_ROUTE("LAST_OF_ROUTE"),
+  
+  ANY("ANY");
 
   private String value;
 
-  RouteOptimizationCompartmentLoadingStrategy(String value) {
+  RouteOptimizationAppointmentPositionCondition(String value) {
     this.value = value;
   }
 
@@ -51,8 +53,8 @@ public enum RouteOptimizationCompartmentLoadingStrategy {
   }
 
   @JsonCreator
-  public static RouteOptimizationCompartmentLoadingStrategy fromValue(String value) {
-    for (RouteOptimizationCompartmentLoadingStrategy b : RouteOptimizationCompartmentLoadingStrategy.values()) {
+  public static RouteOptimizationAppointmentPositionCondition fromValue(String value) {
+    for (RouteOptimizationAppointmentPositionCondition b : RouteOptimizationAppointmentPositionCondition.values()) {
       if (b.value.equals(value)) {
         return b;
       }
