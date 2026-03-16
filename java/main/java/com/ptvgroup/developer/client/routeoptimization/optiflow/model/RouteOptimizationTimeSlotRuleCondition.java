@@ -30,17 +30,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A condition used to select which tasks should be modified by a rule. A condition is met if all its properties are matched.
+ * A condition used to select which time slots should be modified by a rule. A condition is met if all its properties are matched.
  */
 @JsonPropertyOrder({
-  RouteOptimizationTaskRuleCondition.JSON_PROPERTY_TASK_CATEGORY,
-  RouteOptimizationTaskRuleCondition.JSON_PROPERTY_VEHICLE_CATEGORY,
-  RouteOptimizationTaskRuleCondition.JSON_PROPERTY_APPOINTMENT_POSITION
+  RouteOptimizationTimeSlotRuleCondition.JSON_PROPERTY_TIME_SLOT_CATEGORY,
+  RouteOptimizationTimeSlotRuleCondition.JSON_PROPERTY_VEHICLE_CATEGORY,
+  RouteOptimizationTimeSlotRuleCondition.JSON_PROPERTY_APPOINTMENT_POSITION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-16T14:22:59.798250761Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationTaskRuleCondition {
-  public static final String JSON_PROPERTY_TASK_CATEGORY = "taskCategory";
-  private String taskCategory;
+public class RouteOptimizationTimeSlotRuleCondition {
+  public static final String JSON_PROPERTY_TIME_SLOT_CATEGORY = "timeSlotCategory";
+  private String timeSlotCategory;
 
   public static final String JSON_PROPERTY_VEHICLE_CATEGORY = "vehicleCategory";
   private String vehicleCategory;
@@ -48,35 +48,35 @@ public class RouteOptimizationTaskRuleCondition {
   public static final String JSON_PROPERTY_APPOINTMENT_POSITION = "appointmentPosition";
   private RouteOptimizationAppointmentPositionCondition appointmentPosition = RouteOptimizationAppointmentPositionCondition.ANY;
 
-  public RouteOptimizationTaskRuleCondition() { 
+  public RouteOptimizationTimeSlotRuleCondition() { 
   }
 
-  public RouteOptimizationTaskRuleCondition taskCategory(String taskCategory) {
-    this.taskCategory = taskCategory;
+  public RouteOptimizationTimeSlotRuleCondition timeSlotCategory(String timeSlotCategory) {
+    this.timeSlotCategory = timeSlotCategory;
     return this;
   }
 
    /**
-   * The rule applies only to tasks whose categories match this condition. When omitted, the rule applies to all tasks. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches tasks that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches tasks that **do not** have that category. If no task matches this condition, the rule is ignored.
-   * @return taskCategory
+   * The rule applies only to time slots whose categories match this condition. When omitted, the rule applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches time slots that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no time slots matches this condition, the rule is ignored.
+   * @return timeSlotCategory
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TASK_CATEGORY)
+  @JsonProperty(JSON_PROPERTY_TIME_SLOT_CATEGORY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getTaskCategory() {
-    return taskCategory;
+  public String getTimeSlotCategory() {
+    return timeSlotCategory;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TASK_CATEGORY)
+  @JsonProperty(JSON_PROPERTY_TIME_SLOT_CATEGORY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTaskCategory(String taskCategory) {
-    this.taskCategory = taskCategory;
+  public void setTimeSlotCategory(String timeSlotCategory) {
+    this.timeSlotCategory = timeSlotCategory;
   }
 
 
-  public RouteOptimizationTaskRuleCondition vehicleCategory(String vehicleCategory) {
+  public RouteOptimizationTimeSlotRuleCondition vehicleCategory(String vehicleCategory) {
     this.vehicleCategory = vehicleCategory;
     return this;
   }
@@ -101,7 +101,7 @@ public class RouteOptimizationTaskRuleCondition {
   }
 
 
-  public RouteOptimizationTaskRuleCondition appointmentPosition(RouteOptimizationAppointmentPositionCondition appointmentPosition) {
+  public RouteOptimizationTimeSlotRuleCondition appointmentPosition(RouteOptimizationAppointmentPositionCondition appointmentPosition) {
     this.appointmentPosition = appointmentPosition;
     return this;
   }
@@ -127,7 +127,7 @@ public class RouteOptimizationTaskRuleCondition {
 
 
   /**
-   * Return true if this TaskRuleCondition object is equal to o.
+   * Return true if this TimeSlotRuleCondition object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -137,22 +137,22 @@ public class RouteOptimizationTaskRuleCondition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationTaskRuleCondition taskRuleCondition = (RouteOptimizationTaskRuleCondition) o;
-    return Objects.equals(this.taskCategory, taskRuleCondition.taskCategory) &&
-        Objects.equals(this.vehicleCategory, taskRuleCondition.vehicleCategory) &&
-        Objects.equals(this.appointmentPosition, taskRuleCondition.appointmentPosition);
+    RouteOptimizationTimeSlotRuleCondition timeSlotRuleCondition = (RouteOptimizationTimeSlotRuleCondition) o;
+    return Objects.equals(this.timeSlotCategory, timeSlotRuleCondition.timeSlotCategory) &&
+        Objects.equals(this.vehicleCategory, timeSlotRuleCondition.vehicleCategory) &&
+        Objects.equals(this.appointmentPosition, timeSlotRuleCondition.appointmentPosition);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(taskCategory, vehicleCategory, appointmentPosition);
+    return Objects.hash(timeSlotCategory, vehicleCategory, appointmentPosition);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationTaskRuleCondition {\n");
-    sb.append("    taskCategory: ").append(toIndentedString(taskCategory)).append("\n");
+    sb.append("class RouteOptimizationTimeSlotRuleCondition {\n");
+    sb.append("    timeSlotCategory: ").append(toIndentedString(timeSlotCategory)).append("\n");
     sb.append("    vehicleCategory: ").append(toIndentedString(vehicleCategory)).append("\n");
     sb.append("    appointmentPosition: ").append(toIndentedString(appointmentPosition)).append("\n");
     sb.append("}");
@@ -202,9 +202,9 @@ public class RouteOptimizationTaskRuleCondition {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `taskCategory` to the URL query string
-    if (getTaskCategory() != null) {
-      joiner.add(String.format("%staskCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTaskCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `timeSlotCategory` to the URL query string
+    if (getTimeSlotCategory() != null) {
+      joiner.add(String.format("%stimeSlotCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTimeSlotCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     // add `vehicleCategory` to the URL query string

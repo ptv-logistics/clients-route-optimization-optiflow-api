@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationDurationModifier;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationTaskRuleCondition;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationTimeSlotRuleCondition;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,29 +33,29 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A rule that conditionally modifies task properties.
+ * A rule that conditionally modifies time slot properties.
  */
 @JsonPropertyOrder({
-  RouteOptimizationTaskRule.JSON_PROPERTY_CONDITIONS,
-  RouteOptimizationTaskRule.JSON_PROPERTY_DURATION
+  RouteOptimizationTimeSlotRule.JSON_PROPERTY_CONDITIONS,
+  RouteOptimizationTimeSlotRule.JSON_PROPERTY_PREPARATION_DURATION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-16T14:22:59.798250761Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationTaskRule {
+public class RouteOptimizationTimeSlotRule {
   public static final String JSON_PROPERTY_CONDITIONS = "conditions";
-  private List<RouteOptimizationTaskRuleCondition> conditions;
+  private List<RouteOptimizationTimeSlotRuleCondition> conditions;
 
-  public static final String JSON_PROPERTY_DURATION = "duration";
-  private RouteOptimizationDurationModifier duration;
+  public static final String JSON_PROPERTY_PREPARATION_DURATION = "preparationDuration";
+  private RouteOptimizationDurationModifier preparationDuration;
 
-  public RouteOptimizationTaskRule() { 
+  public RouteOptimizationTimeSlotRule() { 
   }
 
-  public RouteOptimizationTaskRule conditions(List<RouteOptimizationTaskRuleCondition> conditions) {
+  public RouteOptimizationTimeSlotRule conditions(List<RouteOptimizationTimeSlotRuleCondition> conditions) {
     this.conditions = conditions;
     return this;
   }
 
-  public RouteOptimizationTaskRule addConditionsItem(RouteOptimizationTaskRuleCondition conditionsItem) {
+  public RouteOptimizationTimeSlotRule addConditionsItem(RouteOptimizationTimeSlotRuleCondition conditionsItem) {
     if (this.conditions == null) {
       this.conditions = new ArrayList<>();
     }
@@ -71,45 +71,45 @@ public class RouteOptimizationTaskRule {
   @JsonProperty(JSON_PROPERTY_CONDITIONS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<RouteOptimizationTaskRuleCondition> getConditions() {
+  public List<RouteOptimizationTimeSlotRuleCondition> getConditions() {
     return conditions;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CONDITIONS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConditions(List<RouteOptimizationTaskRuleCondition> conditions) {
+  public void setConditions(List<RouteOptimizationTimeSlotRuleCondition> conditions) {
     this.conditions = conditions;
   }
 
 
-  public RouteOptimizationTaskRule duration(RouteOptimizationDurationModifier duration) {
-    this.duration = duration;
+  public RouteOptimizationTimeSlotRule preparationDuration(RouteOptimizationDurationModifier preparationDuration) {
+    this.preparationDuration = preparationDuration;
     return this;
   }
 
    /**
-   * Get duration
-   * @return duration
+   * Get preparationDuration
+   * @return preparationDuration
   **/
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(JSON_PROPERTY_PREPARATION_DURATION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public RouteOptimizationDurationModifier getDuration() {
-    return duration;
+  public RouteOptimizationDurationModifier getPreparationDuration() {
+    return preparationDuration;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DURATION)
+  @JsonProperty(JSON_PROPERTY_PREPARATION_DURATION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDuration(RouteOptimizationDurationModifier duration) {
-    this.duration = duration;
+  public void setPreparationDuration(RouteOptimizationDurationModifier preparationDuration) {
+    this.preparationDuration = preparationDuration;
   }
 
 
   /**
-   * Return true if this TaskRule object is equal to o.
+   * Return true if this TimeSlotRule object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -119,22 +119,22 @@ public class RouteOptimizationTaskRule {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationTaskRule taskRule = (RouteOptimizationTaskRule) o;
-    return Objects.equals(this.conditions, taskRule.conditions) &&
-        Objects.equals(this.duration, taskRule.duration);
+    RouteOptimizationTimeSlotRule timeSlotRule = (RouteOptimizationTimeSlotRule) o;
+    return Objects.equals(this.conditions, timeSlotRule.conditions) &&
+        Objects.equals(this.preparationDuration, timeSlotRule.preparationDuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conditions, duration);
+    return Objects.hash(conditions, preparationDuration);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationTaskRule {\n");
+    sb.append("class RouteOptimizationTimeSlotRule {\n");
     sb.append("    conditions: ").append(toIndentedString(conditions)).append("\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    preparationDuration: ").append(toIndentedString(preparationDuration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,9 +192,9 @@ public class RouteOptimizationTaskRule {
       }
     }
 
-    // add `duration` to the URL query string
-    if (getDuration() != null) {
-      joiner.add(getDuration().toUrlQueryString(prefix + "duration" + suffix));
+    // add `preparationDuration` to the URL query string
+    if (getPreparationDuration() != null) {
+      joiner.add(getPreparationDuration().toUrlQueryString(prefix + "preparationDuration" + suffix));
     }
 
     return joiner.toString();
