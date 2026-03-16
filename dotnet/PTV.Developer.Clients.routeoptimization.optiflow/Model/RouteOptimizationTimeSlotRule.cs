@@ -26,35 +26,35 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A rule that conditionally modifies task properties.
+    /// A rule that conditionally modifies time slot properties.
     /// </summary>
-    [DataContract(Name = "TaskRule")]
-    public partial class RouteOptimizationTaskRule : IValidatableObject
+    [DataContract(Name = "TimeSlotRule")]
+    public partial class RouteOptimizationTimeSlotRule : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationTaskRule" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationTimeSlotRule" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RouteOptimizationTaskRule() { }
+        protected RouteOptimizationTimeSlotRule() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationTaskRule" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationTimeSlotRule" /> class.
         /// </summary>
         /// <param name="conditions">A list of conditions that describes when the rule applies. The rule applies if any of the conditions are met. A condition is met if all of its properties are matched. (required).</param>
-        /// <param name="duration">duration (required).</param>
-        public RouteOptimizationTaskRule(List<RouteOptimizationTaskRuleCondition> conditions = default(List<RouteOptimizationTaskRuleCondition>), RouteOptimizationDurationModifier duration = default(RouteOptimizationDurationModifier))
+        /// <param name="preparationDuration">preparationDuration (required).</param>
+        public RouteOptimizationTimeSlotRule(List<RouteOptimizationTimeSlotRuleCondition> conditions = default(List<RouteOptimizationTimeSlotRuleCondition>), RouteOptimizationDurationModifier preparationDuration = default(RouteOptimizationDurationModifier))
         {
             // to ensure "conditions" is required (not null)
             if (conditions == null)
             {
-                throw new ArgumentNullException("conditions is a required property for RouteOptimizationTaskRule and cannot be null");
+                throw new ArgumentNullException("conditions is a required property for RouteOptimizationTimeSlotRule and cannot be null");
             }
             this.Conditions = conditions;
-            // to ensure "duration" is required (not null)
-            if (duration == null)
+            // to ensure "preparationDuration" is required (not null)
+            if (preparationDuration == null)
             {
-                throw new ArgumentNullException("duration is a required property for RouteOptimizationTaskRule and cannot be null");
+                throw new ArgumentNullException("preparationDuration is a required property for RouteOptimizationTimeSlotRule and cannot be null");
             }
-            this.Duration = duration;
+            this.PreparationDuration = preparationDuration;
         }
 
         /// <summary>
@@ -62,13 +62,13 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         /// </summary>
         /// <value>A list of conditions that describes when the rule applies. The rule applies if any of the conditions are met. A condition is met if all of its properties are matched.</value>
         [DataMember(Name = "conditions", IsRequired = true, EmitDefaultValue = true)]
-        public List<RouteOptimizationTaskRuleCondition> Conditions { get; set; }
+        public List<RouteOptimizationTimeSlotRuleCondition> Conditions { get; set; }
 
         /// <summary>
-        /// Gets or Sets Duration
+        /// Gets or Sets PreparationDuration
         /// </summary>
-        [DataMember(Name = "duration", IsRequired = true, EmitDefaultValue = true)]
-        public RouteOptimizationDurationModifier Duration { get; set; }
+        [DataMember(Name = "preparationDuration", IsRequired = true, EmitDefaultValue = true)]
+        public RouteOptimizationDurationModifier PreparationDuration { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -77,9 +77,9 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationTaskRule {\n");
+            sb.Append("class RouteOptimizationTimeSlotRule {\n");
             sb.Append("  Conditions: ").Append(Conditions).Append("\n");
-            sb.Append("  Duration: ").Append(Duration).Append("\n");
+            sb.Append("  PreparationDuration: ").Append(PreparationDuration).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -26,10 +26,10 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A condition used to select which tasks should be modified by a rule. A condition is met if all its properties are matched.
+    /// A condition used to select which time slots should be modified by a rule. A condition is met if all its properties are matched.
     /// </summary>
-    [DataContract(Name = "TaskRuleCondition")]
-    public partial class RouteOptimizationTaskRuleCondition : IValidatableObject
+    [DataContract(Name = "TimeSlotRuleCondition")]
+    public partial class RouteOptimizationTimeSlotRuleCondition : IValidatableObject
     {
 
         /// <summary>
@@ -38,31 +38,29 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         [DataMember(Name = "appointmentPosition", EmitDefaultValue = true)]
         public RouteOptimizationAppointmentPositionCondition? AppointmentPosition { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationTaskRuleCondition" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationTimeSlotRuleCondition" /> class.
         /// </summary>
-        /// <param name="taskCategory">The rule applies only to tasks whose categories match this condition. When omitted, the rule applies to all tasks. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches tasks that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches tasks that **do not** have that category. If no task matches this condition, the rule is ignored..</param>
+        /// <param name="timeSlotCategory">The rule applies only to time slots whose categories match this condition. When omitted, the rule applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches time slots that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no time slots matches this condition, the rule is ignored..</param>
         /// <param name="vehicleCategory">The rule applies only to vehicles whose categories match this condition. When omitted, the rule applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the rule is ignored..</param>
         /// <param name="appointmentPosition">appointmentPosition.</param>
-        public RouteOptimizationTaskRuleCondition(string taskCategory = default(string), string vehicleCategory = default(string), RouteOptimizationAppointmentPositionCondition? appointmentPosition = default(RouteOptimizationAppointmentPositionCondition?))
+        public RouteOptimizationTimeSlotRuleCondition(string timeSlotCategory = default(string), string vehicleCategory = default(string), RouteOptimizationAppointmentPositionCondition? appointmentPosition = default(RouteOptimizationAppointmentPositionCondition?))
         {
-            this.TaskCategory = taskCategory;
+            this.TimeSlotCategory = timeSlotCategory;
             this.VehicleCategory = vehicleCategory;
             this.AppointmentPosition = appointmentPosition;
         }
 
         /// <summary>
-        /// The rule applies only to tasks whose categories match this condition. When omitted, the rule applies to all tasks. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches tasks that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches tasks that **do not** have that category. If no task matches this condition, the rule is ignored.
+        /// The rule applies only to time slots whose categories match this condition. When omitted, the rule applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches time slots that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no time slots matches this condition, the rule is ignored.
         /// </summary>
-        /// <value>The rule applies only to tasks whose categories match this condition. When omitted, the rule applies to all tasks. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches tasks that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches tasks that **do not** have that category. If no task matches this condition, the rule is ignored.</value>
-        /// <example>FORK_LIFT_NEEDED</example>
-        [DataMember(Name = "taskCategory", EmitDefaultValue = true)]
-        public string TaskCategory { get; set; }
+        /// <value>The rule applies only to time slots whose categories match this condition. When omitted, the rule applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches time slots that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no time slots matches this condition, the rule is ignored.</value>
+        [DataMember(Name = "timeSlotCategory", EmitDefaultValue = true)]
+        public string TimeSlotCategory { get; set; }
 
         /// <summary>
         /// The rule applies only to vehicles whose categories match this condition. When omitted, the rule applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the rule is ignored.
         /// </summary>
         /// <value>The rule applies only to vehicles whose categories match this condition. When omitted, the rule applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the rule is ignored.</value>
-        /// <example>BIG_TRUCK</example>
         [DataMember(Name = "vehicleCategory", EmitDefaultValue = true)]
         public string VehicleCategory { get; set; }
 
@@ -73,8 +71,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationTaskRuleCondition {\n");
-            sb.Append("  TaskCategory: ").Append(TaskCategory).Append("\n");
+            sb.Append("class RouteOptimizationTimeSlotRuleCondition {\n");
+            sb.Append("  TimeSlotCategory: ").Append(TimeSlotCategory).Append("\n");
             sb.Append("  VehicleCategory: ").Append(VehicleCategory).Append("\n");
             sb.Append("  AppointmentPosition: ").Append(AppointmentPosition).Append("\n");
             sb.Append("}\n");
@@ -97,24 +95,24 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // TaskCategory (string) maxLength
-            if (this.TaskCategory != null && this.TaskCategory.Length > 37)
+            // TimeSlotCategory (string) maxLength
+            if (this.TimeSlotCategory != null && this.TimeSlotCategory.Length > 37)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaskCategory, length must be less than 37.", new [] { "TaskCategory" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TimeSlotCategory, length must be less than 37.", new [] { "TimeSlotCategory" });
             }
 
-            // TaskCategory (string) minLength
-            if (this.TaskCategory != null && this.TaskCategory.Length < 1)
+            // TimeSlotCategory (string) minLength
+            if (this.TimeSlotCategory != null && this.TimeSlotCategory.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaskCategory, length must be greater than 1.", new [] { "TaskCategory" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TimeSlotCategory, length must be greater than 1.", new [] { "TimeSlotCategory" });
             }
 
-            if (this.TaskCategory != null) {
-                // TaskCategory (string) pattern
-                Regex regexTaskCategory = new Regex(@"^!?[a-zA-Z0-9_-]{1,36}$", RegexOptions.CultureInvariant);
-                if (!regexTaskCategory.Match(this.TaskCategory).Success)
+            if (this.TimeSlotCategory != null) {
+                // TimeSlotCategory (string) pattern
+                Regex regexTimeSlotCategory = new Regex(@"^!?[a-zA-Z0-9_-]{1,36}$", RegexOptions.CultureInvariant);
+                if (!regexTimeSlotCategory.Match(this.TimeSlotCategory).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaskCategory, must match a pattern of " + regexTaskCategory, new [] { "TaskCategory" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TimeSlotCategory, must match a pattern of " + regexTimeSlotCategory, new [] { "TimeSlotCategory" });
                 }
             }
 
