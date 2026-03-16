@@ -21,61 +21,61 @@ import {
 } from './RouteOptimizationAppointmentPositionCondition';
 
 /**
- * A condition used to select which tasks should be modified by a rule. A condition is met if all its properties are matched.
+ * A condition used to select which time slots should be modified by a rule. A condition is met if all its properties are matched.
  * @export
- * @interface RouteOptimizationTaskRuleCondition
+ * @interface RouteOptimizationTimeSlotRuleCondition
  */
-export interface RouteOptimizationTaskRuleCondition {
+export interface RouteOptimizationTimeSlotRuleCondition {
     /**
-     * The rule applies only to tasks whose categories match this condition. When omitted, the rule applies to all tasks. If this field contains a plain category name (e.g. `CATEGORY_A`), it matches tasks that have this category. If this field starts with `!` (e.g. `!CATEGORY_A`), it matches tasks that **do not** have that category. If no task matches this condition, the rule is ignored.
+     * The rule applies only to time slots whose categories match this condition. When omitted, the rule applies to all vehicles. If this field contains a plain category name (e.g. `CATEGORY_A`), it matches time slots that have this category. If this field starts with `!` (e.g. `!CATEGORY_A`), it matches vehicles that **do not** have that category. If no time slots matches this condition, the rule is ignored.
      * @type {string}
-     * @memberof RouteOptimizationTaskRuleCondition
+     * @memberof RouteOptimizationTimeSlotRuleCondition
      */
-    taskCategory?: string;
+    timeSlotCategory?: string;
     /**
      * The rule applies only to vehicles whose categories match this condition. When omitted, the rule applies to all vehicles. If this field contains a plain category name (e.g. `CATEGORY_A`), it matches vehicles that have this category. If this field starts with `!` (e.g. `!CATEGORY_A`), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the rule is ignored.
      * @type {string}
-     * @memberof RouteOptimizationTaskRuleCondition
+     * @memberof RouteOptimizationTimeSlotRuleCondition
      */
     vehicleCategory?: string;
     /**
      * 
      * @type {RouteOptimizationAppointmentPositionCondition}
-     * @memberof RouteOptimizationTaskRuleCondition
+     * @memberof RouteOptimizationTimeSlotRuleCondition
      */
     appointmentPosition?: RouteOptimizationAppointmentPositionCondition;
 }
 
 /**
- * Check if a given object implements the RouteOptimizationTaskRuleCondition interface.
+ * Check if a given object implements the RouteOptimizationTimeSlotRuleCondition interface.
  */
-export function instanceOfRouteOptimizationTaskRuleCondition(value: object): boolean {
+export function instanceOfRouteOptimizationTimeSlotRuleCondition(value: object): boolean {
     return true;
 }
 
-export function RouteOptimizationTaskRuleConditionFromJSON(json: any): RouteOptimizationTaskRuleCondition {
-    return RouteOptimizationTaskRuleConditionFromJSONTyped(json, false);
+export function RouteOptimizationTimeSlotRuleConditionFromJSON(json: any): RouteOptimizationTimeSlotRuleCondition {
+    return RouteOptimizationTimeSlotRuleConditionFromJSONTyped(json, false);
 }
 
-export function RouteOptimizationTaskRuleConditionFromJSONTyped(json: any, ignoreDiscriminator: boolean): RouteOptimizationTaskRuleCondition {
+export function RouteOptimizationTimeSlotRuleConditionFromJSONTyped(json: any, ignoreDiscriminator: boolean): RouteOptimizationTimeSlotRuleCondition {
     if (json == null) {
         return json;
     }
     return {
         
-        'taskCategory': json['taskCategory'] == null ? undefined : json['taskCategory'],
+        'timeSlotCategory': json['timeSlotCategory'] == null ? undefined : json['timeSlotCategory'],
         'vehicleCategory': json['vehicleCategory'] == null ? undefined : json['vehicleCategory'],
         'appointmentPosition': json['appointmentPosition'] == null ? undefined : RouteOptimizationAppointmentPositionConditionFromJSON(json['appointmentPosition']),
     };
 }
 
-export function RouteOptimizationTaskRuleConditionToJSON(value?: RouteOptimizationTaskRuleCondition | null): any {
+export function RouteOptimizationTimeSlotRuleConditionToJSON(value?: RouteOptimizationTimeSlotRuleCondition | null): any {
     if (value == null) {
         return value;
     }
     return {
         
-        'taskCategory': value['taskCategory'],
+        'timeSlotCategory': value['timeSlotCategory'],
         'vehicleCategory': value['vehicleCategory'],
         'appointmentPosition': RouteOptimizationAppointmentPositionConditionToJSON(value['appointmentPosition']),
     };

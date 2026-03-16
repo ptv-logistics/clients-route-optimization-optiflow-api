@@ -105,6 +105,8 @@ export * from './RouteOptimizationTaskRuleCondition';
 export * from './RouteOptimizationTaskStructure';
 export * from './RouteOptimizationTaskType';
 export * from './RouteOptimizationTimeSlot';
+export * from './RouteOptimizationTimeSlotRule';
+export * from './RouteOptimizationTimeSlotRuleCondition';
 export * from './RouteOptimizationTrafficMode';
 export * from './RouteOptimizationUnscheduledOrder';
 export * from './RouteOptimizationUnscheduledOrderDetail';

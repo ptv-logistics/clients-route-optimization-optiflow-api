@@ -19,64 +19,64 @@ import {
     RouteOptimizationDurationModifierFromJSONTyped,
     RouteOptimizationDurationModifierToJSON,
 } from './RouteOptimizationDurationModifier';
-import type { RouteOptimizationLocationRuleCondition } from './RouteOptimizationLocationRuleCondition';
+import type { RouteOptimizationTimeSlotRuleCondition } from './RouteOptimizationTimeSlotRuleCondition';
 import {
-    RouteOptimizationLocationRuleConditionFromJSON,
-    RouteOptimizationLocationRuleConditionFromJSONTyped,
-    RouteOptimizationLocationRuleConditionToJSON,
-} from './RouteOptimizationLocationRuleCondition';
+    RouteOptimizationTimeSlotRuleConditionFromJSON,
+    RouteOptimizationTimeSlotRuleConditionFromJSONTyped,
+    RouteOptimizationTimeSlotRuleConditionToJSON,
+} from './RouteOptimizationTimeSlotRuleCondition';
 
 /**
- * A rule that conditionally modifies location properties.
+ * A rule that conditionally modifies time slot properties.
  * @export
- * @interface RouteOptimizationLocationRule
+ * @interface RouteOptimizationTimeSlotRule
  */
-export interface RouteOptimizationLocationRule {
+export interface RouteOptimizationTimeSlotRule {
     /**
      * A list of conditions that describes when the rule applies. The rule applies if any of the conditions are met. A condition is met if all of its properties are matched.
-     * @type {Array<RouteOptimizationLocationRuleCondition>}
-     * @memberof RouteOptimizationLocationRule
+     * @type {Array<RouteOptimizationTimeSlotRuleCondition>}
+     * @memberof RouteOptimizationTimeSlotRule
      */
-    conditions: Array<RouteOptimizationLocationRuleCondition>;
+    conditions: Array<RouteOptimizationTimeSlotRuleCondition>;
     /**
      * 
      * @type {RouteOptimizationDurationModifier}
-     * @memberof RouteOptimizationLocationRule
+     * @memberof RouteOptimizationTimeSlotRule
      */
     preparationDuration: RouteOptimizationDurationModifier;
 }
 
 /**
- * Check if a given object implements the RouteOptimizationLocationRule interface.
+ * Check if a given object implements the RouteOptimizationTimeSlotRule interface.
  */
-export function instanceOfRouteOptimizationLocationRule(value: object): boolean {
+export function instanceOfRouteOptimizationTimeSlotRule(value: object): boolean {
     if (!('conditions' in value)) return false;
     if (!('preparationDuration' in value)) return false;
     return true;
 }
 
-export function RouteOptimizationLocationRuleFromJSON(json: any): RouteOptimizationLocationRule {
-    return RouteOptimizationLocationRuleFromJSONTyped(json, false);
+export function RouteOptimizationTimeSlotRuleFromJSON(json: any): RouteOptimizationTimeSlotRule {
+    return RouteOptimizationTimeSlotRuleFromJSONTyped(json, false);
 }
 
-export function RouteOptimizationLocationRuleFromJSONTyped(json: any, ignoreDiscriminator: boolean): RouteOptimizationLocationRule {
+export function RouteOptimizationTimeSlotRuleFromJSONTyped(json: any, ignoreDiscriminator: boolean): RouteOptimizationTimeSlotRule {
     if (json == null) {
         return json;
     }
     return {
         
-        'conditions': ((json['conditions'] as Array<any>).map(RouteOptimizationLocationRuleConditionFromJSON)),
+        'conditions': ((json['conditions'] as Array<any>).map(RouteOptimizationTimeSlotRuleConditionFromJSON)),
         'preparationDuration': RouteOptimizationDurationModifierFromJSON(json['preparationDuration']),
     };
 }
 
-export function RouteOptimizationLocationRuleToJSON(value?: RouteOptimizationLocationRule | null): any {
+export function RouteOptimizationTimeSlotRuleToJSON(value?: RouteOptimizationTimeSlotRule | null): any {
     if (value == null) {
         return value;
     }
     return {
         
-        'conditions': ((value['conditions'] as Array<any>).map(RouteOptimizationLocationRuleConditionToJSON)),
+        'conditions': ((value['conditions'] as Array<any>).map(RouteOptimizationTimeSlotRuleConditionToJSON)),
         'preparationDuration': RouteOptimizationDurationModifierToJSON(value['preparationDuration']),
     };
 }
