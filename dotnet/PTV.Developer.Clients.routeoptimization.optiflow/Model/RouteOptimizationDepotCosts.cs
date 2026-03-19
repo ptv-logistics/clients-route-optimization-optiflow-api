@@ -26,26 +26,25 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A reference to the optimization.
+    /// Defines the costs for loading and unloading orders at the depot.
     /// </summary>
-    [DataContract(Name = "OptimizationIdentifier")]
-    public partial class RouteOptimizationOptimizationIdentifier : IValidatableObject
+    [DataContract(Name = "DepotCosts")]
+    public partial class RouteOptimizationDepotCosts : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationOptimizationIdentifier" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationDepotCosts" /> class.
         /// </summary>
-        /// <param name="id">The unique identifier of the optimization..</param>
-        public RouteOptimizationOptimizationIdentifier(Guid? id = default(Guid?))
+        /// <param name="loads">loads.</param>
+        public RouteOptimizationDepotCosts(RouteOptimizationDepotLoadCosts loads = default(RouteOptimizationDepotLoadCosts))
         {
-            this.Id = id;
+            this.Loads = loads;
         }
 
         /// <summary>
-        /// The unique identifier of the optimization.
+        /// Gets or Sets Loads
         /// </summary>
-        /// <value>The unique identifier of the optimization.</value>
-        [DataMember(Name = "id", EmitDefaultValue = true)]
-        public Guid? Id { get; set; }
+        [DataMember(Name = "loads", EmitDefaultValue = false)]
+        public RouteOptimizationDepotLoadCosts Loads { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -54,8 +53,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationOptimizationIdentifier {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("class RouteOptimizationDepotCosts {\n");
+            sb.Append("  Loads: ").Append(Loads).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
