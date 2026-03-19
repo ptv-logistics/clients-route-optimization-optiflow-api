@@ -24,53 +24,52 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationDepotLoadCosts;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Describes the consumption rate of the vehicle battery.
+ * Defines the costs for loading and unloading orders at the depot.
  */
 @JsonPropertyOrder({
-  RouteOptimizationBatteryConsumption.JSON_PROPERTY_PER_HUNDRED_KILOMETERS
+  RouteOptimizationDepotCosts.JSON_PROPERTY_LOADS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-19T16:10:51.495467545Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationBatteryConsumption {
-  public static final String JSON_PROPERTY_PER_HUNDRED_KILOMETERS = "perHundredKilometers";
-  private Double perHundredKilometers;
+public class RouteOptimizationDepotCosts {
+  public static final String JSON_PROPERTY_LOADS = "loads";
+  private RouteOptimizationDepotLoadCosts loads;
 
-  public RouteOptimizationBatteryConsumption() { 
+  public RouteOptimizationDepotCosts() { 
   }
 
-  public RouteOptimizationBatteryConsumption perHundredKilometers(Double perHundredKilometers) {
-    this.perHundredKilometers = perHundredKilometers;
+  public RouteOptimizationDepotCosts loads(RouteOptimizationDepotLoadCosts loads) {
+    this.loads = loads;
     return this;
   }
 
    /**
-   * Describes the kWh consumed by driving 100km.
-   * minimum: 0
-   * maximum: 1000
-   * @return perHundredKilometers
+   * Get loads
+   * @return loads
   **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PER_HUNDRED_KILOMETERS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LOADS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getPerHundredKilometers() {
-    return perHundredKilometers;
+  public RouteOptimizationDepotLoadCosts getLoads() {
+    return loads;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PER_HUNDRED_KILOMETERS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPerHundredKilometers(Double perHundredKilometers) {
-    this.perHundredKilometers = perHundredKilometers;
+  @JsonProperty(JSON_PROPERTY_LOADS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLoads(RouteOptimizationDepotLoadCosts loads) {
+    this.loads = loads;
   }
 
 
   /**
-   * Return true if this BatteryConsumption object is equal to o.
+   * Return true if this DepotCosts object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,20 +79,20 @@ public class RouteOptimizationBatteryConsumption {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationBatteryConsumption batteryConsumption = (RouteOptimizationBatteryConsumption) o;
-    return Objects.equals(this.perHundredKilometers, batteryConsumption.perHundredKilometers);
+    RouteOptimizationDepotCosts depotCosts = (RouteOptimizationDepotCosts) o;
+    return Objects.equals(this.loads, depotCosts.loads);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(perHundredKilometers);
+    return Objects.hash(loads);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationBatteryConsumption {\n");
-    sb.append("    perHundredKilometers: ").append(toIndentedString(perHundredKilometers)).append("\n");
+    sb.append("class RouteOptimizationDepotCosts {\n");
+    sb.append("    loads: ").append(toIndentedString(loads)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -141,9 +140,9 @@ public class RouteOptimizationBatteryConsumption {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `perHundredKilometers` to the URL query string
-    if (getPerHundredKilometers() != null) {
-      joiner.add(String.format("%sperHundredKilometers%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPerHundredKilometers()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `loads` to the URL query string
+    if (getLoads() != null) {
+      joiner.add(getLoads().toUrlQueryString(prefix + "loads" + suffix));
     }
 
     return joiner.toString();

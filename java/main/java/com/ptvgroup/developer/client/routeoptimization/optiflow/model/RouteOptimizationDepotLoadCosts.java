@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationLoad;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationDepotLoadCost;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,29 +32,29 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Specifies the maximum loads that can be either picked up from or delivered to this depot.
+ * Defines the costs for loading and unloading orders at the depot based on load dimensions.
  */
 @JsonPropertyOrder({
-  RouteOptimizationDepotMaximumLoads.JSON_PROPERTY_INBOUND,
-  RouteOptimizationDepotMaximumLoads.JSON_PROPERTY_OUTBOUND
+  RouteOptimizationDepotLoadCosts.JSON_PROPERTY_INBOUND,
+  RouteOptimizationDepotLoadCosts.JSON_PROPERTY_OUTBOUND
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-19T16:10:51.495467545Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationDepotMaximumLoads {
+public class RouteOptimizationDepotLoadCosts {
   public static final String JSON_PROPERTY_INBOUND = "inbound";
-  private List<RouteOptimizationLoad> inbound = new ArrayList<>();
+  private List<RouteOptimizationDepotLoadCost> inbound = new ArrayList<>();
 
   public static final String JSON_PROPERTY_OUTBOUND = "outbound";
-  private List<RouteOptimizationLoad> outbound = new ArrayList<>();
+  private List<RouteOptimizationDepotLoadCost> outbound = new ArrayList<>();
 
-  public RouteOptimizationDepotMaximumLoads() { 
+  public RouteOptimizationDepotLoadCosts() { 
   }
 
-  public RouteOptimizationDepotMaximumLoads inbound(List<RouteOptimizationLoad> inbound) {
+  public RouteOptimizationDepotLoadCosts inbound(List<RouteOptimizationDepotLoadCost> inbound) {
     this.inbound = inbound;
     return this;
   }
 
-  public RouteOptimizationDepotMaximumLoads addInboundItem(RouteOptimizationLoad inboundItem) {
+  public RouteOptimizationDepotLoadCosts addInboundItem(RouteOptimizationDepotLoadCost inboundItem) {
     if (this.inbound == null) {
       this.inbound = new ArrayList<>();
     }
@@ -63,31 +63,31 @@ public class RouteOptimizationDepotMaximumLoads {
   }
 
    /**
-   * Defines the maximum loads that can be delivered to this depot.
+   * A list of costs applied to loads delivered to this depot.
    * @return inbound
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_INBOUND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<RouteOptimizationLoad> getInbound() {
+  public List<RouteOptimizationDepotLoadCost> getInbound() {
     return inbound;
   }
 
 
   @JsonProperty(JSON_PROPERTY_INBOUND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInbound(List<RouteOptimizationLoad> inbound) {
+  public void setInbound(List<RouteOptimizationDepotLoadCost> inbound) {
     this.inbound = inbound;
   }
 
 
-  public RouteOptimizationDepotMaximumLoads outbound(List<RouteOptimizationLoad> outbound) {
+  public RouteOptimizationDepotLoadCosts outbound(List<RouteOptimizationDepotLoadCost> outbound) {
     this.outbound = outbound;
     return this;
   }
 
-  public RouteOptimizationDepotMaximumLoads addOutboundItem(RouteOptimizationLoad outboundItem) {
+  public RouteOptimizationDepotLoadCosts addOutboundItem(RouteOptimizationDepotLoadCost outboundItem) {
     if (this.outbound == null) {
       this.outbound = new ArrayList<>();
     }
@@ -96,27 +96,27 @@ public class RouteOptimizationDepotMaximumLoads {
   }
 
    /**
-   * Defines the maximum loads that can be picked up at this depot.
+   * A list of costs applied to loads picked up at this depot.
    * @return outbound
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_OUTBOUND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<RouteOptimizationLoad> getOutbound() {
+  public List<RouteOptimizationDepotLoadCost> getOutbound() {
     return outbound;
   }
 
 
   @JsonProperty(JSON_PROPERTY_OUTBOUND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOutbound(List<RouteOptimizationLoad> outbound) {
+  public void setOutbound(List<RouteOptimizationDepotLoadCost> outbound) {
     this.outbound = outbound;
   }
 
 
   /**
-   * Return true if this DepotMaximumLoads object is equal to o.
+   * Return true if this DepotLoadCosts object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -126,9 +126,9 @@ public class RouteOptimizationDepotMaximumLoads {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationDepotMaximumLoads depotMaximumLoads = (RouteOptimizationDepotMaximumLoads) o;
-    return Objects.equals(this.inbound, depotMaximumLoads.inbound) &&
-        Objects.equals(this.outbound, depotMaximumLoads.outbound);
+    RouteOptimizationDepotLoadCosts depotLoadCosts = (RouteOptimizationDepotLoadCosts) o;
+    return Objects.equals(this.inbound, depotLoadCosts.inbound) &&
+        Objects.equals(this.outbound, depotLoadCosts.outbound);
   }
 
   @Override
@@ -139,7 +139,7 @@ public class RouteOptimizationDepotMaximumLoads {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationDepotMaximumLoads {\n");
+    sb.append("class RouteOptimizationDepotLoadCosts {\n");
     sb.append("    inbound: ").append(toIndentedString(inbound)).append("\n");
     sb.append("    outbound: ").append(toIndentedString(outbound)).append("\n");
     sb.append("}");
