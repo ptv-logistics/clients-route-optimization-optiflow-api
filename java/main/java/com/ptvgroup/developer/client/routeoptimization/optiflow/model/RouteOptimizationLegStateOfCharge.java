@@ -29,79 +29,77 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Defines and constrains the vehicle&#39;s battery energy level.
+ * Indicates the vehicle&#39;s battery energy level at the start and end of a leg.
  */
 @JsonPropertyOrder({
-  RouteOptimizationBatteryStateOfCharge.JSON_PROPERTY_INITIAL,
-  RouteOptimizationBatteryStateOfCharge.JSON_PROPERTY_MINIMUM
+  RouteOptimizationLegStateOfCharge.JSON_PROPERTY_DEPARTURE,
+  RouteOptimizationLegStateOfCharge.JSON_PROPERTY_ARRIVAL
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-07T12:55:36.526246287Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationBatteryStateOfCharge {
-  public static final String JSON_PROPERTY_INITIAL = "initial";
-  private Double initial = 1d;
+public class RouteOptimizationLegStateOfCharge {
+  public static final String JSON_PROPERTY_DEPARTURE = "departure";
+  private Double departure;
 
-  public static final String JSON_PROPERTY_MINIMUM = "minimum";
-  private Double minimum = 0d;
+  public static final String JSON_PROPERTY_ARRIVAL = "arrival";
+  private Double arrival;
 
-  public RouteOptimizationBatteryStateOfCharge() { 
+  public RouteOptimizationLegStateOfCharge() { 
   }
 
-  public RouteOptimizationBatteryStateOfCharge initial(Double initial) {
-    this.initial = initial;
+  public RouteOptimizationLegStateOfCharge departure(Double departure) {
+    this.departure = departure;
     return this;
   }
 
    /**
-   * The initial battery energy level as a fraction of total capacity (0.0 &#x3D; empty, 1.0 &#x3D; fully charged).
-   * minimum: 0
+   * The battery energy level at the moment the vehicle departs from the leg&#39;s start location, expressed as a fraction of total capacity (0.0 &#x3D; empty, 1.0 &#x3D; fully charged).
    * maximum: 1
-   * @return initial
+   * @return departure
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INITIAL)
+  @JsonProperty(JSON_PROPERTY_DEPARTURE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getInitial() {
-    return initial;
+  public Double getDeparture() {
+    return departure;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_INITIAL)
+  @JsonProperty(JSON_PROPERTY_DEPARTURE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInitial(Double initial) {
-    this.initial = initial;
+  public void setDeparture(Double departure) {
+    this.departure = departure;
   }
 
 
-  public RouteOptimizationBatteryStateOfCharge minimum(Double minimum) {
-    this.minimum = minimum;
+  public RouteOptimizationLegStateOfCharge arrival(Double arrival) {
+    this.arrival = arrival;
     return this;
   }
 
    /**
-   * The minimum allowed battery energy level as a fraction of total capacity (0.0 &#x3D; empty, 1.0 &#x3D; fully charged).
-   * minimum: 0
+   * The battery energy level when the vehicle arrives at the leg&#39;s end location, expressed as a fraction of total capacity (0.0 &#x3D; empty, 1.0 &#x3D; fully charged).
    * maximum: 1
-   * @return minimum
+   * @return arrival
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MINIMUM)
+  @JsonProperty(JSON_PROPERTY_ARRIVAL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getMinimum() {
-    return minimum;
+  public Double getArrival() {
+    return arrival;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MINIMUM)
+  @JsonProperty(JSON_PROPERTY_ARRIVAL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinimum(Double minimum) {
-    this.minimum = minimum;
+  public void setArrival(Double arrival) {
+    this.arrival = arrival;
   }
 
 
   /**
-   * Return true if this BatteryStateOfCharge object is equal to o.
+   * Return true if this LegStateOfCharge object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,22 +109,22 @@ public class RouteOptimizationBatteryStateOfCharge {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationBatteryStateOfCharge batteryStateOfCharge = (RouteOptimizationBatteryStateOfCharge) o;
-    return Objects.equals(this.initial, batteryStateOfCharge.initial) &&
-        Objects.equals(this.minimum, batteryStateOfCharge.minimum);
+    RouteOptimizationLegStateOfCharge legStateOfCharge = (RouteOptimizationLegStateOfCharge) o;
+    return Objects.equals(this.departure, legStateOfCharge.departure) &&
+        Objects.equals(this.arrival, legStateOfCharge.arrival);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(initial, minimum);
+    return Objects.hash(departure, arrival);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationBatteryStateOfCharge {\n");
-    sb.append("    initial: ").append(toIndentedString(initial)).append("\n");
-    sb.append("    minimum: ").append(toIndentedString(minimum)).append("\n");
+    sb.append("class RouteOptimizationLegStateOfCharge {\n");
+    sb.append("    departure: ").append(toIndentedString(departure)).append("\n");
+    sb.append("    arrival: ").append(toIndentedString(arrival)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -174,14 +172,14 @@ public class RouteOptimizationBatteryStateOfCharge {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `initial` to the URL query string
-    if (getInitial() != null) {
-      joiner.add(String.format("%sinitial%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getInitial()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `departure` to the URL query string
+    if (getDeparture() != null) {
+      joiner.add(String.format("%sdeparture%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDeparture()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `minimum` to the URL query string
-    if (getMinimum() != null) {
-      joiner.add(String.format("%sminimum%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMinimum()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `arrival` to the URL query string
+    if (getArrival() != null) {
+      joiner.add(String.format("%sarrival%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getArrival()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

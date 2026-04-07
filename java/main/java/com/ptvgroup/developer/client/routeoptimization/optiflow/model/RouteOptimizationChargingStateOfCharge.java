@@ -29,79 +29,77 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Defines and constrains the vehicle&#39;s battery energy level.
+ * Describes the vehicle&#39;s battery energy level before and after a charging event.
  */
 @JsonPropertyOrder({
-  RouteOptimizationBatteryStateOfCharge.JSON_PROPERTY_INITIAL,
-  RouteOptimizationBatteryStateOfCharge.JSON_PROPERTY_MINIMUM
+  RouteOptimizationChargingStateOfCharge.JSON_PROPERTY_BEFORE,
+  RouteOptimizationChargingStateOfCharge.JSON_PROPERTY_AFTER
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-07T12:55:36.526246287Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationBatteryStateOfCharge {
-  public static final String JSON_PROPERTY_INITIAL = "initial";
-  private Double initial = 1d;
+public class RouteOptimizationChargingStateOfCharge {
+  public static final String JSON_PROPERTY_BEFORE = "before";
+  private Double before;
 
-  public static final String JSON_PROPERTY_MINIMUM = "minimum";
-  private Double minimum = 0d;
+  public static final String JSON_PROPERTY_AFTER = "after";
+  private Double after;
 
-  public RouteOptimizationBatteryStateOfCharge() { 
+  public RouteOptimizationChargingStateOfCharge() { 
   }
 
-  public RouteOptimizationBatteryStateOfCharge initial(Double initial) {
-    this.initial = initial;
+  public RouteOptimizationChargingStateOfCharge before(Double before) {
+    this.before = before;
     return this;
   }
 
    /**
-   * The initial battery energy level as a fraction of total capacity (0.0 &#x3D; empty, 1.0 &#x3D; fully charged).
-   * minimum: 0
+   * The battery energy level immediately before charging begins, expressed as a fraction of total capacity (0.0 &#x3D; empty, 1.0 &#x3D; fully charged).
    * maximum: 1
-   * @return initial
+   * @return before
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INITIAL)
+  @JsonProperty(JSON_PROPERTY_BEFORE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getInitial() {
-    return initial;
+  public Double getBefore() {
+    return before;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_INITIAL)
+  @JsonProperty(JSON_PROPERTY_BEFORE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInitial(Double initial) {
-    this.initial = initial;
+  public void setBefore(Double before) {
+    this.before = before;
   }
 
 
-  public RouteOptimizationBatteryStateOfCharge minimum(Double minimum) {
-    this.minimum = minimum;
+  public RouteOptimizationChargingStateOfCharge after(Double after) {
+    this.after = after;
     return this;
   }
 
    /**
-   * The minimum allowed battery energy level as a fraction of total capacity (0.0 &#x3D; empty, 1.0 &#x3D; fully charged).
-   * minimum: 0
+   * The battery energy level immediately after charging has finished, expressed as a fraction of total capacity (0.0 &#x3D; empty, 1.0 &#x3D; fully charged).
    * maximum: 1
-   * @return minimum
+   * @return after
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MINIMUM)
+  @JsonProperty(JSON_PROPERTY_AFTER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Double getMinimum() {
-    return minimum;
+  public Double getAfter() {
+    return after;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MINIMUM)
+  @JsonProperty(JSON_PROPERTY_AFTER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinimum(Double minimum) {
-    this.minimum = minimum;
+  public void setAfter(Double after) {
+    this.after = after;
   }
 
 
   /**
-   * Return true if this BatteryStateOfCharge object is equal to o.
+   * Return true if this ChargingStateOfCharge object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -111,22 +109,22 @@ public class RouteOptimizationBatteryStateOfCharge {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationBatteryStateOfCharge batteryStateOfCharge = (RouteOptimizationBatteryStateOfCharge) o;
-    return Objects.equals(this.initial, batteryStateOfCharge.initial) &&
-        Objects.equals(this.minimum, batteryStateOfCharge.minimum);
+    RouteOptimizationChargingStateOfCharge chargingStateOfCharge = (RouteOptimizationChargingStateOfCharge) o;
+    return Objects.equals(this.before, chargingStateOfCharge.before) &&
+        Objects.equals(this.after, chargingStateOfCharge.after);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(initial, minimum);
+    return Objects.hash(before, after);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationBatteryStateOfCharge {\n");
-    sb.append("    initial: ").append(toIndentedString(initial)).append("\n");
-    sb.append("    minimum: ").append(toIndentedString(minimum)).append("\n");
+    sb.append("class RouteOptimizationChargingStateOfCharge {\n");
+    sb.append("    before: ").append(toIndentedString(before)).append("\n");
+    sb.append("    after: ").append(toIndentedString(after)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -174,14 +172,14 @@ public class RouteOptimizationBatteryStateOfCharge {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `initial` to the URL query string
-    if (getInitial() != null) {
-      joiner.add(String.format("%sinitial%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getInitial()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `before` to the URL query string
+    if (getBefore() != null) {
+      joiner.add(String.format("%sbefore%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBefore()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `minimum` to the URL query string
-    if (getMinimum() != null) {
-      joiner.add(String.format("%sminimum%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMinimum()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `after` to the URL query string
+    if (getAfter() != null) {
+      joiner.add(String.format("%safter%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAfter()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
