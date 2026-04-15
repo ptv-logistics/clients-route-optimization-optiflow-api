@@ -26,41 +26,27 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Constraints that should be taken into account by optimization.
+    /// Defines the costs for charging at a charging station.
     /// </summary>
-    [DataContract(Name = "Constraints")]
-    public partial class RouteOptimizationConstraints : IValidatableObject
+    [DataContract(Name = "ChargingStationCosts")]
+    public partial class RouteOptimizationChargingStationCosts : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationConstraints" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationChargingStationCosts" /> class.
         /// </summary>
-        /// <param name="combinations">combinations.</param>
-        /// <param name="orders">orders.</param>
-        /// <param name="tasks">tasks.</param>
-        public RouteOptimizationConstraints(RouteOptimizationCombinationConstraints combinations = default(RouteOptimizationCombinationConstraints), RouteOptimizationOrderConstraints orders = default(RouteOptimizationOrderConstraints), RouteOptimizationTaskConstraints tasks = default(RouteOptimizationTaskConstraints))
+        /// <param name="perKilowattHour">Specifies the cost for every kilowatt-hour charged. (default to 0D).</param>
+        public RouteOptimizationChargingStationCosts(double? perKilowattHour = 0D)
         {
-            this.Combinations = combinations;
-            this.Orders = orders;
-            this.Tasks = tasks;
+            // use default value if no "perKilowattHour" provided
+            this.PerKilowattHour = perKilowattHour ?? 0D;
         }
 
         /// <summary>
-        /// Gets or Sets Combinations
+        /// Specifies the cost for every kilowatt-hour charged.
         /// </summary>
-        [DataMember(Name = "combinations", EmitDefaultValue = false)]
-        public RouteOptimizationCombinationConstraints Combinations { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Orders
-        /// </summary>
-        [DataMember(Name = "orders", EmitDefaultValue = false)]
-        public RouteOptimizationOrderConstraints Orders { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Tasks
-        /// </summary>
-        [DataMember(Name = "tasks", EmitDefaultValue = false)]
-        public RouteOptimizationTaskConstraints Tasks { get; set; }
+        /// <value>Specifies the cost for every kilowatt-hour charged.</value>
+        [DataMember(Name = "perKilowattHour", EmitDefaultValue = true)]
+        public double? PerKilowattHour { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,10 +55,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationConstraints {\n");
-            sb.Append("  Combinations: ").Append(Combinations).Append("\n");
-            sb.Append("  Orders: ").Append(Orders).Append("\n");
-            sb.Append("  Tasks: ").Append(Tasks).Append("\n");
+            sb.Append("class RouteOptimizationChargingStationCosts {\n");
+            sb.Append("  PerKilowattHour: ").Append(PerKilowattHour).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -93,6 +77,12 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // PerKilowattHour (double?) minimum
+            if (this.PerKilowattHour < (double?)0)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PerKilowattHour, must be a value greater than or equal to 0.", new [] { "PerKilowattHour" });
+            }
+
             yield break;
         }
     }
