@@ -24,52 +24,52 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationDepotMaximumLoads;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Defines constraints on the tasks that can be executed at the depot.
+ * Defines the costs for charging at a charging station.
  */
 @JsonPropertyOrder({
-  RouteOptimizationDepotConstraints.JSON_PROPERTY_MAXIMUM_LOADS
+  RouteOptimizationChargingStationCosts.JSON_PROPERTY_PER_KILOWATT_HOUR
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-15T13:05:02.820595612Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationDepotConstraints {
-  public static final String JSON_PROPERTY_MAXIMUM_LOADS = "maximumLoads";
-  private RouteOptimizationDepotMaximumLoads maximumLoads;
+public class RouteOptimizationChargingStationCosts {
+  public static final String JSON_PROPERTY_PER_KILOWATT_HOUR = "perKilowattHour";
+  private Double perKilowattHour = 0d;
 
-  public RouteOptimizationDepotConstraints() { 
+  public RouteOptimizationChargingStationCosts() { 
   }
 
-  public RouteOptimizationDepotConstraints maximumLoads(RouteOptimizationDepotMaximumLoads maximumLoads) {
-    this.maximumLoads = maximumLoads;
+  public RouteOptimizationChargingStationCosts perKilowattHour(Double perKilowattHour) {
+    this.perKilowattHour = perKilowattHour;
     return this;
   }
 
    /**
-   * Get maximumLoads
-   * @return maximumLoads
+   * Specifies the cost for every kilowatt-hour charged.
+   * minimum: 0
+   * @return perKilowattHour
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_LOADS)
+  @JsonProperty(JSON_PROPERTY_PER_KILOWATT_HOUR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public RouteOptimizationDepotMaximumLoads getMaximumLoads() {
-    return maximumLoads;
+  public Double getPerKilowattHour() {
+    return perKilowattHour;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_LOADS)
+  @JsonProperty(JSON_PROPERTY_PER_KILOWATT_HOUR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaximumLoads(RouteOptimizationDepotMaximumLoads maximumLoads) {
-    this.maximumLoads = maximumLoads;
+  public void setPerKilowattHour(Double perKilowattHour) {
+    this.perKilowattHour = perKilowattHour;
   }
 
 
   /**
-   * Return true if this DepotConstraints object is equal to o.
+   * Return true if this ChargingStationCosts object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +79,20 @@ public class RouteOptimizationDepotConstraints {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationDepotConstraints depotConstraints = (RouteOptimizationDepotConstraints) o;
-    return Objects.equals(this.maximumLoads, depotConstraints.maximumLoads);
+    RouteOptimizationChargingStationCosts chargingStationCosts = (RouteOptimizationChargingStationCosts) o;
+    return Objects.equals(this.perKilowattHour, chargingStationCosts.perKilowattHour);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(maximumLoads);
+    return Objects.hash(perKilowattHour);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationDepotConstraints {\n");
-    sb.append("    maximumLoads: ").append(toIndentedString(maximumLoads)).append("\n");
+    sb.append("class RouteOptimizationChargingStationCosts {\n");
+    sb.append("    perKilowattHour: ").append(toIndentedString(perKilowattHour)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -140,9 +140,9 @@ public class RouteOptimizationDepotConstraints {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `maximumLoads` to the URL query string
-    if (getMaximumLoads() != null) {
-      joiner.add(getMaximumLoads().toUrlQueryString(prefix + "maximumLoads" + suffix));
+    // add `perKilowattHour` to the URL query string
+    if (getPerKilowattHour() != null) {
+      joiner.add(String.format("%sperKilowattHour%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPerKilowattHour()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
