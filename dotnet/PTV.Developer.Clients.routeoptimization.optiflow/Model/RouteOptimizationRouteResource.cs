@@ -26,58 +26,35 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A request to provide a service at a specific location.
+    /// A description of the resource assigned to the vehicle executing the route.
     /// </summary>
-    [DataContract(Name = "ServiceOrder")]
-    public partial class RouteOptimizationServiceOrder : IValidatableObject
+    [DataContract(Name = "RouteResource")]
+    public partial class RouteOptimizationRouteResource : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationServiceOrder" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationRouteResource" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected RouteOptimizationServiceOrder() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationServiceOrder" /> class.
-        /// </summary>
-        /// <param name="id">A unique identifier of the order. This must be unique across all orders. (required).</param>
-        /// <param name="task">task (required).</param>
-        /// <param name="properties">properties.</param>
-        public RouteOptimizationServiceOrder(string id = default(string), RouteOptimizationTaskProperties task = default(RouteOptimizationTaskProperties), RouteOptimizationServiceOrderProperties properties = default(RouteOptimizationServiceOrderProperties))
+        /// <param name="id">The unique identifier of the resource assigned to the vehicle executing the route..</param>
+        /// <param name="availabilityId">The unique identifier of the resource&#39;s availability assigned to the vehicle executing the route..</param>
+        public RouteOptimizationRouteResource(string id = default(string), string availabilityId = default(string))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for RouteOptimizationServiceOrder and cannot be null");
-            }
             this.Id = id;
-            // to ensure "task" is required (not null)
-            if (task == null)
-            {
-                throw new ArgumentNullException("task is a required property for RouteOptimizationServiceOrder and cannot be null");
-            }
-            this.Task = task;
-            this.Properties = properties;
+            this.AvailabilityId = availabilityId;
         }
 
         /// <summary>
-        /// A unique identifier of the order. This must be unique across all orders.
+        /// The unique identifier of the resource assigned to the vehicle executing the route.
         /// </summary>
-        /// <value>A unique identifier of the order. This must be unique across all orders.</value>
-        /// <example>ELEVATOR_MAINTENANCE-123</example>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The unique identifier of the resource assigned to the vehicle executing the route.</value>
+        [DataMember(Name = "id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Task
+        /// The unique identifier of the resource&#39;s availability assigned to the vehicle executing the route.
         /// </summary>
-        [DataMember(Name = "task", IsRequired = true, EmitDefaultValue = true)]
-        public RouteOptimizationTaskProperties Task { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Properties
-        /// </summary>
-        [DataMember(Name = "properties", EmitDefaultValue = false)]
-        public RouteOptimizationServiceOrderProperties Properties { get; set; }
+        /// <value>The unique identifier of the resource&#39;s availability assigned to the vehicle executing the route.</value>
+        [DataMember(Name = "availabilityId", EmitDefaultValue = true)]
+        public string AvailabilityId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -86,10 +63,9 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationServiceOrder {\n");
+            sb.Append("class RouteOptimizationRouteResource {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Task: ").Append(Task).Append("\n");
-            sb.Append("  Properties: ").Append(Properties).Append("\n");
+            sb.Append("  AvailabilityId: ").Append(AvailabilityId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -128,6 +104,27 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
                 if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                }
+            }
+
+            // AvailabilityId (string) maxLength
+            if (this.AvailabilityId != null && this.AvailabilityId.Length > 200)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AvailabilityId, length must be less than 200.", new [] { "AvailabilityId" });
+            }
+
+            // AvailabilityId (string) minLength
+            if (this.AvailabilityId != null && this.AvailabilityId.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AvailabilityId, length must be greater than 1.", new [] { "AvailabilityId" });
+            }
+
+            if (this.AvailabilityId != null) {
+                // AvailabilityId (string) pattern
+                Regex regexAvailabilityId = new Regex(@"^[a-zA-Z0-9_-]{1,200}$", RegexOptions.CultureInvariant);
+                if (!regexAvailabilityId.Match(this.AvailabilityId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AvailabilityId, must match a pattern of " + regexAvailabilityId, new [] { "AvailabilityId" });
                 }
             }
 

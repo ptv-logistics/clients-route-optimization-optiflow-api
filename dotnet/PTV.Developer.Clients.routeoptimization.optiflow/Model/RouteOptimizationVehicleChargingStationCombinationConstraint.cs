@@ -26,60 +26,60 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A constraint on the combination of depots and vehicles belonging to a certain category.
+    /// A constraint on the combination of vehicles and charging stations belonging to a certain category.
     /// </summary>
-    [DataContract(Name = "DepotVehicleCombinationConstraint")]
-    public partial class RouteOptimizationDepotVehicleCombinationConstraint : IValidatableObject
+    [DataContract(Name = "VehicleChargingStationCombinationConstraint")]
+    public partial class RouteOptimizationVehicleChargingStationCombinationConstraint : IValidatableObject
     {
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
-        public RouteOptimizationDepotVehicleCombinationConstraintType Type { get; set; }
+        public RouteOptimizationVehicleChargingStationCombinationConstraintType Type { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationDepotVehicleCombinationConstraint" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationVehicleChargingStationCombinationConstraint" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RouteOptimizationDepotVehicleCombinationConstraint() { }
+        protected RouteOptimizationVehicleChargingStationCombinationConstraint() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationDepotVehicleCombinationConstraint" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationVehicleChargingStationCombinationConstraint" /> class.
         /// </summary>
         /// <param name="type">type (required).</param>
-        /// <param name="depotCategory">The constraint applies only to depots whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches depots that have this this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches depots that **do not** have that category. If no depot matches this condition, the constraint is ignored. (required).</param>
         /// <param name="vehicleCategory">The constraint applies only to vehicles whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the constraint is ignored. (required).</param>
-        public RouteOptimizationDepotVehicleCombinationConstraint(RouteOptimizationDepotVehicleCombinationConstraintType type = default(RouteOptimizationDepotVehicleCombinationConstraintType), string depotCategory = default(string), string vehicleCategory = default(string))
+        /// <param name="chargingStationCategory">The constraint applies only to charging stations whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches charging stations that have this this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches charging stations that **do not** have that category. If no charging station matches this condition, the constraint is ignored. (required).</param>
+        public RouteOptimizationVehicleChargingStationCombinationConstraint(RouteOptimizationVehicleChargingStationCombinationConstraintType type = default(RouteOptimizationVehicleChargingStationCombinationConstraintType), string vehicleCategory = default(string), string chargingStationCategory = default(string))
         {
             this.Type = type;
-            // to ensure "depotCategory" is required (not null)
-            if (depotCategory == null)
-            {
-                throw new ArgumentNullException("depotCategory is a required property for RouteOptimizationDepotVehicleCombinationConstraint and cannot be null");
-            }
-            this.DepotCategory = depotCategory;
             // to ensure "vehicleCategory" is required (not null)
             if (vehicleCategory == null)
             {
-                throw new ArgumentNullException("vehicleCategory is a required property for RouteOptimizationDepotVehicleCombinationConstraint and cannot be null");
+                throw new ArgumentNullException("vehicleCategory is a required property for RouteOptimizationVehicleChargingStationCombinationConstraint and cannot be null");
             }
             this.VehicleCategory = vehicleCategory;
+            // to ensure "chargingStationCategory" is required (not null)
+            if (chargingStationCategory == null)
+            {
+                throw new ArgumentNullException("chargingStationCategory is a required property for RouteOptimizationVehicleChargingStationCombinationConstraint and cannot be null");
+            }
+            this.ChargingStationCategory = chargingStationCategory;
         }
-
-        /// <summary>
-        /// The constraint applies only to depots whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches depots that have this this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches depots that **do not** have that category. If no depot matches this condition, the constraint is ignored.
-        /// </summary>
-        /// <value>The constraint applies only to depots whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches depots that have this this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches depots that **do not** have that category. If no depot matches this condition, the constraint is ignored.</value>
-        /// <example>NO_LOADING_BAY</example>
-        [DataMember(Name = "depotCategory", IsRequired = true, EmitDefaultValue = true)]
-        public string DepotCategory { get; set; }
 
         /// <summary>
         /// The constraint applies only to vehicles whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the constraint is ignored.
         /// </summary>
         /// <value>The constraint applies only to vehicles whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the constraint is ignored.</value>
-        /// <example>FORK_LIFT</example>
+        /// <example>CCS2</example>
         [DataMember(Name = "vehicleCategory", IsRequired = true, EmitDefaultValue = true)]
         public string VehicleCategory { get; set; }
+
+        /// <summary>
+        /// The constraint applies only to charging stations whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches charging stations that have this this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches charging stations that **do not** have that category. If no charging station matches this condition, the constraint is ignored.
+        /// </summary>
+        /// <value>The constraint applies only to charging stations whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches charging stations that have this this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches charging stations that **do not** have that category. If no charging station matches this condition, the constraint is ignored.</value>
+        /// <example>CCS2</example>
+        [DataMember(Name = "chargingStationCategory", IsRequired = true, EmitDefaultValue = true)]
+        public string ChargingStationCategory { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,10 +88,10 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationDepotVehicleCombinationConstraint {\n");
+            sb.Append("class RouteOptimizationVehicleChargingStationCombinationConstraint {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  DepotCategory: ").Append(DepotCategory).Append("\n");
             sb.Append("  VehicleCategory: ").Append(VehicleCategory).Append("\n");
+            sb.Append("  ChargingStationCategory: ").Append(ChargingStationCategory).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,27 +112,6 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // DepotCategory (string) maxLength
-            if (this.DepotCategory != null && this.DepotCategory.Length > 201)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DepotCategory, length must be less than 201.", new [] { "DepotCategory" });
-            }
-
-            // DepotCategory (string) minLength
-            if (this.DepotCategory != null && this.DepotCategory.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DepotCategory, length must be greater than 1.", new [] { "DepotCategory" });
-            }
-
-            if (this.DepotCategory != null) {
-                // DepotCategory (string) pattern
-                Regex regexDepotCategory = new Regex(@"^!?[a-zA-Z0-9_-]{1,200}$", RegexOptions.CultureInvariant);
-                if (!regexDepotCategory.Match(this.DepotCategory).Success)
-                {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DepotCategory, must match a pattern of " + regexDepotCategory, new [] { "DepotCategory" });
-                }
-            }
-
             // VehicleCategory (string) maxLength
             if (this.VehicleCategory != null && this.VehicleCategory.Length > 201)
             {
@@ -151,6 +130,27 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
                 if (!regexVehicleCategory.Match(this.VehicleCategory).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for VehicleCategory, must match a pattern of " + regexVehicleCategory, new [] { "VehicleCategory" });
+                }
+            }
+
+            // ChargingStationCategory (string) maxLength
+            if (this.ChargingStationCategory != null && this.ChargingStationCategory.Length > 201)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ChargingStationCategory, length must be less than 201.", new [] { "ChargingStationCategory" });
+            }
+
+            // ChargingStationCategory (string) minLength
+            if (this.ChargingStationCategory != null && this.ChargingStationCategory.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ChargingStationCategory, length must be greater than 1.", new [] { "ChargingStationCategory" });
+            }
+
+            if (this.ChargingStationCategory != null) {
+                // ChargingStationCategory (string) pattern
+                Regex regexChargingStationCategory = new Regex(@"^!?[a-zA-Z0-9_-]{1,200}$", RegexOptions.CultureInvariant);
+                if (!regexChargingStationCategory.Match(this.ChargingStationCategory).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ChargingStationCategory, must match a pattern of " + regexChargingStationCategory, new [] { "ChargingStationCategory" });
                 }
             }
 
