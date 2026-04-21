@@ -24,38 +24,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationOrderVehicleCombinationConstraintType;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationVehicleChargingStationCombinationConstraintType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A constraint on the combination of orders and vehicles belonging to a certain category.
+ * A constraint on the combination of vehicles and charging stations belonging to a certain category.
  */
 @JsonPropertyOrder({
-  RouteOptimizationOrderVehicleCombinationConstraint.JSON_PROPERTY_TYPE,
-  RouteOptimizationOrderVehicleCombinationConstraint.JSON_PROPERTY_ORDER_CATEGORY,
-  RouteOptimizationOrderVehicleCombinationConstraint.JSON_PROPERTY_VEHICLE_CATEGORY,
-  RouteOptimizationOrderVehicleCombinationConstraint.JSON_PROPERTY_VIOLATION_COST
+  RouteOptimizationVehicleChargingStationCombinationConstraint.JSON_PROPERTY_TYPE,
+  RouteOptimizationVehicleChargingStationCombinationConstraint.JSON_PROPERTY_VEHICLE_CATEGORY,
+  RouteOptimizationVehicleChargingStationCombinationConstraint.JSON_PROPERTY_CHARGING_STATION_CATEGORY
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-21T08:06:25.650514737Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationOrderVehicleCombinationConstraint {
+public class RouteOptimizationVehicleChargingStationCombinationConstraint {
   public static final String JSON_PROPERTY_TYPE = "type";
-  private RouteOptimizationOrderVehicleCombinationConstraintType type;
-
-  public static final String JSON_PROPERTY_ORDER_CATEGORY = "orderCategory";
-  private String orderCategory;
+  private RouteOptimizationVehicleChargingStationCombinationConstraintType type;
 
   public static final String JSON_PROPERTY_VEHICLE_CATEGORY = "vehicleCategory";
   private String vehicleCategory;
 
-  public static final String JSON_PROPERTY_VIOLATION_COST = "violationCost";
-  private Double violationCost;
+  public static final String JSON_PROPERTY_CHARGING_STATION_CATEGORY = "chargingStationCategory";
+  private String chargingStationCategory;
 
-  public RouteOptimizationOrderVehicleCombinationConstraint() { 
+  public RouteOptimizationVehicleChargingStationCombinationConstraint() { 
   }
 
-  public RouteOptimizationOrderVehicleCombinationConstraint type(RouteOptimizationOrderVehicleCombinationConstraintType type) {
+  public RouteOptimizationVehicleChargingStationCombinationConstraint type(RouteOptimizationVehicleChargingStationCombinationConstraintType type) {
     this.type = type;
     return this;
   }
@@ -68,44 +64,19 @@ public class RouteOptimizationOrderVehicleCombinationConstraint {
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public RouteOptimizationOrderVehicleCombinationConstraintType getType() {
+  public RouteOptimizationVehicleChargingStationCombinationConstraintType getType() {
     return type;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(RouteOptimizationOrderVehicleCombinationConstraintType type) {
+  public void setType(RouteOptimizationVehicleChargingStationCombinationConstraintType type) {
     this.type = type;
   }
 
 
-  public RouteOptimizationOrderVehicleCombinationConstraint orderCategory(String orderCategory) {
-    this.orderCategory = orderCategory;
-    return this;
-  }
-
-   /**
-   * The constraint applies only to orders whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches orders that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches orders that **do not** have that category. If no order matches this condition, the constraint is ignored.
-   * @return orderCategory
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ORDER_CATEGORY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getOrderCategory() {
-    return orderCategory;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ORDER_CATEGORY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrderCategory(String orderCategory) {
-    this.orderCategory = orderCategory;
-  }
-
-
-  public RouteOptimizationOrderVehicleCombinationConstraint vehicleCategory(String vehicleCategory) {
+  public RouteOptimizationVehicleChargingStationCombinationConstraint vehicleCategory(String vehicleCategory) {
     this.vehicleCategory = vehicleCategory;
     return this;
   }
@@ -130,34 +101,33 @@ public class RouteOptimizationOrderVehicleCombinationConstraint {
   }
 
 
-  public RouteOptimizationOrderVehicleCombinationConstraint violationCost(Double violationCost) {
-    this.violationCost = violationCost;
+  public RouteOptimizationVehicleChargingStationCombinationConstraint chargingStationCategory(String chargingStationCategory) {
+    this.chargingStationCategory = chargingStationCategory;
     return this;
   }
 
    /**
-   * The cost incurred when an order-vehicle combination does not meet this constraint. When omitted, all order-vehicle combinations must satisfy this constraint.
-   * minimum: 0
-   * @return violationCost
+   * The constraint applies only to charging stations whose categories match this condition. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches charging stations that have this this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches charging stations that **do not** have that category. If no charging station matches this condition, the constraint is ignored.
+   * @return chargingStationCategory
   **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VIOLATION_COST)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CHARGING_STATION_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Double getViolationCost() {
-    return violationCost;
+  public String getChargingStationCategory() {
+    return chargingStationCategory;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VIOLATION_COST)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setViolationCost(Double violationCost) {
-    this.violationCost = violationCost;
+  @JsonProperty(JSON_PROPERTY_CHARGING_STATION_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setChargingStationCategory(String chargingStationCategory) {
+    this.chargingStationCategory = chargingStationCategory;
   }
 
 
   /**
-   * Return true if this OrderVehicleCombinationConstraint object is equal to o.
+   * Return true if this VehicleChargingStationCombinationConstraint object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -167,26 +137,24 @@ public class RouteOptimizationOrderVehicleCombinationConstraint {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationOrderVehicleCombinationConstraint orderVehicleCombinationConstraint = (RouteOptimizationOrderVehicleCombinationConstraint) o;
-    return Objects.equals(this.type, orderVehicleCombinationConstraint.type) &&
-        Objects.equals(this.orderCategory, orderVehicleCombinationConstraint.orderCategory) &&
-        Objects.equals(this.vehicleCategory, orderVehicleCombinationConstraint.vehicleCategory) &&
-        Objects.equals(this.violationCost, orderVehicleCombinationConstraint.violationCost);
+    RouteOptimizationVehicleChargingStationCombinationConstraint vehicleChargingStationCombinationConstraint = (RouteOptimizationVehicleChargingStationCombinationConstraint) o;
+    return Objects.equals(this.type, vehicleChargingStationCombinationConstraint.type) &&
+        Objects.equals(this.vehicleCategory, vehicleChargingStationCombinationConstraint.vehicleCategory) &&
+        Objects.equals(this.chargingStationCategory, vehicleChargingStationCombinationConstraint.chargingStationCategory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, orderCategory, vehicleCategory, violationCost);
+    return Objects.hash(type, vehicleCategory, chargingStationCategory);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationOrderVehicleCombinationConstraint {\n");
+    sb.append("class RouteOptimizationVehicleChargingStationCombinationConstraint {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    orderCategory: ").append(toIndentedString(orderCategory)).append("\n");
     sb.append("    vehicleCategory: ").append(toIndentedString(vehicleCategory)).append("\n");
-    sb.append("    violationCost: ").append(toIndentedString(violationCost)).append("\n");
+    sb.append("    chargingStationCategory: ").append(toIndentedString(chargingStationCategory)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -239,19 +207,14 @@ public class RouteOptimizationOrderVehicleCombinationConstraint {
       joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `orderCategory` to the URL query string
-    if (getOrderCategory() != null) {
-      joiner.add(String.format("%sorderCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrderCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
-    }
-
     // add `vehicleCategory` to the URL query string
     if (getVehicleCategory() != null) {
       joiner.add(String.format("%svehicleCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVehicleCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `violationCost` to the URL query string
-    if (getViolationCost() != null) {
-      joiner.add(String.format("%sviolationCost%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getViolationCost()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `chargingStationCategory` to the URL query string
+    if (getChargingStationCategory() != null) {
+      joiner.add(String.format("%schargingStationCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChargingStationCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

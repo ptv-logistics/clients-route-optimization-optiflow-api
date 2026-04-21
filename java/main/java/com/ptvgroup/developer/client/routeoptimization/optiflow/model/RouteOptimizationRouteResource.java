@@ -24,52 +24,80 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationDepotMaximumLoads;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Defines constraints on the tasks that can be executed at the depot.
+ * A description of the resource assigned to the vehicle executing the route.
  */
 @JsonPropertyOrder({
-  RouteOptimizationDepotConstraints.JSON_PROPERTY_MAXIMUM_LOADS
+  RouteOptimizationRouteResource.JSON_PROPERTY_ID,
+  RouteOptimizationRouteResource.JSON_PROPERTY_AVAILABILITY_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-21T08:06:25.650514737Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationDepotConstraints {
-  public static final String JSON_PROPERTY_MAXIMUM_LOADS = "maximumLoads";
-  private RouteOptimizationDepotMaximumLoads maximumLoads;
+public class RouteOptimizationRouteResource {
+  public static final String JSON_PROPERTY_ID = "id";
+  private String id;
 
-  public RouteOptimizationDepotConstraints() { 
+  public static final String JSON_PROPERTY_AVAILABILITY_ID = "availabilityId";
+  private String availabilityId;
+
+  public RouteOptimizationRouteResource() { 
   }
 
-  public RouteOptimizationDepotConstraints maximumLoads(RouteOptimizationDepotMaximumLoads maximumLoads) {
-    this.maximumLoads = maximumLoads;
+  public RouteOptimizationRouteResource id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Get maximumLoads
-   * @return maximumLoads
+   * The unique identifier of the resource assigned to the vehicle executing the route.
+   * @return id
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_LOADS)
+  @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public RouteOptimizationDepotMaximumLoads getMaximumLoads() {
-    return maximumLoads;
+  public String getId() {
+    return id;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_LOADS)
+  @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaximumLoads(RouteOptimizationDepotMaximumLoads maximumLoads) {
-    this.maximumLoads = maximumLoads;
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public RouteOptimizationRouteResource availabilityId(String availabilityId) {
+    this.availabilityId = availabilityId;
+    return this;
+  }
+
+   /**
+   * The unique identifier of the resource&#39;s availability assigned to the vehicle executing the route.
+   * @return availabilityId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AVAILABILITY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getAvailabilityId() {
+    return availabilityId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AVAILABILITY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAvailabilityId(String availabilityId) {
+    this.availabilityId = availabilityId;
   }
 
 
   /**
-   * Return true if this DepotConstraints object is equal to o.
+   * Return true if this RouteResource object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +107,22 @@ public class RouteOptimizationDepotConstraints {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationDepotConstraints depotConstraints = (RouteOptimizationDepotConstraints) o;
-    return Objects.equals(this.maximumLoads, depotConstraints.maximumLoads);
+    RouteOptimizationRouteResource routeResource = (RouteOptimizationRouteResource) o;
+    return Objects.equals(this.id, routeResource.id) &&
+        Objects.equals(this.availabilityId, routeResource.availabilityId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(maximumLoads);
+    return Objects.hash(id, availabilityId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationDepotConstraints {\n");
-    sb.append("    maximumLoads: ").append(toIndentedString(maximumLoads)).append("\n");
+    sb.append("class RouteOptimizationRouteResource {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    availabilityId: ").append(toIndentedString(availabilityId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -140,9 +170,14 @@ public class RouteOptimizationDepotConstraints {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `maximumLoads` to the URL query string
-    if (getMaximumLoads() != null) {
-      joiner.add(getMaximumLoads().toUrlQueryString(prefix + "maximumLoads" + suffix));
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `availabilityId` to the URL query string
+    if (getAvailabilityId() != null) {
+      joiner.add(String.format("%savailabilityId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAvailabilityId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();

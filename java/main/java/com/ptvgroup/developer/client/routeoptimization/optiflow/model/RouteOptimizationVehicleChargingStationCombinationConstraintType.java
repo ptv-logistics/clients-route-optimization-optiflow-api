@@ -26,17 +26,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Describes the strategy for loading and unloading orders in the compartment. * &#x60;NONE&#x60; - There is no restriction on the sequence of loading or unloading. * &#x60;LAST_IN_FIRST_OUT&#x60; - The last order loaded must be the first to be unloaded.
+ * Describes which combination of charging stations and vehicles have to be respected or excluded. * &#x60;VEHICLE_REQUIRES_CHARGING_STATION&#x60; - A vehicle from the given vehicle category can only visit charging stations from the given charging station category. * &#x60;CHARGING_STATION_REQUIRES_VEHICLE&#x60; - A charging station from the given charging station category can only be visited by a vehicle from the given vehicle category. * &#x60;FORBIDDEN_COMBINATION&#x60; - A charging station from the given charging station category cannot be visited by a vehicle from the given vehicle category.
  */
-public enum RouteOptimizationCompartmentLoadingStrategy {
+public enum RouteOptimizationVehicleChargingStationCombinationConstraintType {
   
-  NONE("NONE"),
+  CHARGING_STATION_REQUIRES_VEHICLE("CHARGING_STATION_REQUIRES_VEHICLE"),
   
-  LAST_IN_FIRST_OUT("LAST_IN_FIRST_OUT");
+  VEHICLE_REQUIRES_CHARGING_STATION("VEHICLE_REQUIRES_CHARGING_STATION"),
+  
+  FORBIDDEN_COMBINATION("FORBIDDEN_COMBINATION");
 
   private String value;
 
-  RouteOptimizationCompartmentLoadingStrategy(String value) {
+  RouteOptimizationVehicleChargingStationCombinationConstraintType(String value) {
     this.value = value;
   }
 
@@ -51,8 +53,8 @@ public enum RouteOptimizationCompartmentLoadingStrategy {
   }
 
   @JsonCreator
-  public static RouteOptimizationCompartmentLoadingStrategy fromValue(String value) {
-    for (RouteOptimizationCompartmentLoadingStrategy b : RouteOptimizationCompartmentLoadingStrategy.values()) {
+  public static RouteOptimizationVehicleChargingStationCombinationConstraintType fromValue(String value) {
+    for (RouteOptimizationVehicleChargingStationCombinationConstraintType b : RouteOptimizationVehicleChargingStationCombinationConstraintType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
