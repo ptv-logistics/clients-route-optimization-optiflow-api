@@ -26,35 +26,35 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// For an order this describes how much capacity for a certain dimension is needed in the vehicle. For a vehicle or a compartment, this describes its capacity for a certain dimension. For each dimension, the sum of the values of orders loaded into the vehicle or compartment must be lower than or equal to the value of the vehicle or compartment.
+    /// Describes the kWh consumption for a specific dimension.
     /// </summary>
-    [DataContract(Name = "Load")]
-    public partial class RouteOptimizationLoad : IValidatableObject
+    [DataContract(Name = "LoadBatteryConsumption")]
+    public partial class RouteOptimizationLoadBatteryConsumption : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationLoad" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationLoadBatteryConsumption" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RouteOptimizationLoad() { }
+        protected RouteOptimizationLoadBatteryConsumption() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationLoad" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationLoadBatteryConsumption" /> class.
         /// </summary>
         /// <param name="dimension">Indicates the specific dimension of the load, such as its volume, weight, or size. (required).</param>
-        /// <param name="value">Represents the numeric value associated with the load&#39;s dimension. This value could be the actual measurement or quantity of the load. (required).</param>
-        public RouteOptimizationLoad(string dimension = default(string), double? value = default(double?))
+        /// <param name="perUnitPerHundredKilometers">Describes the kWh consumed by transporting a single unit of the specified dimension for 100km. (required).</param>
+        public RouteOptimizationLoadBatteryConsumption(string dimension = default(string), double? perUnitPerHundredKilometers = default(double?))
         {
             // to ensure "dimension" is required (not null)
             if (dimension == null)
             {
-                throw new ArgumentNullException("dimension is a required property for RouteOptimizationLoad and cannot be null");
+                throw new ArgumentNullException("dimension is a required property for RouteOptimizationLoadBatteryConsumption and cannot be null");
             }
             this.Dimension = dimension;
-            // to ensure "value" is required (not null)
-            if (value == null)
+            // to ensure "perUnitPerHundredKilometers" is required (not null)
+            if (perUnitPerHundredKilometers == null)
             {
-                throw new ArgumentNullException("value is a required property for RouteOptimizationLoad and cannot be null");
+                throw new ArgumentNullException("perUnitPerHundredKilometers is a required property for RouteOptimizationLoadBatteryConsumption and cannot be null");
             }
-            this.Value = value;
+            this.PerUnitPerHundredKilometers = perUnitPerHundredKilometers;
         }
 
         /// <summary>
@@ -66,12 +66,12 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public string Dimension { get; set; }
 
         /// <summary>
-        /// Represents the numeric value associated with the load&#39;s dimension. This value could be the actual measurement or quantity of the load.
+        /// Describes the kWh consumed by transporting a single unit of the specified dimension for 100km.
         /// </summary>
-        /// <value>Represents the numeric value associated with the load&#39;s dimension. This value could be the actual measurement or quantity of the load.</value>
-        /// <example>3.5</example>
-        [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public double? Value { get; set; }
+        /// <value>Describes the kWh consumed by transporting a single unit of the specified dimension for 100km.</value>
+        /// <example>0.003</example>
+        [DataMember(Name = "perUnitPerHundredKilometers", IsRequired = true, EmitDefaultValue = true)]
+        public double? PerUnitPerHundredKilometers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,9 +80,9 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationLoad {\n");
+            sb.Append("class RouteOptimizationLoadBatteryConsumption {\n");
             sb.Append("  Dimension: ").Append(Dimension).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  PerUnitPerHundredKilometers: ").Append(PerUnitPerHundredKilometers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -124,16 +124,16 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
                 }
             }
 
-            // Value (double?) maximum
-            if (this.Value > (double?)1000000)
+            // PerUnitPerHundredKilometers (double?) maximum
+            if (this.PerUnitPerHundredKilometers > (double?)10)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Value, must be a value less than or equal to 1000000.", new [] { "Value" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PerUnitPerHundredKilometers, must be a value less than or equal to 10.", new [] { "PerUnitPerHundredKilometers" });
             }
 
-            // Value (double?) minimum
-            if (this.Value < (double?)0)
+            // PerUnitPerHundredKilometers (double?) minimum
+            if (this.PerUnitPerHundredKilometers < (double?)0.001)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Value, must be a value greater than or equal to 0.", new [] { "Value" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PerUnitPerHundredKilometers, must be a value greater than or equal to 0.001.", new [] { "PerUnitPerHundredKilometers" });
             }
 
             yield break;
