@@ -26,17 +26,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Defines the context in which the respected task sequence must be enforced. * &#x60;ROUTE&#x60; - The sequence is enforced across the entire route; all tasks must follow the defined sequence from start to end. * &#x60;EMPTY_TO_EMPTY&#x60; - The sequence is enforced within each segment between two points where the vehicle is empty; all tasks in such a segment must follow the defined sequence.
+ * Defines whether breaks can be taken while the vehicle is charging. * &#x60;ALLOW&#x60; - Breaks may be taken while the vehicle is charging. * &#x60;DISALLOW&#x60; - Breaks must not overlap with charging; they must be planned separately.
  */
-public enum RouteOptimizationRespectedTaskSequenceScope {
+public enum RouteOptimizationChargingStationBreaks {
   
-  ROUTE("ROUTE"),
+  ALLOW("ALLOW"),
   
-  EMPTY_TO_EMPTY("EMPTY_TO_EMPTY");
+  DISALLOW("DISALLOW");
 
   private String value;
 
-  RouteOptimizationRespectedTaskSequenceScope(String value) {
+  RouteOptimizationChargingStationBreaks(String value) {
     this.value = value;
   }
 
@@ -51,8 +51,8 @@ public enum RouteOptimizationRespectedTaskSequenceScope {
   }
 
   @JsonCreator
-  public static RouteOptimizationRespectedTaskSequenceScope fromValue(String value) {
-    for (RouteOptimizationRespectedTaskSequenceScope b : RouteOptimizationRespectedTaskSequenceScope.values()) {
+  public static RouteOptimizationChargingStationBreaks fromValue(String value) {
+    for (RouteOptimizationChargingStationBreaks b : RouteOptimizationChargingStationBreaks.values()) {
       if (b.value.equals(value)) {
         return b;
       }
