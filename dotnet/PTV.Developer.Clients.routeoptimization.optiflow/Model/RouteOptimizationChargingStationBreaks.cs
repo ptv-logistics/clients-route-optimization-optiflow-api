@@ -26,29 +26,23 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// The rule applies only for appointments at the specified position.
+    /// Defines whether breaks can be taken while the vehicle is charging. * &#x60;ALLOW&#x60; - Breaks may be taken while the vehicle is charging. * &#x60;DISALLOW&#x60; - Breaks must not overlap with charging; they must be planned separately.
     /// </summary>
-    /// <value>The rule applies only for appointments at the specified position.</value>
+    /// <value>Defines whether breaks can be taken while the vehicle is charging. * &#x60;ALLOW&#x60; - Breaks may be taken while the vehicle is charging. * &#x60;DISALLOW&#x60; - Breaks must not overlap with charging; they must be planned separately.</value>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum RouteOptimizationAppointmentPositionCondition
+    public enum RouteOptimizationChargingStationBreaks
     {
         /// <summary>
-        /// Enum FIRST_OF_ROUTE for value: FIRST_OF_ROUTE
+        /// Enum ALLOW for value: ALLOW
         /// </summary>
-        [EnumMember(Value = "FIRST_OF_ROUTE")]
-        FIRST_OF_ROUTE = 1,
+        [EnumMember(Value = "ALLOW")]
+        ALLOW = 1,
 
         /// <summary>
-        /// Enum LAST_OF_ROUTE for value: LAST_OF_ROUTE
+        /// Enum DISALLOW for value: DISALLOW
         /// </summary>
-        [EnumMember(Value = "LAST_OF_ROUTE")]
-        LAST_OF_ROUTE = 2,
-
-        /// <summary>
-        /// Enum ANY for value: ANY
-        /// </summary>
-        [EnumMember(Value = "ANY")]
-        ANY = 3
+        [EnumMember(Value = "DISALLOW")]
+        DISALLOW = 2
     }
 
 }
