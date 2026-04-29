@@ -14,6 +14,7 @@ export * from './RouteOptimizationCausingError';
 export * from './RouteOptimizationCharging';
 export * from './RouteOptimizationChargingStateOfCharge';
 export * from './RouteOptimizationChargingStation';
+export * from './RouteOptimizationChargingStationBreaks';
 export * from './RouteOptimizationChargingStationCosts';
 export * from './RouteOptimizationChargingStructure';
 export * from './RouteOptimizationCombinationConstraints';
