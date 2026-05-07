@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationOptimizationProgressSample;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationForbiddenBreakPosition;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,54 +32,54 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Time-series record of optimization metrics, tracking how the optimization evolves and converges over time.
+ * Describes constraints on where breaks can be scheduled on routes.
  */
 @JsonPropertyOrder({
-  RouteOptimizationOptimizationProgress.JSON_PROPERTY_SAMPLES
+  RouteOptimizationBreakConstraints.JSON_PROPERTY_FORBIDDEN_POSITIONS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-07T07:21:48.059704248Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationOptimizationProgress {
-  public static final String JSON_PROPERTY_SAMPLES = "samples";
-  private List<RouteOptimizationOptimizationProgressSample> samples;
+public class RouteOptimizationBreakConstraints {
+  public static final String JSON_PROPERTY_FORBIDDEN_POSITIONS = "forbiddenPositions";
+  private List<RouteOptimizationForbiddenBreakPosition> forbiddenPositions = new ArrayList<>();
 
-  public RouteOptimizationOptimizationProgress() { 
+  public RouteOptimizationBreakConstraints() { 
   }
 
-  public RouteOptimizationOptimizationProgress samples(List<RouteOptimizationOptimizationProgressSample> samples) {
-    this.samples = samples;
+  public RouteOptimizationBreakConstraints forbiddenPositions(List<RouteOptimizationForbiddenBreakPosition> forbiddenPositions) {
+    this.forbiddenPositions = forbiddenPositions;
     return this;
   }
 
-  public RouteOptimizationOptimizationProgress addSamplesItem(RouteOptimizationOptimizationProgressSample samplesItem) {
-    if (this.samples == null) {
-      this.samples = new ArrayList<>();
+  public RouteOptimizationBreakConstraints addForbiddenPositionsItem(RouteOptimizationForbiddenBreakPosition forbiddenPositionsItem) {
+    if (this.forbiddenPositions == null) {
+      this.forbiddenPositions = new ArrayList<>();
     }
-    this.samples.add(samplesItem);
+    this.forbiddenPositions.add(forbiddenPositionsItem);
     return this;
   }
 
    /**
-   * A list of samples that describe the optimization metrics at various points in time.
-   * @return samples
+   * A list of constraints that prevent breaks from being scheduled at certain positions on a route.
+   * @return forbiddenPositions
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SAMPLES)
+  @JsonProperty(JSON_PROPERTY_FORBIDDEN_POSITIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<RouteOptimizationOptimizationProgressSample> getSamples() {
-    return samples;
+  public List<RouteOptimizationForbiddenBreakPosition> getForbiddenPositions() {
+    return forbiddenPositions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SAMPLES)
+  @JsonProperty(JSON_PROPERTY_FORBIDDEN_POSITIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSamples(List<RouteOptimizationOptimizationProgressSample> samples) {
-    this.samples = samples;
+  public void setForbiddenPositions(List<RouteOptimizationForbiddenBreakPosition> forbiddenPositions) {
+    this.forbiddenPositions = forbiddenPositions;
   }
 
 
   /**
-   * Return true if this OptimizationProgress object is equal to o.
+   * Return true if this BreakConstraints object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -89,20 +89,20 @@ public class RouteOptimizationOptimizationProgress {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationOptimizationProgress optimizationProgress = (RouteOptimizationOptimizationProgress) o;
-    return Objects.equals(this.samples, optimizationProgress.samples);
+    RouteOptimizationBreakConstraints breakConstraints = (RouteOptimizationBreakConstraints) o;
+    return Objects.equals(this.forbiddenPositions, breakConstraints.forbiddenPositions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(samples);
+    return Objects.hash(forbiddenPositions);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationOptimizationProgress {\n");
-    sb.append("    samples: ").append(toIndentedString(samples)).append("\n");
+    sb.append("class RouteOptimizationBreakConstraints {\n");
+    sb.append("    forbiddenPositions: ").append(toIndentedString(forbiddenPositions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,11 +150,11 @@ public class RouteOptimizationOptimizationProgress {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `samples` to the URL query string
-    if (getSamples() != null) {
-      for (int i = 0; i < getSamples().size(); i++) {
-        if (getSamples().get(i) != null) {
-          joiner.add(getSamples().get(i).toUrlQueryString(String.format("%ssamples%s%s", prefix, suffix,
+    // add `forbiddenPositions` to the URL query string
+    if (getForbiddenPositions() != null) {
+      for (int i = 0; i < getForbiddenPositions().size(); i++) {
+        if (getForbiddenPositions().get(i) != null) {
+          joiner.add(getForbiddenPositions().get(i).toUrlQueryString(String.format("%sforbiddenPositions%s%s", prefix, suffix,
           "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }

@@ -29,59 +29,34 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A condition used to select which locations should be modified by a rule. A condition is met if all its properties are matched.
+ * Constrains breaks from being scheduled between locations belonging to certain categories on a route.
  */
 @JsonPropertyOrder({
-  RouteOptimizationLocationRuleCondition.JSON_PROPERTY_LOCATION_CATEGORY,
-  RouteOptimizationLocationRuleCondition.JSON_PROPERTY_PREVIOUS_LOCATION_CATEGORY,
-  RouteOptimizationLocationRuleCondition.JSON_PROPERTY_VEHICLE_CATEGORY
+  RouteOptimizationForbiddenBreakPosition.JSON_PROPERTY_PREVIOUS_LOCATION_CATEGORY,
+  RouteOptimizationForbiddenBreakPosition.JSON_PROPERTY_NEXT_LOCATION_CATEGORY,
+  RouteOptimizationForbiddenBreakPosition.JSON_PROPERTY_VEHICLE_CATEGORY
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-07T07:21:48.059704248Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationLocationRuleCondition {
-  public static final String JSON_PROPERTY_LOCATION_CATEGORY = "locationCategory";
-  private String locationCategory;
-
+public class RouteOptimizationForbiddenBreakPosition {
   public static final String JSON_PROPERTY_PREVIOUS_LOCATION_CATEGORY = "previousLocationCategory";
   private String previousLocationCategory;
+
+  public static final String JSON_PROPERTY_NEXT_LOCATION_CATEGORY = "nextLocationCategory";
+  private String nextLocationCategory;
 
   public static final String JSON_PROPERTY_VEHICLE_CATEGORY = "vehicleCategory";
   private String vehicleCategory;
 
-  public RouteOptimizationLocationRuleCondition() { 
+  public RouteOptimizationForbiddenBreakPosition() { 
   }
 
-  public RouteOptimizationLocationRuleCondition locationCategory(String locationCategory) {
-    this.locationCategory = locationCategory;
-    return this;
-  }
-
-   /**
-   * The rule applies only to locations whose categories match this condition. When omitted, the rule applies to all locations. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches locations that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches locations that **do not** have that category. If no location matches this condition, the rule is ignored.
-   * @return locationCategory
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOCATION_CATEGORY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getLocationCategory() {
-    return locationCategory;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LOCATION_CATEGORY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocationCategory(String locationCategory) {
-    this.locationCategory = locationCategory;
-  }
-
-
-  public RouteOptimizationLocationRuleCondition previousLocationCategory(String previousLocationCategory) {
+  public RouteOptimizationForbiddenBreakPosition previousLocationCategory(String previousLocationCategory) {
     this.previousLocationCategory = previousLocationCategory;
     return this;
   }
 
    /**
-   * The rule applies only if the categories of the previous location in the route match this condition. When omitted, the rule applies independently of the previous location. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches locations that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches locations that **do not** have that category. If no location matches this condition, the rule is ignored.
+   * The constraint applies only if the categories of the location preceding the break match this condition. When omitted, the constraint applies independently of the preceding location. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches locations that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches locations that **do not** have that category. If no location matches this condition, the constraint is ignored.
    * @return previousLocationCategory
   **/
   @jakarta.annotation.Nullable
@@ -100,13 +75,38 @@ public class RouteOptimizationLocationRuleCondition {
   }
 
 
-  public RouteOptimizationLocationRuleCondition vehicleCategory(String vehicleCategory) {
+  public RouteOptimizationForbiddenBreakPosition nextLocationCategory(String nextLocationCategory) {
+    this.nextLocationCategory = nextLocationCategory;
+    return this;
+  }
+
+   /**
+   * The constraint applies only if the categories of the location following the break match this condition. When omitted, the constraint applies independently of the following location. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches locations that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches locations that **do not** have that category. If no location matches this condition, the constraint is ignored.
+   * @return nextLocationCategory
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NEXT_LOCATION_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getNextLocationCategory() {
+    return nextLocationCategory;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NEXT_LOCATION_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNextLocationCategory(String nextLocationCategory) {
+    this.nextLocationCategory = nextLocationCategory;
+  }
+
+
+  public RouteOptimizationForbiddenBreakPosition vehicleCategory(String vehicleCategory) {
     this.vehicleCategory = vehicleCategory;
     return this;
   }
 
    /**
-   * The rule applies only to vehicles whose categories match this condition. When omitted, the rule applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the rule is ignored.
+   * The constraint applies only to vehicles whose categories match this condition. When omitted, the constraint applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the constraint is ignored.
    * @return vehicleCategory
   **/
   @jakarta.annotation.Nullable
@@ -126,7 +126,7 @@ public class RouteOptimizationLocationRuleCondition {
 
 
   /**
-   * Return true if this LocationRuleCondition object is equal to o.
+   * Return true if this ForbiddenBreakPosition object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -136,23 +136,23 @@ public class RouteOptimizationLocationRuleCondition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationLocationRuleCondition locationRuleCondition = (RouteOptimizationLocationRuleCondition) o;
-    return Objects.equals(this.locationCategory, locationRuleCondition.locationCategory) &&
-        Objects.equals(this.previousLocationCategory, locationRuleCondition.previousLocationCategory) &&
-        Objects.equals(this.vehicleCategory, locationRuleCondition.vehicleCategory);
+    RouteOptimizationForbiddenBreakPosition forbiddenBreakPosition = (RouteOptimizationForbiddenBreakPosition) o;
+    return Objects.equals(this.previousLocationCategory, forbiddenBreakPosition.previousLocationCategory) &&
+        Objects.equals(this.nextLocationCategory, forbiddenBreakPosition.nextLocationCategory) &&
+        Objects.equals(this.vehicleCategory, forbiddenBreakPosition.vehicleCategory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(locationCategory, previousLocationCategory, vehicleCategory);
+    return Objects.hash(previousLocationCategory, nextLocationCategory, vehicleCategory);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationLocationRuleCondition {\n");
-    sb.append("    locationCategory: ").append(toIndentedString(locationCategory)).append("\n");
+    sb.append("class RouteOptimizationForbiddenBreakPosition {\n");
     sb.append("    previousLocationCategory: ").append(toIndentedString(previousLocationCategory)).append("\n");
+    sb.append("    nextLocationCategory: ").append(toIndentedString(nextLocationCategory)).append("\n");
     sb.append("    vehicleCategory: ").append(toIndentedString(vehicleCategory)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -201,14 +201,14 @@ public class RouteOptimizationLocationRuleCondition {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `locationCategory` to the URL query string
-    if (getLocationCategory() != null) {
-      joiner.add(String.format("%slocationCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocationCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
-    }
-
     // add `previousLocationCategory` to the URL query string
     if (getPreviousLocationCategory() != null) {
       joiner.add(String.format("%spreviousLocationCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPreviousLocationCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `nextLocationCategory` to the URL query string
+    if (getNextLocationCategory() != null) {
+      joiner.add(String.format("%snextLocationCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNextLocationCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     // add `vehicleCategory` to the URL query string
