@@ -26,35 +26,26 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Defines the costs for loading and unloading orders at the depot based on load dimensions.
+    /// Describes constraints on where breaks can be scheduled on routes.
     /// </summary>
-    [DataContract(Name = "DepotLoadCosts")]
-    public partial class RouteOptimizationDepotLoadCosts : IValidatableObject
+    [DataContract(Name = "BreakConstraints")]
+    public partial class RouteOptimizationBreakConstraints : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationDepotLoadCosts" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationBreakConstraints" /> class.
         /// </summary>
-        /// <param name="inbound">A list of costs applied to loads delivered to this depot..</param>
-        /// <param name="outbound">A list of costs applied to loads picked up at this depot..</param>
-        public RouteOptimizationDepotLoadCosts(List<RouteOptimizationDepotLoadCost> inbound = default(List<RouteOptimizationDepotLoadCost>), List<RouteOptimizationDepotLoadCost> outbound = default(List<RouteOptimizationDepotLoadCost>))
+        /// <param name="forbiddenPositions">A list of constraints that prevent breaks from being scheduled at certain positions on a route..</param>
+        public RouteOptimizationBreakConstraints(List<RouteOptimizationForbiddenBreakPosition> forbiddenPositions = default(List<RouteOptimizationForbiddenBreakPosition>))
         {
-            this.Inbound = inbound;
-            this.Outbound = outbound;
+            this.ForbiddenPositions = forbiddenPositions;
         }
 
         /// <summary>
-        /// A list of costs applied to loads delivered to this depot.
+        /// A list of constraints that prevent breaks from being scheduled at certain positions on a route.
         /// </summary>
-        /// <value>A list of costs applied to loads delivered to this depot.</value>
-        [DataMember(Name = "inbound", EmitDefaultValue = false)]
-        public List<RouteOptimizationDepotLoadCost> Inbound { get; set; }
-
-        /// <summary>
-        /// A list of costs applied to loads picked up at this depot.
-        /// </summary>
-        /// <value>A list of costs applied to loads picked up at this depot.</value>
-        [DataMember(Name = "outbound", EmitDefaultValue = false)]
-        public List<RouteOptimizationDepotLoadCost> Outbound { get; set; }
+        /// <value>A list of constraints that prevent breaks from being scheduled at certain positions on a route.</value>
+        [DataMember(Name = "forbiddenPositions", EmitDefaultValue = false)]
+        public List<RouteOptimizationForbiddenBreakPosition> ForbiddenPositions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +54,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationDepotLoadCosts {\n");
-            sb.Append("  Inbound: ").Append(Inbound).Append("\n");
-            sb.Append("  Outbound: ").Append(Outbound).Append("\n");
+            sb.Append("class RouteOptimizationBreakConstraints {\n");
+            sb.Append("  ForbiddenPositions: ").Append(ForbiddenPositions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
