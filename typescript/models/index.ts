@@ -39,6 +39,8 @@ export * from './RouteOptimizationErrorResponse';
 export * from './RouteOptimizationForbiddenBreakPosition';
 export * from './RouteOptimizationForbiddenTaskSequence';
 export * from './RouteOptimizationForbiddenTaskSequenceType';
+export * from './RouteOptimizationInitialDrivingBreakSettings';
+export * from './RouteOptimizationInitialWorkingBreakSettings';
 export * from './RouteOptimizationLayoverCondition';
 export * from './RouteOptimizationLeg';
 export * from './RouteOptimizationLegLoad';
