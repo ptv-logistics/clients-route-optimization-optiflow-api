@@ -24,7 +24,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationInitialDrivingBreakSettings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,38 +31,30 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Restricts how long the driver of the vehicle may drive without taking a break of at least the specified duration(s). Either a minimum break duration or a list of minimum break durations should be provided.
+ * Overrides the driving break settings for the first driving period after the route start. This allows specifying a shorter remaining driving time and fewer remaining breaks when the driver has already been driving before the route begins. Note that the optimization will not consider the option to take a break before the route start, even if the route starts late.
  */
 @JsonPropertyOrder({
-  RouteOptimizationDrivingBreakSettings.JSON_PROPERTY_MAXIMUM_DRIVING_DURATION,
-  RouteOptimizationDrivingBreakSettings.JSON_PROPERTY_MINIMUM_BREAK_DURATION,
-  RouteOptimizationDrivingBreakSettings.JSON_PROPERTY_MINIMUM_BREAK_DURATIONS,
-  RouteOptimizationDrivingBreakSettings.JSON_PROPERTY_INITIAL
+  RouteOptimizationInitialDrivingBreakSettings.JSON_PROPERTY_MAXIMUM_DRIVING_DURATION,
+  RouteOptimizationInitialDrivingBreakSettings.JSON_PROPERTY_MINIMUM_BREAK_DURATIONS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-18T13:21:22.458220051Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationDrivingBreakSettings {
+public class RouteOptimizationInitialDrivingBreakSettings {
   public static final String JSON_PROPERTY_MAXIMUM_DRIVING_DURATION = "maximumDrivingDuration";
   private Integer maximumDrivingDuration;
-
-  public static final String JSON_PROPERTY_MINIMUM_BREAK_DURATION = "minimumBreakDuration";
-  private Integer minimumBreakDuration;
 
   public static final String JSON_PROPERTY_MINIMUM_BREAK_DURATIONS = "minimumBreakDurations";
   private List<Integer> minimumBreakDurations;
 
-  public static final String JSON_PROPERTY_INITIAL = "initial";
-  private RouteOptimizationInitialDrivingBreakSettings initial;
-
-  public RouteOptimizationDrivingBreakSettings() { 
+  public RouteOptimizationInitialDrivingBreakSettings() { 
   }
 
-  public RouteOptimizationDrivingBreakSettings maximumDrivingDuration(Integer maximumDrivingDuration) {
+  public RouteOptimizationInitialDrivingBreakSettings maximumDrivingDuration(Integer maximumDrivingDuration) {
     this.maximumDrivingDuration = maximumDrivingDuration;
     return this;
   }
 
    /**
-   * Describes how long [s] the driver may drive without taking a break of at least the specified duration.
+   * Describes how long [s] the driver may drive without taking a break of at least the specified duration. Must not be greater than the &#x60;maximumDrivingDuration&#x60; of the general driving break settings.
    * minimum: 0
    * @return maximumDrivingDuration
   **/
@@ -83,40 +74,12 @@ public class RouteOptimizationDrivingBreakSettings {
   }
 
 
-  public RouteOptimizationDrivingBreakSettings minimumBreakDuration(Integer minimumBreakDuration) {
-    this.minimumBreakDuration = minimumBreakDuration;
-    return this;
-  }
-
-   /**
-   * **Deprecated, instead use &#x60;minimumBreakDurations&#x60; by specifying a list containing only this minimum break duration.** Specifies the duration [s] of a break a driver has to take if they exceed the maximum driving duration.
-   * minimum: 0
-   * @return minimumBreakDuration
-   * @deprecated
-  **/
-  @Deprecated
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MINIMUM_BREAK_DURATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getMinimumBreakDuration() {
-    return minimumBreakDuration;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MINIMUM_BREAK_DURATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinimumBreakDuration(Integer minimumBreakDuration) {
-    this.minimumBreakDuration = minimumBreakDuration;
-  }
-
-
-  public RouteOptimizationDrivingBreakSettings minimumBreakDurations(List<Integer> minimumBreakDurations) {
+  public RouteOptimizationInitialDrivingBreakSettings minimumBreakDurations(List<Integer> minimumBreakDurations) {
     this.minimumBreakDurations = minimumBreakDurations;
     return this;
   }
 
-  public RouteOptimizationDrivingBreakSettings addMinimumBreakDurationsItem(Integer minimumBreakDurationsItem) {
+  public RouteOptimizationInitialDrivingBreakSettings addMinimumBreakDurationsItem(Integer minimumBreakDurationsItem) {
     if (this.minimumBreakDurations == null) {
       this.minimumBreakDurations = new ArrayList<>();
     }
@@ -125,12 +88,12 @@ public class RouteOptimizationDrivingBreakSettings {
   }
 
    /**
-   * Specifies the durations [s] of the breaks a driver has to take before exceeding the maximum driving duration. The breaks must be taken in the order provided in this list but consecutive elements in this list may be combined into single breaks. For example, when specifying &#x60;[300, 900, 1200]&#x60;, the possible break configurations are &#x60;[300, 900, 1200]&#x60;, &#x60;[300 + 900 &#x3D; 1200, 1200]&#x60;, &#x60;[300, 900 + 1200 &#x3D; 2100]&#x60; and a single break &#x60;[300 + 900 + 1200 &#x3D; 2400]&#x60;.
+   * Specifies the durations [s] of the breaks a driver has to take before exceeding the maximum driving duration. This must be a suffix of the &#x60;minimumBreakDurations&#x60; of the general driving break settings.
    * @return minimumBreakDurations
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_MINIMUM_BREAK_DURATIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Integer> getMinimumBreakDurations() {
     return minimumBreakDurations;
@@ -138,39 +101,14 @@ public class RouteOptimizationDrivingBreakSettings {
 
 
   @JsonProperty(JSON_PROPERTY_MINIMUM_BREAK_DURATIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMinimumBreakDurations(List<Integer> minimumBreakDurations) {
     this.minimumBreakDurations = minimumBreakDurations;
   }
 
 
-  public RouteOptimizationDrivingBreakSettings initial(RouteOptimizationInitialDrivingBreakSettings initial) {
-    this.initial = initial;
-    return this;
-  }
-
-   /**
-   * Get initial
-   * @return initial
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INITIAL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public RouteOptimizationInitialDrivingBreakSettings getInitial() {
-    return initial;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_INITIAL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInitial(RouteOptimizationInitialDrivingBreakSettings initial) {
-    this.initial = initial;
-  }
-
-
   /**
-   * Return true if this DrivingBreakSettings object is equal to o.
+   * Return true if this InitialDrivingBreakSettings object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -180,26 +118,22 @@ public class RouteOptimizationDrivingBreakSettings {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationDrivingBreakSettings drivingBreakSettings = (RouteOptimizationDrivingBreakSettings) o;
-    return Objects.equals(this.maximumDrivingDuration, drivingBreakSettings.maximumDrivingDuration) &&
-        Objects.equals(this.minimumBreakDuration, drivingBreakSettings.minimumBreakDuration) &&
-        Objects.equals(this.minimumBreakDurations, drivingBreakSettings.minimumBreakDurations) &&
-        Objects.equals(this.initial, drivingBreakSettings.initial);
+    RouteOptimizationInitialDrivingBreakSettings initialDrivingBreakSettings = (RouteOptimizationInitialDrivingBreakSettings) o;
+    return Objects.equals(this.maximumDrivingDuration, initialDrivingBreakSettings.maximumDrivingDuration) &&
+        Objects.equals(this.minimumBreakDurations, initialDrivingBreakSettings.minimumBreakDurations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(maximumDrivingDuration, minimumBreakDuration, minimumBreakDurations, initial);
+    return Objects.hash(maximumDrivingDuration, minimumBreakDurations);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationDrivingBreakSettings {\n");
+    sb.append("class RouteOptimizationInitialDrivingBreakSettings {\n");
     sb.append("    maximumDrivingDuration: ").append(toIndentedString(maximumDrivingDuration)).append("\n");
-    sb.append("    minimumBreakDuration: ").append(toIndentedString(minimumBreakDuration)).append("\n");
     sb.append("    minimumBreakDurations: ").append(toIndentedString(minimumBreakDurations)).append("\n");
-    sb.append("    initial: ").append(toIndentedString(initial)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -252,11 +186,6 @@ public class RouteOptimizationDrivingBreakSettings {
       joiner.add(String.format("%smaximumDrivingDuration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMaximumDrivingDuration()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `minimumBreakDuration` to the URL query string
-    if (getMinimumBreakDuration() != null) {
-      joiner.add(String.format("%sminimumBreakDuration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMinimumBreakDuration()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
-    }
-
     // add `minimumBreakDurations` to the URL query string
     if (getMinimumBreakDurations() != null) {
       for (int i = 0; i < getMinimumBreakDurations().size(); i++) {
@@ -264,11 +193,6 @@ public class RouteOptimizationDrivingBreakSettings {
             "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
             URLEncoder.encode(String.valueOf(getMinimumBreakDurations().get(i)), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
       }
-    }
-
-    // add `initial` to the URL query string
-    if (getInitial() != null) {
-      joiner.add(getInitial().toUrlQueryString(prefix + "initial" + suffix));
     }
 
     return joiner.toString();
