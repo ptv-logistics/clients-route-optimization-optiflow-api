@@ -68,6 +68,8 @@ export * from './RouteOptimizationOrderDepotCombinationConstraintType';
 export * from './RouteOptimizationOrderLoadingIncompatibilityConstraint';
 export * from './RouteOptimizationOrderProperties';
 export * from './RouteOptimizationOrderSchedulability';
+export * from './RouteOptimizationOrderSchedulingIncompatibilityConstraint';
+export * from './RouteOptimizationOrderSchedulingIncompatibilityOption';
 export * from './RouteOptimizationOrderVehicleCombinationConstraint';
 export * from './RouteOptimizationOrderVehicleCombinationConstraintType';
 export * from './RouteOptimizationOrders';
