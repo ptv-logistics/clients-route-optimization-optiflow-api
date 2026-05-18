@@ -29,26 +29,55 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Describes a vehicle slot that can be assigned stops.
+ * An option within an order scheduling incompatibility that identifies a group of orders by category. When the option is not selected by the optimization, all orders matching the category are excluded. A single option may match at most 10 orders.
  */
 @JsonPropertyOrder({
-  RouteOptimizationVehicleSlot.JSON_PROPERTY_COST
+  RouteOptimizationOrderSchedulingIncompatibilityOption.JSON_PROPERTY_ORDER_CATEGORY,
+  RouteOptimizationOrderSchedulingIncompatibilityOption.JSON_PROPERTY_COST
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-18T12:32:39.509512954Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationVehicleSlot {
+public class RouteOptimizationOrderSchedulingIncompatibilityOption {
+  public static final String JSON_PROPERTY_ORDER_CATEGORY = "orderCategory";
+  private String orderCategory;
+
   public static final String JSON_PROPERTY_COST = "cost";
   private Double cost = 0d;
 
-  public RouteOptimizationVehicleSlot() { 
+  public RouteOptimizationOrderSchedulingIncompatibilityOption() { 
   }
 
-  public RouteOptimizationVehicleSlot cost(Double cost) {
+  public RouteOptimizationOrderSchedulingIncompatibilityOption orderCategory(String orderCategory) {
+    this.orderCategory = orderCategory;
+    return this;
+  }
+
+   /**
+   * The category that identifies which orders belong to this option. Orders that have this category are part of the option. If no order matches this condition, the option is ignored.
+   * @return orderCategory
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ORDER_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getOrderCategory() {
+    return orderCategory;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ORDER_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOrderCategory(String orderCategory) {
+    this.orderCategory = orderCategory;
+  }
+
+
+  public RouteOptimizationOrderSchedulingIncompatibilityOption cost(Double cost) {
     this.cost = cost;
     return this;
   }
 
    /**
-   * The cost incurred when assigning at least one stop to this vehicle slot.
+   * The cost incurred when this option is selected by the optimization. This can be used to express a preference between options, where lower-cost options are preferred.
    * minimum: 0
    * @return cost
   **/
@@ -69,7 +98,7 @@ public class RouteOptimizationVehicleSlot {
 
 
   /**
-   * Return true if this VehicleSlot object is equal to o.
+   * Return true if this OrderSchedulingIncompatibilityOption object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,19 +108,21 @@ public class RouteOptimizationVehicleSlot {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationVehicleSlot vehicleSlot = (RouteOptimizationVehicleSlot) o;
-    return Objects.equals(this.cost, vehicleSlot.cost);
+    RouteOptimizationOrderSchedulingIncompatibilityOption orderSchedulingIncompatibilityOption = (RouteOptimizationOrderSchedulingIncompatibilityOption) o;
+    return Objects.equals(this.orderCategory, orderSchedulingIncompatibilityOption.orderCategory) &&
+        Objects.equals(this.cost, orderSchedulingIncompatibilityOption.cost);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cost);
+    return Objects.hash(orderCategory, cost);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationVehicleSlot {\n");
+    sb.append("class RouteOptimizationOrderSchedulingIncompatibilityOption {\n");
+    sb.append("    orderCategory: ").append(toIndentedString(orderCategory)).append("\n");
     sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -139,6 +170,11 @@ public class RouteOptimizationVehicleSlot {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `orderCategory` to the URL query string
+    if (getOrderCategory() != null) {
+      joiner.add(String.format("%sorderCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrderCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
 
     // add `cost` to the URL query string
     if (getCost() != null) {
