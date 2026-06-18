@@ -26,35 +26,45 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Defines the costs for loading and unloading orders at the depot based on load dimensions.
+    /// An order that is already loaded onto the vehicle, requiring only delivery.
     /// </summary>
-    [DataContract(Name = "DepotLoadCosts")]
-    public partial class RouteOptimizationDepotLoadCosts : IValidatableObject
+    [DataContract(Name = "LoadedOrder")]
+    public partial class RouteOptimizationLoadedOrder : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationDepotLoadCosts" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationLoadedOrder" /> class.
         /// </summary>
-        /// <param name="inbound">A list of costs applied to loads delivered to this depot..</param>
-        /// <param name="outbound">A list of costs applied to loads picked up at this depot..</param>
-        public RouteOptimizationDepotLoadCosts(List<RouteOptimizationDepotLoadCost> inbound = default(List<RouteOptimizationDepotLoadCost>), List<RouteOptimizationDepotLoadCost> outbound = default(List<RouteOptimizationDepotLoadCost>))
+        [JsonConstructorAttribute]
+        protected RouteOptimizationLoadedOrder() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RouteOptimizationLoadedOrder" /> class.
+        /// </summary>
+        /// <param name="orderId">The unique identifier of the loaded order. Must not belong to a service. (required).</param>
+        /// <param name="compartmentId">The compartment the order is loaded in. Required if the vehicle has compartments..</param>
+        public RouteOptimizationLoadedOrder(string orderId = default(string), string compartmentId = default(string))
         {
-            this.Inbound = inbound;
-            this.Outbound = outbound;
+            // to ensure "orderId" is required (not null)
+            if (orderId == null)
+            {
+                throw new ArgumentNullException("orderId is a required property for RouteOptimizationLoadedOrder and cannot be null");
+            }
+            this.OrderId = orderId;
+            this.CompartmentId = compartmentId;
         }
 
         /// <summary>
-        /// A list of costs applied to loads delivered to this depot.
+        /// The unique identifier of the loaded order. Must not belong to a service.
         /// </summary>
-        /// <value>A list of costs applied to loads delivered to this depot.</value>
-        [DataMember(Name = "inbound", EmitDefaultValue = false)]
-        public List<RouteOptimizationDepotLoadCost> Inbound { get; set; }
+        /// <value>The unique identifier of the loaded order. Must not belong to a service.</value>
+        [DataMember(Name = "orderId", IsRequired = true, EmitDefaultValue = true)]
+        public string OrderId { get; set; }
 
         /// <summary>
-        /// A list of costs applied to loads picked up at this depot.
+        /// The compartment the order is loaded in. Required if the vehicle has compartments.
         /// </summary>
-        /// <value>A list of costs applied to loads picked up at this depot.</value>
-        [DataMember(Name = "outbound", EmitDefaultValue = false)]
-        public List<RouteOptimizationDepotLoadCost> Outbound { get; set; }
+        /// <value>The compartment the order is loaded in. Required if the vehicle has compartments.</value>
+        [DataMember(Name = "compartmentId", EmitDefaultValue = true)]
+        public string CompartmentId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +73,9 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationDepotLoadCosts {\n");
-            sb.Append("  Inbound: ").Append(Inbound).Append("\n");
-            sb.Append("  Outbound: ").Append(Outbound).Append("\n");
+            sb.Append("class RouteOptimizationLoadedOrder {\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  CompartmentId: ").Append(CompartmentId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
