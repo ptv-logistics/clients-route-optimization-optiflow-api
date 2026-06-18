@@ -25,51 +25,79 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
-import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A reference to the optimization.
+ * An order that is already loaded onto the vehicle, requiring only delivery.
  */
 @JsonPropertyOrder({
-  RouteOptimizationOptimizationIdentifier.JSON_PROPERTY_ID
+  RouteOptimizationLoadedOrder.JSON_PROPERTY_ORDER_ID,
+  RouteOptimizationLoadedOrder.JSON_PROPERTY_COMPARTMENT_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-18T07:41:00.487334777Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationOptimizationIdentifier {
-  public static final String JSON_PROPERTY_ID = "id";
-  private UUID id;
+public class RouteOptimizationLoadedOrder {
+  public static final String JSON_PROPERTY_ORDER_ID = "orderId";
+  private String orderId;
 
-  public RouteOptimizationOptimizationIdentifier() { 
+  public static final String JSON_PROPERTY_COMPARTMENT_ID = "compartmentId";
+  private String compartmentId;
+
+  public RouteOptimizationLoadedOrder() { 
   }
 
-  public RouteOptimizationOptimizationIdentifier id(UUID id) {
-    this.id = id;
+  public RouteOptimizationLoadedOrder orderId(String orderId) {
+    this.orderId = orderId;
     return this;
   }
 
    /**
-   * The unique identifier of the optimization.
-   * @return id
+   * The unique identifier of the loaded order. Must not belong to a service.
+   * @return orderId
   **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ORDER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public UUID getId() {
-    return id;
+  public String getOrderId() {
+    return orderId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(JSON_PROPERTY_ORDER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
+  }
+
+
+  public RouteOptimizationLoadedOrder compartmentId(String compartmentId) {
+    this.compartmentId = compartmentId;
+    return this;
+  }
+
+   /**
+   * The compartment the order is loaded in. Required if the vehicle has compartments.
+   * @return compartmentId
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COMPARTMENT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(UUID id) {
-    this.id = id;
+
+  public String getCompartmentId() {
+    return compartmentId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_COMPARTMENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCompartmentId(String compartmentId) {
+    this.compartmentId = compartmentId;
   }
 
 
   /**
-   * Return true if this OptimizationIdentifier object is equal to o.
+   * Return true if this LoadedOrder object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +107,22 @@ public class RouteOptimizationOptimizationIdentifier {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationOptimizationIdentifier optimizationIdentifier = (RouteOptimizationOptimizationIdentifier) o;
-    return Objects.equals(this.id, optimizationIdentifier.id);
+    RouteOptimizationLoadedOrder loadedOrder = (RouteOptimizationLoadedOrder) o;
+    return Objects.equals(this.orderId, loadedOrder.orderId) &&
+        Objects.equals(this.compartmentId, loadedOrder.compartmentId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(orderId, compartmentId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationOptimizationIdentifier {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("class RouteOptimizationLoadedOrder {\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    compartmentId: ").append(toIndentedString(compartmentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -140,9 +170,14 @@ public class RouteOptimizationOptimizationIdentifier {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `orderId` to the URL query string
+    if (getOrderId() != null) {
+      joiner.add(String.format("%sorderId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrderId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `compartmentId` to the URL query string
+    if (getCompartmentId() != null) {
+      joiner.add(String.format("%scompartmentId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCompartmentId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
