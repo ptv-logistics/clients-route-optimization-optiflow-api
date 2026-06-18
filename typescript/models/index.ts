@@ -47,6 +47,7 @@ export * from './RouteOptimizationLegLoad';
 export * from './RouteOptimizationLegStateOfCharge';
 export * from './RouteOptimizationLoad';
 export * from './RouteOptimizationLoadBatteryConsumption';
+export * from './RouteOptimizationLoadedOrder';
 export * from './RouteOptimizationLocation';
 export * from './RouteOptimizationLocationRule';
 export * from './RouteOptimizationLocationRuleCondition';
