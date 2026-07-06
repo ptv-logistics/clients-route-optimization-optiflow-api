@@ -28,16 +28,16 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
     /// <summary>
     /// Constrains breaks from being scheduled between locations belonging to certain categories on a route.
     /// </summary>
-    [DataContract(Name = "ForbiddenBreakPosition")]
-    public partial class RouteOptimizationForbiddenBreakPosition : IValidatableObject
+    [DataContract(Name = "ForbiddenBreakPositionsLocationConstraint")]
+    public partial class RouteOptimizationForbiddenBreakPositionsLocationConstraint : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationForbiddenBreakPosition" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationForbiddenBreakPositionsLocationConstraint" /> class.
         /// </summary>
         /// <param name="previousLocationCategory">The constraint applies only if the categories of the location preceding the break match this condition. When omitted, the constraint applies independently of the preceding location. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches locations that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches locations that **do not** have that category. If no location matches this condition, the constraint is ignored..</param>
         /// <param name="nextLocationCategory">The constraint applies only if the categories of the location following the break match this condition. When omitted, the constraint applies independently of the following location. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches locations that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches locations that **do not** have that category. If no location matches this condition, the constraint is ignored..</param>
         /// <param name="vehicleCategory">The constraint applies only to vehicles whose categories match this condition. When omitted, the constraint applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the constraint is ignored..</param>
-        public RouteOptimizationForbiddenBreakPosition(string previousLocationCategory = default(string), string nextLocationCategory = default(string), string vehicleCategory = default(string))
+        public RouteOptimizationForbiddenBreakPositionsLocationConstraint(string previousLocationCategory = default(string), string nextLocationCategory = default(string), string vehicleCategory = default(string))
         {
             this.PreviousLocationCategory = previousLocationCategory;
             this.NextLocationCategory = nextLocationCategory;
@@ -75,7 +75,7 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationForbiddenBreakPosition {\n");
+            sb.Append("class RouteOptimizationForbiddenBreakPositionsLocationConstraint {\n");
             sb.Append("  PreviousLocationCategory: ").Append(PreviousLocationCategory).Append("\n");
             sb.Append("  NextLocationCategory: ").Append(NextLocationCategory).Append("\n");
             sb.Append("  VehicleCategory: ").Append(VehicleCategory).Append("\n");

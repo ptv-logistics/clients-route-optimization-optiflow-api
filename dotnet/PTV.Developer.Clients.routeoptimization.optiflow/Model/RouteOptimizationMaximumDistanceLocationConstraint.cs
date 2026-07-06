@@ -26,39 +26,46 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// A sequence that must be respected when scheduling routes. Orders belonging to a category that occurs earlier in the sequence must be delivered before an order belonging to a category later in the sequence can be picked up.
+    /// Restricts the maximum distance a vehicle may travel without visiting a location matching the specified location category condition. Optionally filtered to vehicles matching a vehicle category condition.
     /// </summary>
-    [DataContract(Name = "RespectedOrderSequence")]
-    public partial class RouteOptimizationRespectedOrderSequence : IValidatableObject
+    [DataContract(Name = "MaximumDistanceLocationConstraint")]
+    public partial class RouteOptimizationMaximumDistanceLocationConstraint : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationRespectedOrderSequence" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationMaximumDistanceLocationConstraint" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RouteOptimizationRespectedOrderSequence() { }
+        protected RouteOptimizationMaximumDistanceLocationConstraint() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationRespectedOrderSequence" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationMaximumDistanceLocationConstraint" /> class.
         /// </summary>
-        /// <param name="orderCategories">The sequence of order categories that has to be respected within a route. The index of the category in the list determines the sequence. Categories that do not correspond to any order will be ignored. (required).</param>
+        /// <param name="locationCategory">The vehicle must visit a location whose categories match this condition within the specified maximum distance. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches locations that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches locations that **do not** have that category. (required).</param>
         /// <param name="vehicleCategory">The constraint applies only to vehicles whose categories match this condition. When omitted, the constraint applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the constraint is ignored..</param>
-        public RouteOptimizationRespectedOrderSequence(List<string> orderCategories = default(List<string>), string vehicleCategory = default(string))
+        /// <param name="value">The maximum distance [m] a vehicle may travel without visiting a matching location. (required).</param>
+        public RouteOptimizationMaximumDistanceLocationConstraint(string locationCategory = default(string), string vehicleCategory = default(string), int? value = default(int?))
         {
-            // to ensure "orderCategories" is required (not null)
-            if (orderCategories == null)
+            // to ensure "locationCategory" is required (not null)
+            if (locationCategory == null)
             {
-                throw new ArgumentNullException("orderCategories is a required property for RouteOptimizationRespectedOrderSequence and cannot be null");
+                throw new ArgumentNullException("locationCategory is a required property for RouteOptimizationMaximumDistanceLocationConstraint and cannot be null");
             }
-            this.OrderCategories = orderCategories;
+            this.LocationCategory = locationCategory;
+            // to ensure "value" is required (not null)
+            if (value == null)
+            {
+                throw new ArgumentNullException("value is a required property for RouteOptimizationMaximumDistanceLocationConstraint and cannot be null");
+            }
+            this.Value = value;
             this.VehicleCategory = vehicleCategory;
         }
 
         /// <summary>
-        /// The sequence of order categories that has to be respected within a route. The index of the category in the list determines the sequence. Categories that do not correspond to any order will be ignored.
+        /// The vehicle must visit a location whose categories match this condition within the specified maximum distance. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches locations that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches locations that **do not** have that category.
         /// </summary>
-        /// <value>The sequence of order categories that has to be respected within a route. The index of the category in the list determines the sequence. Categories that do not correspond to any order will be ignored.</value>
-        /// <example>[&quot;FOOD&quot;,&quot;DIRT&quot;]</example>
-        [DataMember(Name = "orderCategories", IsRequired = true, EmitDefaultValue = true)]
-        public List<string> OrderCategories { get; set; }
+        /// <value>The vehicle must visit a location whose categories match this condition within the specified maximum distance. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches locations that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches locations that **do not** have that category.</value>
+        /// <example>DEPOT</example>
+        [DataMember(Name = "locationCategory", IsRequired = true, EmitDefaultValue = true)]
+        public string LocationCategory { get; set; }
 
         /// <summary>
         /// The constraint applies only to vehicles whose categories match this condition. When omitted, the constraint applies to all vehicles. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches vehicles that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the constraint is ignored.
@@ -69,15 +76,23 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public string VehicleCategory { get; set; }
 
         /// <summary>
+        /// The maximum distance [m] a vehicle may travel without visiting a matching location.
+        /// </summary>
+        /// <value>The maximum distance [m] a vehicle may travel without visiting a matching location.</value>
+        [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
+        public int? Value { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationRespectedOrderSequence {\n");
-            sb.Append("  OrderCategories: ").Append(OrderCategories).Append("\n");
+            sb.Append("class RouteOptimizationMaximumDistanceLocationConstraint {\n");
+            sb.Append("  LocationCategory: ").Append(LocationCategory).Append("\n");
             sb.Append("  VehicleCategory: ").Append(VehicleCategory).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,6 +113,27 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // LocationCategory (string) maxLength
+            if (this.LocationCategory != null && this.LocationCategory.Length > 201)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocationCategory, length must be less than 201.", new [] { "LocationCategory" });
+            }
+
+            // LocationCategory (string) minLength
+            if (this.LocationCategory != null && this.LocationCategory.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocationCategory, length must be greater than 1.", new [] { "LocationCategory" });
+            }
+
+            if (this.LocationCategory != null) {
+                // LocationCategory (string) pattern
+                Regex regexLocationCategory = new Regex(@"^!?[a-zA-Z0-9_-]{1,200}$", RegexOptions.CultureInvariant);
+                if (!regexLocationCategory.Match(this.LocationCategory).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocationCategory, must match a pattern of " + regexLocationCategory, new [] { "LocationCategory" });
+                }
+            }
+
             // VehicleCategory (string) maxLength
             if (this.VehicleCategory != null && this.VehicleCategory.Length > 201)
             {
@@ -117,6 +153,12 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for VehicleCategory, must match a pattern of " + regexVehicleCategory, new [] { "VehicleCategory" });
                 }
+            }
+
+            // Value (int?) minimum
+            if (this.Value < (int?)1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Value, must be a value greater than or equal to 1.", new [] { "Value" });
             }
 
             yield break;
