@@ -32,12 +32,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Constrains breaks from being scheduled between locations belonging to certain categories on a route.
  */
 @JsonPropertyOrder({
-  RouteOptimizationForbiddenBreakPosition.JSON_PROPERTY_PREVIOUS_LOCATION_CATEGORY,
-  RouteOptimizationForbiddenBreakPosition.JSON_PROPERTY_NEXT_LOCATION_CATEGORY,
-  RouteOptimizationForbiddenBreakPosition.JSON_PROPERTY_VEHICLE_CATEGORY
+  RouteOptimizationForbiddenBreakPositionsLocationConstraint.JSON_PROPERTY_PREVIOUS_LOCATION_CATEGORY,
+  RouteOptimizationForbiddenBreakPositionsLocationConstraint.JSON_PROPERTY_NEXT_LOCATION_CATEGORY,
+  RouteOptimizationForbiddenBreakPositionsLocationConstraint.JSON_PROPERTY_VEHICLE_CATEGORY
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-06T11:56:32.940970197Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationForbiddenBreakPosition {
+public class RouteOptimizationForbiddenBreakPositionsLocationConstraint {
   public static final String JSON_PROPERTY_PREVIOUS_LOCATION_CATEGORY = "previousLocationCategory";
   private String previousLocationCategory;
 
@@ -47,10 +47,10 @@ public class RouteOptimizationForbiddenBreakPosition {
   public static final String JSON_PROPERTY_VEHICLE_CATEGORY = "vehicleCategory";
   private String vehicleCategory;
 
-  public RouteOptimizationForbiddenBreakPosition() { 
+  public RouteOptimizationForbiddenBreakPositionsLocationConstraint() { 
   }
 
-  public RouteOptimizationForbiddenBreakPosition previousLocationCategory(String previousLocationCategory) {
+  public RouteOptimizationForbiddenBreakPositionsLocationConstraint previousLocationCategory(String previousLocationCategory) {
     this.previousLocationCategory = previousLocationCategory;
     return this;
   }
@@ -75,7 +75,7 @@ public class RouteOptimizationForbiddenBreakPosition {
   }
 
 
-  public RouteOptimizationForbiddenBreakPosition nextLocationCategory(String nextLocationCategory) {
+  public RouteOptimizationForbiddenBreakPositionsLocationConstraint nextLocationCategory(String nextLocationCategory) {
     this.nextLocationCategory = nextLocationCategory;
     return this;
   }
@@ -100,7 +100,7 @@ public class RouteOptimizationForbiddenBreakPosition {
   }
 
 
-  public RouteOptimizationForbiddenBreakPosition vehicleCategory(String vehicleCategory) {
+  public RouteOptimizationForbiddenBreakPositionsLocationConstraint vehicleCategory(String vehicleCategory) {
     this.vehicleCategory = vehicleCategory;
     return this;
   }
@@ -126,7 +126,7 @@ public class RouteOptimizationForbiddenBreakPosition {
 
 
   /**
-   * Return true if this ForbiddenBreakPosition object is equal to o.
+   * Return true if this ForbiddenBreakPositionsLocationConstraint object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -136,10 +136,10 @@ public class RouteOptimizationForbiddenBreakPosition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationForbiddenBreakPosition forbiddenBreakPosition = (RouteOptimizationForbiddenBreakPosition) o;
-    return Objects.equals(this.previousLocationCategory, forbiddenBreakPosition.previousLocationCategory) &&
-        Objects.equals(this.nextLocationCategory, forbiddenBreakPosition.nextLocationCategory) &&
-        Objects.equals(this.vehicleCategory, forbiddenBreakPosition.vehicleCategory);
+    RouteOptimizationForbiddenBreakPositionsLocationConstraint forbiddenBreakPositionsLocationConstraint = (RouteOptimizationForbiddenBreakPositionsLocationConstraint) o;
+    return Objects.equals(this.previousLocationCategory, forbiddenBreakPositionsLocationConstraint.previousLocationCategory) &&
+        Objects.equals(this.nextLocationCategory, forbiddenBreakPositionsLocationConstraint.nextLocationCategory) &&
+        Objects.equals(this.vehicleCategory, forbiddenBreakPositionsLocationConstraint.vehicleCategory);
   }
 
   @Override
@@ -150,7 +150,7 @@ public class RouteOptimizationForbiddenBreakPosition {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationForbiddenBreakPosition {\n");
+    sb.append("class RouteOptimizationForbiddenBreakPositionsLocationConstraint {\n");
     sb.append("    previousLocationCategory: ").append(toIndentedString(previousLocationCategory)).append("\n");
     sb.append("    nextLocationCategory: ").append(toIndentedString(nextLocationCategory)).append("\n");
     sb.append("    vehicleCategory: ").append(toIndentedString(vehicleCategory)).append("\n");

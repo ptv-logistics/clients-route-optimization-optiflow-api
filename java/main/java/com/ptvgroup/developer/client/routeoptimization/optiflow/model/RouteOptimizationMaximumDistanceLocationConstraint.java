@@ -24,66 +24,58 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A sequence that must be respected when scheduling routes. Orders belonging to a category that occurs earlier in the sequence must be delivered before an order belonging to a category later in the sequence can be picked up.
+ * Restricts the maximum distance a vehicle may travel without visiting a location matching the specified location category condition. Optionally filtered to vehicles matching a vehicle category condition.
  */
 @JsonPropertyOrder({
-  RouteOptimizationRespectedOrderSequence.JSON_PROPERTY_ORDER_CATEGORIES,
-  RouteOptimizationRespectedOrderSequence.JSON_PROPERTY_VEHICLE_CATEGORY
+  RouteOptimizationMaximumDistanceLocationConstraint.JSON_PROPERTY_LOCATION_CATEGORY,
+  RouteOptimizationMaximumDistanceLocationConstraint.JSON_PROPERTY_VEHICLE_CATEGORY,
+  RouteOptimizationMaximumDistanceLocationConstraint.JSON_PROPERTY_VALUE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-06T11:56:32.940970197Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationRespectedOrderSequence {
-  public static final String JSON_PROPERTY_ORDER_CATEGORIES = "orderCategories";
-  private Set<String> orderCategories;
+public class RouteOptimizationMaximumDistanceLocationConstraint {
+  public static final String JSON_PROPERTY_LOCATION_CATEGORY = "locationCategory";
+  private String locationCategory;
 
   public static final String JSON_PROPERTY_VEHICLE_CATEGORY = "vehicleCategory";
   private String vehicleCategory;
 
-  public RouteOptimizationRespectedOrderSequence() { 
+  public static final String JSON_PROPERTY_VALUE = "value";
+  private Integer value;
+
+  public RouteOptimizationMaximumDistanceLocationConstraint() { 
   }
 
-  public RouteOptimizationRespectedOrderSequence orderCategories(Set<String> orderCategories) {
-    this.orderCategories = orderCategories;
-    return this;
-  }
-
-  public RouteOptimizationRespectedOrderSequence addOrderCategoriesItem(String orderCategoriesItem) {
-    if (this.orderCategories == null) {
-      this.orderCategories = new LinkedHashSet<>();
-    }
-    this.orderCategories.add(orderCategoriesItem);
+  public RouteOptimizationMaximumDistanceLocationConstraint locationCategory(String locationCategory) {
+    this.locationCategory = locationCategory;
     return this;
   }
 
    /**
-   * The sequence of order categories that has to be respected within a route. The index of the category in the list determines the sequence. Categories that do not correspond to any order will be ignored.
-   * @return orderCategories
+   * The vehicle must visit a location whose categories match this condition within the specified maximum distance. If this field contains a plain category name (e.g. &#x60;CATEGORY_A&#x60;), it matches locations that have this category. If this field starts with &#x60;!&#x60; (e.g. &#x60;!CATEGORY_A&#x60;), it matches locations that **do not** have that category.
+   * @return locationCategory
   **/
   @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ORDER_CATEGORIES)
+  @JsonProperty(JSON_PROPERTY_LOCATION_CATEGORY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Set<String> getOrderCategories() {
-    return orderCategories;
+  public String getLocationCategory() {
+    return locationCategory;
   }
 
 
-  @JsonDeserialize(as = LinkedHashSet.class)
-  @JsonProperty(JSON_PROPERTY_ORDER_CATEGORIES)
+  @JsonProperty(JSON_PROPERTY_LOCATION_CATEGORY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrderCategories(Set<String> orderCategories) {
-    this.orderCategories = orderCategories;
+  public void setLocationCategory(String locationCategory) {
+    this.locationCategory = locationCategory;
   }
 
 
-  public RouteOptimizationRespectedOrderSequence vehicleCategory(String vehicleCategory) {
+  public RouteOptimizationMaximumDistanceLocationConstraint vehicleCategory(String vehicleCategory) {
     this.vehicleCategory = vehicleCategory;
     return this;
   }
@@ -108,8 +100,34 @@ public class RouteOptimizationRespectedOrderSequence {
   }
 
 
+  public RouteOptimizationMaximumDistanceLocationConstraint value(Integer value) {
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * The maximum distance [m] a vehicle may travel without visiting a matching location.
+   * minimum: 1
+   * @return value
+  **/
+  @jakarta.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getValue() {
+    return value;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setValue(Integer value) {
+    this.value = value;
+  }
+
+
   /**
-   * Return true if this RespectedOrderSequence object is equal to o.
+   * Return true if this MaximumDistanceLocationConstraint object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -119,22 +137,24 @@ public class RouteOptimizationRespectedOrderSequence {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationRespectedOrderSequence respectedOrderSequence = (RouteOptimizationRespectedOrderSequence) o;
-    return Objects.equals(this.orderCategories, respectedOrderSequence.orderCategories) &&
-        Objects.equals(this.vehicleCategory, respectedOrderSequence.vehicleCategory);
+    RouteOptimizationMaximumDistanceLocationConstraint maximumDistanceLocationConstraint = (RouteOptimizationMaximumDistanceLocationConstraint) o;
+    return Objects.equals(this.locationCategory, maximumDistanceLocationConstraint.locationCategory) &&
+        Objects.equals(this.vehicleCategory, maximumDistanceLocationConstraint.vehicleCategory) &&
+        Objects.equals(this.value, maximumDistanceLocationConstraint.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderCategories, vehicleCategory);
+    return Objects.hash(locationCategory, vehicleCategory, value);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationRespectedOrderSequence {\n");
-    sb.append("    orderCategories: ").append(toIndentedString(orderCategories)).append("\n");
+    sb.append("class RouteOptimizationMaximumDistanceLocationConstraint {\n");
+    sb.append("    locationCategory: ").append(toIndentedString(locationCategory)).append("\n");
     sb.append("    vehicleCategory: ").append(toIndentedString(vehicleCategory)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -182,20 +202,19 @@ public class RouteOptimizationRespectedOrderSequence {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `orderCategories` to the URL query string
-    if (getOrderCategories() != null) {
-      int i = 0;
-      for (String _item : getOrderCategories()) {
-        joiner.add(String.format("%sorderCategories%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-            URLEncoder.encode(String.valueOf(_item), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
-      }
-      i++;
+    // add `locationCategory` to the URL query string
+    if (getLocationCategory() != null) {
+      joiner.add(String.format("%slocationCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocationCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     // add `vehicleCategory` to the URL query string
     if (getVehicleCategory() != null) {
       joiner.add(String.format("%svehicleCategory%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVehicleCategory()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    }
+
+    // add `value` to the URL query string
+    if (getValue() != null) {
+      joiner.add(String.format("%svalue%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getValue()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
