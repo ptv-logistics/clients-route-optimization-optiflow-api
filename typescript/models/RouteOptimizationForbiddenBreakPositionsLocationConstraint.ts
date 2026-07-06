@@ -16,41 +16,41 @@ import { mapValues } from '../runtime';
 /**
  * Constrains breaks from being scheduled between locations belonging to certain categories on a route.
  * @export
- * @interface RouteOptimizationForbiddenBreakPosition
+ * @interface RouteOptimizationForbiddenBreakPositionsLocationConstraint
  */
-export interface RouteOptimizationForbiddenBreakPosition {
+export interface RouteOptimizationForbiddenBreakPositionsLocationConstraint {
     /**
      * The constraint applies only if the categories of the location preceding the break match this condition. When omitted, the constraint applies independently of the preceding location. If this field contains a plain category name (e.g. `CATEGORY_A`), it matches locations that have this category. If this field starts with `!` (e.g. `!CATEGORY_A`), it matches locations that **do not** have that category. If no location matches this condition, the constraint is ignored.
      * @type {string}
-     * @memberof RouteOptimizationForbiddenBreakPosition
+     * @memberof RouteOptimizationForbiddenBreakPositionsLocationConstraint
      */
     previousLocationCategory?: string;
     /**
      * The constraint applies only if the categories of the location following the break match this condition. When omitted, the constraint applies independently of the following location. If this field contains a plain category name (e.g. `CATEGORY_A`), it matches locations that have this category. If this field starts with `!` (e.g. `!CATEGORY_A`), it matches locations that **do not** have that category. If no location matches this condition, the constraint is ignored.
      * @type {string}
-     * @memberof RouteOptimizationForbiddenBreakPosition
+     * @memberof RouteOptimizationForbiddenBreakPositionsLocationConstraint
      */
     nextLocationCategory?: string;
     /**
      * The constraint applies only to vehicles whose categories match this condition. When omitted, the constraint applies to all vehicles. If this field contains a plain category name (e.g. `CATEGORY_A`), it matches vehicles that have this category. If this field starts with `!` (e.g. `!CATEGORY_A`), it matches vehicles that **do not** have that category. If no vehicle matches this condition, the constraint is ignored.
      * @type {string}
-     * @memberof RouteOptimizationForbiddenBreakPosition
+     * @memberof RouteOptimizationForbiddenBreakPositionsLocationConstraint
      */
     vehicleCategory?: string;
 }
 
 /**
- * Check if a given object implements the RouteOptimizationForbiddenBreakPosition interface.
+ * Check if a given object implements the RouteOptimizationForbiddenBreakPositionsLocationConstraint interface.
  */
-export function instanceOfRouteOptimizationForbiddenBreakPosition(value: object): boolean {
+export function instanceOfRouteOptimizationForbiddenBreakPositionsLocationConstraint(value: object): boolean {
     return true;
 }
 
-export function RouteOptimizationForbiddenBreakPositionFromJSON(json: any): RouteOptimizationForbiddenBreakPosition {
-    return RouteOptimizationForbiddenBreakPositionFromJSONTyped(json, false);
+export function RouteOptimizationForbiddenBreakPositionsLocationConstraintFromJSON(json: any): RouteOptimizationForbiddenBreakPositionsLocationConstraint {
+    return RouteOptimizationForbiddenBreakPositionsLocationConstraintFromJSONTyped(json, false);
 }
 
-export function RouteOptimizationForbiddenBreakPositionFromJSONTyped(json: any, ignoreDiscriminator: boolean): RouteOptimizationForbiddenBreakPosition {
+export function RouteOptimizationForbiddenBreakPositionsLocationConstraintFromJSONTyped(json: any, ignoreDiscriminator: boolean): RouteOptimizationForbiddenBreakPositionsLocationConstraint {
     if (json == null) {
         return json;
     }
@@ -62,7 +62,7 @@ export function RouteOptimizationForbiddenBreakPositionFromJSONTyped(json: any, 
     };
 }
 
-export function RouteOptimizationForbiddenBreakPositionToJSON(value?: RouteOptimizationForbiddenBreakPosition | null): any {
+export function RouteOptimizationForbiddenBreakPositionsLocationConstraintToJSON(value?: RouteOptimizationForbiddenBreakPositionsLocationConstraint | null): any {
     if (value == null) {
         return value;
     }
