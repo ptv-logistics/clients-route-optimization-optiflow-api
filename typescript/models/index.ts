@@ -53,6 +53,7 @@ export * from './RouteOptimizationLocation';
 export * from './RouteOptimizationLocationConstraints';
 export * from './RouteOptimizationLocationRule';
 export * from './RouteOptimizationLocationRuleCondition';
+export * from './RouteOptimizationMaximumApproachDistanceLocationConstraint';
 export * from './RouteOptimizationMaximumDistanceLocationConstraint';
 export * from './RouteOptimizationMaximumStopsLocationConstraint';
 export * from './RouteOptimizationMetrics';
