@@ -99,6 +99,7 @@ export * from './RouteOptimizationRespectedOrderSequence';
 export * from './RouteOptimizationRespectedTaskSequence';
 export * from './RouteOptimizationRespectedTaskSequenceScope';
 export * from './RouteOptimizationResultCosts';
+export * from './RouteOptimizationResultLoadedOrder';
 export * from './RouteOptimizationRoute';
 export * from './RouteOptimizationRouteConstraints';
 export * from './RouteOptimizationRouteCosts';
