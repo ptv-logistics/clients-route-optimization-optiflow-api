@@ -26,25 +26,35 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Defines the costs for loading and unloading orders at the depot.
+    /// An order that is already loaded onto the vehicle at the start location.
     /// </summary>
-    [DataContract(Name = "DepotCosts")]
-    public partial class RouteOptimizationDepotCosts : IValidatableObject
+    [DataContract(Name = "ResultLoadedOrder")]
+    public partial class RouteOptimizationResultLoadedOrder : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationDepotCosts" /> class.
+        /// Initializes a new instance of the <see cref="RouteOptimizationResultLoadedOrder" /> class.
         /// </summary>
-        /// <param name="loads">loads.</param>
-        public RouteOptimizationDepotCosts(RouteOptimizationDepotLoadCosts loads = default(RouteOptimizationDepotLoadCosts))
+        /// <param name="orderId">The unique identifier of the loaded order..</param>
+        /// <param name="compartmentId">The compartment the order is loaded in..</param>
+        public RouteOptimizationResultLoadedOrder(string orderId = default(string), string compartmentId = default(string))
         {
-            this.Loads = loads;
+            this.OrderId = orderId;
+            this.CompartmentId = compartmentId;
         }
 
         /// <summary>
-        /// Gets or Sets Loads
+        /// The unique identifier of the loaded order.
         /// </summary>
-        [DataMember(Name = "loads", EmitDefaultValue = false)]
-        public RouteOptimizationDepotLoadCosts Loads { get; set; }
+        /// <value>The unique identifier of the loaded order.</value>
+        [DataMember(Name = "orderId", EmitDefaultValue = true)]
+        public string OrderId { get; set; }
+
+        /// <summary>
+        /// The compartment the order is loaded in.
+        /// </summary>
+        /// <value>The compartment the order is loaded in.</value>
+        [DataMember(Name = "compartmentId", EmitDefaultValue = true)]
+        public string CompartmentId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -53,8 +63,9 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationDepotCosts {\n");
-            sb.Append("  Loads: ").Append(Loads).Append("\n");
+            sb.Append("class RouteOptimizationResultLoadedOrder {\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  CompartmentId: ").Append(CompartmentId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
