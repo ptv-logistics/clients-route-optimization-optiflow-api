@@ -24,82 +24,80 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationMetrics;
-import java.time.OffsetDateTime;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * A snapshot of optimization metrics at a specific point in time.
+ * An order that is already loaded onto the vehicle at the start location.
  */
 @JsonPropertyOrder({
-  RouteOptimizationOptimizationProgressSample.JSON_PROPERTY_TIME,
-  RouteOptimizationOptimizationProgressSample.JSON_PROPERTY_METRICS
+  RouteOptimizationResultLoadedOrder.JSON_PROPERTY_ORDER_ID,
+  RouteOptimizationResultLoadedOrder.JSON_PROPERTY_COMPARTMENT_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-07-27T08:56:18.637114267Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationOptimizationProgressSample {
-  public static final String JSON_PROPERTY_TIME = "time";
-  private OffsetDateTime time;
+public class RouteOptimizationResultLoadedOrder {
+  public static final String JSON_PROPERTY_ORDER_ID = "orderId";
+  private String orderId;
 
-  public static final String JSON_PROPERTY_METRICS = "metrics";
-  private RouteOptimizationMetrics metrics;
+  public static final String JSON_PROPERTY_COMPARTMENT_ID = "compartmentId";
+  private String compartmentId;
 
-  public RouteOptimizationOptimizationProgressSample() { 
+  public RouteOptimizationResultLoadedOrder() { 
   }
 
-  public RouteOptimizationOptimizationProgressSample time(OffsetDateTime time) {
-    this.time = time;
+  public RouteOptimizationResultLoadedOrder orderId(String orderId) {
+    this.orderId = orderId;
     return this;
   }
 
    /**
-   * The time at which the metrics were captured. Formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6).
-   * @return time
+   * The unique identifier of the loaded order.
+   * @return orderId
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TIME)
+  @JsonProperty(JSON_PROPERTY_ORDER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public OffsetDateTime getTime() {
-    return time;
+  public String getOrderId() {
+    return orderId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TIME)
+  @JsonProperty(JSON_PROPERTY_ORDER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTime(OffsetDateTime time) {
-    this.time = time;
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
   }
 
 
-  public RouteOptimizationOptimizationProgressSample metrics(RouteOptimizationMetrics metrics) {
-    this.metrics = metrics;
+  public RouteOptimizationResultLoadedOrder compartmentId(String compartmentId) {
+    this.compartmentId = compartmentId;
     return this;
   }
 
    /**
-   * Get metrics
-   * @return metrics
+   * The compartment the order is loaded in.
+   * @return compartmentId
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_METRICS)
+  @JsonProperty(JSON_PROPERTY_COMPARTMENT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public RouteOptimizationMetrics getMetrics() {
-    return metrics;
+  public String getCompartmentId() {
+    return compartmentId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_METRICS)
+  @JsonProperty(JSON_PROPERTY_COMPARTMENT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetrics(RouteOptimizationMetrics metrics) {
-    this.metrics = metrics;
+  public void setCompartmentId(String compartmentId) {
+    this.compartmentId = compartmentId;
   }
 
 
   /**
-   * Return true if this OptimizationProgressSample object is equal to o.
+   * Return true if this ResultLoadedOrder object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -109,22 +107,22 @@ public class RouteOptimizationOptimizationProgressSample {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationOptimizationProgressSample optimizationProgressSample = (RouteOptimizationOptimizationProgressSample) o;
-    return Objects.equals(this.time, optimizationProgressSample.time) &&
-        Objects.equals(this.metrics, optimizationProgressSample.metrics);
+    RouteOptimizationResultLoadedOrder resultLoadedOrder = (RouteOptimizationResultLoadedOrder) o;
+    return Objects.equals(this.orderId, resultLoadedOrder.orderId) &&
+        Objects.equals(this.compartmentId, resultLoadedOrder.compartmentId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(time, metrics);
+    return Objects.hash(orderId, compartmentId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationOptimizationProgressSample {\n");
-    sb.append("    time: ").append(toIndentedString(time)).append("\n");
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
+    sb.append("class RouteOptimizationResultLoadedOrder {\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    compartmentId: ").append(toIndentedString(compartmentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -172,14 +170,14 @@ public class RouteOptimizationOptimizationProgressSample {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `time` to the URL query string
-    if (getTime() != null) {
-      joiner.add(String.format("%stime%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTime()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+    // add `orderId` to the URL query string
+    if (getOrderId() != null) {
+      joiner.add(String.format("%sorderId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrderId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
-    // add `metrics` to the URL query string
-    if (getMetrics() != null) {
-      joiner.add(getMetrics().toUrlQueryString(prefix + "metrics" + suffix));
+    // add `compartmentId` to the URL query string
+    if (getCompartmentId() != null) {
+      joiner.add(String.format("%scompartmentId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCompartmentId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
