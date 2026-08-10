@@ -26,23 +26,23 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Defines the constraint that applies to a task group. * &#x60;CONSECUTIVE&#x60; - Those tasks belonging to the task group that are scheduled on the same route must be scheduled consecutively. * &#x60;SAME_ROUTE&#x60; - All tasks belonging to the task group must be scheduled on the same route.
+    /// Defines the strategy for handling constraint violations detected during route reconstruction. * &#x60;RETAIN&#x60; - Orders causing constraint violations are kept on the route. The violations are reported in the optimization result. * &#x60;CLEANUP&#x60; - Orders causing constraint violations are removed from the route during reconstruction.
     /// </summary>
-    /// <value>Defines the constraint that applies to a task group. * &#x60;CONSECUTIVE&#x60; - Those tasks belonging to the task group that are scheduled on the same route must be scheduled consecutively. * &#x60;SAME_ROUTE&#x60; - All tasks belonging to the task group must be scheduled on the same route.</value>
+    /// <value>Defines the strategy for handling constraint violations detected during route reconstruction. * &#x60;RETAIN&#x60; - Orders causing constraint violations are kept on the route. The violations are reported in the optimization result. * &#x60;CLEANUP&#x60; - Orders causing constraint violations are removed from the route during reconstruction.</value>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum RouteOptimizationTaskGroupConstraint
+    public enum RouteOptimizationRouteReconstructionViolationsPolicy
     {
         /// <summary>
-        /// Enum CONSECUTIVE for value: CONSECUTIVE
+        /// Enum RETAIN for value: RETAIN
         /// </summary>
-        [EnumMember(Value = "CONSECUTIVE")]
-        CONSECUTIVE = 1,
+        [EnumMember(Value = "RETAIN")]
+        RETAIN = 1,
 
         /// <summary>
-        /// Enum SAME_ROUTE for value: SAME_ROUTE
+        /// Enum CLEANUP for value: CLEANUP
         /// </summary>
-        [EnumMember(Value = "SAME_ROUTE")]
-        SAME_ROUTE = 2
+        [EnumMember(Value = "CLEANUP")]
+        CLEANUP = 2
     }
 
 }

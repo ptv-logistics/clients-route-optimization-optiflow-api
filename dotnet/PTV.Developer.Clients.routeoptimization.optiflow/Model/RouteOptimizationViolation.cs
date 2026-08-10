@@ -26,35 +26,43 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Defines the costs for loading and unloading orders at the depot based on load dimensions.
+    /// A constraint violation present in the route optimization result.
     /// </summary>
-    [DataContract(Name = "DepotLoadCosts")]
-    public partial class RouteOptimizationDepotLoadCosts : IValidatableObject
+    [DataContract(Name = "Violation")]
+    public partial class RouteOptimizationViolation : IValidatableObject
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationDepotLoadCosts" /> class.
+        /// Gets or Sets Code
         /// </summary>
-        /// <param name="inbound">A list of costs applied to loads delivered to this depot..</param>
-        /// <param name="outbound">A list of costs applied to loads picked up at this depot..</param>
-        public RouteOptimizationDepotLoadCosts(List<RouteOptimizationDepotLoadCost> inbound = default(List<RouteOptimizationDepotLoadCost>), List<RouteOptimizationDepotLoadCost> outbound = default(List<RouteOptimizationDepotLoadCost>))
+        [DataMember(Name = "code", EmitDefaultValue = true)]
+        public RouteOptimizationViolationCode? Code { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RouteOptimizationViolation" /> class.
+        /// </summary>
+        /// <param name="code">code.</param>
+        /// <param name="constraint">JSONPath expression pointing to the constraint in the optimization request that is violated..</param>
+        /// <param name="paths">JSONPath expressions pointing to the related entities in the optimization result that are involved in the violation..</param>
+        public RouteOptimizationViolation(RouteOptimizationViolationCode? code = default(RouteOptimizationViolationCode?), string constraint = default(string), List<string> paths = default(List<string>))
         {
-            this.Inbound = inbound;
-            this.Outbound = outbound;
+            this.Code = code;
+            this.Constraint = constraint;
+            this.Paths = paths;
         }
 
         /// <summary>
-        /// A list of costs applied to loads delivered to this depot.
+        /// JSONPath expression pointing to the constraint in the optimization request that is violated.
         /// </summary>
-        /// <value>A list of costs applied to loads delivered to this depot.</value>
-        [DataMember(Name = "inbound", EmitDefaultValue = false)]
-        public List<RouteOptimizationDepotLoadCost> Inbound { get; set; }
+        /// <value>JSONPath expression pointing to the constraint in the optimization request that is violated.</value>
+        [DataMember(Name = "constraint", EmitDefaultValue = true)]
+        public string Constraint { get; set; }
 
         /// <summary>
-        /// A list of costs applied to loads picked up at this depot.
+        /// JSONPath expressions pointing to the related entities in the optimization result that are involved in the violation.
         /// </summary>
-        /// <value>A list of costs applied to loads picked up at this depot.</value>
-        [DataMember(Name = "outbound", EmitDefaultValue = false)]
-        public List<RouteOptimizationDepotLoadCost> Outbound { get; set; }
+        /// <value>JSONPath expressions pointing to the related entities in the optimization result that are involved in the violation.</value>
+        [DataMember(Name = "paths", EmitDefaultValue = false)]
+        public List<string> Paths { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +71,10 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationDepotLoadCosts {\n");
-            sb.Append("  Inbound: ").Append(Inbound).Append("\n");
-            sb.Append("  Outbound: ").Append(Outbound).Append("\n");
+            sb.Append("class RouteOptimizationViolation {\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Constraint: ").Append(Constraint).Append("\n");
+            sb.Append("  Paths: ").Append(Paths).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

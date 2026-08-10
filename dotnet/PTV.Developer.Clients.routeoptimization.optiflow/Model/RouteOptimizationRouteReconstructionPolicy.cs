@@ -26,35 +26,25 @@ using OpenAPIDateConverter = PTV.Developer.Clients.routeoptimization.optiflow.Cl
 namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
 {
     /// <summary>
-    /// Defines the costs for loading and unloading orders at the depot based on load dimensions.
+    /// Defines the policy on how the routes should be reconstructed before starting the optimization.
     /// </summary>
-    [DataContract(Name = "DepotLoadCosts")]
-    public partial class RouteOptimizationDepotLoadCosts : IValidatableObject
+    [DataContract(Name = "RouteReconstructionPolicy")]
+    public partial class RouteOptimizationRouteReconstructionPolicy : IValidatableObject
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteOptimizationDepotLoadCosts" /> class.
+        /// Gets or Sets Violations
         /// </summary>
-        /// <param name="inbound">A list of costs applied to loads delivered to this depot..</param>
-        /// <param name="outbound">A list of costs applied to loads picked up at this depot..</param>
-        public RouteOptimizationDepotLoadCosts(List<RouteOptimizationDepotLoadCost> inbound = default(List<RouteOptimizationDepotLoadCost>), List<RouteOptimizationDepotLoadCost> outbound = default(List<RouteOptimizationDepotLoadCost>))
+        [DataMember(Name = "violations", EmitDefaultValue = true)]
+        public RouteOptimizationRouteReconstructionViolationsPolicy? Violations { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RouteOptimizationRouteReconstructionPolicy" /> class.
+        /// </summary>
+        /// <param name="violations">violations.</param>
+        public RouteOptimizationRouteReconstructionPolicy(RouteOptimizationRouteReconstructionViolationsPolicy? violations = default(RouteOptimizationRouteReconstructionViolationsPolicy?))
         {
-            this.Inbound = inbound;
-            this.Outbound = outbound;
+            this.Violations = violations;
         }
-
-        /// <summary>
-        /// A list of costs applied to loads delivered to this depot.
-        /// </summary>
-        /// <value>A list of costs applied to loads delivered to this depot.</value>
-        [DataMember(Name = "inbound", EmitDefaultValue = false)]
-        public List<RouteOptimizationDepotLoadCost> Inbound { get; set; }
-
-        /// <summary>
-        /// A list of costs applied to loads picked up at this depot.
-        /// </summary>
-        /// <value>A list of costs applied to loads picked up at this depot.</value>
-        [DataMember(Name = "outbound", EmitDefaultValue = false)]
-        public List<RouteOptimizationDepotLoadCost> Outbound { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +53,8 @@ namespace PTV.Developer.Clients.routeoptimization.optiflow.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RouteOptimizationDepotLoadCosts {\n");
-            sb.Append("  Inbound: ").Append(Inbound).Append("\n");
-            sb.Append("  Outbound: ").Append(Outbound).Append("\n");
+            sb.Append("class RouteOptimizationRouteReconstructionPolicy {\n");
+            sb.Append("  Violations: ").Append(Violations).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
