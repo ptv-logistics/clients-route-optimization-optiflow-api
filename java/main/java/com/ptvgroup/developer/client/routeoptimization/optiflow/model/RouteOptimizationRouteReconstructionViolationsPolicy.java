@@ -26,17 +26,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Defines whether the location can be used for a layover between consecutive vehicles sharing the same resources. * &#x60;WITHOUT_ORDERS&#x60; - Two consecutive vehicles that share the same resources can use this location for a layover when no orders are present in the vehicle. In this case, the first vehicle&#39;s route ends at this location and the next vehicle&#39;s route begins here. * &#x60;DISALLOW&#x60; - This location cannot be used for a layover. At most 100 locations can be used for a layover.
+ * Defines the strategy for handling constraint violations detected during route reconstruction. * &#x60;RETAIN&#x60; - Orders causing constraint violations are kept on the route. The violations are reported in the optimization result. * &#x60;CLEANUP&#x60; - Orders causing constraint violations are removed from the route during reconstruction.
  */
-public enum RouteOptimizationLayoverCondition {
+public enum RouteOptimizationRouteReconstructionViolationsPolicy {
   
-  WITHOUT_ORDERS("WITHOUT_ORDERS"),
+  RETAIN("RETAIN"),
   
-  DISALLOW("DISALLOW");
+  CLEANUP("CLEANUP");
 
   private String value;
 
-  RouteOptimizationLayoverCondition(String value) {
+  RouteOptimizationRouteReconstructionViolationsPolicy(String value) {
     this.value = value;
   }
 
@@ -51,8 +51,8 @@ public enum RouteOptimizationLayoverCondition {
   }
 
   @JsonCreator
-  public static RouteOptimizationLayoverCondition fromValue(String value) {
-    for (RouteOptimizationLayoverCondition b : RouteOptimizationLayoverCondition.values()) {
+  public static RouteOptimizationRouteReconstructionViolationsPolicy fromValue(String value) {
+    for (RouteOptimizationRouteReconstructionViolationsPolicy b : RouteOptimizationRouteReconstructionViolationsPolicy.values()) {
       if (b.value.equals(value)) {
         return b;
       }

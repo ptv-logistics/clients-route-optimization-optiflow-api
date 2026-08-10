@@ -24,52 +24,52 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationDepotMaximumLoads;
+import com.ptvgroup.developer.client.routeoptimization.optiflow.model.RouteOptimizationRouteReconstructionViolationsPolicy;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Defines constraints on the tasks that can be executed at the depot.
+ * Defines the policy on how the routes should be reconstructed before starting the optimization.
  */
 @JsonPropertyOrder({
-  RouteOptimizationDepotConstraints.JSON_PROPERTY_MAXIMUM_LOADS
+  RouteOptimizationRouteReconstructionPolicy.JSON_PROPERTY_VIOLATIONS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-10T11:41:18.397499489Z[Etc/UTC]", comments = "Generator version: 7.5.0")
-public class RouteOptimizationDepotConstraints {
-  public static final String JSON_PROPERTY_MAXIMUM_LOADS = "maximumLoads";
-  private RouteOptimizationDepotMaximumLoads maximumLoads;
+public class RouteOptimizationRouteReconstructionPolicy {
+  public static final String JSON_PROPERTY_VIOLATIONS = "violations";
+  private RouteOptimizationRouteReconstructionViolationsPolicy violations = RouteOptimizationRouteReconstructionViolationsPolicy.CLEANUP;
 
-  public RouteOptimizationDepotConstraints() { 
+  public RouteOptimizationRouteReconstructionPolicy() { 
   }
 
-  public RouteOptimizationDepotConstraints maximumLoads(RouteOptimizationDepotMaximumLoads maximumLoads) {
-    this.maximumLoads = maximumLoads;
+  public RouteOptimizationRouteReconstructionPolicy violations(RouteOptimizationRouteReconstructionViolationsPolicy violations) {
+    this.violations = violations;
     return this;
   }
 
    /**
-   * Get maximumLoads
-   * @return maximumLoads
+   * Get violations
+   * @return violations
   **/
   @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_LOADS)
+  @JsonProperty(JSON_PROPERTY_VIOLATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public RouteOptimizationDepotMaximumLoads getMaximumLoads() {
-    return maximumLoads;
+  public RouteOptimizationRouteReconstructionViolationsPolicy getViolations() {
+    return violations;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_LOADS)
+  @JsonProperty(JSON_PROPERTY_VIOLATIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaximumLoads(RouteOptimizationDepotMaximumLoads maximumLoads) {
-    this.maximumLoads = maximumLoads;
+  public void setViolations(RouteOptimizationRouteReconstructionViolationsPolicy violations) {
+    this.violations = violations;
   }
 
 
   /**
-   * Return true if this DepotConstraints object is equal to o.
+   * Return true if this RouteReconstructionPolicy object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -79,20 +79,20 @@ public class RouteOptimizationDepotConstraints {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RouteOptimizationDepotConstraints depotConstraints = (RouteOptimizationDepotConstraints) o;
-    return Objects.equals(this.maximumLoads, depotConstraints.maximumLoads);
+    RouteOptimizationRouteReconstructionPolicy routeReconstructionPolicy = (RouteOptimizationRouteReconstructionPolicy) o;
+    return Objects.equals(this.violations, routeReconstructionPolicy.violations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(maximumLoads);
+    return Objects.hash(violations);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RouteOptimizationDepotConstraints {\n");
-    sb.append("    maximumLoads: ").append(toIndentedString(maximumLoads)).append("\n");
+    sb.append("class RouteOptimizationRouteReconstructionPolicy {\n");
+    sb.append("    violations: ").append(toIndentedString(violations)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -140,9 +140,9 @@ public class RouteOptimizationDepotConstraints {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `maximumLoads` to the URL query string
-    if (getMaximumLoads() != null) {
-      joiner.add(getMaximumLoads().toUrlQueryString(prefix + "maximumLoads" + suffix));
+    // add `violations` to the URL query string
+    if (getViolations() != null) {
+      joiner.add(String.format("%sviolations%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getViolations()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
     }
 
     return joiner.toString();
