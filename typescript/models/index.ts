@@ -95,6 +95,8 @@ export * from './RouteOptimizationResourceAvailability';
 export * from './RouteOptimizationResourceConstraints';
 export * from './RouteOptimizationResourceCosts';
 export * from './RouteOptimizationResourceUtilization';
+export * from './RouteOptimizationResourceVehicleCombinationConstraint';
+export * from './RouteOptimizationResourceVehicleCombinationConstraintType';
 export * from './RouteOptimizationRespectedOrderSequence';
 export * from './RouteOptimizationRespectedTaskSequence';
 export * from './RouteOptimizationRespectedTaskSequenceScope';
