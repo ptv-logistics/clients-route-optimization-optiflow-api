@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationChargingStation.JSON_PROPERTY_COMPLETION_DURATION,
   RouteOptimizationChargingStation.JSON_PROPERTY_BREAKS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:39:09.692620475Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:51:09.349589029Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationChargingStation {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

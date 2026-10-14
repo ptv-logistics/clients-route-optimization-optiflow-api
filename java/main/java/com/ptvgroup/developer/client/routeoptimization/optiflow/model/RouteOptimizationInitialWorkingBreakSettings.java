@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationInitialWorkingBreakSettings.JSON_PROPERTY_MAXIMUM_WORKING_DURATION,
   RouteOptimizationInitialWorkingBreakSettings.JSON_PROPERTY_MINIMUM_BREAK_DURATIONS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:39:09.692620475Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:51:09.349589029Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationInitialWorkingBreakSettings {
   public static final String JSON_PROPERTY_MAXIMUM_WORKING_DURATION = "maximumWorkingDuration";
   private Integer maximumWorkingDuration;

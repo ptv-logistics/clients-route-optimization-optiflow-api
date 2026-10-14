@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationRequestSummary.JSON_PROPERTY_NUMBER_OF_RESOURCES,
   RouteOptimizationRequestSummary.JSON_PROPERTY_NUMBER_OF_DEPOTS
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:39:09.692620475Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:51:09.349589029Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationRequestSummary {
   public static final String JSON_PROPERTY_DURATION = "duration";
   private Integer duration;

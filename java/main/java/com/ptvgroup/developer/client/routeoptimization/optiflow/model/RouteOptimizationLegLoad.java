@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationLegLoad.JSON_PROPERTY_ABSOLUTE,
   RouteOptimizationLegLoad.JSON_PROPERTY_RELATIVE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:39:09.692620475Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:51:09.349589029Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationLegLoad {
   public static final String JSON_PROPERTY_DIMENSION = "dimension";
   private String dimension;

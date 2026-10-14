@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationLoadedOrder.JSON_PROPERTY_ORDER_ID,
   RouteOptimizationLoadedOrder.JSON_PROPERTY_COMPARTMENT_ID
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:39:09.692620475Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:51:09.349589029Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationLoadedOrder {
   public static final String JSON_PROPERTY_ORDER_ID = "orderId";
   private String orderId;

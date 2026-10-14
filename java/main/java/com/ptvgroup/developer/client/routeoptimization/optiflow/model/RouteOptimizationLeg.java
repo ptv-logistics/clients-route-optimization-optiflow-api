@@ -50,7 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RouteOptimizationLeg.JSON_PROPERTY_COMPARTMENTS,
   RouteOptimizationLeg.JSON_PROPERTY_STATE_OF_CHARGE
 })
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:39:09.692620475Z[Etc/UTC]", comments = "Generator version: 7.5.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T10:51:09.349589029Z[Etc/UTC]", comments = "Generator version: 7.5.0")
 public class RouteOptimizationLeg {
   public static final String JSON_PROPERTY_START_LOCATION_ID = "startLocationId";
   private String startLocationId;
